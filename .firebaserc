@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "turma-de-elite-app"
+  },
+  "targets": {
+    "turma-de-elite-app": {
+      "hosting": {
+        "turma-de-elite-frontend": [
+          "turma-de-elite-app"
+        ]
+      }
+    }
   }
 }
