@@ -19,7 +19,8 @@
           formControlName="email"
           placeholder="user@email.com"
           required>
-        <mat-error *ngIf="isEmailInvalid">Não foi possível encontrar sua conta</mat-error>
+        <mat-error *ngIf="isEmailInvalid">O E-mail inserido é inválido</mat-error>
+        <mat-error *ngIf="isAlreadyRegistered">Este E-mail já foi cadastrado</mat-error>
         <mat-error *ngIf="firstAccessForm.get('email')?.errors?.required">É necessário inserir o E-mail</mat-error>
       </mat-form-field>
       <mat-form-field
@@ -31,8 +32,8 @@
           matInput
           type="password"
           formControlName="password">
-        <mat-error *ngIf="isPasswordInvalid">Senha incorreta. Tente novamente ou clique em "Esqueceu a senha?" para redefini-la</mat-error>
-        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.required">É necessário inserir a senha</mat-error>
+        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.minlength">Sua senha deve ter no mínimo 6 caracteres</mat-error>
+        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.required">É necessário inserir uma senha</mat-error>
       </mat-form-field>
     </form>
     <button

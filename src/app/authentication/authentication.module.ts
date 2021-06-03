@@ -8,7 +8,7 @@ import {FirstAccessPageComponent} from "./components/first-access/first-access-p
 @NgModule({
   declarations: [
     LoginPageComponent,
-    FirstAccessPageComponent
+    FirstAccessPageComponent,
   ],
   imports: [
     MatFormFieldModule,

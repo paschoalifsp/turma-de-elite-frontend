@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-first-access',
@@ -12,44 +13,37 @@ export class FirstAccessPageComponent implements OnInit {
 
   firstAccessForm = this.fb.group({
     email: ['',Validators.email],
-    password: ['', Validators.required]
+    password: ['', Validators.compose([Validators.minLength(6),Validators.required])]
   })
 
   isEmailInvalid = false;
   isPasswordInvalid = false;
+  isAlreadyRegistered = false;
 
   constructor(
     private fb: FormBuilder,
     private auth: AuthenticationService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.firstAccessForm.valueChanges.subscribe(value => {
+      console.log(this.firstAccessForm.get('password')?.errors?.minlength);
+    });
   }
 
   doFirstAccess(){
-    const {email,password} = this.firstAccessForm.value;
-    this.auth.login(email,password)
-      .then( user => {
-        console.log(user);
-        this.auth.doAdminFirstAccess(email).subscribe(console.log);
-      })
-      .catch(error => {
-        switch (error?.code){
-          case 'auth/invalid-email':
-          case 'auth/user-disabled':
-          case 'auth/user-not-found':
-            this.isEmailInvalid = true;
-            break;
-          case 'auth/wrong-password':
-            this.isPasswordInvalid = true;
-            break;
-          default:
-            this.showSnackbar('Erro inesperado');
-            break;
+    this.activatedRoute.queryParams.subscribe(params => {
+      const firstAccessToken = params['token'];
+      const {email,password} = this.firstAccessForm.value;
+      this.auth.doAdminFirstAccess(email,password,firstAccessToken)
+        .subscribe(
+          value => {},
+          error => {},
+          );
+    });
 
-        }
-      });
   }
 
   showSnackbar(message: string){

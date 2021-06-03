@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/auth";
-import {from, Observable} from "rxjs";
+import {from, Observable, of} from "rxjs";
 import firebase from "firebase";
 import {flatMap, map, take} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
@@ -24,7 +24,7 @@ export class AuthenticationService {
 
   getToken(): Observable<string>{
     return this.user.pipe(
-      flatMap(user => user ? from(user.getIdToken(true)) : '')
+      flatMap(user => user ? from(user.getIdToken(true)) : of(''))
     );
   }
 
@@ -36,11 +36,21 @@ export class AuthenticationService {
     await this.afAuth.signOut();
   }
 
-  doAdminFirstAccess(email: string) {
-    return this.http.put(`${environment.apiUrl}/auth/first-access/admin`,{email}).pipe(take(1))
+  doAdminFirstAccess(email: string, password: string, firstAccessToken: string) {
+    return this.http.post(
+  `${environment.apiUrl}/first-access`,
+  {
+          email,
+          password,
+          firstAccessToken,
+        }
+      ).pipe(take(1));
   }
 
   verifyFirstAccess(firstAccessToken: string){
-    return this.http.post(`${environment.apiUrl}/auth/first-access/admin/verify-token`, firstAccessToken).pipe(take(1))
+    return this.http.post(
+    `${environment.apiUrl}/first-access/verify-token`,
+        firstAccessToken
+    ).pipe(take(1));
   }
 }
