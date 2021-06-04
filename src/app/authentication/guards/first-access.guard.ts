@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {AuthenticationService} from "../services/authentication.service";
 import {catchError, map, switchMap, take, tap} from "rxjs/operators";
@@ -10,7 +10,8 @@ import {catchError, map, switchMap, take, tap} from "rxjs/operators";
 export class FirstAccessGuard implements CanActivate {
 
   constructor(
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private router: Router
   ) {}
 
   canActivate(
@@ -18,7 +19,15 @@ export class FirstAccessGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.auth.verifyFirstAccess(route?.queryParams['token'] as string)
       .pipe(
-        map(value => true)
+        map(value => true),
+        catchError((err, caught) => {
+          if(err.status == 409){
+            return of(this.router.parseUrl('/first-access/already-done'));
+          }else{
+            return of(false);
+          }
+
+        })
       );
   }
 

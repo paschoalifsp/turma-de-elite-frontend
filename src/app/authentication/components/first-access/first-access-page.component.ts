@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-first-access',
@@ -24,7 +24,8 @@ export class FirstAccessPageComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private snackbar: MatSnackBar,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -39,15 +40,20 @@ export class FirstAccessPageComponent implements OnInit {
       const {email,password} = this.firstAccessForm.value;
       this.auth.doAdminFirstAccess(email,password,firstAccessToken)
         .subscribe(
-          value => {},
-          error => {},
-          );
+          value => {
+            this.showSnackbar('Primeiro acesso realizado com sucesso!').afterDismissed().subscribe(value => {
+              this.router.navigate(['login']);
+            });
+          },
+          error => {
+            this.showSnackbar('Já foi realizado primeiro acesso com este usuário');
+          },
+        );
     });
-
   }
 
   showSnackbar(message: string){
-    this.snackbar.open(message,'Fechar');
+    return this.snackbar.open(message,'Fechar');
   }
 
 }

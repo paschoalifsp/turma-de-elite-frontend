@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginPageComponent } from './login-page.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FirstAccessAlreadyDoneComponent } from './first-access-already-done.component';
 import {SharedModule} from "../../../shared/shared.module";
 import {RouterTestingModule} from "@angular/router/testing";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../../../../environments/environment";
 
-describe('LoginPageComponent', () => {
-  let component: LoginPageComponent;
-  let fixture: ComponentFixture<LoginPageComponent>;
+describe('FirstAccessAlreadyDoneComponent', () => {
+  let component: FirstAccessAlreadyDoneComponent;
+  let fixture: ComponentFixture<FirstAccessAlreadyDoneComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -19,24 +19,18 @@ describe('LoginPageComponent', () => {
         NoopAnimationsModule,
         AngularFireModule.initializeApp(environment.firebaseConfig)
       ],
-      declarations: [ LoginPageComponent ]
+      declarations: [ FirstAccessAlreadyDoneComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginPageComponent);
+    fixture = TestBed.createComponent(FirstAccessAlreadyDoneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('Deve ser criado', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('Deve possuir um botão escrito \"Realizar primeiro acesso\"', () => {
-    const componentDebugElement: HTMLElement = fixture.nativeElement;
-    const button = componentDebugElement.querySelector('button');
-    expect(button?.textContent).toBe(' Login ');
   });
 });
