@@ -53,4 +53,8 @@ export class AuthenticationService {
         firstAccessToken
     ).pipe(take(1));
   }
+
+  sendResetPasswordEmail(email: string) {
+    return this.afAuth.sendPasswordResetEmail(email);
+  }
 }
