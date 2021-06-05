@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './first-access-already-done.component.html',
   styleUrls: ['./first-access-already-done.component.scss']
 })
-export class FirstAccessAlreadyDoneComponent implements OnInit {
+export class FirstAccessAlreadyDoneComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

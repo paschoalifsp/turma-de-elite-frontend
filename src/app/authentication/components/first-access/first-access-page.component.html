@@ -19,9 +19,15 @@
           formControlName="email"
           placeholder="user@email.com"
           required>
-        <mat-error *ngIf="isEmailInvalid">O E-mail inserido é inválido</mat-error>
-        <mat-error *ngIf="isAlreadyRegistered">Este E-mail já foi cadastrado</mat-error>
-        <mat-error *ngIf="firstAccessForm.get('email')?.errors?.required">É necessário inserir o E-mail</mat-error>
+        <mat-error *ngIf="isEmailInvalid">
+          {{'fieldErrors.invalidEmail' | translate}}
+        </mat-error>
+        <mat-error *ngIf="isAlreadyRegistered">
+          {{'fieldErrors.alreadyRegisteredEmail'|translate}}
+        </mat-error>
+        <mat-error *ngIf="firstAccessForm.get('email')?.errors?.required">
+          {{'fieldErrors.emailIsRequired'|translate}}
+        </mat-error>
       </mat-form-field>
       <mat-form-field
         class="fieldWidth"
@@ -32,8 +38,12 @@
           matInput
           type="password"
           formControlName="password">
-        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.minlength">Sua senha deve ter no mínimo 6 caracteres</mat-error>
-        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.required">É necessário inserir uma senha</mat-error>
+        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.minlength">
+          {{'fieldErrors.passwordIsTooShort'|translate}}
+        </mat-error>
+        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.required">
+          {{'fieldErrors.passwordIsRequired'|translate}}
+        </mat-error>
       </mat-form-field>
     </form>
     <button
@@ -41,7 +51,7 @@
       (click)="doFirstAccess()"
       color="primary"
       [disabled]="firstAccessForm.invalid">
-      Realizar primeiro acesso
+      {{'labels.doFirstAccess'|translate}}
     </button>
   </div>
 </div>

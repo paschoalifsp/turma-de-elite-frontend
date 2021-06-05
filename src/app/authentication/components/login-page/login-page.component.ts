@@ -8,7 +8,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
 
   loginForm = this.fb.group({
     email: ['',Validators.email],
@@ -23,9 +23,6 @@ export class LoginPageComponent implements OnInit {
     private auth: AuthenticationService,
     private snackbar: MatSnackBar
     ) { }
-
-  ngOnInit(): void {
-  }
 
   login(){
     const {email,password} = this.loginForm.value;

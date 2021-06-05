@@ -1,0 +1,22 @@
+{
+  "fieldErrors": {
+    "invalidEmail": "The E-mail is invalid",
+    "alreadyRegisteredEmail": "This E-mail has already been registered",
+    "emailIsRequired": "E-mail is required",
+    "passwordIsTooShort": "Your password need has at least 6 characters",
+    "passwordIsRequired": "Password is required",
+    "accountNotFound": "Your account cannot be found",
+    "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
+    "passwordIsRequired": "Password is required"
+  },
+  "labels": {
+    "login": "Login",
+    "doFirstAccess": "First Access",
+    "password": "Senha",
+    "forgotPassword": "Forgot password",
+    "sendLink": "Send link"
+  },
+  "messages": {
+    "firstAccessAlreadyDone": "First access already been done"
+  }
+}

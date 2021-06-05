@@ -10,7 +10,7 @@ import {CustomStateMatcher} from "../../../shared/utils/error-state-matcher";
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent {
 
   resetPasswordForm = this.fb.group({
     email: ['',Validators.email]
@@ -25,9 +25,6 @@ export class ResetPasswordComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     ) { }
-
-  ngOnInit(): void {
-  }
 
   sendResetPasswordEmail(){
     this.resetPasswordForm.markAllAsTouched();

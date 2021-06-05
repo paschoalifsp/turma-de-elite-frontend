@@ -1,0 +1,22 @@
+{
+  "fieldErrors": {
+    "invalidEmail": "O E-mail inserido é inválido",
+    "alreadyRegisteredEmail": "Este E-mail já foi cadastrado",
+    "emailIsRequired": "É necessário inserir o E-mail",
+    "passwordIsTooShort": "Sua senha deve ter no mínimo 6 caracteres",
+    "passwordIsRequired": "É necessário inserir uma senha",
+    "accountNotFound": "Não foi possível encontrar sua conta",
+    "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueceu a senha?\" para redefini-la",
+    "passwordIsRequired": "É necessário inserir a senha"
+  },
+  "labels": {
+    "login": "Login",
+    "doFirstAccess": "Realizar primeiro acesso",
+    "password": "Senha",
+    "forgotPassword": "Esqueci a senha",
+    "sendLink": "Enviar link"
+  },
+  "messages": {
+    "firstAccessAlreadyDone": "Primeiro acesso já foi realizado"
+  }
+}
