@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://turma-de-elite.herokuapp.com/',
+  apiUrl: 'https://turma-de-elite.herokuapp.com',
   useEmulators: false,
   firebaseConfig: {
     apiKey: "AIzaSyAXIaX1Y2g_jnIrvrewlVvmhR4iwpejxEc",
