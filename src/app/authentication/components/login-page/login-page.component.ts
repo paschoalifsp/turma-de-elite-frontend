@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -21,13 +22,16 @@ export class LoginPageComponent {
   constructor(
     private fb: FormBuilder,
     private auth: AuthenticationService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private router: Router
     ) { }
 
   login(){
     const {email,password} = this.loginForm.value;
     this.auth.login(email,password)
-      .then()
+      .then( result => {
+        this.router.navigate(['/dashboard'])
+      })
       .catch(error => {
         switch (error?.code){
           case 'auth/invalid-email':

@@ -13,11 +13,12 @@ import {AngularFireAuthGuardModule} from "@angular/fire/auth-guard";
 import {AuthenticationModule} from "./authentication/authentication.module";
 import {SharedModule} from "./shared/shared.module";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {createTranslationLoader} from "@angular-devkit/build-angular/src/utils/load-translations";
+import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/auth';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {registerLocaleData} from "@angular/common";
 import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/es-US';
+import { AdminDashboardComponent } from './dashboard/components/admin-dashboard/admin-dashboard.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -28,7 +29,8 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,9 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: BearerInterceptor, multi: true},
-    { provide: LOCALE_ID, useValue: 'pt'}
+    { provide: LOCALE_ID, useValue: 'pt'},
+    { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined },
+
   ],
   bootstrap: [AppComponent]
 })
