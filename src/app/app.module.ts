@@ -18,7 +18,11 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {registerLocaleData} from "@angular/common";
 import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/es-US';
-import { AdminDashboardComponent } from './dashboard/components/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from './admin/dashboard/components/admin-dashboard/admin-dashboard.component';
+import { AdminMainComponent } from './admin/main-component/admin-main.component';
+import { ConfigurationComponent } from './admin/configuration/components/configuration.component';
+import { UsersPageComponent } from './admin/users/components/users-page/users-page.component';
+import { UserFormComponent } from './admin/users/components/user-form/user-form.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -30,7 +34,11 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminMainComponent,
+    ConfigurationComponent,
+    UsersPageComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       },
       defaultLanguage: 'pt'
-    })
+    }),
+    SharedModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: BearerInterceptor, multi: true},

@@ -1,0 +1,39 @@
+<div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
+
+  <h1 class="title">
+    {{isEdit?'titles.editUser' : 'titles.createUser' |translate}}
+  </h1>
+
+  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="userForm" (ngSubmit)="isEdit ? updateUser() : createUser()">
+    <mat-form-field
+      fxFlex="45" appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="email"
+        placeholder="user@email.com"
+        required>
+      <mat-error *ngIf="alreadyRegisteredEmail">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
+      <mat-error *ngIf="userForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="45" appearance="fill">
+      <mat-label>{{'labels.name'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        placeholder="André Monteiro"
+        required>
+      <mat-error *ngIf="userForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
+    </mat-form-field>
+    <div *ngIf="isLoading;then showLoader;else showButton"></div>
+    <ng-template #showLoader>
+      <mat-spinner diameter="50"></mat-spinner>
+    </ng-template>
+    <ng-template #showButton>
+      <button mat-raised-button [disabled]="userForm.invalid" type="submit">{{isEdit ? 'labels.save':'labels.create'|translate}}</button>
+    </ng-template>
+  </form>
+</div>

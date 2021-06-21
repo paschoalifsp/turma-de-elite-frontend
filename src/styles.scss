@@ -37,3 +37,15 @@ $turma-de-elite-frontend-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.full-width{
+  width: 100%;
+}
+
+.default-padding{
+  padding: 20px;
+}
+
+.divider{
+  padding: 10px 0;
+}

@@ -1,0 +1,14 @@
+@use '~@angular/material' as mat;
+
+.pad-format{
+  @include mat.elevation(2);
+  @include mat.elevation-transition();
+
+  padding: 50px;
+
+  word-wrap: break-word;
+
+  :hover{
+    color: #7f7f7f;
+  }
+}

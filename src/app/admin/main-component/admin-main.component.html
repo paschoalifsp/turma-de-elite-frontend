@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+  <span>Turma de Elite</span>
+
+  <span>
+    <button mat-flat-button color="primary" routerLink="dashboard">Dashboard</button>
+        <button mat-flat-button color="primary" routerLink="users">{{'labels.users'|translate}}</button>
+    <button mat-icon-button aria-label="Configuration page" [matMenuTriggerFor]="menu">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="languages">
+        <mat-icon>translate</mat-icon>
+        <span>{{ 'labels.language' | translate }}</span>
+      </button>
+    </mat-menu>
+    <mat-menu #languages="matMenu">
+      <button mat-menu-item (click)="changeLanguageTo('pt')">Português</button>
+      <button mat-menu-item (click)="changeLanguageTo('en')">English</button>
+    </mat-menu>
+    <button mat-icon-button aria-label="Logout button">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

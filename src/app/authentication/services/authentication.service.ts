@@ -32,6 +32,11 @@ export class AuthenticationService {
     return this.afAuth.signInWithEmailAndPassword(email,password);
   }
 
+  getRole(){
+    return this.http.get<string>(`${environment.apiUrl}/api/roles`,{responseType: 'text' as 'json'})
+      .pipe(take(1));
+  }
+
   async logout(){
     await this.afAuth.signOut();
   }
