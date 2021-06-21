@@ -3,6 +3,7 @@
     "invalidEmail": "The E-mail is invalid",
     "alreadyRegisteredEmail": "This E-mail has already been registered",
     "emailIsRequired": "E-mail is required",
+    "nameIsRequired": "Name is  required",
     "passwordIsTooShort": "Your password need has at least 6 characters",
     "passwordIsRequired": "Password is required",
     "accountNotFound": "Your account cannot be found",
@@ -14,9 +15,30 @@
     "doFirstAccess": "First Access",
     "password": "Senha",
     "forgotPassword": "Forgot password",
-    "sendLink": "Send link"
+    "sendLink": "Send link",
+    "language": "Language",
+    "users": "Users",
+    "name": "Name",
+    "actions": "Actions",
+    "save": "Save",
+    "create": "Criar"
+  },
+  "actions": {
+    "addNewAdmin": "Add Admin"
+  },
+  "titles":{
+    "createUser": "Criar Usuário Admin",
+    "editUser": "Editar Usuário"
+  },
+  "tooltip": {
+    "addNewUser": "Register new admin user",
+    "edit": "Edit",
+    "view": "View",
+    "delete": "Delete",
+    "firstAccessEmailResend": "Resent first access email"
   },
   "messages": {
-    "firstAccessAlreadyDone": "First access already been done"
+    "firstAccessAlreadyDone": "First access already been done",
+    "userCreated": "User created successfully!"
   }
 }

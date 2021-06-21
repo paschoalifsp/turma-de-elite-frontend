@@ -3,6 +3,7 @@
     "invalidEmail": "O E-mail inserido é inválido",
     "alreadyRegisteredEmail": "Este E-mail já foi cadastrado",
     "emailIsRequired": "É necessário inserir o E-mail",
+    "nameIsRequired": "É necessário inserir o nome",
     "passwordIsTooShort": "Sua senha deve ter no mínimo 6 caracteres",
     "passwordIsRequired": "É necessário inserir uma senha",
     "accountNotFound": "Não foi possível encontrar sua conta",
@@ -14,9 +15,30 @@
     "doFirstAccess": "Realizar primeiro acesso",
     "password": "Senha",
     "forgotPassword": "Esqueci a senha",
-    "sendLink": "Enviar link"
+    "sendLink": "Enviar link",
+    "language": "Idioma",
+    "users": "Usuários",
+    "name": "Nome",
+    "actions": "Ações",
+    "save": "Salvar",
+    "create": "Criar"
+  },
+  "actions": {
+    "addNewAdmin": "Adicionar Administrador"
+  },
+  "titles":{
+    "createUser": "Criar Usuário Admin",
+    "editUser": "Editar Usuário"
+  },
+  "tooltip": {
+    "addNewUser": "Registrar novo usuário Admin",
+    "edit": "Editar",
+    "view": "Visualizar",
+    "delete": "Apagar",
+    "firstAccessEmailResend": "Reenviar e-mail de primeiro acesso"
   },
   "messages": {
-    "firstAccessAlreadyDone": "Primeiro acesso já foi realizado"
+    "firstAccessAlreadyDone": "Primeiro acesso já foi realizado",
+    "userCreated": "Usuário criado com sucesso!"
   }
 }
