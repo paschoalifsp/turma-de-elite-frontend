@@ -21,7 +21,8 @@
     "name": "Nome",
     "actions": "Ações",
     "save": "Salvar",
-    "create": "Criar"
+    "create": "Criar",
+    "admins": "Administradores"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"

@@ -31,8 +31,8 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: AdminDashboardComponent},
       { path: 'configuration', component: ConfigurationComponent},
-      { path: 'users', component: UsersPageComponent},
-      { path: 'users/form', component: UserFormComponent }
+      { path: 'admins', component: UsersPageComponent},
+      { path: 'admins/form', component: UserFormComponent }
     ]
   }
 
