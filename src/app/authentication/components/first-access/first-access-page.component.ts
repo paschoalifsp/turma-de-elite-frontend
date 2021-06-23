@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -12,9 +12,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class FirstAccessPageComponent implements OnInit {
 
   firstAccessForm = this.fb.group({
-    email: ['',Validators.email],
+    confirmPassword: ['',Validators.compose([Validators.minLength(6),Validators.required])],
     password: ['', Validators.compose([Validators.minLength(6),Validators.required])]
-  })
+  }, { validators: this.checkPasswords})
 
   isEmailInvalid = false;
   isPasswordInvalid = false;
@@ -34,15 +34,24 @@ export class FirstAccessPageComponent implements OnInit {
     });
   }
 
+  checkPasswords(group: FormGroup){
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { notSame: true, }
+  }
+
   doFirstAccess(){
     this.activatedRoute.queryParams.subscribe(params => {
       const firstAccessToken = params['token'];
-      const {email,password} = this.firstAccessForm.value;
+      const email = params['email'];
+      const {password} = this.firstAccessForm.value;
       this.auth.doAdminFirstAccess(email,password,firstAccessToken)
         .subscribe(
           value => {
             this.showSnackbar('Primeiro acesso realizado com sucesso!').afterDismissed().subscribe(value => {
-              this.router.navigate(['login']);
+              this.auth.login(email,password).then(result => {
+                this.showSnackbar('Bem-vindo ao Turma de Elite');
+              });
             });
           },
           error => {

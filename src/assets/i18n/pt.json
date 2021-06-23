@@ -8,7 +8,9 @@
     "passwordIsRequired": "É necessário inserir uma senha",
     "accountNotFound": "Não foi possível encontrar sua conta",
     "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueceu a senha?\" para redefini-la",
-    "passwordIsRequired": "É necessário inserir a senha"
+    "passwordIsRequired": "É necessário inserir a senha",
+    "passwordNotSame": "As senhas devem corresponder"
+
   },
   "labels": {
     "login": "Login",
@@ -22,7 +24,9 @@
     "actions": "Ações",
     "save": "Salvar",
     "create": "Criar",
-    "admins": "Administradores"
+    "admins": "Administradores",
+    "password": "Senha",
+    "confirmPassword": "Confirmar senha"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import User from "../../../shared/model/user";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {take} from "rxjs/operators";
@@ -12,7 +12,8 @@ export class UsersService {
 
   constructor(
     private http: HttpClient,
-    private translateService: TranslateService) { }
+    private translateService: TranslateService,
+    ) { }
 
   createNewUser(user: User){
     const language = this.translateService.currentLang;

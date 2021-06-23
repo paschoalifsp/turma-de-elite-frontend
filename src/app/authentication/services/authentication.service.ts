@@ -5,6 +5,7 @@ import firebase from "firebase";
 import {flatMap, map, take} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthenticationService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
     this.user = afAuth.user;
     this.isAuthenticated = afAuth.authState.pipe(map(user => user != null));
@@ -29,7 +31,24 @@ export class AuthenticationService {
   }
 
   async login(email: string, password: string) {
-    return this.afAuth.signInWithEmailAndPassword(email,password);
+    return this.afAuth.signInWithEmailAndPassword(email,password).then( result => {
+      this.getRole().subscribe(role => this.redirectAccordingToRole(role));
+    });
+  }
+
+  private redirectAccordingToRole(role: string){
+    switch (role){
+      case 'ADMIN':
+        this.router.navigate(['/admin/dashboard']);
+        break;
+      case 'STUDENT':
+        break;
+      case 'TEACHER':
+        break;
+      case 'MANAGER':
+        break;
+
+    }
   }
 
   getRole(){
@@ -55,7 +74,8 @@ export class AuthenticationService {
   verifyFirstAccess(firstAccessToken: string){
     return this.http.post(
     `${environment.apiUrl}/first-access/verify-token`,
-        firstAccessToken
+        firstAccessToken,
+      { responseType: "text" }
     ).pipe(take(1));
   }
 

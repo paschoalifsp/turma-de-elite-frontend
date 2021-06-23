@@ -10,29 +10,8 @@
       [formGroup]="firstAccessForm">
       <mat-form-field
         class="fieldWidth"
-        fxFlex appearance="fill">
-        <mat-label>E-mail</mat-label>
-        <input
-          fxFlex="100"
-          matInput
-          type="text"
-          formControlName="email"
-          placeholder="user@email.com"
-          required>
-        <mat-error *ngIf="isEmailInvalid">
-          {{'fieldErrors.invalidEmail' | translate}}
-        </mat-error>
-        <mat-error *ngIf="isAlreadyRegistered">
-          {{'fieldErrors.alreadyRegisteredEmail'|translate}}
-        </mat-error>
-        <mat-error *ngIf="firstAccessForm.get('email')?.errors?.required">
-          {{'fieldErrors.emailIsRequired'|translate}}
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field
-        class="fieldWidth"
         appearance="fill">
-        <mat-label>Senha</mat-label>
+        <mat-label>{{'labels.password' | translate}}</mat-label>
         <input
           fxFlex="100"
           matInput
@@ -43,6 +22,19 @@
         </mat-error>
         <mat-error *ngIf="firstAccessForm.get('password')?.errors?.required">
           {{'fieldErrors.passwordIsRequired'|translate}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="fieldWidth"
+        appearance="fill">
+        <mat-label>{{'labels.confirmPassword' | translate}}</mat-label>
+        <input
+          fxFlex="100"
+          matInput
+          type="password"
+          formControlName="confirmPassword">
+        <mat-error *ngIf="firstAccessForm.errors?.notSame">
+          {{'fieldErrors.passwordNotSame'|translate}}
         </mat-error>
       </mat-form-field>
     </form>

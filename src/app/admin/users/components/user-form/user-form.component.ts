@@ -49,7 +49,7 @@ export class UserFormComponent implements OnInit {
     this.userService.createNewUser(this.userForm.value).subscribe(success => {
       this.translateService.get('messages.userCreated').subscribe( translation => {
         this.isLoading = false;
-        this.snackbar.open(translation);
+        this.snackbar.open(translation,'Fechar');
       })
     }, error => {
       console.log(error);

@@ -9,7 +9,6 @@
       fxLayout="column"
       [formGroup]="loginForm">
       <mat-form-field
-        class="fieldWidth"
         fxFlex appearance="fill">
         <mat-label>E-mail</mat-label>
         <input
@@ -23,7 +22,6 @@
             <mat-error *ngIf="loginForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
       </mat-form-field>
       <mat-form-field
-        class="fieldWidth"
         appearance="fill">
         <mat-label>{{'labels.password'|translate}}</mat-label>
         <input
@@ -37,15 +35,23 @@
     </form>
     <button
       mat-raised-button
+      class="button-margin"
       (click)="login()"
       color="primary">
       {{ 'labels.login' | translate }}
     </button>
     <button
       mat-raised-button
+      class="button-margin"
       routerLink="/reset-password"
       color="primary">
       {{'labels.forgotPassword'|translate}}
+    </button>
+    <button
+      mat-raised-button
+      routerLink="/reset-password"
+      color="primary">
+      Você é um gestor escolar? Cadastre-se aqui!
     </button>
   </div>
 </div>

@@ -21,13 +21,15 @@ export class FirstAccessGuard implements CanActivate {
       .pipe(
         map(value => true),
         catchError((err, caught) => {
+          console.log(err);
           if(err.status == 409){
             return of(this.router.parseUrl('/first-access/already-done'));
           }else{
             return of(false);
           }
 
-        })
+        }),
+        tap(console.log)
       );
   }
 

@@ -8,7 +8,8 @@
     "passwordIsRequired": "Password is required",
     "accountNotFound": "Your account cannot be found",
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
-    "passwordIsRequired": "Password is required"
+    "passwordIsRequired": "Password is required",
+    "passwordNotSame": "Passwords must match"
   },
   "labels": {
     "login": "Login",
@@ -22,7 +23,9 @@
     "actions": "Actions",
     "save": "Save",
     "create": "Create",
-    "admins": "Administrators"
+    "admins": "Administrators",
+    "password": "Password",
+    "confirmPassword": "Confirm Password"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
