@@ -22,9 +22,8 @@ export class AdminMainComponent implements OnInit {
     this.translate.use(lang);
   }
 
-  logout() {
-    this.auth.logout().then(result => {
-      this.router.navigate(['/login']);
-    });
+  async logout() {
+    await this.auth.logout();
+    await this.router.navigate(['/login']);
   }
 }

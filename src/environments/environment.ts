@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
-  useEmulators: false,
+  useEmulators: true,
   firebaseConfig: {
     apiKey: "AIzaSyAXIaX1Y2g_jnIrvrewlVvmhR4iwpejxEc",
     authDomain: "turma-de-elite-app.firebaseapp.com",
