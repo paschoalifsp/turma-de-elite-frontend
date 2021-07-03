@@ -9,7 +9,8 @@
     "accountNotFound": "Your account cannot be found",
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordIsRequired": "Password is required",
-    "passwordNotSame": "Passwords must match"
+    "passwordNotSame": "Passwords must match",
+    "identifierIsRequired": "Identifier is required"
   },
   "labels": {
     "login": "Login",
@@ -25,17 +26,26 @@
     "create": "Create",
     "admins": "Administrators",
     "password": "Password",
-    "confirmPassword": "Confirm Password"
+    "confirmPassword": "Confirm Password",
+    "schools": "Schools",
+    "identifier": "Identifier",
+    "active": "Active"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
   },
+  "hint":{
+    "schoolIdentifier": "Insert an unique identifier for school "
+  },
   "titles":{
-    "createUser": "Criar Usuário Admin",
-    "editUser": "Editar Usuário"
+    "createUser": "Create Admin User",
+    "editUser": "Edit User",
+    "createSchool": "Create School",
+    "editSchool": "Edit School"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
+    "addNewSchool": "Register new school",
     "edit": "Edit",
     "view": "View",
     "delete": "Delete",
@@ -43,6 +53,8 @@
   },
   "messages": {
     "firstAccessAlreadyDone": "First access already been done",
-    "userCreated": "User created successfully!"
+    "userCreated": "User created successfully!",
+    "userUpdated": "User updated sucessfully!",
+    "schoolCreated": "School created sucessfully!"
   }
 }

@@ -14,6 +14,8 @@ import {AdminMainComponent} from "./admin/main-component/admin-main.component";
 import {ConfigurationComponent} from "./admin/configuration/components/configuration.component";
 import {UsersPageComponent} from "./admin/users/components/users-page/users-page.component";
 import {UserFormComponent} from "./admin/users/components/user-form/user-form.component";
+import {SchoolsPageComponent} from "./admin/schools/components/schools-page/schools-page.component";
+import {SchoolFormComponent} from "./admin/schools/components/school-form/school-form.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -30,8 +32,11 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       { path: 'dashboard', component: AdminDashboardComponent},
+      { path: 'schools', component: SchoolsPageComponent},
+      { path: 'schools/form', component: SchoolFormComponent},
       { path: 'configuration', component: ConfigurationComponent},
       { path: 'admins', component: UsersPageComponent},
+      { path: 'admins/form/:id', component: UserFormComponent},
       { path: 'admins/form', component: UserFormComponent }
     ]
   }

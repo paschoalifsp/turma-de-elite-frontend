@@ -1,7 +1,7 @@
 <div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
 
   <h1 class="title">
-    {{isEdit?'titles.editUser' : 'titles.createUser' |translate}}
+    {{(isEdit?'titles.editUser' : 'titles.createUser') |translate}}
   </h1>
 
   <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="userForm" (ngSubmit)="isEdit ? updateUser() : createUser()">
@@ -33,7 +33,7 @@
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="userForm.invalid" type="submit">{{isEdit ? 'labels.save':'labels.create'|translate}}</button>
+      <button mat-raised-button [disabled]="userForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

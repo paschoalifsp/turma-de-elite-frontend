@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {UsersService} from "../../services/users.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -28,7 +28,8 @@ export class UserFormComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UsersService,
     private snackbar: MatSnackBar,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,12 +37,23 @@ export class UserFormComponent implements OnInit {
       if(value['id']){
         this.isEdit = true;
         this.userId = value['id'];
+        this.userService.findUserById(this.userId).subscribe(({email,name})=>{
+          this.userForm.setValue({email,name});
+        });
       }
     })
   }
 
   updateUser(){
-
+    this.isLoading = true;
+    this.userService.updateUser(this.userId,this.userForm.value).subscribe(success => {
+      this.translateService.get('messages.userUpdated').subscribe( translation => {
+        this.isLoading = false;
+        this.snackbar.open(translation,'Fechar').afterDismissed().subscribe(value => {
+          this.router.navigate(['/admin/admins']);
+        });
+      })
+    })
   }
 
   createUser(){

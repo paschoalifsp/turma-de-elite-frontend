@@ -20,6 +20,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatTableModule,
     MatTooltipModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSlideToggleModule
   ],
   exports: [
     CommonModule,
@@ -68,7 +70,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatTableModule,
     MatTooltipModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSlideToggleModule
   ]
 })
 export class SharedModule { }

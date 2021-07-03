@@ -16,7 +16,7 @@ export class UsersPageComponent implements OnInit {
   isLoading = true;
   isChangingPage = false;
 
-  dataSource:MatTableDataSource<User> = new MatTableDataSource<User>();
+  dataSource = new MatTableDataSource<User>();
 
   totalLength = 0;
   pageSize = 5;

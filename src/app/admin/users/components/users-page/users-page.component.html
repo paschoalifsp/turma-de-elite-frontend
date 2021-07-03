@@ -28,9 +28,7 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> {{'labels.actions'|translate}} </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button [matTooltip]="'tooltip.edit'|translate" color="primary"> <mat-icon>edit</mat-icon> </button>
-          <button mat-icon-button [matTooltip]="'tooltip.view'|translate"> <mat-icon>visibility</mat-icon> </button>
-          <button mat-icon-button [matTooltip]="'tooltip.delete'|translate" color="warn"> <mat-icon>delete</mat-icon> </button>
+          <button mat-icon-button [matTooltip]="'tooltip.edit'|translate" [routerLink]="['form',element?.id]" color="primary"> <mat-icon>edit</mat-icon> </button>
           <button mat-icon-button [matTooltip]="'tooltip.firstAccessEmailResend'|translate" > <mat-icon>email</mat-icon> </button>
         </td>
       </ng-container>

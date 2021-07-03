@@ -9,8 +9,8 @@
     "accountNotFound": "Não foi possível encontrar sua conta",
     "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueceu a senha?\" para redefini-la",
     "passwordIsRequired": "É necessário inserir a senha",
-    "passwordNotSame": "As senhas devem corresponder"
-
+    "passwordNotSame": "As senhas devem corresponder",
+    "identifierIsRequired": "É necessário um identificador único"
   },
   "labels": {
     "login": "Login",
@@ -26,17 +26,26 @@
     "create": "Criar",
     "admins": "Administradores",
     "password": "Senha",
-    "confirmPassword": "Confirmar senha"
+    "confirmPassword": "Confirmar senha",
+    "schools": "Escolas",
+    "identifier": "Identificador",
+    "active": "Ativo"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
   },
+  "hint":{
+    "schoolIdentifier": "Insira um identificador único para esta escola"
+  },
   "titles":{
     "createUser": "Criar Usuário Admin",
-    "editUser": "Editar Usuário"
+    "editUser": "Editar Usuário",
+    "createSchool": "Criar Escola",
+    "editSchool": "Editar Escola"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
+    "addNewSchool": "Registrar nova escola",
     "edit": "Editar",
     "view": "Visualizar",
     "delete": "Apagar",
@@ -44,6 +53,8 @@
   },
   "messages": {
     "firstAccessAlreadyDone": "Primeiro acesso já foi realizado",
-    "userCreated": "Usuário criado com sucesso!"
+    "userCreated": "Usuário criado com sucesso!",
+    "userUpdated": "Usuário atualizado com sucesso!",
+    "schoolCreated": "Escola criada com sucesso!"
   }
 }

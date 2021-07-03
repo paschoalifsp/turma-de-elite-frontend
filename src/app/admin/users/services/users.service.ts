@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {take} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,13 @@ export class UsersService {
 
   getAdminUsers(pageSize: number, pageNumber: number){
     return this.http.get<any>(`${environment.apiUrl}/api/admin?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
+  }
+
+  findUserById(userId: any): Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/api/admin/${userId}`).pipe(take(1));
+  }
+
+  updateUser(userId: any, value: User) {
+    return this.http.put<any>(`${environment.apiUrl}/api/admin/${userId}`,value);
   }
 }
