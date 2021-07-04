@@ -25,6 +25,7 @@ import { UsersPageComponent } from './admin/users/components/users-page/users-pa
 import { UserFormComponent } from './admin/users/components/user-form/user-form.component';
 import { SchoolsPageComponent } from './admin/schools/components/schools-page/schools-page.component';
 import { SchoolFormComponent } from './admin/schools/components/school-form/school-form.component';
+import { ManagerPageComponent } from './admin/manager/components/manager-page/manager-page.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -42,7 +43,8 @@ export function createTranslateLoader(http: HttpClient) {
     UsersPageComponent,
     UserFormComponent,
     SchoolsPageComponent,
-    SchoolFormComponent
+    SchoolFormComponent,
+    ManagerPageComponent
   ],
   imports: [
     BrowserModule,

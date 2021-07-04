@@ -1,0 +1,38 @@
+<div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
+
+  <h1 class="title">
+    {{isEdit?'titles.editSchool' : 'titles.createSchool' |translate}}
+  </h1>
+
+  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="schoolForm" (ngSubmit)="isEdit ? updateSchool() : createSchool()">
+    <mat-form-field
+      fxFlex="45" appearance="fill">
+      <mat-label>{{'labels.name'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        required>
+      <mat-error *ngIf="schoolForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="45" appearance="fill">
+      <mat-label>{{'labels.identifier'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="identifier"
+        required>
+      <mat-error *ngIf="schoolForm.get('identifier')?.errors?.required">{{'fieldErrors.identifierIsRequired'|translate}}</mat-error>
+      <mat-hint>{{'hint.schoolIdentifier'|translate}}</mat-hint>
+    </mat-form-field>
+    <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <div *ngIf="isLoading;then showLoader;else showButton"></div>
+    <ng-template #showLoader>
+      <mat-spinner diameter="50"></mat-spinner>
+    </ng-template>
+    <ng-template #showButton>
+      <button mat-raised-button [disabled]="schoolForm.invalid" type="submit">{{isEdit ? 'labels.save':'labels.create'|translate}}</button>
+    </ng-template>
+  </form>
+</div>
