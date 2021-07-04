@@ -8,7 +8,6 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
-
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
@@ -42,6 +41,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
 }
 
+.half-screen-width{
+  width: 50vw;
+}
+
 .full-height{
   height: 100%;
 }
@@ -58,4 +61,72 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin: 20vh;
   padding: 5vw;
   width: 400px;
+}
+
+.page-title{
+  color: #303f9f;
+  padding: 40px;
+}
+
+.tile{
+  border: #303f9f 1px solid;
+  height: 100px;
+  margin: 20px 0;
+  display: block;
+
+  .mat-icon{
+    margin: 20px 40px;
+    font-size: 35px;
+  }
+  text-decoration: none;
+  color: black;
+
+  p{
+    font-size: 30px;
+    text-align: start;
+    margin: 0;
+    font-weight: 300;
+    height: 100%;
+    width: 100%;
+    line-height: 100px;
+    white-space: normal;
+    vertical-align: middle;
+  }
+
+  :hover{
+    cursor: pointer;
+  }
+}
+
+.toggled-tile{
+  border: #303f9f 1px solid;
+  height: 100px;
+  margin: 20px 0;
+  display: block;
+
+  .mat-icon{
+    margin: 20px 40px;
+    font-size: 35px;
+    color: white;
+  }
+
+  text-decoration: none;
+  color: white;
+  background: #000066;
+
+  p{
+    font-size: 30px;
+    text-align: start;
+    margin: 0;
+    font-weight: 300;
+    height: 100%;
+    width: 100%;
+    line-height: 100px;
+    white-space: normal;
+    vertical-align: middle;
+  }
+
+  :hover{
+    cursor: pointer;
+  }
 }

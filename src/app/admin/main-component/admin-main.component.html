@@ -1,10 +1,10 @@
 <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
-  <span>Turma de Elite</span>
+  <div class="logo" fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon>military_tech</mat-icon>
+    <span>TURMA DE ELITE</span>
+  </div>
 
   <span>
-    <button mat-flat-button color="primary" routerLink="dashboard">Dashboard</button>
-    <button mat-flat-button color="primary" routerLink="schools">{{'labels.schools'|translate}}</button>
-    <button mat-flat-button color="primary" routerLink="admins">{{'labels.admins'|translate}}</button>
     <button mat-icon-button aria-label="Configuration page" [matMenuTriggerFor]="menu">
       <mat-icon>settings</mat-icon>
     </button>

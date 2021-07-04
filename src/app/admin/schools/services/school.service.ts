@@ -18,4 +18,8 @@ export class SchoolService {
   getSchools(pageSize: number, pageIndex: number){
     return this.http.get<any>(`${environment.apiUrl}/api/schools?size=${pageSize}&pageNumber=${pageIndex}`).pipe(take(1));
   }
+
+  getSchoolById(schoolId: number){
+    return this.http.get<any>(`${environment.apiUrl}/api/schools/${schoolId}`).pipe(take(1));
+  }
 }

@@ -1,7 +1,7 @@
 <div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
 
   <h1 class="title">
-    {{isEdit?'titles.editSchool' : 'titles.createSchool' |translate}}
+    {{(isEdit?'titles.editSchool' : 'titles.createSchool') |translate}}
   </h1>
 
   <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="schoolForm" (ngSubmit)="isEdit ? updateSchool() : createSchool()">

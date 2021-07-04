@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {UsersService} from "../../../users/services/users.service";
@@ -14,8 +14,10 @@ import {SchoolService} from "../../services/school.service";
 export class SchoolFormComponent implements OnInit {
 
   isEdit = false;
-  schoolId = null;
-  alreadyRegisteredIdentifier = false;
+    alreadyRegisteredIdentifier = false;
+
+  @Input() schoolId:number | null = null;
+  @Input() createMode = false;
 
   schoolForm = this.fb.group({
     name: ['',Validators.required],
@@ -34,12 +36,23 @@ export class SchoolFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(value => {
-      if(value['id']){
-        this.isEdit = true;
-        this.schoolId = value['id'];
-      }
-    })
+    if(this.schoolId){
+      this.isEdit = true;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    this.isEdit = !this.createMode;
+    if(this.createMode){
+      this.schoolForm.reset();
+    }
+    else{
+      this.schoolService.getSchoolById(this.schoolId as number).subscribe( ({name,identifier,isActive}) => {
+        this.schoolForm.setValue({name,identifier,isActive})
+
+      })
+    }
+
   }
 
   updateSchool(){
