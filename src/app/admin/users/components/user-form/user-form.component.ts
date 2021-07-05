@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {UsersService} from "../../services/users.service";
@@ -13,7 +13,11 @@ import {TranslateService} from "@ngx-translate/core";
 export class UserFormComponent implements OnInit {
 
   isEdit = false;
-  userId = null;
+
+  @Input() userId:number | null = null;
+  @Input() createMode = true;
+
+  @Output() save = new EventEmitter();
   alreadyRegisteredEmail = false;
 
   userForm = this.fb.group({
@@ -44,14 +48,26 @@ export class UserFormComponent implements OnInit {
     })
   }
 
+  ngOnChanges(changes: SimpleChanges){
+    this.isEdit = !this.createMode;
+    if(this.createMode){
+      this.userForm.reset();
+    }
+    else{
+      this.userService.findUserById(this.userId as number).subscribe( ({name,email}) => {
+        this.userForm.setValue({name,email})
+      })
+    }
+
+  }
+
   updateUser(){
     this.isLoading = true;
     this.userService.updateUser(this.userId,this.userForm.value).subscribe(success => {
       this.translateService.get('messages.userUpdated').subscribe( translation => {
         this.isLoading = false;
-        this.snackbar.open(translation,'Fechar').afterDismissed().subscribe(value => {
-          this.router.navigate(['/admin/admins']);
-        });
+        this.save.emit();
+        this.snackbar.open(translation,'Fechar').afterDismissed();
       })
     })
   }
@@ -61,6 +77,7 @@ export class UserFormComponent implements OnInit {
     this.userService.createNewUser(this.userForm.value).subscribe(success => {
       this.translateService.get('messages.userCreated').subscribe( translation => {
         this.isLoading = false;
+        this.save.emit();
         this.snackbar.open(translation,'Fechar');
       })
     }, error => {

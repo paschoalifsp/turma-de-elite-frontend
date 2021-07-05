@@ -16,8 +16,6 @@ import {map, tap} from "rxjs/operators";
 })
 export class SchoolsPageComponent implements OnInit {
 
-  displayedColumns = ['name','identifier','actions'];
-
   isLoading = true;
   isChangingPage = false;
 

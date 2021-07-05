@@ -3,6 +3,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import User from "../../../../shared/model/user";
 import {UsersService} from "../../services/users.service";
 import {PageEvent} from "@angular/material/paginator";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-users-page',
@@ -11,31 +12,41 @@ import {PageEvent} from "@angular/material/paginator";
 })
 export class UsersPageComponent implements OnInit {
 
-  displayedColumns = ['name','email','actions'];
-
   isLoading = true;
   isChangingPage = false;
 
-  dataSource = new MatTableDataSource<User>();
+  users:any[] = [];
 
   totalLength = 0;
   pageSize = 5;
 
+  searchControl = new FormControl('');
+
+  toggleForm = false;
+
+   usersToggleId: number | null = null;
+
+  createMode = false;
+
   constructor(private userService: UsersService) {
-    this.userService.getAdminUsers(this.pageSize,0).subscribe(response => {
-      this.dataSource.data = response.content;
-      this.totalLength = response.totalElements;
-      this.isLoading = false;
-    })
+    this.refresh();
   }
 
   ngOnInit(): void {
   }
 
+  refresh(){
+    this.userService.getAdminUsers(this.pageSize,0).subscribe(response => {
+      this.users = response.content;
+      this.totalLength = response.totalElements;
+      this.isLoading = false;
+    })
+  }
+
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
     this.userService.getAdminUsers(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
-      this.dataSource.data = response.content;
+      this.users = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;
       this.isChangingPage = false;

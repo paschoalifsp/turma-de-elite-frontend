@@ -18,6 +18,9 @@
         <mat-icon color="primary">add</mat-icon>
         <p color="primary">{{'titles.createSchool'|translate}}</p>
       </a>
+      <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+      </div>
       <a
         [ngClass]="'mat-elevation-z1 ' + (schoolToggleId===school.id?'toggled-tile':'tile')"
         fxLayout="row"
@@ -45,11 +48,4 @@
       </app-school-form>
     </div>
   </div>
-  <div *ngIf="isLoading;then showLoader;else showTable"></div>
-  <ng-template #showLoader>
-      <mat-spinner></mat-spinner>
-  </ng-template>
-  <ng-template #showTable>
-  </ng-template>
-
 </div>
