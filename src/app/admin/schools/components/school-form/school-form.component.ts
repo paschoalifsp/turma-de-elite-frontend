@@ -1,10 +1,11 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {UsersService} from "../../../users/services/users.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {SchoolService} from "../../services/school.service";
+import {EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-school-form',
@@ -17,7 +18,9 @@ export class SchoolFormComponent implements OnInit {
     alreadyRegisteredIdentifier = false;
 
   @Input() schoolId:number | null = null;
-  @Input() createMode = false;
+  @Input() createMode = true;
+
+  @Output() save = new EventEmitter();
 
   schoolForm = this.fb.group({
     name: ['',Validators.required],
@@ -56,7 +59,22 @@ export class SchoolFormComponent implements OnInit {
   }
 
   updateSchool(){
-
+    this.isLoading = true;
+    this.schoolService.updateSchool(this.schoolId as number,this.schoolForm.value).subscribe(success => {
+      this.translateService.get('messages.schoolUpdated').subscribe( translation => {
+        this.isLoading = false;
+        this.snackbar.open(translation,'Fechar');
+        this.save.emit();
+      })
+    }, error => {
+      console.log(error);
+      this.isLoading = false;
+      switch (error.status){
+        case 409:
+          this.alreadyRegisteredIdentifier = true;
+          break;
+      }
+    });
   }
 
   createSchool(){
@@ -65,6 +83,7 @@ export class SchoolFormComponent implements OnInit {
       this.translateService.get('messages.schoolCreated').subscribe( translation => {
         this.isLoading = false;
         this.snackbar.open(translation,'Fechar');
+        this.save.emit();
       })
     }, error => {
       console.log(error);

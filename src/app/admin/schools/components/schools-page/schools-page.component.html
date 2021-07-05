@@ -25,7 +25,7 @@
         fxLayoutAlign="start center"
         *ngFor="let school of schools"
         (click)="schoolToggleId=school.id;createMode=false">
-        <mat-icon color="primary">school</mat-icon>
+        <mat-icon [ngClass]="school.isActive?'primary':'disabled'">school</mat-icon>
         <p color="primary">{{school.name}}</p>
       </a>
       <mat-paginator
@@ -37,7 +37,12 @@
       </mat-paginator>
     </div>
     <div fxFlex="45" fxFlexAlign="start">
-      <app-school-form [schoolId]="schoolToggleId" [createMode]="createMode"></app-school-form>
+      <app-school-form
+        *ngIf="schoolToggleId || createMode"
+        [schoolId]="schoolToggleId"
+        [createMode]="createMode"
+        (save)="refresh()">
+      </app-school-form>
     </div>
   </div>
   <div *ngIf="isLoading;then showLoader;else showTable"></div>

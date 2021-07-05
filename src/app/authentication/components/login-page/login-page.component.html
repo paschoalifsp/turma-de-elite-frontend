@@ -1,57 +1,77 @@
 <div
+  fxFlex="100"
   fxLayout="column"
-  fxLayoutAlign="center center"
-  class="background">
-  <div fxFlex="100" class="mat-elevation-z10 login-container" fxLayout="column">
-    <h1 class="system-title">Turma de Elite</h1>
-    <h3 class="system-title">Login</h3>
-    <form
+  fxLayoutAlign="center center">
+  <div
+    class="full-width full-screen-height"
+    fxFlex="100"
+    fxLayout="row"
+    fxLayoutAlign="space-around center">
+    <div fxFlex="65" class="full-screen-height" fxLayoutAlign="center center">
+      <img src="assets/login.svg">
+    </div>
+    <div
+      fxFlex="35"
       fxLayout="column"
-      [formGroup]="loginForm">
-      <mat-form-field
-        fxFlex appearance="fill">
-        <mat-label>E-mail</mat-label>
-        <input
-            fxFlex="100"
-            matInput
-            type="text"
-            formControlName="email"
-            placeholder="user@email.com"
-            required>
+      fxLayoutAlign="center center"
+      class="full-height full-width login-container">
+      <div
+        fxFlexAlign="center center"
+        fxLayout="column">
+        <div fxLayout="row"  fxLayoutAlign="center center" class="title">
+          <div>
+            <mat-icon>military_tech</mat-icon>
+          </div>
+          <h1>
+            Turma de Elite
+          </h1>
+        </div>
+        <form
+          fxLayout="column"
+          [formGroup]="loginForm">
+          <mat-form-field
+            class="white-background"
+            fxFlex appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input
+              fxFlex="100"
+              matInput
+              type="text"
+              formControlName="email"
+              placeholder="user@email.com"
+
+              required>
             <mat-error *ngIf="isEmailInvalid">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
             <mat-error *ngIf="loginForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
-      </mat-form-field>
-      <mat-form-field
-        appearance="fill">
-        <mat-label>{{'labels.password'|translate}}</mat-label>
-        <input
-          fxFlex="100"
-          matInput
-          type="password"
-          formControlName="password">
-          <mat-error *ngIf="isPasswordInvalid">{{'fieldErrors.passwordWrong'|translate}}</mat-error>
-          <mat-error *ngIf="loginForm.get('password')?.errors?.required">{{'fieldErrors.passwordIsRequired'|translate}}</mat-error>
-      </mat-form-field>
-    </form>
-    <button
-      mat-raised-button
-      class="button-margin"
-      (click)="login()"
-      color="primary">
-      {{ 'labels.login' | translate }}
-    </button>
-    <button
-      mat-raised-button
-      class="button-margin"
-      routerLink="/reset-password"
-      color="primary">
-      {{'labels.forgotPassword'|translate}}
-    </button>
-    <button
-      mat-raised-button
-      routerLink="/reset-password"
-      color="primary">
-      Você é um gestor escolar? Cadastre-se aqui!
-    </button>
+          </mat-form-field>
+          <mat-form-field
+            appearance="outline">
+            <mat-label>{{'labels.password'|translate}}</mat-label>
+            <input
+              fxFlex="100"
+              matInput
+              type="password"
+              formControlName="password">
+            <mat-error *ngIf="isPasswordInvalid">{{'fieldErrors.passwordWrong'|translate}}</mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.errors?.required">{{'fieldErrors.passwordIsRequired'|translate}}</mat-error>
+          </mat-form-field>
+        </form>
+        <button
+          mat-raised-button
+          class="button-margin"
+          (click)="login()"
+          color="primary">
+          {{ 'labels.login' | translate }}
+        </button>
+        <button
+          mat-stroked-button
+          class="button-margin"
+          routerLink="/reset-password"
+          color="primary">
+          {{'labels.forgotPassword'|translate}}
+        </button>
+      </div>
+    </div>
   </div>
+
 </div>

@@ -22,4 +22,8 @@ export class SchoolService {
   getSchoolById(schoolId: number){
     return this.http.get<any>(`${environment.apiUrl}/api/schools/${schoolId}`).pipe(take(1));
   }
+
+  updateSchool(schoolId: number,school: School) {
+    return this.http.put<any>(`${environment.apiUrl}/api/schools/${schoolId}`,school);
+  }
 }

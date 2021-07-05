@@ -37,6 +37,10 @@ export class SchoolsPageComponent implements OnInit {
   constructor(private schoolService: SchoolService) {}
 
   ngOnInit(): void {
+    this.refresh();
+  }
+
+  refresh(){
     this.schoolService.getSchools(this.pageSize,0)
       .pipe(
         tap(response => {
@@ -45,7 +49,7 @@ export class SchoolsPageComponent implements OnInit {
         }),
         map(response => response.content)
       ).subscribe( response => {
-        this.schools = response;
+      this.schools = response;
     })
   }
 

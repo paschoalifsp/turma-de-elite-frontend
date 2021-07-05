@@ -32,7 +32,7 @@
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="schoolForm.invalid" type="submit">{{isEdit ? 'labels.save':'labels.create'|translate}}</button>
+      <button mat-raised-button [disabled]="schoolForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

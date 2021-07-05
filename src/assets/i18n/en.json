@@ -55,6 +55,7 @@
     "firstAccessAlreadyDone": "First access already been done",
     "userCreated": "User created successfully!",
     "userUpdated": "User updated sucessfully!",
-    "schoolCreated": "School created sucessfully!"
+    "schoolCreated": "School created sucessfully!",
+    "schoolUpdated": "School updated successfully!"
   }
 }

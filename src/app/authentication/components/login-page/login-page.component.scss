@@ -4,3 +4,22 @@
 button{
   white-space: pre-wrap !important;
 }
+
+.title{
+  height: 150px;
+  h1{
+    font-size: 50px;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: center;
+    color: #303f9f;
+
+    margin: 0 20px;
+  }
+  .mat-icon{
+    font-size: 50px;
+    margin: 0 20px;
+    color: #303f9f;
+
+  }
+}
