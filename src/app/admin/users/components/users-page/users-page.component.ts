@@ -11,7 +11,7 @@ import {PageEvent} from "@angular/material/paginator";
 })
 export class UsersPageComponent implements OnInit {
 
-  displayedColumns = ['name','email','actions'];
+  displayedColumns = ['name','email','isActive','actions'];
 
   isLoading = true;
   isChangingPage = false;

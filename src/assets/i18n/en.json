@@ -8,14 +8,12 @@
     "passwordIsRequired": "Password is required",
     "accountNotFound": "Your account cannot be found",
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
-    "passwordIsRequired": "Password is required",
     "passwordNotSame": "Passwords must match",
     "identifierIsRequired": "Identifier is required"
   },
   "labels": {
     "login": "Login",
     "doFirstAccess": "First Access",
-    "password": "Senha",
     "forgotPassword": "Forgot password",
     "sendLink": "Send link",
     "language": "Language",
@@ -29,7 +27,8 @@
     "confirmPassword": "Confirm Password",
     "schools": "Schools",
     "identifier": "Identifier",
-    "active": "Active"
+    "active": "Active",
+    "inactive": "Inactive"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
