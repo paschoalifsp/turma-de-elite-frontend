@@ -26,7 +26,7 @@ export class AuthenticationService {
 
   getToken(): Observable<string>{
     return this.user.pipe(
-      flatMap(user => user ? from(user.getIdToken(true)) : of(''))
+      flatMap(user => user ? from(user.getIdToken()) : of(''))
     );
   }
 

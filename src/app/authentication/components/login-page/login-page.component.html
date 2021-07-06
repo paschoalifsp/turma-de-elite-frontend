@@ -56,13 +56,21 @@
             <mat-error *ngIf="loginForm.get('password')?.errors?.required">{{'fieldErrors.passwordIsRequired'|translate}}</mat-error>
           </mat-form-field>
         </form>
-        <button
-          mat-raised-button
-          class="button-margin"
-          (click)="login()"
-          color="primary">
-          {{ 'labels.login' | translate }}
-        </button>
+        <div *ngIf="isLoading;then showLoader; else showButton"></div>
+        <ng-template #showLoader>
+          <div fxLayout="row" fxLayoutAlign="center center" class="button-margin">
+            <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
+          </div>
+        </ng-template>
+        <ng-template #showButton>
+          <button
+            mat-raised-button
+            color="primary"
+            class="button-margin"
+            (click)="login()">
+            {{ 'labels.login' | translate }}
+          </button>
+        </ng-template>
         <button
           mat-stroked-button
           class="button-margin"

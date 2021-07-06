@@ -25,10 +25,13 @@
     "admins": "Administrators",
     "password": "Password",
     "confirmPassword": "Confirm Password",
-    "schools": "Schools",
+    "school": "School",
     "identifier": "Identifier",
     "active": "Active",
-    "inactive": "Inactive"
+    "inactive": "Inactive",
+    "registerManager": "Register Manager",
+    "updateManager": "Update Manager",
+    "schools": "Schools"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
@@ -40,7 +43,9 @@
     "createUser": "Create Admin User",
     "editUser": "Edit User",
     "createSchool": "Create School",
-    "editSchool": "Edit School"
+    "editSchool": "Edit School",
+    "administrativePanel": "Administrative Panel",
+    "managers": "Managers"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -53,7 +58,9 @@
   "messages": {
     "firstAccessAlreadyDone": "First access already been done",
     "userCreated": "User created successfully!",
-    "userUpdated": "User updated sucessfully!",
+    "userUpdated": "User updated successfully!",
+    "managerCreated": "Manager registered successfully!",
+    "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
     "schoolUpdated": "School updated successfully!"
   }

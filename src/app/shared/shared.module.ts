@@ -21,6 +21,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatSelectModule} from "@angular/material/select";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatTooltipModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatAutocompleteModule
   ],
   exports: [
     CommonModule,
@@ -71,7 +75,9 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatTooltipModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatAutocompleteModule
   ]
 })
 export class SharedModule { }

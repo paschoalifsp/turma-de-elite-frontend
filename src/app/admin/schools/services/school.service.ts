@@ -26,4 +26,8 @@ export class SchoolService {
   updateSchool(schoolId: number,school: School) {
     return this.http.put<any>(`${environment.apiUrl}/api/schools/${schoolId}`,school);
   }
+
+  findSchoolByNameSimilarity(value: string) {
+    return this.http.get<School[]>(`${environment.apiUrl}/api/schools/name/${value}`).pipe(take(1));
+  }
 }

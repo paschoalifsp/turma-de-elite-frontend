@@ -1,1 +1,51 @@
-<p>manager-page works!</p>
+<div fxLayout="column" fxLayoutAlign="center start">
+  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
+    <button mat-icon-button routerLink="/admin/dashboard"><mat-icon>navigate_before</mat-icon></button>
+    <h1 class="mat-display-1">{{'titles.managers'|translate}}</h1>
+  </div>
+  <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
+    <div fxFlex="45">
+      <mat-form-field class="full-width" appearance="outline">
+        <input type="tel" matInput placeholder="Buscar gestor" [formControl]="searchControl">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <a
+        [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        (click)="createMode=true;managerToggleId=null">
+        <mat-icon color="primary">add</mat-icon>
+        <p color="primary">{{'labels.createManager'|translate}}</p>
+      </a>
+      <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+      </div>
+      <a
+        [ngClass]="'mat-elevation-z1 ' + (managerToggleId===manager.id?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        *ngFor="let manager of managers"
+        (click)="managerToggleId=manager.id;createMode=false">
+        <mat-icon [ngClass]="manager.isActive?'primary':'disabled'">person</mat-icon>
+        <p color="primary">{{manager.name}}</p>
+      </a>
+      <mat-paginator
+        class="full-width"
+        [length]="totalLength"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="pageChange($event)">
+      </mat-paginator>
+    </div>
+    <div fxFlex="45" fxFlexAlign="start">
+      <app-manager-form
+        *ngIf="managerToggleId || createMode"
+        [managerId]="managerToggleId"
+        [createMode]="createMode"
+        (save)="refresh()">
+      </app-manager-form>
+    </div>
+  </div>
+</div>

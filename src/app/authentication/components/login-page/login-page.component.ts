@@ -18,6 +18,7 @@ export class LoginPageComponent {
 
   isEmailInvalid = false;
   isPasswordInvalid = false;
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +28,7 @@ export class LoginPageComponent {
     ) { }
 
   login(){
+    this.isLoading = true;
     const {email,password} = this.loginForm.value;
     this.auth.login(email,password).catch(error => {
         switch (error?.code){
@@ -43,7 +45,9 @@ export class LoginPageComponent {
             break;
 
         }
-      });
+      }).finally(() => {
+        this.isLoading = false;
+    });
   }
 
   showSnackbar(message: string){

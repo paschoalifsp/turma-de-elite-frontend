@@ -25,10 +25,12 @@
     "admins": "Administradores",
     "password": "Senha",
     "confirmPassword": "Confirmar senha",
-    "schools": "Escolas",
+    "school": "Escola",
     "identifier": "Identificador",
     "active": "Ativo",
-    "inactive": "Inativo"
+    "inactive": "Inativo",
+    "createManager": "Cadastrar Gestor",
+    "schools": "Escolas"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
@@ -37,10 +39,14 @@
     "schoolIdentifier": "Insira um identificador único para esta escola"
   },
   "titles":{
+    "administrativePanel": "Painel Administrativo",
+    "managers": "Gestores",
     "createUser": "Criar Usuário Admin",
     "editUser": "Editar Usuário",
     "createSchool": "Criar Escola",
-    "editSchool": "Editar Escola"
+    "editSchool": "Editar Escola",
+    "registerManager": "Registrar Gestor",
+    "updateManager": "Atualizar Gestor"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
@@ -55,6 +61,8 @@
     "userCreated": "Usuário criado com sucesso!",
     "userUpdated": "Usuário atualizado com sucesso!",
     "schoolCreated": "Escola criada com sucesso!",
+    "managerCreated": "Gestor registrado com sucesso!",
+    "managerUpdated": "Gestor atualizado com sucesso!",
     "schoolUpdated": "Escola atualizada com sucesso!"
   }
 }

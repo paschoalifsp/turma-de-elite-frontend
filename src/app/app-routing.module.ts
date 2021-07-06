@@ -16,6 +16,7 @@ import {UsersPageComponent} from "./admin/users/components/users-page/users-page
 import {UserFormComponent} from "./admin/users/components/user-form/user-form.component";
 import {SchoolsPageComponent} from "./admin/schools/components/schools-page/schools-page.component";
 import {SchoolFormComponent} from "./admin/schools/components/school-form/school-form.component";
+import {ManagerPageComponent} from "./admin/manager/components/manager-page/manager-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -36,8 +37,7 @@ const routes: Routes = [
       { path: 'schools/form', component: SchoolFormComponent},
       { path: 'configuration', component: ConfigurationComponent},
       { path: 'admins', component: UsersPageComponent},
-      { path: 'admins/form/:id', component: UserFormComponent},
-      { path: 'admins/form', component: UserFormComponent }
+      { path: 'managers', component: ManagerPageComponent },
     ]
   }
 

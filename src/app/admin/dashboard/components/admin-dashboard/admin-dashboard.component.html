@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="space-between center">
   <div fxFlexAlign="start">
-    <h1 class="mat-display-1 page-title">Painel Administrativo</h1>
+    <h1 class="mat-display-1 page-title">{{'titles.administrativePanel'|translate}}</h1>
   </div>
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around center">
     <div fxFlex="50">
@@ -22,8 +22,17 @@
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
         [routerLink]="['/admin/admins']">
-        <mat-icon color="primary">person</mat-icon>
+        <mat-icon color="primary">manage_accounts</mat-icon>
         <p color="primary">{{'labels.admins'|translate}}</p>
+      </a>
+      <a
+        class="tile mat-elevation-z1"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        [routerLink]="['/admin/managers']">
+        <mat-icon color="primary">person</mat-icon>
+        <p color="primary">{{'titles.managers'|translate}}</p>
       </a>
     </div>
   </div>
