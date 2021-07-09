@@ -1,49 +1,73 @@
 <div
+  fxFlex="100"
   fxLayout="column"
-  fxLayoutAlign="center center"
-  class="background">
-  <div fxFlex="100" class="mat-elevation-z10 login-container" fxLayout="column">
-    <h1 class="system-title">Turma de Elite</h1>
-    <h3 class="system-title">Primeiro acesso</h3>
-    <form
+  fxLayoutAlign="center center">
+  <div
+    class="full-width full-screen-height"
+    fxFlex="100"
+    fxLayout="row"
+    fxLayoutAlign="space-around center">
+    <div fxFlex="65" class="full-screen-height" fxLayoutAlign="center center">
+      <img src="assets/login.svg">
+    </div>
+    <div
+      fxFlex="35"
       fxLayout="column"
-      [formGroup]="firstAccessForm">
-      <mat-form-field
-        class="fieldWidth"
-        appearance="outline">
-        <mat-label>{{'labels.password' | translate}}</mat-label>
-        <input
-          fxFlex="100"
-          matInput
-          type="password"
-          formControlName="password">
-        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.minlength">
-          {{'fieldErrors.passwordIsTooShort'|translate}}
-        </mat-error>
-        <mat-error *ngIf="firstAccessForm.get('password')?.errors?.required">
-          {{'fieldErrors.passwordIsRequired'|translate}}
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field
-        class="fieldWidth"
-        appearance="outline">
-        <mat-label>{{'labels.confirmPassword' | translate}}</mat-label>
-        <input
-          fxFlex="100"
-          matInput
-          type="password"
-          formControlName="confirmPassword">
-        <mat-error *ngIf="firstAccessForm.errors?.notSame">
-          {{'fieldErrors.passwordNotSame'|translate}}
-        </mat-error>
-      </mat-form-field>
-    </form>
-    <button
-      mat-raised-button
-      (click)="doFirstAccess()"
-      color="primary"
-      [disabled]="firstAccessForm.invalid">
-      {{'labels.doFirstAccess'|translate}}
-    </button>
+      fxLayoutAlign="center center"
+      class="full-height full-width login-container">
+      <div
+        fxFlexAlign="center center"
+        fxLayout="column">
+        <div fxLayout="row"  fxLayoutAlign="center center" class="title">
+          <div>
+            <mat-icon>military_tech</mat-icon>
+          </div>
+          <h1>
+            Turma de Elite
+          </h1>
+        </div>
+        <form
+          fxLayout="column"
+          [formGroup]="firstAccessForm">
+          <mat-form-field
+            class="fieldWidth"
+            appearance="outline">
+            <mat-label>{{'labels.password' | translate}}</mat-label>
+            <input
+              fxFlex="100"
+              matInput
+              type="password"
+              formControlName="password">
+            <mat-error *ngIf="firstAccessForm.get('password')?.errors?.minlength">
+              {{'fieldErrors.passwordIsTooShort'|translate}}
+            </mat-error>
+            <mat-error *ngIf="firstAccessForm.get('password')?.errors?.required">
+              {{'fieldErrors.passwordIsRequired'|translate}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            class="fieldWidth"
+            appearance="outline">
+            <mat-label>{{'labels.confirmPassword' | translate}}</mat-label>
+            <input
+              fxFlex="100"
+              matInput
+              type="password"
+              formControlName="confirmPassword">
+            <mat-error *ngIf="firstAccessForm.errors?.notSame">
+              {{'fieldErrors.passwordNotSame'|translate}}
+            </mat-error>
+          </mat-form-field>
+        </form>
+        <button
+          mat-raised-button
+          (click)="doFirstAccess()"
+          color="primary"
+          [disabled]="firstAccessForm.invalid">
+          {{'labels.doFirstAccess'|translate}}
+        </button>
+      </div>
+    </div>
   </div>
+
 </div>

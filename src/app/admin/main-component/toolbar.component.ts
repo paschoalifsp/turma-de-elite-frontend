@@ -5,10 +5,10 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-component',
-  templateUrl: './admin-main.component.html',
-  styleUrls: ['./admin-main.component.scss']
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
-export class AdminMainComponent implements OnInit {
+export class ToolbarComponent implements OnInit {
 
   constructor(
     private translate: TranslateService,

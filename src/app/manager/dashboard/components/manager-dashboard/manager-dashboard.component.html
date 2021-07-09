@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="space-between center">
+  <div fxFlexAlign="start">
+    <h1 class="mat-display-1 page-title">{{'titles.administrativePanel'|translate}}</h1>
+  </div>
+  <div class="full-width" fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxFlex="50">
+      <img class="half-screen-width" src="assets/administrative-panel.svg">
+    </div>
+    <div fxFlex="35" fxFlexAlign="start">
+      <a
+        class="tile mat-elevation-z1"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        [routerLink]="['/manager/achievements']" >
+        <mat-icon color="primary">school</mat-icon>
+        <p color="primary">{{'labels.achievements'|translate}}</p>
+      </a>
+    </div>
+  </div>
+</div>

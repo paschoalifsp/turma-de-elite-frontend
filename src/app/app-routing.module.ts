@@ -10,13 +10,16 @@ import {FirstAccessAlreadyDoneComponent} from "./authentication/components/first
 import {ResetPasswordComponent} from "./authentication/components/reset-password/reset-password.component";
 import {AdminDashboardComponent} from "./admin/dashboard/components/admin-dashboard/admin-dashboard.component";
 import {IsAdminGuard} from "./authentication/guards/is-admin.guard"
-import {AdminMainComponent} from "./admin/main-component/admin-main.component";
+import {ToolbarComponent} from "./admin/main-component/toolbar.component";
 import {ConfigurationComponent} from "./admin/configuration/components/configuration.component";
 import {UsersPageComponent} from "./admin/users/components/users-page/users-page.component";
 import {UserFormComponent} from "./admin/users/components/user-form/user-form.component";
 import {SchoolsPageComponent} from "./admin/schools/components/schools-page/schools-page.component";
 import {SchoolFormComponent} from "./admin/schools/components/school-form/school-form.component";
 import {ManagerPageComponent} from "./admin/manager/components/manager-page/manager-page.component";
+import {IsManagerGuard} from "./authentication/guards/is-manager.guard";
+import {ManagerDashboardComponent} from "./manager/dashboard/components/manager-dashboard/manager-dashboard.component";
+import {AchievementPageComponent} from "./manager/achievement/components/achievement-page/achievement-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -28,7 +31,7 @@ const routes: Routes = [
   { path: 'first-access/already-done', component: FirstAccessAlreadyDoneComponent },
   {
     path: 'admin',
-    component: AdminMainComponent,
+    component: ToolbarComponent,
     canActivate: [AngularFireAuthGuard, IsAdminGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
@@ -39,7 +42,18 @@ const routes: Routes = [
       { path: 'admins', component: UsersPageComponent},
       { path: 'managers', component: ManagerPageComponent },
     ]
-  }
+  },
+  {
+    path: 'manager',
+    component: ToolbarComponent,
+    canActivate: [AngularFireAuthGuard, IsManagerGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    children: [
+      { path: 'dashboard', component: ManagerDashboardComponent},
+      { path: 'achievements', component: AchievementPageComponent},
+    ]
+  },
+
 
 ];
 

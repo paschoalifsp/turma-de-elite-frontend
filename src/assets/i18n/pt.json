@@ -30,7 +30,10 @@
     "active": "Ativo",
     "inactive": "Inativo",
     "createManager": "Cadastrar Gestor",
-    "schools": "Escolas"
+    "schools": "Escolas",
+    "achievements": "Conquistas",
+    "createAchievement": "Criar Conquista"
+
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
@@ -46,7 +49,8 @@
     "createSchool": "Criar Escola",
     "editSchool": "Editar Escola",
     "registerManager": "Registrar Gestor",
-    "updateManager": "Atualizar Gestor"
+    "updateManager": "Atualizar Gestor",
+    "achievements": "Conquistas"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",

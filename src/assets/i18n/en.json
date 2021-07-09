@@ -31,7 +31,9 @@
     "inactive": "Inactive",
     "registerManager": "Register Manager",
     "updateManager": "Update Manager",
-    "schools": "Schools"
+    "schools": "Schools",
+    "achievements": "Achievements",
+    "createAchievement": "Create Achievement"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
@@ -45,7 +47,9 @@
     "createSchool": "Create School",
     "editSchool": "Edit School",
     "administrativePanel": "Administrative Panel",
-    "managers": "Managers"
+    "managers": "Managers",
+    "achievements": "Achievements"
+
   },
   "tooltip": {
     "addNewUser": "Register new admin user",

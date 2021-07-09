@@ -1,0 +1,51 @@
+<div fxLayout="column" fxLayoutAlign="center start">
+  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
+    <button mat-icon-button routerLink="/manager/dashboard"><mat-icon>navigate_before</mat-icon></button>
+    <h1 class="mat-display-1">{{'titles.achievements'|translate}}</h1>
+  </div>
+  <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
+    <div fxFlex="45">
+      <mat-form-field class="full-width" appearance="outline">
+        <input type="tel" matInput placeholder="Buscar conquista" [formControl]="searchControl">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <a
+        [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        (click)="createMode=true;achievementToggleId=null">
+        <mat-icon color="primary">add</mat-icon>
+        <p color="primary">{{'labels.createAchievement'|translate}}</p>
+      </a>
+      <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+      </div>
+      <a
+        [ngClass]="'mat-elevation-z1 ' + (achievementToggleId===achievement.id?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        *ngFor="let achievement of achievements"
+        (click)="achievementToggleId=achievement.id;createMode=false">
+        <mat-icon [ngClass]="achievement.isActive?'primary':'disabled'">person</mat-icon>
+        <p color="primary">{{achievement.name}}</p>
+      </a>
+      <mat-paginator
+        class="full-width"
+        [length]="totalLength"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="pageChange($event)">
+      </mat-paginator>
+    </div>
+    <div fxFlex="45" fxFlexAlign="start">
+      <app-achievement-form
+        *ngIf="achievementToggleId || createMode"
+        [achievementId]="achievementToggleId"
+        [createMode]="createMode"
+        (save)="refresh()">
+      </app-achievement-form>
+    </div>
+  </div>
+</div>

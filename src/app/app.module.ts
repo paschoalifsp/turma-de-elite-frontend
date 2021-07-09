@@ -19,7 +19,7 @@ import {registerLocaleData} from "@angular/common";
 import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/es-US';
 import { AdminDashboardComponent } from './admin/dashboard/components/admin-dashboard/admin-dashboard.component';
-import { AdminMainComponent } from './admin/main-component/admin-main.component';
+import { ToolbarComponent } from './admin/main-component/toolbar.component';
 import { ConfigurationComponent } from './admin/configuration/components/configuration.component';
 import { UsersPageComponent } from './admin/users/components/users-page/users-page.component';
 import { UserFormComponent } from './admin/users/components/user-form/user-form.component';
@@ -27,6 +27,9 @@ import { SchoolsPageComponent } from './admin/schools/components/schools-page/sc
 import { SchoolFormComponent } from './admin/schools/components/school-form/school-form.component';
 import { ManagerPageComponent } from './admin/manager/components/manager-page/manager-page.component';
 import { ManagerFormComponent } from './admin/manager/components/manager-form/manager-form.component';
+import { ManagerDashboardComponent } from './manager/dashboard/components/manager-dashboard/manager-dashboard.component';
+import { AchievementPageComponent } from './manager/achievement/components/achievement-page/achievement-page.component';
+import { AchievementFormComponent } from './manager/achievement/components/achievement-form/achievement-form.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -39,14 +42,17 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     AdminDashboardComponent,
-    AdminMainComponent,
+    ToolbarComponent,
     ConfigurationComponent,
     UsersPageComponent,
     UserFormComponent,
     SchoolsPageComponent,
     SchoolFormComponent,
     ManagerPageComponent,
-    ManagerFormComponent
+    ManagerFormComponent,
+    ManagerDashboardComponent,
+    AchievementPageComponent,
+    AchievementFormComponent
   ],
   imports: [
     BrowserModule,
