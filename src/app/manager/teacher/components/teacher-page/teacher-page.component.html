@@ -40,12 +40,12 @@
       </mat-paginator>
     </div>
     <div fxFlex="45" fxFlexAlign="start">
-      <app-achievement-form
+      <app-teacher-form
         *ngIf="teacherToggleId || createMode"
-        [achievementId]="teacherToggleId"
+        [teacherId]="teacherToggleId"
         [createMode]="createMode"
         (save)="refresh()">
-      </app-achievement-form>
+      </app-teacher-form>
     </div>
   </div>
 </div>

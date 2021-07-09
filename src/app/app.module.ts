@@ -31,6 +31,7 @@ import { ManagerDashboardComponent } from './manager/dashboard/components/manage
 import { AchievementPageComponent } from './manager/achievement/components/achievement-page/achievement-page.component';
 import { AchievementFormComponent } from './manager/achievement/components/achievement-form/achievement-form.component';
 import { TeacherPageComponent } from './manager/teacher/components/teacher-page/teacher-page.component';
+import { TeacherFormComponent } from './manager/teacher/components/teacher-form/teacher-form.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -54,7 +55,8 @@ export function createTranslateLoader(http: HttpClient) {
     ManagerDashboardComponent,
     AchievementPageComponent,
     AchievementFormComponent,
-    TeacherPageComponent
+    TeacherPageComponent,
+    TeacherFormComponent
   ],
   imports: [
     BrowserModule,
