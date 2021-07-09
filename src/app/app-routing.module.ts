@@ -16,6 +16,7 @@ import {UsersPageComponent} from "./admin/users/components/users-page/users-page
 import {UserFormComponent} from "./admin/users/components/user-form/user-form.component";
 import {SchoolsPageComponent} from "./admin/schools/components/schools-page/schools-page.component";
 import {SchoolFormComponent} from "./admin/schools/components/school-form/school-form.component";
+import { CreateNewPasswordComponent } from './authentication/components/create-new-password/create-new-password.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'first-access', component: FirstAccessPageComponent, canActivate: [FirstAccessGuard] },
   { path: 'first-access/already-done', component: FirstAccessAlreadyDoneComponent },
+  { path: 'create-new-password', component: CreateNewPasswordComponent},
   {
     path: 'admin',
     component: AdminMainComponent,

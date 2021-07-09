@@ -1,8 +1,8 @@
 {
   "fieldErrors": {
-    "invalidEmail": "O E-mail inserido é inválido",
-    "alreadyRegisteredEmail": "Este E-mail já foi cadastrado",
-    "emailIsRequired": "É necessário inserir o E-mail",
+    "invalidEmail": "O e-mail inserido é inválido",
+    "alreadyRegisteredEmail": "Este e-mail já foi cadastrado",
+    "emailIsRequired": "É necessário inserir o e-mail",
     "nameIsRequired": "É necessário inserir o nome",
     "passwordIsTooShort": "Sua senha deve ter no mínimo 6 caracteres",
     "passwordIsRequired": "É necessário inserir uma senha",
@@ -28,7 +28,9 @@
     "schools": "Escolas",
     "identifier": "Identificador",
     "active": "Ativo",
-    "inactive": "Inativo"
+    "inactive": "Inativo",
+    "return": "Voltar",
+    "resetPassword": "Redefinir senha"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
