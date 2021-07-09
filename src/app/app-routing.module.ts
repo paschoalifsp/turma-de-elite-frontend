@@ -20,6 +20,7 @@ import {ManagerPageComponent} from "./admin/manager/components/manager-page/mana
 import {IsManagerGuard} from "./authentication/guards/is-manager.guard";
 import {ManagerDashboardComponent} from "./manager/dashboard/components/manager-dashboard/manager-dashboard.component";
 import {AchievementPageComponent} from "./manager/achievement/components/achievement-page/achievement-page.component";
+import {TeacherPageComponent} from "./manager/teacher/components/teacher-page/teacher-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -51,6 +52,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: ManagerDashboardComponent},
       { path: 'achievements', component: AchievementPageComponent},
+      { path: 'teachers', component: TeacherPageComponent},
     ]
   },
 

@@ -48,8 +48,8 @@
     "editSchool": "Edit School",
     "administrativePanel": "Administrative Panel",
     "managers": "Managers",
-    "achievements": "Achievements"
-
+    "achievements": "Achievements",
+    "teachers": "Teachers"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",

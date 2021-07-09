@@ -15,6 +15,16 @@
         required>
       <mat-error *ngIf="schoolForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
     </mat-form-field>
+    <mat-form-field
+      fxFlex="45" appearance="outline">
+      <mat-label>{{'labels.identifier'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="identifier"
+        required>
+      <mat-error *ngIf="schoolForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
+    </mat-form-field>
     <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>

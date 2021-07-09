@@ -13,8 +13,17 @@
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
         [routerLink]="['/manager/achievements']" >
-        <mat-icon color="primary">school</mat-icon>
+        <mat-icon color="primary">military_tech</mat-icon>
         <p color="primary">{{'labels.achievements'|translate}}</p>
+      </a>
+      <a
+        class="tile mat-elevation-z1"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        [routerLink]="['/manager/teachers']" >
+        <mat-icon color="primary">school</mat-icon>
+        <p color="primary">{{'labels.teachers'|translate}}</p>
       </a>
     </div>
   </div>

@@ -30,6 +30,7 @@ import { ManagerFormComponent } from './admin/manager/components/manager-form/ma
 import { ManagerDashboardComponent } from './manager/dashboard/components/manager-dashboard/manager-dashboard.component';
 import { AchievementPageComponent } from './manager/achievement/components/achievement-page/achievement-page.component';
 import { AchievementFormComponent } from './manager/achievement/components/achievement-form/achievement-form.component';
+import { TeacherPageComponent } from './manager/teacher/components/teacher-page/teacher-page.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -52,7 +53,8 @@ export function createTranslateLoader(http: HttpClient) {
     ManagerFormComponent,
     ManagerDashboardComponent,
     AchievementPageComponent,
-    AchievementFormComponent
+    AchievementFormComponent,
+    TeacherPageComponent
   ],
   imports: [
     BrowserModule,

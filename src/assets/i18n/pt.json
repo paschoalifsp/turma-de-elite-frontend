@@ -32,7 +32,9 @@
     "createManager": "Cadastrar Gestor",
     "schools": "Escolas",
     "achievements": "Conquistas",
-    "createAchievement": "Criar Conquista"
+    "createAchievement": "Criar Conquista",
+    "teachers": "Professores",
+    "createTeacher": "Criar Professor"
 
   },
   "actions": {
