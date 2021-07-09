@@ -7,7 +7,6 @@ import {FirstAccessPageComponent} from "./components/first-access/first-access-p
 import { FirstAccessAlreadyDoneComponent } from './components/first-access-already-done/first-access-already-done.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import {TranslateModule} from "@ngx-translate/core";
-import { CreateNewPasswordComponent } from './components/create-new-password/create-new-password.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,7 @@ import { CreateNewPasswordComponent } from './components/create-new-password/cre
     FirstAccessPageComponent,
     FirstAccessAlreadyDoneComponent,
     ResetPasswordComponent,
-    CreateNewPasswordComponent,
+
   ],
     imports: [
         MatFormFieldModule,

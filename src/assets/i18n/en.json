@@ -58,6 +58,8 @@
     "userCreated": "User created successfully!",
     "userUpdated": "User updated sucessfully!",
     "schoolCreated": "School created sucessfully!",
-    "schoolUpdated": "School updated successfully!"
+    "schoolUpdated": "School updated successfully!",
+    "passwordEmailResetSent": "Password reset email sent successfully"
+    
   }
 }

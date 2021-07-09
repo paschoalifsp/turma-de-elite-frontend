@@ -4,6 +4,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {CustomStateMatcher} from "../../../shared/utils/error-state-matcher";
+import {TranslateService} from "@ngx-translate/core"
 
 @Component({
   selector: 'app-reset-password',
@@ -24,6 +25,7 @@ export class ResetPasswordComponent {
     private snackbar: MatSnackBar,
     private router: Router,
     private fb: FormBuilder,
+    private translateService: TranslateService,
     ) { }
 
   sendResetPasswordEmail(){
@@ -40,14 +42,18 @@ export class ResetPasswordComponent {
   }
 
   sendSuccess(){
-    this.snackbar.open('E-mail de reset de senha enviado com sucesso','OK')
+    this.translateService.get('messages.passwordEmailResetSent').subscribe(translation => 
+      this.snackbar.open(translation,'OK')
       .afterDismissed()
       .subscribe(value => {
         this.router.navigate(['/login']);
-      });
+      }))
   }
 
   invalidEmailMessage(){
-    this.snackbar.open('Não foi possível encontrar sua conta','Fechar');
+    this.translateService.get('fieldErrors.accountNotFound').subscribe(translation =>
+      this.snackbar.open(translation, 'Fechar').afterDismissed().subscribe(value => {
+        this.router.navigate(['/login']);
+      }))
   }
 }

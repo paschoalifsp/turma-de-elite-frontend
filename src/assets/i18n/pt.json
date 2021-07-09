@@ -57,6 +57,7 @@
     "userCreated": "Usuário criado com sucesso!",
     "userUpdated": "Usuário atualizado com sucesso!",
     "schoolCreated": "Escola criada com sucesso!",
-    "schoolUpdated": "Escola atualizada com sucesso!"
+    "schoolUpdated": "Escola atualizada com sucesso!",
+    "passwordEmailResetSent": "E-mail de reset de senha enviado com sucesso"
   }
 }
