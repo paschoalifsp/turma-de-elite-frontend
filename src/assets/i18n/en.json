@@ -33,7 +33,9 @@
     "updateManager": "Update Manager",
     "schools": "Schools",
     "achievements": "Achievements",
-    "createAchievement": "Create Achievement"
+    "createAchievement": "Create Achievement",
+    "teachers": "Teachers",
+    "createTeacher": "Create Teacher"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
@@ -49,7 +51,9 @@
     "administrativePanel": "Administrative Panel",
     "managers": "Managers",
     "achievements": "Achievements",
-    "teachers": "Teachers"
+    "teachers": "Teachers",
+    "registerTeacher": "Create Teacher",
+    "updateTeacher": "Edit Teacher"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -67,5 +71,9 @@
     "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
     "schoolUpdated": "School updated successfully!"
+  },
+  "placeholder": {
+    "searchTeacher": "Search Teacher",
+    "searchAchievements": "Search Achievement"
   }
 }

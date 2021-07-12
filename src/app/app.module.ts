@@ -32,6 +32,8 @@ import { AchievementPageComponent } from './manager/achievement/components/achie
 import { AchievementFormComponent } from './manager/achievement/components/achievement-form/achievement-form.component';
 import { TeacherPageComponent } from './manager/teacher/components/teacher-page/teacher-page.component';
 import { TeacherFormComponent } from './manager/teacher/components/teacher-form/teacher-form.component';
+import { HttpClientModule } from "@angular/common/http";
+
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -66,6 +68,7 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     AuthenticationModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
