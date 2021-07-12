@@ -9,6 +9,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {TeacherService} from "../../services/teacher.service";
 
+
 @Component({
   selector: 'app-teacher-form',
   templateUrl: './teacher-form.component.html',
@@ -108,6 +109,10 @@ export class TeacherFormComponent implements OnInit {
 
   displaySchoolName(school: School){
     return school && school.name ? school.name: '';
+  }
+
+  showSnackbar(message: string){
+    this.snackbar.open(message,'Fechar');
   }
 
 }

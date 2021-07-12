@@ -52,7 +52,9 @@
     "editSchool": "Editar Escola",
     "registerManager": "Registrar Gestor",
     "updateManager": "Atualizar Gestor",
-    "achievements": "Conquistas"
+    "achievements": "Conquistas",
+    "registerTeacher": "Criar Professor",
+    "updateTeacher": "Atualizar Professor"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
@@ -69,6 +71,11 @@
     "schoolCreated": "Escola criada com sucesso!",
     "managerCreated": "Gestor registrado com sucesso!",
     "managerUpdated": "Gestor atualizado com sucesso!",
-    "schoolUpdated": "Escola atualizada com sucesso!"
+    "schoolUpdated": "Escola atualizada com sucesso!",
+    "teacherUpdated": "Professor atualizado com sucesso!"
+  },
+  "placeholder": {
+    "searchTeacher": "Buscar Professor",
+    "searchAchievements": "Buscar Conquista"
   }
 }

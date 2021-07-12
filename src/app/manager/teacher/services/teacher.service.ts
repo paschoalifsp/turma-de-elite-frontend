@@ -3,15 +3,21 @@ import {HttpClient} from "@angular/common/http";
 import {TranslateService} from "@ngx-translate/core";
 import {environment} from "../../../../environments/environment";
 import {take} from "rxjs/operators";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherService {
 
+  isLoading = false;
+
   constructor(
     private http: HttpClient,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private snackbar: MatSnackBar,
+    private router: Router
   ) { }
 
   registerTeacher(value: any) {
@@ -29,8 +35,15 @@ export class TeacherService {
   }
 
   updateTeacher(managerId: number | null, value: any) {
+    this.isLoading = true;
     const {school,...rest} = value;
     const language = this.translateService.currentLang;
     return this.http.put<any>(`${environment.apiUrl}/api/teachers/${managerId}`, {schoolId: school.id,language,...rest});
+    this.isLoading = false;
   }
+
+  showSnackbar(message: string){
+    this.snackbar.open(message,'Fechar');
+  }
+
 }
