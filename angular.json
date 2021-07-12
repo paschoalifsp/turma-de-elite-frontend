@@ -70,19 +70,14 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "turma-de-elite-frontend:build:production"
-            },
-            "development": {
-              "browserTarget": "turma-de-elite-frontend:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "turma-de-elite-frontend:build",
+            "extraWebpackConfig": "./cypress/coverage.webpack.js"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -119,6 +114,37 @@
               "src/**/*.ts",
               "src/**/*.html"
             ]
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "turma-de-elite-frontend:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "turma-de-elite-frontend:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "turma-de-elite-frontend:serve",
+            "watch": false,
+            "headless": true
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "turma-de-elite-frontend:serve:production"
+            }
           }
         }
       }
