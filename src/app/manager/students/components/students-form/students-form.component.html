@@ -1,10 +1,16 @@
 <div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
 
   <h1 class="title">
-    {{(isEdit?'titles.updateTeacher' : 'titles.registerTeacher') |translate}}
+    {{(isEdit?'labels.updateStudent' : 'labels.registerStudent') |translate}}
   </h1>
 
-  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="teacherForm" (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
+  <form
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between"
+    class="full-width"
+    fxFlex="100"
+    [formGroup]="studentForm"
+    (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
@@ -15,7 +21,18 @@
         placeholder="user@email.com"
         required>
       <mat-error *ngIf="alreadyRegisteredEmail">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
-      <mat-error *ngIf="teacherForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="studentForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="45" appearance="outline">
+      <mat-label>{{'labels.registry'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="registry"
+        placeholder="Andre Montero"
+        required>
+      <mat-error *ngIf="studentForm.get('registry')?.errors?.required">{{'fieldErrors.registryIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
       fxFlex="45" appearance="outline">
@@ -26,7 +43,7 @@
         formControlName="name"
         placeholder="Andre Montero"
         required>
-      <mat-error *ngIf="teacherForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="studentForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
@@ -34,7 +51,7 @@
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="teacherForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-raised-button [disabled]="studentForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

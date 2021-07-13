@@ -1,0 +1,40 @@
+<div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
+
+  <h1 class="title">
+    {{(isEdit?'labels.editClass' : 'labels.createClass') |translate}}
+  </h1>
+
+  <form
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between"
+    class="full-width"
+    fxFlex="100"
+    [formGroup]="managerForm"
+    (ngSubmit)="isEdit ? updateManager() : registerManager()"
+    >
+    <div fxLayout="row" fxLayoutAlign="space-between " fxFlex="100">
+      <mat-form-field
+        fxFlex="80" appearance="outline">
+        <mat-label>{{'labels.registry'|translate}}</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="registry"
+          placeholder="{{'placeholder.registry'|translate}}"
+          required>
+        <mat-error *ngIf="managerForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
+      </mat-form-field>
+      <button mat-mini-fab color="primary">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <div *ngIf="isLoading;then showLoader;else showButton"></div>
+    <ng-template #showLoader>
+      <mat-spinner diameter="50"></mat-spinner>
+    </ng-template>
+    <ng-template #showButton>
+      <button mat-raised-button [disabled]="managerForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+    </ng-template>
+  </form>
+</div>

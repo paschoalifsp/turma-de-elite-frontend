@@ -9,7 +9,8 @@
     "accountNotFound": "Your account cannot be found",
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordNotSame": "Passwords must match",
-    "identifierIsRequired": "Identifier is required"
+    "identifierIsRequired": "Identifier is required",
+    "registryIsRequired": "Registry is required"
   },
   "labels": {
     "login": "Login",
@@ -35,10 +36,16 @@
     "achievements": "Achievements",
     "createAchievement": "Create Achievement",
     "teachers": "Teachers",
-    "createTeacher": "Create Teacher"
+    "createTeacher": "Create Teacher",
     "return": "Return",
-    "resetPassword": "Reset Password"
-
+    "resetPassword": "Reset Password",
+    "classes": "Classes",
+    "createClass": "Create Class",
+    "editClass": "Edit Class",
+    "students": "Students",
+    "registerStudent": "Register Student",
+    "updateStudent": "Update Student",
+    "registry": "Matrícula"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
@@ -73,10 +80,15 @@
     "managerCreated": "Manager registered successfully!",
     "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
-    "schoolUpdated": "School updated successfully!"
+    "schoolUpdated": "School updated successfully!",
+    "studentRegistered": "Student registered successfully!",
+    "studentUpdated": "Student updated successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
-    "searchAchievements": "Search Achievement"
+    "searchAchievements": "Search Achievement",
+    "searchClass": "Search Class",
+    "studentEmail": "Student E-mail",
+    "addStudent": "Add Student"
   }
 }

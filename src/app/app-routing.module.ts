@@ -22,6 +22,8 @@ import {IsManagerGuard} from "./authentication/guards/is-manager.guard";
 import {ManagerDashboardComponent} from "./manager/dashboard/components/manager-dashboard/manager-dashboard.component";
 import {AchievementPageComponent} from "./manager/achievement/components/achievement-page/achievement-page.component";
 import {TeacherPageComponent} from "./manager/teacher/components/teacher-page/teacher-page.component";
+import {ClassPageComponent} from "./manager/class/components/class-page/class-page.component";
+import {StudentsPageComponent} from "./manager/students/components/students-page/students-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -40,7 +42,6 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: AdminDashboardComponent},
       { path: 'schools', component: SchoolsPageComponent},
-      { path: 'schools/form', component: SchoolFormComponent},
       { path: 'configuration', component: ConfigurationComponent},
       { path: 'admins', component: UsersPageComponent},
       { path: 'managers', component: ManagerPageComponent },
@@ -55,6 +56,9 @@ const routes: Routes = [
       { path: 'dashboard', component: ManagerDashboardComponent},
       { path: 'achievements', component: AchievementPageComponent},
       { path: 'teachers', component: TeacherPageComponent},
+      { path: 'classes', component: ClassPageComponent},
+      { path: 'students', component: StudentsPageComponent},
+
     ]
   },
 

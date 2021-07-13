@@ -33,6 +33,10 @@ import { AchievementFormComponent } from './manager/achievement/components/achie
 import { TeacherPageComponent } from './manager/teacher/components/teacher-page/teacher-page.component';
 import { TeacherFormComponent } from './manager/teacher/components/teacher-form/teacher-form.component';
 import { HttpClientModule } from "@angular/common/http";
+import { ClassPageComponent } from './manager/class/components/class-page/class-page.component';
+import { ClassFormComponent } from './manager/class/components/class-form/class-form.component';
+import { StudentsPageComponent } from './manager/students/components/students-page/students-page.component';
+import { StudentsFormComponent } from './manager/students/components/students-form/students-form.component';
 
 
 registerLocaleData(localePt);
@@ -58,7 +62,11 @@ export function createTranslateLoader(http: HttpClient) {
     AchievementPageComponent,
     AchievementFormComponent,
     TeacherPageComponent,
-    TeacherFormComponent
+    TeacherFormComponent,
+    ClassPageComponent,
+    ClassFormComponent,
+    StudentsPageComponent,
+    StudentsFormComponent,
   ],
   imports: [
     BrowserModule,

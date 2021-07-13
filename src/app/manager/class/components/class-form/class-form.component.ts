@@ -7,28 +7,26 @@ import {ManagerService} from "../../../../admin/manager/services/manager.service
 import {SchoolService} from "../../../../admin/schools/services/school.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
-import {TeacherService} from "../../services/teacher.service";
-
 
 @Component({
-  selector: 'app-teacher-form',
-  templateUrl: './teacher-form.component.html',
-  styleUrls: ['./teacher-form.component.scss']
+  selector: 'app-class-form',
+  templateUrl: './class-form.component.html',
+  styleUrls: ['./class-form.component.scss']
 })
-export class TeacherFormComponent implements OnInit {
+export class ClassFormComponent implements OnInit {
 
   isEdit = false;
 
-  @Input() teacherId:number | null = null;
+  @Input() classId:number | null = null;
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
-  alreadyRegisteredEmail = false;
 
-  teacherForm = this.fb.group({
-    email: ['',Validators.email],
+  managerForm = this.fb.group({
+    students: [[]],
+    teachers: [[]],
     name: ['',Validators.required],
-    isActive:['']
+    isActive: [true],
   });
 
   isLoading = false;
@@ -36,7 +34,7 @@ export class TeacherFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private teacherService: TeacherService,
+    private managerService: ManagerService,
     private schoolService: SchoolService,
     private snackbar: MatSnackBar,
     private translateService: TranslateService,
@@ -47,9 +45,9 @@ export class TeacherFormComponent implements OnInit {
     this.route.params.subscribe(value => {
       if(value['id']){
         this.isEdit = true;
-        this.teacherId = value['id'];
-        this.teacherService.getTeacherById(this.teacherId as number).subscribe(({email,name,isActive})=>{
-          this.teacherForm.setValue({email,name,isActive});
+        this.classId = value['id'];
+        this.managerService.getManagerById(this.classId as number).subscribe(({email,name,isActive,school})=>{
+          this.managerForm.setValue({email,name,isActive,school});
         });
       }
     })
@@ -58,18 +56,18 @@ export class TeacherFormComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges){
     this.isEdit = !this.createMode;
     if(this.createMode){
-      this.teacherForm.reset();
+      this.managerForm.reset();
     }
     else{
-      this.teacherService.getTeacherById(this.teacherId as number).subscribe( ({name,email,isActive}) => {
-        this.teacherForm.setValue({name,email,isActive})
+      this.managerService.getManagerById(this.classId as number).subscribe( ({name,email,isActive,school}) => {
+        this.managerForm.setValue({name,email,isActive,school})
       })
     }
   }
 
-  updateTeacher(){
+  updateManager(){
     this.isLoading = true;
-    this.teacherService.updateTeacher(this.teacherId,this.teacherForm.value).subscribe(success => {
+    this.managerService.updateManager(this.classId,this.managerForm.value).subscribe(success => {
       this.translateService.get('messages.managerUpdated').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
@@ -80,20 +78,19 @@ export class TeacherFormComponent implements OnInit {
     })
   }
 
-  registerTeacher(){
+  registerManager(){
     this.isLoading = true;
-    this.teacherService.registerTeacher(this.teacherForm.value).subscribe(success => {
+    this.managerService.registerManager(this.managerForm.value).subscribe(success => {
       this.translateService.get('messages.managerCreated').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
-        this.teacherForm.reset();
+        this.managerForm.reset();
         this.snackbar.open(translation,'Fechar');
       })
     }, error => {
       this.isLoading = false;
       switch (error.status){
         case 409:
-          this.alreadyRegisteredEmail = true;
           break;
       }
     });
@@ -101,10 +98,6 @@ export class TeacherFormComponent implements OnInit {
 
   displaySchoolName(school: School){
     return school && school.name ? school.name: '';
-  }
-
-  showSnackbar(message: string){
-    this.snackbar.open(message,'Fechar');
   }
 
 }

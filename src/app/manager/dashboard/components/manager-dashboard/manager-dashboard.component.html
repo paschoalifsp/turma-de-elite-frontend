@@ -7,24 +7,26 @@
       <img class="half-screen-width" src="assets/administrative-panel.svg">
     </div>
     <div fxFlex="35" fxFlexAlign="start">
-      <a
-        class="tile mat-elevation-z1"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        [routerLink]="['/manager/achievements']" >
-        <mat-icon color="primary">military_tech</mat-icon>
-        <p color="primary">{{'labels.achievements'|translate}}</p>
-      </a>
-      <a
-        class="tile mat-elevation-z1"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        [routerLink]="['/manager/teachers']" >
-        <mat-icon color="primary">school</mat-icon>
-        <p color="primary">{{'labels.teachers'|translate}}</p>
-      </a>
+      <navigator-button
+        [path]="'/manager/achievements'"
+        [label]="'labels.achievements'"
+        [iconName]="'military_tech'">
+      </navigator-button>
+      <navigator-button
+        [path]="'/manager/teachers'"
+        [label]="'labels.teachers'"
+        [iconName]="'school'">
+      </navigator-button>
+      <navigator-button
+        [path]="'/manager/students'"
+        [label]="'labels.students'"
+        [iconName]="'person'">
+      </navigator-button>
+      <navigator-button
+        [path]="'/manager/classes'"
+        [label]="'labels.classes'"
+        [iconName]="'class'">
+      </navigator-button>
     </div>
   </div>
 </div>
