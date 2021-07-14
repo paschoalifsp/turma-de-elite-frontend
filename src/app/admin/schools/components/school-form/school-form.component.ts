@@ -6,6 +6,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {SchoolService} from "../../services/school.service";
 import {EventEmitter} from '@angular/core';
+import { of } from 'rxjs';
+import School from 'src/app/shared/model/school';
 
 @Component({
   selector: 'app-school-form',
@@ -29,7 +31,7 @@ export class SchoolFormComponent implements OnInit {
   });
 
   isLoading = false;
-
+  
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,

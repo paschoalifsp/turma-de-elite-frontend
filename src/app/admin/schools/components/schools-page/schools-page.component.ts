@@ -5,7 +5,7 @@ import {UsersService} from "../../../users/services/users.service";
 import {PageEvent} from "@angular/material/paginator";
 import {SchoolService} from "../../services/school.service";
 import School from "../../../../shared/model/school";
-import {FormControl} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {of} from "rxjs";
 import {map, tap} from "rxjs/operators";
 
@@ -26,16 +26,34 @@ export class SchoolsPageComponent implements OnInit {
 
   searchControl = new FormControl('');
 
+  schoolForm = this.fb.group({
+    name: ['',Validators.required],
+    identifier: ['',Validators.required],
+    isActive: ['']
+  });
+
   toggleForm = false;
 
   schoolToggleId: number | null = null;
 
   createMode = false;
 
-  constructor(private schoolService: SchoolService) {}
+  filteredSchools$ = of([] as School[]);
+
+  constructor(private schoolService: SchoolService, private fb: FormBuilder) { 
+    this.refresh();
+  }
 
   ngOnInit(): void {
+    
+    this.schoolForm.get('name')?.valueChanges.subscribe(value => {
+      if(!value?.id && value?.length > 0){
+        this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
+      }
+    })
+
     this.refresh();
+
   }
 
   refresh(){
@@ -63,6 +81,10 @@ export class SchoolsPageComponent implements OnInit {
       ).subscribe(response => {
         this.schools = response;
     })
+  }
+
+  displaySchoolName(school: School){
+    return school && school.name ? school.name: '';
   }
 
 }
