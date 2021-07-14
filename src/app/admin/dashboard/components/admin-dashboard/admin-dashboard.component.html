@@ -7,33 +7,21 @@
       <img class="half-screen-width" src="assets/administrative-panel.svg">
     </div>
     <div fxFlex="35" fxFlexAlign="start">
-      <a
-        class="tile mat-elevation-z1"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        [routerLink]="['/admin/schools']" >
-        <mat-icon color="primary">school</mat-icon>
-        <p color="primary">{{'labels.schools'|translate}}</p>
-      </a>
-      <a
-        class="tile mat-elevation-z1"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        [routerLink]="['/admin/admins']">
-        <mat-icon color="primary">manage_accounts</mat-icon>
-        <p color="primary">{{'labels.admins'|translate}}</p>
-      </a>
-      <a
-        class="tile mat-elevation-z1"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        [routerLink]="['/admin/managers']">
-        <mat-icon color="primary">person</mat-icon>
-        <p color="primary">{{'titles.managers'|translate}}</p>
-      </a>
+      <navigator-button
+        [path]="'/admin/schools'"
+        [label]="'labels.schools'"
+        [iconName]="'school'">
+      </navigator-button>
+      <navigator-button
+        [path]="'/admin/admins'"
+        [label]="'labels.admins'"
+        [iconName]="'manage_accounts'">
+      </navigator-button>
+      <navigator-button
+        [path]="'/admin/managers'"
+        [label]="'titles.managers'"
+        [iconName]="'person'">
+      </navigator-button>
     </div>
   </div>
 </div>

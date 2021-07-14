@@ -1,8 +1,8 @@
 {
   "fieldErrors": {
-    "invalidEmail": "The E-mail is invalid",
+    "invalidEmail": "The e-mail is invalid",
     "alreadyRegisteredEmail": "This E-mail has already been registered",
-    "emailIsRequired": "E-mail is required",
+    "emailIsRequired": "e-mail is required",
     "nameIsRequired": "Name is  required",
     "passwordIsTooShort": "Your password need has at least 6 characters",
     "passwordIsRequired": "Password is required",
@@ -42,6 +42,9 @@
     "createAchievement": "Create Achievement",
     "teachers": "Teachers",
     "createTeacher": "Create Teacher"
+    "return": "Return",
+    "resetPassword": "Reset Password"
+
   },
   "actions": {
     "addNewAdmin": "Add Admin",
