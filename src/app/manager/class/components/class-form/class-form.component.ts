@@ -8,6 +8,8 @@ import {SchoolService} from "../../../../admin/schools/services/school.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {MatTableDataSource} from "@angular/material/table";
+import {TeacherService} from "../../../teacher/services/teacher.service";
+import {concatMap, debounceTime, exhaustMap, filter, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-class-form',
@@ -23,36 +25,18 @@ export class ClassFormComponent implements OnInit {
 
   @Output() save = new EventEmitter();
 
-  teacherEmail = this.fb.control('');
-  studentRegistry = this.fb.control('');
-
-  teachers = [
-    {id: 1, name: 'Professor genérico 1',email: 'professor.generico1@gmail.com'},
-    {id: 2, name: 'Professor genérico 2',email: 'professor.generico2@gmail.com'},
-    {id: 3, name: 'Professor genérico 3',email: 'professor.generico3@gmail.com'},
-    {id: 4, name: 'Professor genérico 4',email: 'professor.generico4@gmail.com'}
-  ]
-
-  students = [
-    {id: 1, name: "Aluninho show de bola 1", registry: '15436'},
-    {id: 2, name: "Aluninho show de bola 2",registry: '15438'},
-    {id: 3, name: "Aluninho show de bola 3",registry: '15439'},
-    {id: 4, name: "Aluninho show de bola 4",registry: '15432'},
-    {id: 5, name: "Aluninho show de bola 5",registry: '15433'},
-  ]
+  teachers:any[] = [];
+  students:any[] = [];
+  classNameControl = this.fb.control('',Validators.required);
 
   isLoading = false;
 
-  studentDataSource = new MatTableDataSource<any>([]);
-  studentColumns = ['name','registry','actions']
-
-  teacherDataSource = new MatTableDataSource<any>([]);
-  teacherColumns = ['name','email','actions']
 
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private managerService: ManagerService,
+    private teacherService: TeacherService,
     private schoolService: SchoolService,
     private snackbar: MatSnackBar,
     private translateService: TranslateService,
@@ -69,8 +53,6 @@ export class ClassFormComponent implements OnInit {
         });
       }
     })
-    this.studentDataSource.data = this.students;
-    this.teacherDataSource.data = this.teachers;
   }
 
   ngOnChanges(changes: SimpleChanges){
@@ -83,6 +65,10 @@ export class ClassFormComponent implements OnInit {
         // this.managerForm.setValue({name,email,isActive,school})
       })
     }
+  }
+
+  createClass(){
+
   }
 
   updateManager(){
@@ -116,8 +102,23 @@ export class ClassFormComponent implements OnInit {
     // });
   }
 
-  displaySchoolName(school: School){
-    return school && school.name ? school.name: '';
+  displayName(teacher: any){
+    return teacher && teacher.name ? teacher.name: '';
   }
 
+  updateTeachers(teachers: any) {
+    this.teachers = teachers;
+  }
+
+  get teachersCompleted(){
+    return this.teachers.length > 0;
+  }
+
+  updateStudents(students: any){
+    this.students = students;
+  }
+
+  get studentsCompleted(){
+    return this.students.length > 0;
+  }
 }

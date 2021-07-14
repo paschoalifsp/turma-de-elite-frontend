@@ -1,0 +1,44 @@
+<div fxLayout="row" class="full-width" fxLayoutAlign="space-between">
+  <mat-form-field appearance="outline" fxFlex="80">
+    <input
+      matInput
+      type="text"
+      [formControl]="teacherEmail"
+      placeholder="{{'placeholder.teacherEmail'|translate}}"
+      required
+      [matAutocomplete]="auto">
+  </mat-form-field>
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName">
+    <mat-option *ngFor="let teacher of teachersOptions"  [value]="teacher">
+      {{teacher.name}}
+    </mat-option>
+  </mat-autocomplete>
+  <button mat-mini-fab color="primary" (click)="addTeacher()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<table mat-table [dataSource]="teacherDataSource" class="mat-elevation-z1 full-width">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> {{'labels.name'|translate}} </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> E-mail </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> {{'labels.actions'|translate}} </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="warn" (click)="removeTeacher(element.id)"><mat-icon>delete</mat-icon></button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="teacherColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: teacherColumns;"></tr>
+</table>
+<div fxLayout="row" class="full-width default-padding" fxLayoutAlign="end center">
+  <button mat-flat-button [disabled]="isInvalid()" (click)="emitNext()" color="primary">{{'labels.next'|translate}}</button>
+</div>

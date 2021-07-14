@@ -45,4 +45,8 @@ export class StudentsService {
   showSnackbar(message: string){
     this.snackbar.open(message,'Fechar');
   }
+
+  findByRegistrySimilarity(registry: any) {
+    return this.http.get<any[]>(`${environment.apiUrl}/api/students/registry/${registry}`)
+  }
 }

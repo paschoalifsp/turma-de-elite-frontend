@@ -46,4 +46,7 @@ export class TeacherService {
     this.snackbar.open(message,'Fechar');
   }
 
+  findByEmailSimilarity(email: string) {
+    return this.http.get<any[]>(`${environment.apiUrl}/api/teachers/email/${email}`).pipe(take(1));
+  }
 }

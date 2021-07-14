@@ -37,6 +37,8 @@ import { ClassPageComponent } from './manager/class/components/class-page/class-
 import { ClassFormComponent } from './manager/class/components/class-form/class-form.component';
 import { StudentsPageComponent } from './manager/students/components/students-page/students-page.component';
 import { StudentsFormComponent } from './manager/students/components/students-form/students-form.component';
+import { TeacherTableComponent } from './manager/class/components/teacher-table/teacher-table.component';
+import { StudentTableComponent } from './manager/class/components/student-table/student-table.component';
 
 
 registerLocaleData(localePt);
@@ -67,6 +69,8 @@ export function createTranslateLoader(http: HttpClient) {
     ClassFormComponent,
     StudentsPageComponent,
     StudentsFormComponent,
+    TeacherTableComponent,
+    StudentTableComponent,
   ],
   imports: [
     BrowserModule,
