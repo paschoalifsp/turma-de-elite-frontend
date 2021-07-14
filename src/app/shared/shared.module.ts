@@ -25,6 +25,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { DashboardNavigatorButtonComponent } from './components/dashboard-navigator-button/dashboard-navigator-button.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {createTranslateLoader} from "../app.module";
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import {createTranslateLoader} from "../app.module";
     MatProgressSpinnerModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatStepperModule
   ],
   exports: [
     CommonModule,
@@ -84,7 +86,8 @@ import {createTranslateLoader} from "../app.module";
     MatSlideToggleModule,
     MatSelectModule,
     MatAutocompleteModule,
-    DashboardNavigatorButtonComponent
+    DashboardNavigatorButtonComponent,
+    MatStepperModule
   ],
   declarations: [
     DashboardNavigatorButtonComponent

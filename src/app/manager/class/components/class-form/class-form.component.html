@@ -3,38 +3,100 @@
   <h1 class="title">
     {{(isEdit?'labels.editClass' : 'labels.createClass') |translate}}
   </h1>
+  <mat-stepper class="full-width" orientation="vertical" [linear]="true" #stepper fxFlex="100">
+    <mat-step>
+      <ng-template matStepLabel>Escolha os professores</ng-template>
+      <div fxLayout="row" fxLayoutAlign="space-between " fxFlex="100">
+        <mat-form-field
+          fxFlex="80" appearance="outline">
+          <mat-label>{{'labels.teacherEmail'}}</mat-label>
+          <input
+            matInput
+            type="text"
+            [formControl]="teacherEmail"
+            placeholder="{{'placeholder.teacherEmail'|translate}}"
+            required>
+        </mat-form-field>
+        <button mat-mini-fab color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <table mat-table [dataSource]="teacherDataSource" class="mat-elevation-z1 full-width">
 
-  <form
-    fxLayout="row wrap"
-    fxLayoutAlign="space-between"
-    class="full-width"
-    fxFlex="100"
-    [formGroup]="managerForm"
-    (ngSubmit)="isEdit ? updateManager() : registerManager()"
-    >
-    <div fxLayout="row" fxLayoutAlign="space-between " fxFlex="100">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> {{'labels.name'|translate}} </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> E-mail </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> {{'labels.actions'|translate}} </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="teacherColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: teacherColumns;"></tr>
+      </table>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Escolha os alunos</ng-template>
+      <div fxLayout="row" fxLayoutAlign="space-between " fxFlex="100">
+        <mat-form-field
+          fxFlex="80" appearance="outline">
+          <mat-label>{{'labels.teacherEmail'}}</mat-label>
+          <input
+            matInput
+            type="text"
+            [formControl]="teacherEmail"
+            placeholder="{{'placeholder.teacherEmail'|translate}}"
+            required>
+        </mat-form-field>
+        <button mat-mini-fab color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <table mat-table [dataSource]="studentDataSource" class="mat-elevation-z1 full-width">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> {{'labels.name'|translate}} </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="registry">
+          <th mat-header-cell *matHeaderCellDef> {{'labels.registry'|translate}} </th>
+          <td mat-cell *matCellDef="let element"> {{element.registry}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> {{'labels.actions'|translate}} </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="studentColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: studentColumns;"></tr>
+      </table>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Dê um nome para a turma</ng-template>
       <mat-form-field
         fxFlex="80" appearance="outline">
-        <mat-label>{{'labels.registry'|translate}}</mat-label>
+        <mat-label>{{'labels.teacherEmail'}}</mat-label>
         <input
           matInput
           type="text"
-          formControlName="registry"
-          placeholder="{{'placeholder.registry'|translate}}"
+          [formControl]="teacherEmail"
+          placeholder="{{'placeholder.teacherEmail'|translate}}"
           required>
-        <mat-error *ngIf="managerForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
       </mat-form-field>
-      <button mat-mini-fab color="primary">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-    <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
-    <div *ngIf="isLoading;then showLoader;else showButton"></div>
-    <ng-template #showLoader>
-      <mat-spinner diameter="50"></mat-spinner>
-    </ng-template>
-    <ng-template #showButton>
-      <button mat-raised-button [disabled]="managerForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
-    </ng-template>
-  </form>
+      <button mat-flat-button color="primary">Criar turma</button>
+    </mat-step>
+  </mat-stepper>
 </div>
