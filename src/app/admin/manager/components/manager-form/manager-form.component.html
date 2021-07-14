@@ -12,7 +12,7 @@
         matInput
         type="text"
         formControlName="email"
-        placeholder="user@email.com"
+        placeholder="{{'placeholder.email'| translate}}"
         required>
       <mat-error *ngIf="alreadyRegisteredEmail">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
       <mat-error *ngIf="managerForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
@@ -24,13 +24,13 @@
         matInput
         type="text"
         formControlName="name"
-        placeholder="André Monteiro"
+        placeholder="{{'placeholder.managerName'|translate}}"
         required>
       <mat-error *ngIf="managerForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>{{'labels.school'|translate}}</mat-label>
-      <input type="text" matInput formControlName="school" [matAutocomplete]="auto">
+      <input type="text" placeholder="{{'placeholder.schoolName'| translate}}" matInput formControlName="school" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySchoolName">
         <mat-option *ngFor="let school of filteredSchools$ | async" [value]="school">
           {{school.name + ' | ' + school.identifier}}
