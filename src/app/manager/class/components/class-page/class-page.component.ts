@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {ManagerService} from "../../../../admin/manager/services/manager.service";
 import {PageEvent} from "@angular/material/paginator";
+import {ClassService} from "../../services/class.service";
 
 @Component({
   selector: 'app-class-page',
@@ -24,7 +25,9 @@ export class ClassPageComponent implements OnInit {
 
   createMode = true;
 
-  constructor(private managerService: ManagerService) {
+  clear = false;
+
+  constructor(private classService: ClassService) {
     this.refresh();
   }
 
@@ -32,7 +35,7 @@ export class ClassPageComponent implements OnInit {
   }
 
   refresh(){
-    this.managerService.getManagersUsers(this.pageSize,0).subscribe(response => {
+    this.classService.getAllClasses(this.pageSize,0).subscribe(response => {
       this.classes = response.content;
       this.totalLength = response.totalElements;
       this.isLoading = false;
@@ -41,7 +44,7 @@ export class ClassPageComponent implements OnInit {
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
-    this.managerService.getManagersUsers(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
+    this.classService.getAllClasses(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
       this.classes = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;

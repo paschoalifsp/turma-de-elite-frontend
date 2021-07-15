@@ -45,7 +45,13 @@
     "students": "Students",
     "registerStudent": "Register Student",
     "updateStudent": "Update Student",
-    "registry": "Matrícula"
+    "registry": "Registry",
+    "chooseTeachers": "Choose Teachers",
+    "chooseStudents": "Choose Students",
+    "chooseClassName": "Choose the classname",
+    "className": "Classname",
+    "next": "Next",
+    "previous": "Previous"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
@@ -89,6 +95,7 @@
     "searchAchievements": "Search Achievement",
     "searchClass": "Search Class",
     "studentEmail": "Student E-mail",
-    "addStudent": "Add Student"
+    "addStudent": "Add Student",
+    "teacherEmail": "Teacher E-mail"
   }
 }

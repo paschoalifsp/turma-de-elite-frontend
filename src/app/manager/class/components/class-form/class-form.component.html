@@ -6,29 +6,45 @@
   <mat-stepper class="full-width" orientation="vertical" [linear]="true" #stepper fxFlex="100">
     <mat-step [completed]="teachersCompleted">
       <ng-template matStepLabel>{{'labels.chooseTeachers'|translate}}</ng-template>
-      <app-teacher-table (next)="stepper.next()" (teachers)="updateTeachers($event)"></app-teacher-table>
+      <app-teacher-table
+        (next)="stepper.next()"
+        (teachers)="updateTeachers($event)"
+        [setTeachers]="teachers"
+        [clear]="clear"
+        [classId]="classId">
+      </app-teacher-table>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>{{'labels.chooseStudents'|translate}}</ng-template>
-      <app-student-table (previous)="stepper.previous()" (next)="stepper.next()" (students)="updateStudents($event)"></app-student-table>
+      <app-student-table
+        (previous)="stepper.previous()"
+        (next)="stepper.next()"
+        (students)="updateStudents($event)"
+        [setStudents]="students"
+        [clear]="clear"
+        [classId]="classId">
+      </app-student-table>
     </mat-step>
     <mat-step [completed]="studentsCompleted">
       <ng-template matStepLabel>{{'labels.chooseClassName'|translate}}</ng-template>
-      <mat-form-field
-        fxFlex="80" appearance="outline">
-        <mat-label>{{'labels.className'|translate}}</mat-label>
-        <input
-          matInput
-          type="text"
-          [formControl]="classNameControl"
-          placeholder="{{'placeholder.className'|translate}}"
-          required>
-      </mat-form-field>
+      <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between">
+        <mat-form-field
+          fxFlex="80" appearance="outline">
+          <mat-label>{{'labels.className'|translate}}</mat-label>
+          <input
+            matInput
+            type="text"
+            [formControl]="classNameControl"
+            placeholder="{{'placeholder.className'|translate}}"
+            required>
+        </mat-form-field>
+        <mat-slide-toggle [formControl]="isActiveControl" >{{'labels.active'|translate}}</mat-slide-toggle>
+      </div>
       <button
         mat-flat-button
         color="primary"
         [disabled]="!teachersCompleted || !studentsCompleted || classNameControl.invalid"
-        (click)="createClass()">{{'labels.createClass'|translate}}</button>
+        (click)="isEdit? updateStatusAndName():createClass()">{{(isEdit?'labels.save':'labels.createClass')|translate}}</button>
     </mat-step>
   </mat-stepper>
 </div>

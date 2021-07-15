@@ -10,6 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {MatTableDataSource} from "@angular/material/table";
 import {TeacherService} from "../../../teacher/services/teacher.service";
 import {concatMap, debounceTime, exhaustMap, filter, switchMap} from "rxjs/operators";
+import {ClassService} from "../../services/class.service";
 
 @Component({
   selector: 'app-class-form',
@@ -25,9 +26,12 @@ export class ClassFormComponent implements OnInit {
 
   @Output() save = new EventEmitter();
 
+  clear = false;
+
   teachers:any[] = [];
   students:any[] = [];
   classNameControl = this.fb.control('',Validators.required);
+  isActiveControl = this.fb.control('',Validators.required);
 
   isLoading = false;
 
@@ -35,12 +39,9 @@ export class ClassFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private managerService: ManagerService,
-    private teacherService: TeacherService,
-    private schoolService: SchoolService,
-    private snackbar: MatSnackBar,
+    private classService: ClassService,
     private translateService: TranslateService,
-    private router: Router
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -48,9 +49,7 @@ export class ClassFormComponent implements OnInit {
       if(value['id']){
         this.isEdit = true;
         this.classId = value['id'];
-        this.managerService.getManagerById(this.classId as number).subscribe(({email,name,isActive,school})=>{
 
-        });
       }
     })
   }
@@ -58,48 +57,56 @@ export class ClassFormComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges){
     this.isEdit = !this.createMode;
     if(this.createMode){
-      // this.managerForm.reset();
+      this.teachers = [];
+      this.students = [];
+      this.classNameControl.reset();
+      this.clear = true;
+      setTimeout(() => {
+        this.clear = false;
+      },500)
     }
     else{
-      this.managerService.getManagerById(this.classId as number).subscribe( ({name,email,isActive,school}) => {
-        // this.managerForm.setValue({name,email,isActive,school})
+      this.classService.getClassById(this.classId).subscribe(response => {
+        this.teachers = response.teachers.map((t:any) => ({isActive: t.isActive,name: t.teacher.name,email: t.teacher.email,id:t.teacher.id}));
+        this.students = response.students.map((s:any) => ({isActive: s.isActive,name: s.student.name,registry: s.student.registry,id:s.student.id}));
+        this.classNameControl.setValue(response.name);
+        this.isActiveControl.setValue(response.isActive);
       })
     }
   }
 
   createClass(){
-
+    this.isLoading = true;
+    const teachersId = this.teachers.map(teacher => teacher.id);
+    const studentsId = this.students.map(student => student.id);
+    this.classService.createClass({
+      teachersId,
+      studentsId,
+      className: this.classNameControl.value,
+      isActive: this.isActiveControl.value
+    }).subscribe( success => {
+      this.translateService.get('messages.classCreated').subscribe( translation => {
+        this.isLoading = false;
+        this.save.emit();
+        this.snackbar.open(translation,'Fechar').afterDismissed();
+        this.isLoading = false;
+      })
+    }, error => {
+      this.isLoading = false;
+    })
   }
 
-  updateManager(){
-    // this.isLoading = true;
-    // this.managerService.updateManager(this.classId,this.managerForm.value).subscribe(success => {
-    //   this.translateService.get('messages.managerUpdated').subscribe( translation => {
-    //     this.isLoading = false;
-    //     this.save.emit();
-    //     this.snackbar.open(translation,'Fechar').afterDismissed();
-    //   })
-    // }, error => {
-    //   this.isLoading = false;
-    // })
-  }
-
-  registerManager(){
-    // this.isLoading = true;
-    // this.managerService.registerManager(this.managerForm.value).subscribe(success => {
-    //   this.translateService.get('messages.managerCreated').subscribe( translation => {
-    //     this.isLoading = false;
-    //     this.save.emit();
-    //     this.managerForm.reset();
-    //     this.snackbar.open(translation,'Fechar');
-    //   })
-    // }, error => {
-    //   this.isLoading = false;
-    //   switch (error.status){
-    //     case 409:
-    //       break;
-    //   }
-    // });
+  updateStatusAndName(){
+    this.isLoading = true;
+    this.classService.updateClassNameAndStatus({name: this.classNameControl.value,isActive: this.isActiveControl.value},this.classId).subscribe(success => {
+      this.translateService.get('messages.classNameAndStatusUpdated').subscribe( translation => {
+        this.isLoading = false;
+        this.save.emit();
+        this.snackbar.open(translation,'Fechar').afterDismissed();
+      })
+    }, error => {
+      this.isLoading = false;
+    })
   }
 
   displayName(teacher: any){

@@ -44,7 +44,13 @@
     "students": "Alunos",
     "registerStudent": "Registrar Aluno",
     "updateStudent": "Atualizar Aluno",
-    "registry": "Matrícula"
+    "registry": "Matrícula",
+    "chooseTeachers": "Escolha os Professores",
+    "chooseStudents": "Escolha os Alunos",
+    "chooseClassName": "Escolha o nome da turma",
+    "className": "Nome da Classe",
+    "next": "Próximo",
+    "previous": "Anterior"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
@@ -90,6 +96,7 @@
     "searchAchievements": "Buscar Conquista",
     "searchClass": "Buscar Turma",
     "studentEmail": "E-mail do Estudante",
-    "addStudent": "Adicionar Estudante"
+    "addStudent": "Adicionar Estudante",
+    "teacherEmail": "E-mail do Professor"
   }
 }

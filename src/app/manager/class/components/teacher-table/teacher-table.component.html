@@ -32,7 +32,15 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> {{'labels.actions'|translate}} </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="warn" (click)="removeTeacher(element.id)"><mat-icon>delete</mat-icon></button>
+      <mat-slide-toggle
+        #toggle
+        [(ngModel)]="element.isActive"
+        (click)="changeStatus(!toggle.checked,element.id)">
+        {{(toggle.checked?'labels.active':'labels.inactive')|translate}}
+      </mat-slide-toggle>
+      <button *ngIf="!classId" mat-icon-button color="warn" (click)="removeTeacher(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
     </td>
   </ng-container>
 
