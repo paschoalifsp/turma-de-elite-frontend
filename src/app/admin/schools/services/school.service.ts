@@ -4,6 +4,7 @@ import {environment} from "../../../../environments/environment";
 import {take} from "rxjs/operators";
 import School from "../../../shared/model/school";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,6 +31,5 @@ export class SchoolService {
   findSchoolByNameSimilarity(value: string) {
     return this.http.get<School[]>(`${environment.apiUrl}/api/schools/name/${value}`).pipe(take(1));
   }
-
 
 }

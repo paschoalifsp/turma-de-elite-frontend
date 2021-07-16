@@ -14,7 +14,11 @@
     "identifierNaN": "O identificador deve ser um valor numérico.",
     "minLengthTeacher": "O nome do professor deve ter no mínimo 5 caracteres.",
     "namePattern": "O nome deve conter apenas letras.",
-    "emailPattern": "Insira um e-mail válido."
+    "schoolNamePattern": "O nome da escola deve conter apenas letras e números.",
+    "emailPattern": "Insira um e-mail válido.",
+    "minLengthNameAdmin": "O nome do administrador deve ter no mínimo 5 caracteres.",
+    "nameMinLength": "O nome deve ter pelo menos 5 caracteres.",
+    "schoolNameIsRequired": "É necessário inserir o nome da escola."
   },
   "labels": {
     "login": "Login",
@@ -53,7 +57,7 @@
   "titles":{
     "administrativePanel": "Painel Administrativo",
     "managers": "Gestores",
-    "createUser": "Criar Usuário Admin",
+    "createUser": "Criar Usuário Administrador",
     "editUser": "Editar Usuário",
     "createSchool": "Criar Escola",
     "editSchool": "Editar Escola",
@@ -79,6 +83,7 @@
     "managerCreated": "Gestor registrado com sucesso!",
     "managerUpdated": "Gestor atualizado com sucesso!",
     "schoolUpdated": "Escola atualizada com sucesso!",
+    "teacherCreated": "Professor criado com sucesso!",
     "teacherUpdated": "Professor atualizado com sucesso!",
     "alreadyRegisteredIdentifier": "Já existe uma escola cadastrada com este identificador. Por favor, escolha outro.",
     "alreadyRegisteredEmail": "Este e-mail já foi cadastrado. Por favor, insira um e-mail válido"
@@ -92,7 +97,6 @@
     "managerName": "Nome do Gestor",
     "teacherName": "Nome do Professor",
     "searchSchool": "Buscar Escola",
-    "schoolName": "Nome da Escola",
     "schoolIdentifier": "Identificador da Escola"
   }
 }

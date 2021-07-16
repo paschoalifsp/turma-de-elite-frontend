@@ -26,8 +26,8 @@ export class TeacherFormComponent implements OnInit {
   alreadyRegisteredEmail = false;
 
   teacherForm = this.fb.group({
-    email: ['',Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
-    name: ['',Validators.required, Validators.minLength(5), Validators.pattern("^([a-zA-Zà-úÀ-Ú]|\\s+)+$")],
+    email: ['', Validators.email],
+    name: ['',Validators.required],
     school: ['',Validators.required],
     isActive:['']
   });
@@ -78,7 +78,7 @@ export class TeacherFormComponent implements OnInit {
   updateTeacher(){
     this.isLoading = true;
     this.teacherService.updateTeacher(this.teacherId,this.teacherForm.value).subscribe(success => {
-      this.translateService.get('messages.managerUpdated').subscribe( translation => {
+      this.translateService.get('messages.teacherUpdated').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
         this.snackbar.open(translation,'Fechar').afterDismissed();
@@ -91,7 +91,7 @@ export class TeacherFormComponent implements OnInit {
   registerTeacher(){
     this.isLoading = true;
     this.teacherService.registerTeacher(this.teacherForm.value).subscribe(success => {
-      this.translateService.get('messages.managerCreated').subscribe( translation => {
+      this.translateService.get('messages.teacherCreated').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
         this.teacherForm.reset();
@@ -101,6 +101,9 @@ export class TeacherFormComponent implements OnInit {
       this.isLoading = false;
       switch (error.status){
         case 409:
+          this.translateService.get('messages.alreadyRegisteredIdentifier').subscribe(translation => {
+            this.snackbar.open(translation, 'Fechar');
+          })
           this.alreadyRegisteredEmail = true;
           break;
       }

@@ -36,12 +36,13 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>{{'labels.school'|translate}}</mat-label>
-      <input type="text" placeholder="{{'placeholder.schoolName'| translate}}" matInput formControlName="school" [matAutocomplete]="auto">
+      <input type="text" placeholder="{{'placeholder.schoolName'| translate}}" matInput formControlName="school" required [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySchoolName">
         <mat-option *ngFor="let school of filteredSchools$ | async" [value]="school">
           {{school.name + ' | ' + school.identifier}}
         </mat-option>
       </mat-autocomplete>
+      <mat-error *ngIf="teacherForm.get('school')?.errors?.required">{{'fieldErrors.schoolNameIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
