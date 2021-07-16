@@ -45,8 +45,16 @@ export class UsersPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.userForm.get('name')?.valueChanges.subscribe(value => {
-      if(!value?.id && value?.length > 0){
-        this.filteredUsers$ = this.userService.findSchoolByNameSimilarity(value);
+      if(!value?.id){
+        // this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
+        if (value === ""){
+          this.refresh();
+        } else {
+          this.userService.findUserByNameSimilarity(value).subscribe (users => {
+            this.users = users;
+          }
+        );
+        }
       }
     })
 

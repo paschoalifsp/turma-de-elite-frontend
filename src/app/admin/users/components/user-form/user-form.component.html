@@ -12,7 +12,7 @@
         matInput
         type="text"
         formControlName="email"
-        placeholder="user@email.com"
+        placeholder="{{'placeholder.email'| translate}}"
         required>
       <mat-error *ngIf="alreadyRegisteredEmail">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
       <mat-error *ngIf="userForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
@@ -24,7 +24,7 @@
         matInput
         type="text"
         formControlName="name"
-        placeholder="André Monteiro"
+        placeholder="{{'placeholder.userName'|translate}}"
         required>
       <mat-error *ngIf="userForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
     </mat-form-field>

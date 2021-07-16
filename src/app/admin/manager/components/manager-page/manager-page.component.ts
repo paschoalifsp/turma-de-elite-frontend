@@ -43,8 +43,16 @@ export class ManagerPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.managerForm.get('name')?.valueChanges.subscribe(value => {
-      if(!value?.id && value?.length > 0){
-        this.filteredManagers$ = this.managerService.findManagerByNameSimilarity(value);
+      if(!value?.id){
+        // this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
+        if (value === ""){
+          this.refresh();
+        } else {
+          this.managerService.findManagerByNameSimilarity(value).subscribe (managers => {
+            this.managers = managers;
+          }
+        );
+        }
       }
     })
 

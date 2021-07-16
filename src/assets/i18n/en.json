@@ -9,7 +9,12 @@
     "accountNotFound": "Your account cannot be found",
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordNotSame": "Passwords must match",
-    "identifierIsRequired": "Identifier is required"
+    "identifierIsRequired": "Identifier is required",
+    "minLengthSchool": "School´s name must has at least 5 characters.",
+    "identifierNaN": "The identifier must be a number.",
+    "minLengthTeacher": "Theacher´s name must has at least 5 characters.",
+    "namePattern": "The name must has just letters.",
+    "emailPattern": "Input a valid email."
   },
   "labels": {
     "login": "Login",
@@ -31,17 +36,19 @@
     "inactive": "Inactive",
     "registerManager": "Register Manager",
     "updateManager": "Update Manager",
+    "createManager" : "Create Manager",
     "schools": "Schools",
     "achievements": "Achievements",
     "createAchievement": "Create Achievement",
     "teachers": "Teachers",
-    "createTeacher": "Create Teacher"
+    "createTeacher": "Create Teacher",
     "return": "Return",
     "resetPassword": "Reset Password"
 
   },
   "actions": {
-    "addNewAdmin": "Add Admin"
+    "addNewAdmin": "Add Admin",
+    "close": "Close"
   },
   "hint":{
     "schoolIdentifier": "Insert an unique identifier for school "
@@ -56,7 +63,9 @@
     "achievements": "Achievements",
     "teachers": "Teachers",
     "registerTeacher": "Create Teacher",
-    "updateTeacher": "Edit Teacher"
+    "updateTeacher": "Edit Teacher",
+    "registerManager": "Register Manager",
+    "updateManager": "Edit Manager"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -73,10 +82,18 @@
     "managerCreated": "Manager registered successfully!",
     "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
-    "schoolUpdated": "School updated successfully!"
+    "schoolUpdated": "School updated successfully!",
+    "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one."
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
-    "searchAchievements": "Search Achievement"
+    "searchAchievements": "Search Achievement",
+    "searchManager": "Search Manager",
+    "email": "user@email.com",
+    "schoolName": "School´s Name",
+    "managerName": "Manager´s Name",
+    "teacherName": "Teacher´s Name",
+    "searchSchool": "Search School",
+    "schoolIdentifier": "School´s Identifier"
   }
 }

@@ -9,7 +9,12 @@
     "accountNotFound": "Não foi possível encontrar sua conta",
     "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueceu a senha?\" para redefini-la",
     "passwordNotSame": "As senhas devem corresponder",
-    "identifierIsRequired": "É necessário um identificador único"
+    "identifierIsRequired": "É necessário um identificador único",
+    "minLengthSchool": "O nome da escola deve ter no mínimo 5 caracteres.",
+    "identifierNaN": "O identificador deve ser um valor numérico.",
+    "minLengthTeacher": "O nome do professor deve ter no mínimo 5 caracteres.",
+    "namePattern": "O nome deve conter apenas letras.",
+    "emailPattern": "Insira um e-mail válido."
   },
   "labels": {
     "login": "Login",
@@ -39,7 +44,8 @@
     "resetPassword": "Redefinir senha"
   },
   "actions": {
-    "addNewAdmin": "Adicionar Administrador"
+    "addNewAdmin": "Adicionar Administrador",
+    "close": "Fechar"
   },
   "hint":{
     "schoolIdentifier": "Insira um identificador único para esta escola"
@@ -73,10 +79,19 @@
     "managerCreated": "Gestor registrado com sucesso!",
     "managerUpdated": "Gestor atualizado com sucesso!",
     "schoolUpdated": "Escola atualizada com sucesso!",
-    "teacherUpdated": "Professor atualizado com sucesso!"
+    "teacherUpdated": "Professor atualizado com sucesso!",
+    "alreadyRegisteredIdentifier": "Já existe uma escola cadastrada com este identificador. Por favor, escolha outro.",
+    "alreadyRegisteredEmail": "Este e-mail já foi cadastrado. Por favor, insira um e-mail válido"
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",
-    "searchAchievements": "Buscar Conquista"
+    "searchAchievements": "Buscar Conquista",
+    "searchManager": "Buscar Gestor",
+    "email": "usuario@email.com",
+    "schoolName": "Nome da Escola",
+    "managerName": "Nome do Gestor",
+    "teacherName": "Nome do Professor",
+    "searchSchool": "Buscar Escola",
+    "schoolIdentifier": "Identificador da Escola"
   }
 }

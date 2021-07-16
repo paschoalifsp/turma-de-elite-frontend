@@ -29,7 +29,7 @@ export class UsersService {
     return this.http.get<User>(`${environment.apiUrl}/api/admin/${userId}`).pipe(take(1));
   }
 
-  findSchoolByNameSimilarity(value: string): Observable<User[]> {
+  findUserByNameSimilarity(value: string): Observable<User[]> {
     return this.http.get<User[]>(`${environment.apiUrl}/api/admin/name/${value}`).pipe(take(1));
   }
 

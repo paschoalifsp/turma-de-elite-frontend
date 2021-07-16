@@ -7,7 +7,7 @@
     <div fxFlex="45">
       <mat-form-field class="full-width" appearance="outline">
         <form [formGroup] = "managerForm">
-        <input type="tel" matInput placeholder="Buscar gestor" [formControl]="searchControl" [matAutocomplete]="auto" formControlName="name">
+        <input type="tel" matInput placeholder="{{'placeholder.searchManager'| translate}}" [formControl]="searchControl" [matAutocomplete]="auto" formControlName="name">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayManagerName">
           <mat-option *ngFor="let manager of filteredManagers$ | async" [value]="manager">
             {{manager.name + ' | ' + manager.school.name}}
@@ -33,7 +33,7 @@
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
         *ngFor="let manager of managers"
-        (click)="managerToggleId=manager.id;createMode=false">
+        (click)="managerToggleId=manager.id === undefined ? null : manager.id;createMode=false">
         <mat-icon [ngClass]="manager.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{manager.name}}</p>
       </a>

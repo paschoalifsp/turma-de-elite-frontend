@@ -19,7 +19,7 @@ export class SchoolsPageComponent implements OnInit {
   isLoading = true;
   isChangingPage = false;
 
-  schools:any[] = [];
+  schools: School[] = [];
 
   totalLength = 0;
   pageSize = 5;
@@ -46,9 +46,17 @@ export class SchoolsPageComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.schoolForm.get('name')?.valueChanges.subscribe(value => {
-      if(!value?.id && value?.length > 0){
-        this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
+      this.schoolForm.get('name')?.valueChanges.subscribe(value => {
+      if(!value?.id){
+        // this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
+        if (value === ""){
+          this.refresh();
+        } else {
+          this.schoolService.findSchoolByNameSimilarity(value).subscribe (schools => {
+            this.schools = schools;
+          }
+        );
+        }
       }
     })
 

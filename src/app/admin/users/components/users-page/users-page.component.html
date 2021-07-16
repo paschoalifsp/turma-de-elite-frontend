@@ -17,7 +17,7 @@
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
       <a
-        [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
+        [ngClass]="'mat-elevation-z1 ' +  (createMode?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
@@ -34,7 +34,7 @@
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
         *ngFor="let user of users"
-        (click)="usersToggleId=user.id;createMode=false">
+        (click)="usersToggleId=user.id === undefined ? null : user.id;createMode=false">
         <mat-icon [ngClass]="user.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{user.name}}</p>
       </a>
