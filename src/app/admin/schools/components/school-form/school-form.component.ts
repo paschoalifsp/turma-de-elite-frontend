@@ -5,6 +5,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {SchoolService} from "../../services/school.service";
 import {EventEmitter} from '@angular/core';
+import {transition} from "@angular/animations";
 
 @Component({
   selector: 'app-school-form',
