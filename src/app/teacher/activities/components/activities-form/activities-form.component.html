@@ -1,0 +1,55 @@
+<div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
+
+  <h1 class="title">
+    {{(isEdit?'labels.updateActivity' : 'labels.createActivity') |translate}}
+  </h1>
+
+  <form
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between"
+    class="full-width"
+    fxFlex="100"
+    [formGroup]="studentForm"
+    (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
+    <mat-form-field
+      fxFlex="60" appearance="outline">
+      <mat-label>{{'labels.name'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        required>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="30" appearance="outline">
+      <mat-label>{{'labels.punctuation'|translate}}</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="punctuation"
+        required>
+    </mat-form-field>
+    <mat-form-field fxFlex="90" appearance="outline">
+      <mat-label>{{'labels.classes'|translate}}</mat-label>
+      <mat-select multiple >
+        <mat-option *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id">
+          {{schoolClass.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="45" appearance="outline">
+      <mat-label>{{'labels.description'|translate}}</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <mat-slide-toggle formControlName="isVisible">{{'labels.visible'|translate}}</mat-slide-toggle>
+      <div *ngIf="isLoading;then showLoader;else showButton"></div>
+    <ng-template #showLoader>
+      <mat-spinner diameter="50"></mat-spinner>
+    </ng-template>
+    <ng-template #showButton>
+      <button mat-raised-button [disabled]="studentForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+    </ng-template>
+  </form>
+</div>

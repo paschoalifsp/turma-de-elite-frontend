@@ -51,7 +51,14 @@
     "chooseClassName": "Choose the classname",
     "className": "Classname",
     "next": "Next",
-    "previous": "Previous"
+    "previous": "Previous",
+    "activities": "Activities",
+    "addNewActivity": "Add new activity",
+    "createActivity": "Create Activity",
+    "updateActivity": "Update Activity",
+    "description": "Description",
+    "punctuation": "Punctuation",
+    "visible": "Visible"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
@@ -69,7 +76,8 @@
     "achievements": "Achievements",
     "teachers": "Teachers",
     "registerTeacher": "Create Teacher",
-    "updateTeacher": "Edit Teacher"
+    "updateTeacher": "Edit Teacher",
+    "yourClasses": "Your classes and activities"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",

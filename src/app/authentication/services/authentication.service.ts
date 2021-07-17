@@ -44,6 +44,7 @@ export class AuthenticationService {
       case 'STUDENT':
         break;
       case 'TEACHER':
+        this.router.navigate(['/teacher/dashboard']);
         break;
       case 'MANAGER':
         this.router.navigate(['/manager/dashboard']);

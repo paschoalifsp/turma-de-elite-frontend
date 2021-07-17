@@ -24,6 +24,9 @@ import {AchievementPageComponent} from "./manager/achievement/components/achieve
 import {TeacherPageComponent} from "./manager/teacher/components/teacher-page/teacher-page.component";
 import {ClassPageComponent} from "./manager/class/components/class-page/class-page.component";
 import {StudentsPageComponent} from "./manager/students/components/students-page/students-page.component";
+import {TeacherDashboardComponent} from "./teacher/dashboard/components/dashboard/teacher-dashboard.component";
+import {IsTeacherGuard} from "./authentication/guards/is-teacher.guard";
+import {ActivitiesPageComponent} from "./teacher/activities/components/activities-page/activities-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -58,7 +61,16 @@ const routes: Routes = [
       { path: 'teachers', component: TeacherPageComponent},
       { path: 'classes', component: ClassPageComponent},
       { path: 'students', component: StudentsPageComponent},
-
+    ]
+  },
+  {
+    path: 'teacher',
+    component: ToolbarComponent,
+    canActivate: [AngularFireAuthGuard, IsTeacherGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    children: [
+      { path: 'dashboard', component: TeacherDashboardComponent},
+      { path: 'activities', component: ActivitiesPageComponent},
     ]
   },
 

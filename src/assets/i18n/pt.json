@@ -50,7 +50,14 @@
     "chooseClassName": "Escolha o nome da turma",
     "className": "Nome da Classe",
     "next": "Próximo",
-    "previous": "Anterior"
+    "previous": "Anterior",
+    "activities": "Atividades",
+    "addNewActivity": "Adicionar nova atividade",
+    "createActivity": "Criar Atividade",
+    "updateActivity": "Editar Atividade",
+    "description": "Descrição",
+    "punctuation": "Pontuação",
+    "visible": "Visível"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
@@ -69,7 +76,8 @@
     "updateManager": "Atualizar Gestor",
     "achievements": "Conquistas",
     "registerTeacher": "Criar Professor",
-    "updateTeacher": "Atualizar Professor"
+    "updateTeacher": "Atualizar Professor",
+    "yourClasses": "Suas turmas e atividades"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
