@@ -89,9 +89,11 @@
     "searchManager": "Buscar Gestor",
     "email": "usuario@email.com",
     "schoolName": "Nome da Escola",
+    "userName": "Nome do Usuário",
     "managerName": "Nome do Gestor",
     "teacherName": "Nome do Professor",
     "searchSchool": "Buscar Escola",
+    "searchUser": "Buscar Usuário Administrador",
     "schoolIdentifier": "Identificador da Escola"
   }
 }

@@ -90,10 +90,12 @@
     "searchAchievements": "Search Achievement",
     "searchManager": "Search Manager",
     "email": "user@email.com",
-    "schoolName": "School´s Name",
-    "managerName": "Manager´s Name",
-    "teacherName": "Teacher´s Name",
+    "userName": "User name",
+    "schoolName": "School Name",
+    "managerName": "Manager Name",
+    "teacherName": "Teacher Name",
     "searchSchool": "Search School",
-    "schoolIdentifier": "School´s Identifier"
+    "searchUser": "Search Admin User",
+    "schoolIdentifier": "School Identifier"
   }
 }

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
 import User from "../../../../shared/model/user";
 import {UsersService} from "../../services/users.service";
 import {PageEvent} from "@angular/material/paginator";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import { of } from 'rxjs';
-import { SchoolService } from 'src/app/admin/schools/services/school.service';
 
 @Component({
   selector: 'app-users-page',

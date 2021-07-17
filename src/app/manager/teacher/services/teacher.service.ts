@@ -5,6 +5,8 @@ import {environment} from "../../../../environments/environment";
 import {take} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import { Observable } from 'rxjs';
+import Teacher from 'src/app/shared/model/teacher';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +42,10 @@ export class TeacherService {
     const language = this.translateService.currentLang;
     return this.http.put<any>(`${environment.apiUrl}/api/teachers/${managerId}`, {schoolId: school.id,language,...rest});
     this.isLoading = false;
+  }
+
+  findTeacherByNameSimilarity(value: string): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>(`${environment.apiUrl}/api/teachers/name/${value}`).pipe(take(1));
   }
 
   showSnackbar(message: string){

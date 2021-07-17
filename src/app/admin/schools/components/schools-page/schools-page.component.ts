@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import User from "../../../../shared/model/user";
-import {UsersService} from "../../../users/services/users.service";
 import {PageEvent} from "@angular/material/paginator";
 import {SchoolService} from "../../services/school.service";
 import School from "../../../../shared/model/school";

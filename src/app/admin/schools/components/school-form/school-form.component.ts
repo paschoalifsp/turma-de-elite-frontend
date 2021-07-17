@@ -15,7 +15,7 @@ import {transition} from "@angular/animations";
 export class SchoolFormComponent implements OnInit {
 
   isEdit = false;
-    alreadyRegisteredIdentifier = false;
+  alreadyRegisteredIdentifier = false;
 
   @Input() schoolId:number | null = null;
   @Input() createMode = true;
@@ -52,7 +52,6 @@ export class SchoolFormComponent implements OnInit {
     else{
       this.schoolService.getSchoolById(this.schoolId as number).subscribe( ({name,identifier,isActive}) => {
         this.schoolForm.setValue({name,identifier,isActive})
-
       })
     }
 

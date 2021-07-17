@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {UsersService} from "../../../users/services/users.service";
 import {PageEvent} from "@angular/material/paginator";
 import {ManagerService} from "../../services/manager.service";
 import { of } from 'rxjs';
@@ -55,7 +54,6 @@ export class ManagerPageComponent implements OnInit {
         }
       }
     })
-
   }
 
   refresh(){

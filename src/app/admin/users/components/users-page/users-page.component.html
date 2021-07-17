@@ -7,7 +7,7 @@
     <div fxFlex="45">
       <mat-form-field class="full-width" appearance="outline">
         <form [formGroup]="userForm">
-        <input type="tel" matInput placeholder="Buscar usuário administrador" [formControl]="searchControl" [matAutocomplete]="auto" formControlName="name">
+        <input type="tel" matInput placeholder="{{'placeholder.searchUser'| translate}}" [formControl]="searchControl" [matAutocomplete]="auto" formControlName="name">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayUserName">
           <mat-option *ngFor="let user of filteredUsers$ | async" [value]="user">
             {{user.name + ' | ' + user.email}}
