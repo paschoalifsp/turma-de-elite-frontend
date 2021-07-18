@@ -2,7 +2,7 @@
   "fieldErrors": {
     "invalidEmail": "The e-mail is invalid",
     "alreadyRegisteredEmail": "This E-mail has already been registered",
-    "emailIsRequired": "e-mail is required",
+    "emailIsRequired": "E-mail is required",
     "nameIsRequired": "Name is  required",
     "passwordIsTooShort": "Your password need has at least 6 characters",
     "passwordIsRequired": "Password is required",
@@ -10,8 +10,17 @@
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordNotSame": "Passwords must match",
     "identifierIsRequired": "Identifier is required",
-    "registryIsRequired": "Registry is required"
+    "registryIsRequired": "Registry is required",
+    "minLengthStudent": "Student´s name must have at least 5 characters.",
+    "registryPattern": "Student´s registry must has only letters and numbers.",
+    "minLengthSchool": "School´s name must has at least 5 characters.",
+    "identifierNaN": "The identifier must be a number.",
+    "minLengthTeacher": "Teacher´s name must has at least 5 characters.",
+    "namePattern": "The name must has just letters.",
+    "emailPattern": "Input a valid email.",
+    "classNameIsRequired": "Class´s name is required."
   },
+
   "labels": {
     "login": "Login",
     "doFirstAccess": "First Access",
@@ -53,12 +62,15 @@
     "next": "Next",
     "previous": "Previous"
   },
+
   "actions": {
     "addNewAdmin": "Add Admin"
   },
+
   "hint":{
     "schoolIdentifier": "Insert an unique identifier for school "
   },
+
   "titles":{
     "createUser": "Create Admin User",
     "editUser": "Edit User",
@@ -71,6 +83,7 @@
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher"
   },
+
   "tooltip": {
     "addNewUser": "Register new admin user",
     "addNewSchool": "Register new school",
@@ -79,6 +92,7 @@
     "delete": "Delete",
     "firstAccessEmailResend": "Resent first access email"
   },
+
   "messages": {
     "firstAccessAlreadyDone": "First access already been done",
     "userCreated": "User created successfully!",
@@ -90,12 +104,20 @@
     "studentRegistered": "Student registered successfully!",
     "studentUpdated": "Student updated successfully!"
   },
+
   "placeholder": {
     "searchTeacher": "Search Teacher",
     "searchAchievements": "Search Achievement",
     "searchClass": "Search Class",
+    "searchStudent": "Search Student",
     "studentEmail": "Student E-mail",
     "addStudent": "Add Student",
-    "teacherEmail": "Teacher E-mail"
+    "teacherEmail": "Teacher E-mail",
+    "studentRegistry": "Student´s Registry",
+    "schoolIdentifier": "School´s Identifier",
+    "studentName": "Student´s Name",
+    "searchSchool": "Search School",
+    "schoolName": "School´s Name",
+    "className": "Class´s Name"
   }
 }

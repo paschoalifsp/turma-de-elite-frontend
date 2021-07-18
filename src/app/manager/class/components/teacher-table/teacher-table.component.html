@@ -4,9 +4,13 @@
       matInput
       type="text"
       [formControl]="teacherEmail"
+      formControlName="email"
       placeholder="{{'placeholder.teacherEmail'|translate}}"
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
       required
       [matAutocomplete]="auto">
+    <mat-error *ngIf="teacherEmail.hasError('required')">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
+    <mat-error *ngIf="teacherEmail.hasError('pattern')">{{'fieldErrors.emailPattern'|translate}}</mat-error>
   </mat-form-field>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName">
     <mat-option *ngFor="let teacher of teachersOptions"  [value]="teacher">

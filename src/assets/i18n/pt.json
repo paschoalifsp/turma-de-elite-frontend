@@ -10,7 +10,16 @@
     "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueceu a senha?\" para redefini-la",
     "passwordNotSame": "As senhas devem corresponder",
     "identifierIsRequired": "É necessário um identificador único",
-    "registryIsRequired": "É necessário inserir uma matrícula"
+    "registryIsRequired": "É necessário inserir uma matrícula",
+    "minLengthStudent": "O nome do aluno deve ter no mínimo 5 caracteres.",
+    "registryPattern": "A matrícula do aluno deve conter apenas letras e números.",
+    "minLengthSchool": "O nome da escola deve ter no mínimo 5 caracteres.",
+    "identifierNaN": "O identificador deve ser um valor numérico.",
+    "minLengthTeacher": "O nome do professor deve ter no mínimo 5 caracteres.",
+    "namePattern": "O nome deve conter apenas letras.",
+    "emailPattern": "Insira um e-mail válido.",
+    "classNameIsRequired": "É necessário inserir o nome da turma",
+    "classNamePattern": "O nome da turma deve conter apenas letras e números."
   },
   "labels": {
     "login": "Login",
@@ -89,14 +98,26 @@
     "schoolUpdated": "Escola atualizada com sucesso!",
     "teacherUpdated": "Professor atualizado com sucesso!",
     "studentRegistered": "Estudante registrado com sucesso!",
-    "studentUpdated": "Estudante atualizado com sucesso!"
+    "studentUpdated": "Estudante atualizado com sucesso!",
+    "alreadyRegisteredEmail": "Esse e-mail já foi cadastrado. Por favor, utilize outro e-mail."
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",
     "searchAchievements": "Buscar Conquista",
     "searchClass": "Buscar Turma",
-    "studentEmail": "E-mail do Estudante",
+    "searchStudent": "Buscar Aluno",
+    "studentEmail": "E-mail do Aluno",
     "addStudent": "Adicionar Estudante",
-    "teacherEmail": "E-mail do Professor"
+    "teacherEmail": "E-mail do Professor",
+    "studentRegistry": "Matrícula do Aluno",
+    "studentName": "Nome do Aluno",
+    "searchManager": "Buscar Gestor",
+    "email": "usuario@email.com",
+    "schoolName": "Nome da Escola",
+    "managerName": "Nome do Gestor",
+    "teacherName": "Nome do Professor",
+    "searchSchool": "Buscar Escola",
+    "schoolIdentifier": "Identificador da Escola",
+    "className": "Nome da Classe"
   }
 }
