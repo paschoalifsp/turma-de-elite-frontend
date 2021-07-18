@@ -9,6 +9,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
+        data-cy="name"
         matInput
         type="text"
         formControlName="name"
@@ -19,19 +20,20 @@
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.identifier'|translate}}</mat-label>
       <input
+        data-cy="identifier"
         matInput
         type="text"
         formControlName="identifier"
         required>
       <mat-error *ngIf="schoolForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
     </mat-form-field>
-    <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="schoolForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button data-cy="save" mat-raised-button [disabled]="schoolForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

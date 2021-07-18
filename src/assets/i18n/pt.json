@@ -35,6 +35,7 @@
     "createAchievement": "Criar Conquista",
     "teachers": "Professores",
     "createTeacher": "Criar Professor"
+   
 
   },
   "actions": {
@@ -52,7 +53,8 @@
     "editSchool": "Editar Escola",
     "registerManager": "Registrar Gestor",
     "updateManager": "Atualizar Gestor",
-    "achievements": "Conquistas"
+    "achievements": "Conquistas",
+    "registerTeacher":"Cadastrar Professor"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
@@ -67,8 +69,10 @@
     "userCreated": "Usuário criado com sucesso!",
     "userUpdated": "Usuário atualizado com sucesso!",
     "schoolCreated": "Escola criada com sucesso!",
-    "managerCreated": "Gestor registrado com sucesso!",
+    "managerCreated": "Gestor criado com sucesso!",
     "managerUpdated": "Gestor atualizado com sucesso!",
-    "schoolUpdated": "Escola atualizada com sucesso!"
+    "schoolUpdated": "Escola atualizada com sucesso!",
+    "teacherUpdated": "Professor atualizado com sucesso",
+    "teacherCreated": "Professor crido com sucesso"
   }
 }
