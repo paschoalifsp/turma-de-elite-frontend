@@ -3,16 +3,16 @@
     <button mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
     <h1 class="mat-display-1">{{'titles.yourClasses'|translate}}</h1>
   </div>
-  <div fxLayout="row wrap" fxLayoutGap="15px" fxFlex="90" class="class-list">
-    <mat-icon>filter_list</mat-icon>
-    <div
-      class="class-name"
-      fxLayoutAlign="center center"
-      [style.border-color]="colors[(i % 7)]"
-      *ngFor="let class of classes;let i = index">
-      <div>{{class}}</div>
-    </div>
-  </div>
+<!--  <div fxLayout="row wrap" fxLayoutGap="15px" fxFlex="90" class="class-list">-->
+<!--    <mat-icon>filter_list</mat-icon>-->
+<!--    <div-->
+<!--      class="class-name"-->
+<!--      fxLayoutAlign="center center"-->
+<!--      [style.border-color]="colors[(i % 7)]"-->
+<!--      *ngFor="let class of classes;let i = index">-->
+<!--      <div>{{class}}</div>-->
+<!--    </div>-->
+<!--  </div>-->
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
     <div fxFlex="45">
       <a

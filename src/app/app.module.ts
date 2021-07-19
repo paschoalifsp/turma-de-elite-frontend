@@ -28,8 +28,8 @@ import { SchoolFormComponent } from './admin/schools/components/school-form/scho
 import { ManagerPageComponent } from './admin/manager/components/manager-page/manager-page.component';
 import { ManagerFormComponent } from './admin/manager/components/manager-form/manager-form.component';
 import { ManagerDashboardComponent } from './manager/dashboard/components/manager-dashboard/manager-dashboard.component';
-import { AchievementPageComponent } from './manager/achievement/components/achievement-page/achievement-page.component';
-import { AchievementFormComponent } from './manager/achievement/components/achievement-form/achievement-form.component';
+import { AchievementPageComponent } from './teacher/achievement/components/achievement-page/achievement-page.component';
+import { AchievementFormComponent } from './teacher/achievement/components/achievement-form/achievement-form.component';
 import { TeacherPageComponent } from './manager/teacher/components/teacher-page/teacher-page.component';
 import { TeacherFormComponent } from './manager/teacher/components/teacher-form/teacher-form.component';
 import { HttpClientModule } from "@angular/common/http";

@@ -20,7 +20,7 @@ import { CreateNewPasswordComponent } from './authentication/components/create-n
 import {ManagerPageComponent} from "./admin/manager/components/manager-page/manager-page.component";
 import {IsManagerGuard} from "./authentication/guards/is-manager.guard";
 import {ManagerDashboardComponent} from "./manager/dashboard/components/manager-dashboard/manager-dashboard.component";
-import {AchievementPageComponent} from "./manager/achievement/components/achievement-page/achievement-page.component";
+import {AchievementPageComponent} from "./teacher/achievement/components/achievement-page/achievement-page.component";
 import {TeacherPageComponent} from "./manager/teacher/components/teacher-page/teacher-page.component";
 import {ClassPageComponent} from "./manager/class/components/class-page/class-page.component";
 import {StudentsPageComponent} from "./manager/students/components/students-page/students-page.component";
@@ -57,7 +57,6 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       { path: 'dashboard', component: ManagerDashboardComponent},
-      { path: 'achievements', component: AchievementPageComponent},
       { path: 'teachers', component: TeacherPageComponent},
       { path: 'classes', component: ClassPageComponent},
       { path: 'students', component: StudentsPageComponent},
@@ -71,6 +70,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: TeacherDashboardComponent},
       { path: 'activities', component: ActivitiesPageComponent},
+      { path: 'achievements', component: AchievementPageComponent},
     ]
   },
 

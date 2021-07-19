@@ -66,8 +66,12 @@ export class ActivitiesFormComponent implements OnInit {
       this.activityForm.reset();
     }
     else{
-      this.activityService.getActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate, ...rest}) =>{
-        this.activityForm.setValue({maxDeliveryDate: moment(maxDeliveryDate),...rest});
+      this.activityService.getActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,classes,...rest}) =>{
+        this.activityForm.setValue({
+          maxDeliveryDate: moment(maxDeliveryDate),
+          schoolClasses: classes.map((c: any) => c.id),
+          ...rest
+        });
       });
     }
   }
@@ -81,7 +85,6 @@ export class ActivitiesFormComponent implements OnInit {
       this.translateService.get('messages.studentRegistered').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
-        this.activityForm.reset();
         this.snackbar.open(translation,'Fechar');
       })
     }, error => {
