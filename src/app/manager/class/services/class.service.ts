@@ -14,8 +14,12 @@ export class ClassService {
     return this.http.post(`${environment.apiUrl}/api/class`,classValue).pipe(take(1));
   }
 
-  getAllClasses(pageSize:any,pageNumber:any){
+  getPaginatedClasses(pageSize:any, pageNumber:any){
     return this.http.get<any>(`${environment.apiUrl}/api/class?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
+  }
+
+  getTeacherHimselfClasses(){
+    return this.http.get<any>(`${environment.apiUrl}/api/class/teacher-himself`).pipe(take(1));
   }
 
   getClassById(id: any){
@@ -32,5 +36,13 @@ export class ClassService {
 
   updateTeacherStatus(status: boolean,classId: any,teacherId: any) {
     return this.http.put<any>(`${environment.apiUrl}/api/class/${classId}/teacher/${teacherId}`,status).pipe(take(1));
+  }
+
+  addTeacherToClass(teacherId: any,classId: any){
+    return this.http.post<any>(`${environment.apiUrl}/api/class/${classId}/teacher/${teacherId}`, {}).pipe(take(1));
+  }
+
+  addStudentToClass(studentId: any, classId: any) {
+    return this.http.post<any>(`${environment.apiUrl}/api/class/${classId}/student/${studentId}`, {}).pipe(take(1));
   }
 }

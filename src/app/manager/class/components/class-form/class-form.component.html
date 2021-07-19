@@ -8,10 +8,10 @@
       <ng-template matStepLabel>{{'labels.chooseTeachers'|translate}}</ng-template>
       <app-teacher-table
         (next)="stepper.next()"
-        (teachers)="updateTeachers($event)"
-        [setTeachers]="teachers"
+        [(teachers)]="teachers"
         [clear]="clear"
-        [classId]="classId">
+        [classId]="classId"
+        [editMode]="isEdit">
       </app-teacher-table>
     </mat-step>
     <mat-step>
@@ -19,8 +19,7 @@
       <app-student-table
         (previous)="stepper.previous()"
         (next)="stepper.next()"
-        (students)="updateStudents($event)"
-        [setStudents]="students"
+        [(students)]="students"
         [clear]="clear"
         [classId]="classId">
       </app-student-table>

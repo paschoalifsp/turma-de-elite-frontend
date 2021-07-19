@@ -58,7 +58,8 @@
     "updateActivity": "Update Activity",
     "description": "Description",
     "punctuation": "Punctuation",
-    "visible": "Visible"
+    "visible": "Visible",
+    "maxDeliveryDate": "Max Delivery Date"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
@@ -104,6 +105,7 @@
     "searchClass": "Search Class",
     "studentEmail": "Student E-mail",
     "addStudent": "Add Student",
-    "teacherEmail": "Teacher E-mail"
+    "teacherEmail": "Teacher E-mail",
+    "chooseDeliveryDate": "Choose the maximum delivery datetime"
   }
 }

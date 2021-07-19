@@ -26,6 +26,9 @@ import { DashboardNavigatorButtonComponent } from './components/dashboard-naviga
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {createTranslateLoader} from "../app.module";
 import {MatStepperModule} from "@angular/material/stepper";
+import {NgxMatDatetimePickerModule, NgxMatTimepickerModule} from "@angular-material-components/datetime-picker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {NgxMatMomentModule} from "@angular-material-components/moment-adapter";
 
 @NgModule({
   imports: [
@@ -60,7 +63,11 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatSlideToggleModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDatepickerModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatMomentModule
   ],
   exports: [
     CommonModule,
@@ -87,7 +94,12 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatSelectModule,
     MatAutocompleteModule,
     DashboardNavigatorButtonComponent,
-    MatStepperModule
+    MatStepperModule,
+    MatDatepickerModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatMomentModule
+
   ],
   declarations: [
     DashboardNavigatorButtonComponent

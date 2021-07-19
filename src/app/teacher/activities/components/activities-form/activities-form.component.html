@@ -9,8 +9,8 @@
     fxLayoutAlign="space-between"
     class="full-width"
     fxFlex="100"
-    [formGroup]="studentForm"
-    (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
+    [formGroup]="activityForm"
+    (ngSubmit)="isEdit ? updateActivity() : createActivity()">
     <mat-form-field
       fxFlex="60" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
@@ -31,11 +31,22 @@
     </mat-form-field>
     <mat-form-field fxFlex="90" appearance="outline">
       <mat-label>{{'labels.classes'|translate}}</mat-label>
-      <mat-select multiple >
+      <mat-select multiple formControlName="schoolClasses" >
         <mat-option *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id">
           {{schoolClass.name}}
         </mat-option>
       </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="90" appearance="outline">
+      <input
+        matInput
+        [ngxMatDatetimePicker]="picker"
+        placeholder="{{'placeholder.chooseDeliveryDate'|translate}}"
+        formControlName="maxDeliveryDate">
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker
+        #picker>
+      </ngx-mat-datetime-picker>
     </mat-form-field>
     <mat-form-field
       fxFlex="45" appearance="outline">
@@ -44,12 +55,13 @@
     </mat-form-field>
     <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <mat-slide-toggle formControlName="isVisible">{{'labels.visible'|translate}}</mat-slide-toggle>
-      <div *ngIf="isLoading;then showLoader;else showButton"></div>
+    <mat-slide-toggle formControlName="isDeliverable">{{'labels.deliverable'|translate}}</mat-slide-toggle>
+    <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="studentForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-raised-button [disabled]="false" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

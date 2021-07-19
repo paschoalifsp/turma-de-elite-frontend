@@ -113,16 +113,8 @@ export class ClassFormComponent implements OnInit {
     return teacher && teacher.name ? teacher.name: '';
   }
 
-  updateTeachers(teachers: any) {
-    this.teachers = teachers;
-  }
-
   get teachersCompleted(){
     return this.teachers.length > 0;
-  }
-
-  updateStudents(students: any){
-    this.students = students;
   }
 
   get studentsCompleted(){

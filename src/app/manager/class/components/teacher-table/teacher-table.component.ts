@@ -1,11 +1,12 @@
 import {Component, OnInit, Output, EventEmitter, SimpleChanges, Input} from '@angular/core';
 import {TeacherService} from "../../../teacher/services/teacher.service";
 import {MatTableDataSource} from "@angular/material/table";
-import {concatMap, debounceTime, filter} from "rxjs/operators";
+import {catchError, concatMap, debounceTime, filter, startWith, tap} from "rxjs/operators";
 import {FormBuilder} from "@angular/forms";
 import {ClassService} from "../../services/class.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-teacher-table',
@@ -15,18 +16,18 @@ import {TranslateService} from "@ngx-translate/core";
 export class TeacherTableComponent implements OnInit {
 
   @Output() next = new EventEmitter();
-  @Output() teachers = new EventEmitter<any>();
+  @Output() teachersChange = new EventEmitter<any>();
 
   @Input() clear = false;
-  @Input() setTeachers:any[] = [];
+  @Input() teachers:any[] = [];
   @Input() classId: any;
+  @Input() editMode = false;
 
   teacherColumns = ['name','email','actions']
   teacherDataSource = new MatTableDataSource<any>([]);
   teacherEmail = this.fb.control('');
 
   teachersOptions: any[] = [];
-  _teachers:any[] = []
 
   constructor(
     private teacherService: TeacherService,
@@ -40,42 +41,47 @@ export class TeacherTableComponent implements OnInit {
     this.teacherEmail
       .valueChanges
       .pipe(
-        filter(e => e.length > 3),
+        tap(console.log),
+        startWith(''),
+        filter(e => e != null && e?.length > 3),
         debounceTime(1000),
         concatMap(e => {
-          console.log(e);
           return this.teacherService.findByEmailSimilarity(e);
+        }),
+        catchError(e => {
+          console.log(e);
+          return of([]);
         })
-      ).subscribe(teachers => {
+      ).subscribe((teachers: any) => {
       this.teachersOptions = teachers;
     })
   }
 
   ngOnChanges(changes: SimpleChanges){
     if(this.clear){
-      this._teachers = [];
       this.teacherEmail.reset();
-      this.teacherDataSource.data = this._teachers;
+      this.teacherDataSource.data = this.teachers;
     }else{
-      this._teachers.push(...this.setTeachers);
       this.teacherEmail.reset();
-      console.log(this._teachers)
-      this.teacherDataSource.data = this._teachers;
+      this.teacherDataSource.data = this.teachers;
+
     }
   }
 
-
   addTeacher(){
-    this._teachers.push(this.teacherEmail.value);
-    this.teacherEmail.reset();
-    this.teacherDataSource.data = this._teachers;
-    this.teachers.emit(this._teachers);
+    this.teachersChange.emit([...this.teachers,this.teacherEmail.value]);
+    if(this.editMode){
+      this.classService.addTeacherToClass(this.teacherEmail.value.id,this.classId).subscribe(success =>{
+        this.translateService.get('messages.teacherStatusChangeSuccess').subscribe( translation => {
+          this.snackbar.open(translation,'Fechar').afterDismissed();
+          this.teacherEmail.reset();
+        })
+      });
+    }
   }
 
   removeTeacher(teacherId: any){
-    this._teachers = [...this._teachers.filter(t => t.id != teacherId)]
-    this.teacherDataSource.data = this._teachers;
-    this.teachers.emit(this._teachers);
+    this.teachersChange.emit([...this.teachers.filter(t => t.id != teacherId)]);
   }
 
   changeStatus(status: boolean,teacherId: any){
@@ -97,7 +103,7 @@ export class TeacherTableComponent implements OnInit {
   }
 
   isInvalid() {
-    return this._teachers.length < 1;
+    return this.teachers.length < 1;
   }
 
   emitNext(){

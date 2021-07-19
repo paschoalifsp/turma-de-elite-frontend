@@ -7,6 +7,9 @@ import {StudentsService} from "../../../../manager/students/services/students.se
 import {SchoolService} from "../../../../admin/schools/services/school.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
+import {ActivityService} from "../../services/activity.service";
+import * as moment from "moment";
+import {ClassService} from "../../../../manager/class/services/class.service";
 
 @Component({
   selector: 'app-activities-form',
@@ -24,13 +27,14 @@ export class ActivitiesFormComponent implements OnInit {
 
   alreadyRegisteredEmail = false;
 
-  studentForm = this.fb.group({
+  activityForm = this.fb.group({
     name: ['',Validators.required],
     description: ['',Validators.required],
-    class: ['',Validators.required],
+    schoolClasses: ['',Validators.required],
     punctuation: ['',Validators.required],
     isVisible: [true,Validators.required],
     isActive: [true,Validators.required],
+    isDeliverable: [true, Validators.required],
     maxDeliveryDate:['',Validators.required],
   });
 
@@ -43,66 +47,60 @@ export class ActivitiesFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private studentsService: StudentsService,
+    private activityService: ActivityService,
     private schoolService: SchoolService,
     private snackbar: MatSnackBar,
     private translateService: TranslateService,
-    private router: Router
+    private classService: ClassService
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(value => {
-      if(value['id']){
-        this.isEdit = true;
-        this.activityId = value['id'];
-        this.studentsService.getStudentById(this.activityId as number).subscribe(({email,name,isActive,registry})=>{
-          this.studentForm.setValue({email,name,isActive,registry});
-        });
-      }
-    })
+    this.classService.getTeacherHimselfClasses().subscribe(classes => {
+      this.filteredClasses = classes;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges){
     this.isEdit = !this.createMode;
     if(this.createMode){
-      this.studentForm.reset();
+      this.activityForm.reset();
     }
     else{
-      this.studentsService.getStudentById(this.activityId as number).subscribe( ({name,email,isActive,registry}) => {
-        this.studentForm.setValue({name,email,isActive,registry})
-      })
+      this.activityService.getActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate, ...rest}) =>{
+        this.activityForm.setValue({maxDeliveryDate: moment(maxDeliveryDate),...rest});
+      });
     }
   }
 
-  updateTeacher(){
+  updateActivity(){
     this.isLoading = true;
-    this.studentsService.updateStudent(this.activityId,this.studentForm.value).subscribe(success => {
-      this.translateService.get('messages.studentUpdated').subscribe( translation => {
-        this.isLoading = false;
-        this.save.emit();
-        this.snackbar.open(translation,'Fechar').afterDismissed();
-      })
-    }, error => {
-      this.isLoading = false;
-    })
-  }
-
-  registerTeacher(){
-    this.isLoading = true;
-    this.studentsService.registerStudent(this.studentForm.value).subscribe(success => {
+    const {maxDeliveryDate,...rest} = this.activityForm.value;
+    this.activityService.updateActivity(
+      this.activityId,
+      {maxDeliveryDate: maxDeliveryDate.format('YYYY-MM-DD kk:mm:ss'),...rest}).subscribe(success => {
       this.translateService.get('messages.studentRegistered').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
-        this.studentForm.reset();
+        this.activityForm.reset();
         this.snackbar.open(translation,'Fechar');
       })
     }, error => {
       this.isLoading = false;
-      switch (error.status){
-        case 409:
-          this.alreadyRegisteredEmail = true;
-          break;
-      }
+    });
+  }
+
+  createActivity(){
+    this.isLoading = true;
+    const {maxDeliveryDate,...rest} = this.activityForm.value;
+    this.activityService.createActivity({maxDeliveryDate: maxDeliveryDate.format('YYYY-MM-DD kk:mm:ss'),...rest}).subscribe(success => {
+      this.translateService.get('messages.studentRegistered').subscribe( translation => {
+        this.isLoading = false;
+        this.save.emit();
+        this.activityForm.reset();
+        this.snackbar.open(translation,'Fechar');
+      })
+    }, error => {
+      this.isLoading = false;
     });
   }
 

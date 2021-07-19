@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {StudentsService} from "../../../../manager/students/services/students.service";
 import {PageEvent} from "@angular/material/paginator";
+import {ActivityService} from "../../services/activity.service";
 
 @Component({
   selector: 'app-activities-page',
@@ -27,7 +28,7 @@ export class ActivitiesPageComponent implements OnInit {
   classes = ['MAT-5A','MAT-6A','MAT-7A','MAT-8A','MAT-9A'];
   colors = ['#FFC600','#BCED09','#8338EC','#FCF300','#FF715B','#B5179E','#FB5607','#B5179E']
 
-  constructor(private studentsService: StudentsService) {
+  constructor(private activityService: ActivityService) {
     this.refresh();
   }
 
@@ -35,7 +36,7 @@ export class ActivitiesPageComponent implements OnInit {
   }
 
   refresh(){
-    this.studentsService.getStudents(this.pageSize,0).subscribe(response => {
+    this.activityService.getActivities(this.pageSize,0).subscribe(response => {
       this.activities = response.content;
       this.totalLength = response.totalElements;
       this.isLoading = false;
@@ -44,7 +45,7 @@ export class ActivitiesPageComponent implements OnInit {
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
-    this.studentsService.getStudents(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
+    this.activityService.getActivities(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
       this.activities = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;

@@ -35,7 +35,7 @@ export class ClassPageComponent implements OnInit {
   }
 
   refresh(){
-    this.classService.getAllClasses(this.pageSize,0).subscribe(response => {
+    this.classService.getPaginatedClasses(this.pageSize,0).subscribe(response => {
       this.classes = response.content;
       this.totalLength = response.totalElements;
       this.isLoading = false;
@@ -44,7 +44,7 @@ export class ClassPageComponent implements OnInit {
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
-    this.classService.getAllClasses(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
+    this.classService.getPaginatedClasses(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
       this.classes = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;

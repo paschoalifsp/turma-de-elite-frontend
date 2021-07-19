@@ -17,18 +17,19 @@ export class StudentTableComponent implements OnInit {
 
   @Output() next = new EventEmitter();
   @Output() previous = new EventEmitter();
-  @Output() students = new EventEmitter<any>();
+  @Output() studentsChange = new EventEmitter<any>();
 
   @Input() clear = false;
-  @Input() setStudents:any[] = [];
+  @Input() students:any[] = [];
   @Input() classId: any;
+
+  editMode = false;
 
   studentColumns = ['name','email','actions']
   studentDataSource = new MatTableDataSource<any>([]);
 
   studentRegistryControl = this.fb.control('');
   studentOptions: any[] = [];
-  _students:any[] = []
 
   constructor(
     private studentsService: StudentsService,
@@ -42,6 +43,7 @@ export class StudentTableComponent implements OnInit {
     this.studentRegistryControl
       .valueChanges
       .pipe(
+        filter(e => e),
         filter(e => e.length > 3),
         debounceTime(1000),
         concatMap(e => {
@@ -54,28 +56,29 @@ export class StudentTableComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges){
     if(this.clear){
-      this._students = [];
       this.studentRegistryControl.reset();
-      this.studentDataSource.data = this._students;
+      this.studentDataSource.data = this.students;
     }else{
-      this._students.push(...this.setStudents);
       this.studentRegistryControl.reset();
-      this.studentDataSource.data = this._students;
+      this.studentDataSource.data = this.students;
     }
   }
 
 
   addTeacher(){
-    this._students.push(this.studentRegistryControl.value);
-    this.studentRegistryControl.reset();
-    this.studentDataSource.data = this._students;
-    this.students.emit(this._students);
+    this.studentsChange.emit([...this.students,this.studentRegistryControl.value])
+    if(this.editMode){
+      this.classService.addStudentToClass(this.studentRegistryControl.value.id,this.classId).subscribe(success => {
+        this.translateService.get('messages.teacherStatusChangeSuccess').subscribe( translation => {
+          this.snackbar.open(translation,'Fechar').afterDismissed();
+          this.studentRegistryControl.reset();
+        })
+      })
+    }
   }
 
   removeStudent(teacherId: any){
-    this._students = [...this._students.filter(t => t.id != teacherId)]
-    this.studentDataSource.data = this._students;
-    this.students.emit(this._students);
+    this.studentsChange.emit([...this.students.filter(t => t.id != teacherId)]);
   }
 
   displayName(teacher: any){
@@ -83,7 +86,7 @@ export class StudentTableComponent implements OnInit {
   }
 
   isInvalid() {
-    return this._students.length < 1;
+    return this.students.length < 1;
   }
 
   emitNext(){
