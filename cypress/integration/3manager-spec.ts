@@ -1,3 +1,22 @@
+
+describe('Realizar login na aplicação', () => {
+
+  beforeEach(() => {
+    cy.viewport(1440, 900);
+  });
+
+  it('Acessar a página de login, inserir e-mail e senha e entrar', () => {
+    cy.visit('/login')
+      .then(currentSubject => {
+        cy.get('#email-login').type('patricia.paschoal@aluno.ifsp.edu.br')
+        cy.get('#password-login').type('123456')
+        cy.get('#button-login').click()
+        cy.location('pathname', { timeout: 60000 })
+          .should('include', 'admin')
+      })
+  })
+})
+
 describe('Cadastrar um gestor', () => {
 
     beforeEach(() => {
@@ -5,10 +24,7 @@ describe('Cadastrar um gestor', () => {
     });
   
     it('Cadastrar um gestor', () => {
-      cy.intercept({
-        method: 'POST',
-        url: '/admin/managers',
-      }).as('saveManager')
+
   
       cy.visit('/login').then(currentSubject => {
         cy.get('#email-login').type('patricia.paschoal@aluno.ifsp.edu.br')
@@ -22,10 +38,16 @@ describe('Cadastrar um gestor', () => {
         cy.location('pathname', { timeout: 60000 })
           .should('include', 'managers')
 
+          cy.intercept({
+            method: 'POST',
+            url: '/api/managers',
+          }).as('saveManager')
+
         cy.get('[data-cy=createManager]').click()
         cy.get('[data-cy=email]').type('joana@gmail.com')
         cy.get('[data-cy=name]').type('Joana')
         cy.get('[data-cy=school]').type('Escola JS')
+        cy.wait(6000)
         cy.get('[data-cy=school]').type('{downarrow}{enter}')
         cy.get('[data-cy=isActive]').click()
         cy.get('[data-cy=save]').click()
@@ -55,7 +77,7 @@ describe('Cadastrar um gestor', () => {
   
       cy.intercept({
         method: 'PUT',
-        url: '/api/managers/13',
+        url: 'api/managers/13',
       }).as('changeManager')
   
       cy.get('#13').click()
@@ -63,7 +85,6 @@ describe('Cadastrar um gestor', () => {
       cy.get('[data-cy=name]').type('Rosangela')
 
       cy.get('[data-cy=save]').click()
-  
       cy.wait('@changeManager').then((interception) => {
         assert.equal(interception.response?.statusCode, 200)
       })
@@ -77,7 +98,7 @@ describe('Cadastrar um gestor', () => {
       cy.viewport(1440, 900);
     });
   
-    it('Ao inativar uma escola, o seu icone deve ser listado na cor cinza', () => {
+    it('Ao inativar um gestor, o seu icone deve ser listado na cor cinza', () => {
   
       cy.get('#14').click()
       cy.get('[data-cy=isActive]').click()

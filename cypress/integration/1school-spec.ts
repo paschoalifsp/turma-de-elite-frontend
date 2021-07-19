@@ -61,7 +61,7 @@ describe('Alterar escola', () => {
 
   it('Na página de escolas, ao apagar um dado obrigatório o botao salvaar deverá ser desabilitado', () => {
 
-    cy.get('#6').click()
+    cy.get('#newschool').click()
     cy.get('[data-cy=name]').clear()
     cy.get('[data-cy=identifier]').clear()
     cy.get('[data-cy="save"]').should('be.disabled')
@@ -75,11 +75,11 @@ describe('Alterar escola', () => {
       url: '/api/schools/6',
     }).as('changeSchool')
 
-    cy.get('#6').click()
+    cy.get('#newschool').click()
     cy.get('[data-cy=identifier]').clear()
     cy.get('[data-cy=name]').clear()
     cy.get('[data-cy=name]').type('newschool')
-    cy.get('[data-cy=identifier]').type('Alterei aqui')
+    cy.get('[data-cy=identifier]').type('NWS')
     cy.get('[data-cy="save"]').click()
 
     cy.wait('@changeSchool').then((interception) => {
@@ -97,7 +97,7 @@ describe('Inativar uma escola', () => {
 
   it('Ao inativar uma escola, o seu icone deve ser listado na cor cinza', () => {
 
-    cy.get('#11').click()
+    cy.get('#EscolaTeste').click()
     cy.get('[data-cy=isActive]').click()
     cy.get('[data-cy="save"]').click()
 

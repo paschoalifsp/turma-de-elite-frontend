@@ -43,7 +43,7 @@ describe('Cadastrar uma administrador', () => {
   
     it('Na página de administradores, ao apagar um dado obrigatório o botao salvaar deverá ser desabilitado', () => {
   
-      cy.get('#6').click()
+      cy.get('#teste@teste.com.br').click()
       cy.get('[data-cy=name]').clear()
 
       cy.get('[data-cy="save"]').should('be.disabled')
@@ -57,7 +57,7 @@ describe('Cadastrar uma administrador', () => {
         url: '/api/admins/8',
       }).as('changeAdmin')
   
-      cy.get('#8').click()
+      cy.get('#patricia.paschoal@itbeta2.com.br').click()
       cy.get('[data-cy=name]').clear()
       cy.get('[data-cy=name]').type('Maria Clara')
 
@@ -78,7 +78,7 @@ describe('Cadastrar uma administrador', () => {
   
     it('Ao inativar uma escola, o seu icone deve ser listado na cor cinza', () => {
   
-      cy.get('#8').click()
+      cy.get('#patricia.paschoal@itbeta2.com.br').click()
       cy.get('[data-cy=isActive]').click()
       cy.get('[data-cy=save]').click()
   
