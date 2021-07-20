@@ -32,6 +32,7 @@ import { AchievementPageComponent } from './manager/achievement/components/achie
 import { AchievementFormComponent } from './manager/achievement/components/achievement-form/achievement-form.component';
 import { TeacherPageComponent } from './manager/teacher/components/teacher-page/teacher-page.component';
 import { TeacherFormComponent } from './manager/teacher/components/teacher-form/teacher-form.component';
+import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/auth';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -80,7 +81,7 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: HTTP_INTERCEPTORS, useClass: BearerInterceptor, multi: true},
     { provide: LOCALE_ID, useValue: 'pt'},
     { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined },
-
+    { provide: AUTH_SETTINGS, useValue:  environment.appVerificationDisabledForTesting}
   ],
   bootstrap: [AppComponent]
 })
