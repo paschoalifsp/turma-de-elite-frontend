@@ -25,4 +25,12 @@ export class ActivityService {
   updateActivity(id: any, activity: any) {
     return this.http.put<any>(`${environment.apiUrl}/api/activities/${id}`,activity).pipe(take(1));
   }
+
+
+  downloadAttachment(activityId: number) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/api/activities/${activityId}/download`,
+      {responseType: 'blob' as 'json',observe: 'response'}
+    ).pipe(take(1));
+  }
 }

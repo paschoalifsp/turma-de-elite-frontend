@@ -29,6 +29,8 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {NgxMatDatetimePickerModule, NgxMatTimepickerModule} from "@angular-material-components/datetime-picker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {NgxMatMomentModule} from "@angular-material-components/moment-adapter";
+import {MatFileUploadModule} from "angular-material-fileupload";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   imports: [
@@ -67,7 +69,8 @@ import {NgxMatMomentModule} from "@angular-material-components/moment-adapter";
     MatDatepickerModule,
     NgxMatTimepickerModule,
     NgxMatDatetimePickerModule,
-    NgxMatMomentModule
+    NgxMatMomentModule,
+    MatCheckboxModule
   ],
   exports: [
     CommonModule,
@@ -98,8 +101,8 @@ import {NgxMatMomentModule} from "@angular-material-components/moment-adapter";
     MatDatepickerModule,
     NgxMatTimepickerModule,
     NgxMatDatetimePickerModule,
-    NgxMatMomentModule
-
+    NgxMatMomentModule,
+    MatCheckboxModule
   ],
   declarations: [
     DashboardNavigatorButtonComponent

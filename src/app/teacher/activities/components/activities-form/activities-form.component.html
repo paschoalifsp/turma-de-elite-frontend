@@ -9,8 +9,7 @@
     fxLayoutAlign="space-between"
     class="full-width"
     fxFlex="100"
-    [formGroup]="activityForm"
-    (ngSubmit)="isEdit ? updateActivity() : createActivity()">
+    [formGroup]="activityForm">
     <mat-form-field
       fxFlex="60" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
@@ -49,19 +48,46 @@
       </ngx-mat-datetime-picker>
     </mat-form-field>
     <mat-form-field
+      fxFlex="90" appearance="outline">
+      <mat-label>{{'labels.attachment'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        [readonly]="true"
+        formControlName="filename">
+      <button
+        matSuffix
+        mat-icon-button
+        (click)="uploader.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <button
+        *ngIf="isEdit === true && activityForm.get('filename')?.value !== ''"
+        matSuffix
+        mat-icon-button
+        (click)="downloadAttachment()">
+        <mat-icon>file_download</mat-icon>
+      </button>
+    </mat-form-field>
+    <input
+      hidden
+      type="file"
+      #uploader
+      (change)="uploadFile($event)">
+    <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.description'|translate}}</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
-    <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
-    <mat-slide-toggle formControlName="isVisible">{{'labels.visible'|translate}}</mat-slide-toggle>
-    <mat-slide-toggle formControlName="isDeliverable">{{'labels.deliverable'|translate}}</mat-slide-toggle>
+    <mat-checkbox [indeterminate]="false" formControlName="isActive">{{'labels.active'|translate}}</mat-checkbox>
+    <mat-checkbox [indeterminate]="false" formControlName="isVisible">{{'labels.visible'|translate}}</mat-checkbox>
+    <mat-checkbox [indeterminate]="false" formControlName="isDeliverable">{{'labels.deliverable'|translate}}</mat-checkbox>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="false" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-raised-button (click)="isEdit ? updateActivity() : createActivity()" [disabled]="false">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

@@ -27,15 +27,18 @@ export class ActivitiesFormComponent implements OnInit {
 
   alreadyRegisteredEmail = false;
 
+  file:any = null;
+
   activityForm = this.fb.group({
     name: ['',Validators.required],
     description: ['',Validators.required],
     schoolClasses: ['',Validators.required],
     punctuation: ['',Validators.required],
-    isVisible: [true,Validators.required],
-    isActive: [true,Validators.required],
-    isDeliverable: [true, Validators.required],
+    isVisible: [false,Validators.required],
+    isActive: [false,Validators.required],
+    isDeliverable: [false, Validators.required],
     maxDeliveryDate:['',Validators.required],
+    filename: [{value: ''}]
   });
 
   filteredClasses = [] as any[];
@@ -76,12 +79,27 @@ export class ActivitiesFormComponent implements OnInit {
     }
   }
 
+  uploadFile($event:any){
+    this.file = $event.target.files[0];
+    console.log($event?.target);
+    this.activityForm.get('filename')?.setValue(this.file.name);
+  }
+
   updateActivity(){
     this.isLoading = true;
-    const {maxDeliveryDate,...rest} = this.activityForm.value;
+    const {maxDeliveryDate,filename,...rest} = this.activityForm.value;
+    const formDataRequestBody = new FormData();
+    const jsonRequestBody = {
+      maxDeliveryDate: maxDeliveryDate.format('YYYY-MM-DD kk:mm:ss'),
+      document: this.file,
+      ...rest
+    };
+    for(let key in jsonRequestBody){
+      formDataRequestBody.append(key,jsonRequestBody[key]);
+    }
     this.activityService.updateActivity(
       this.activityId,
-      {maxDeliveryDate: maxDeliveryDate.format('YYYY-MM-DD kk:mm:ss'),...rest}).subscribe(success => {
+      formDataRequestBody).subscribe(success => {
       this.translateService.get('messages.studentRegistered').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
@@ -94,8 +112,17 @@ export class ActivitiesFormComponent implements OnInit {
 
   createActivity(){
     this.isLoading = true;
-    const {maxDeliveryDate,...rest} = this.activityForm.value;
-    this.activityService.createActivity({maxDeliveryDate: maxDeliveryDate.format('YYYY-MM-DD kk:mm:ss'),...rest}).subscribe(success => {
+    const {maxDeliveryDate,filename,...rest} = this.activityForm.value;
+    const formDataRequestBody = new FormData();
+    const jsonRequestBody = {
+      maxDeliveryDate: maxDeliveryDate.format('YYYY-MM-DD kk:mm:ss'),
+      document: this.file,
+      ...rest
+    };
+    for(let key in jsonRequestBody){
+      formDataRequestBody.append(key,jsonRequestBody[key]);
+    }
+    this.activityService.createActivity(formDataRequestBody).subscribe(success => {
       this.translateService.get('messages.studentRegistered').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
@@ -104,6 +131,18 @@ export class ActivitiesFormComponent implements OnInit {
       })
     }, error => {
       this.isLoading = false;
+    });
+  }
+
+  downloadAttachment(){
+    this.activityService.downloadAttachment(this.activityId as number).subscribe( response => {
+      console.log(response.headers)
+      const a = document.createElement('a')
+      const objectUrl = URL.createObjectURL(response.body)
+      a.href = objectUrl
+      a.download = response.headers.get('filename') || '';
+      a.click();
+      URL.revokeObjectURL(objectUrl);
     });
   }
 

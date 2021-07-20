@@ -59,7 +59,8 @@
     "description": "Description",
     "punctuation": "Punctuation",
     "visible": "Visible",
-    "maxDeliveryDate": "Max Delivery Date"
+    "maxDeliveryDate": "Max Delivery Date",
+    "attachment": "Attachment"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
