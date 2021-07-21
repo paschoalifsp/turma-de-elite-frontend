@@ -10,9 +10,9 @@
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordNotSame": "Passwords must match",
     "identifierIsRequired": "Identifier is required",
-    "minLengthSchool": "School´s name must has at least 5 characters.",
+    "minLengthSchool": "School name must has at least 5 characters.",
     "identifierNaN": "The identifier must be a number.",
-    "minLengthTeacher": "Theacher´s name must has at least 5 characters.",
+    "minLengthTeacher": "Teacher name must has at least 5 characters.",
     "namePattern": "The name must has just letters.",
     "emailPattern": "Input a valid email."
   },
