@@ -60,7 +60,14 @@
     "punctuation": "Punctuation",
     "visible": "Visible",
     "maxDeliveryDate": "Max Delivery Date",
-    "attachment": "Attachment"
+    "attachment": "Attachment",
+    "expiresIn": "Expires in",
+    "maxPunctuation": "Max Punctuation",
+    "postBy": "Post by",
+    "class": "Class",
+    "delivery": "Delivery",
+    "send": "Send",
+    "expired": "Expired"
   },
   "actions": {
     "addNewAdmin": "Add Admin"

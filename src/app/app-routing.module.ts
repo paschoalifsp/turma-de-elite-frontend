@@ -26,10 +26,11 @@ import {ClassPageComponent} from "./manager/class/components/class-page/class-pa
 import {StudentsPageComponent} from "./manager/students/components/students-page/students-page.component";
 import {TeacherDashboardComponent} from "./teacher/dashboard/components/dashboard/teacher-dashboard.component";
 import {IsTeacherGuard} from "./authentication/guards/is-teacher.guard";
-import {ActivitiesPageComponent} from "./teacher/activities/components/activities-page/activities-page.component";
+import {TeacherActivitiesPage} from "./teacher/activities/components/activities-page/teacher-activities-page.component";
 import {HomeGuard} from "./authentication/guards/home.guard";
 import {IsStudentGuard} from "./authentication/guards/is-student.guard";
 import {StudentDashboardComponent} from "./student/dashboard/components/dashboard/student-dashboard.component";
+import {StudentActivitiesPageComponent} from "./student/activities/components/student-activities/student-activities-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -72,7 +73,7 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       { path: 'dashboard', component: TeacherDashboardComponent},
-      { path: 'activities', component: ActivitiesPageComponent},
+      { path: 'activities', component: TeacherActivitiesPage},
       { path: 'achievements', component: AchievementPageComponent},
     ]
   },
@@ -83,6 +84,7 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       { path: 'dashboard', component: StudentDashboardComponent},
+      { path: 'activities', component: StudentActivitiesPageComponent},
     ]
   },
 

@@ -40,9 +40,11 @@ import { StudentsFormComponent } from './manager/students/components/students-fo
 import { TeacherTableComponent } from './manager/class/components/teacher-table/teacher-table.component';
 import { StudentTableComponent } from './manager/class/components/student-table/student-table.component';
 import { TeacherDashboardComponent } from './teacher/dashboard/components/dashboard/teacher-dashboard.component';
-import { ActivitiesPageComponent } from './teacher/activities/components/activities-page/activities-page.component';
+import { TeacherActivitiesPage } from './teacher/activities/components/activities-page/teacher-activities-page.component';
 import { ActivitiesFormComponent } from './teacher/activities/components/activities-form/activities-form.component';
 import { StudentDashboardComponent } from './student/dashboard/components/dashboard/student-dashboard.component';
+import { StudentActivitiesPageComponent } from './student/activities/components/student-activities/student-activities-page.component';
+import { StudentDeliveryComponent } from './student/activities/components/student-delivery/student-delivery.component';
 
 
 registerLocaleData(localePt);
@@ -76,9 +78,11 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherTableComponent,
     StudentTableComponent,
     TeacherDashboardComponent,
-    ActivitiesPageComponent,
+    TeacherActivitiesPage,
     ActivitiesFormComponent,
     StudentDashboardComponent,
+    StudentActivitiesPageComponent,
+    StudentDeliveryComponent,
   ],
   imports: [
     BrowserModule,
