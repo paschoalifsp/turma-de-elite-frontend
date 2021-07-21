@@ -10,11 +10,15 @@
     "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueceu a senha?\" para redefini-la",
     "passwordNotSame": "As senhas devem corresponder",
     "identifierIsRequired": "É necessário um identificador único",
+<<<<<<< HEAD
     "minLengthSchool": "O nome da escola deve ter no mínimo 5 caracteres.",
     "identifierNaN": "O identificador deve ser um valor numérico.",
     "minLengthTeacher": "O nome do professor deve ter no mínimo 5 caracteres.",
     "namePattern": "O nome deve conter apenas letras.",
     "emailPattern": "Insira um e-mail válido."
+=======
+    "registryIsRequired": "É necessário inserir uma matrícula"
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
   },
   "labels": {
     "login": "Login",
@@ -41,7 +45,30 @@
     "createTeacher": "Criar Professor",
     "inactive": "Inativo",
     "return": "Voltar",
-    "resetPassword": "Redefinir senha"
+    "resetPassword": "Redefinir senha",
+    "classes": "Turmas",
+    "createClass": "Criar Turma",
+    "editClass": "Alterar Turma",
+    "students": "Alunos",
+    "registerStudent": "Registrar Aluno",
+    "updateStudent": "Atualizar Aluno",
+    "registry": "Matrícula",
+    "chooseTeachers": "Escolha os Professores",
+    "chooseStudents": "Escolha os Alunos",
+    "chooseClassName": "Escolha o nome da turma",
+    "className": "Nome da Classe",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "activities": "Atividades",
+    "addNewActivity": "Adicionar nova atividade",
+    "createActivity": "Criar Atividade",
+    "updateActivity": "Editar Atividade",
+    "description": "Descrição",
+    "punctuation": "Pontuação",
+    "visible": "Visível",
+    "maxDeliveryDate": "Data Máxima de Entrega",
+    "attachment": "Anexo"
+
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",
@@ -61,7 +88,8 @@
     "updateManager": "Atualizar Gestor",
     "achievements": "Conquistas",
     "registerTeacher": "Criar Professor",
-    "updateTeacher": "Atualizar Professor"
+    "updateTeacher": "Atualizar Professor",
+    "yourClasses": "Suas turmas e atividades"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
@@ -80,12 +108,18 @@
     "managerUpdated": "Gestor atualizado com sucesso!",
     "schoolUpdated": "Escola atualizada com sucesso!",
     "teacherUpdated": "Professor atualizado com sucesso!",
+<<<<<<< HEAD
     "alreadyRegisteredIdentifier": "Já existe uma escola cadastrada com este identificador. Por favor, escolha outro.",
     "alreadyRegisteredEmail": "Este e-mail já foi cadastrado. Por favor, insira um e-mail válido"
+=======
+    "studentRegistered": "Estudante registrado com sucesso!",
+    "studentUpdated": "Estudante atualizado com sucesso!"
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",
     "searchAchievements": "Buscar Conquista",
+<<<<<<< HEAD
     "searchManager": "Buscar Gestor",
     "email": "usuario@email.com",
     "schoolName": "Nome da Escola",
@@ -95,5 +129,12 @@
     "searchSchool": "Buscar Escola",
     "searchUser": "Buscar Usuário Administrador",
     "schoolIdentifier": "Identificador da Escola"
+=======
+    "searchClass": "Buscar Turma",
+    "studentEmail": "E-mail do Estudante",
+    "addStudent": "Adicionar Estudante",
+    "teacherEmail": "E-mail do Professor",
+    "chooseDeliveryDate": "Escolha o prazo máximo de entrega"
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
   }
 }

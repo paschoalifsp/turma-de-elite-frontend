@@ -25,6 +25,12 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { DashboardNavigatorButtonComponent } from './components/dashboard-navigator-button/dashboard-navigator-button.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {createTranslateLoader} from "../app.module";
+import {MatStepperModule} from "@angular/material/stepper";
+import {NgxMatDatetimePickerModule, NgxMatTimepickerModule} from "@angular-material-components/datetime-picker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {NgxMatMomentModule} from "@angular-material-components/moment-adapter";
+import {MatFileUploadModule} from "angular-material-fileupload";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   imports: [
@@ -58,7 +64,13 @@ import {createTranslateLoader} from "../app.module";
     MatProgressSpinnerModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatMomentModule,
+    MatCheckboxModule
   ],
   exports: [
     CommonModule,
@@ -84,7 +96,13 @@ import {createTranslateLoader} from "../app.module";
     MatSlideToggleModule,
     MatSelectModule,
     MatAutocompleteModule,
-    DashboardNavigatorButtonComponent
+    DashboardNavigatorButtonComponent,
+    MatStepperModule,
+    MatDatepickerModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatMomentModule,
+    MatCheckboxModule
   ],
   declarations: [
     DashboardNavigatorButtonComponent

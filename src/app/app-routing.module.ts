@@ -20,13 +20,21 @@ import { CreateNewPasswordComponent } from './authentication/components/create-n
 import {ManagerPageComponent} from "./admin/manager/components/manager-page/manager-page.component";
 import {IsManagerGuard} from "./authentication/guards/is-manager.guard";
 import {ManagerDashboardComponent} from "./manager/dashboard/components/manager-dashboard/manager-dashboard.component";
-import {AchievementPageComponent} from "./manager/achievement/components/achievement-page/achievement-page.component";
+import {AchievementPageComponent} from "./teacher/achievement/components/achievement-page/achievement-page.component";
 import {TeacherPageComponent} from "./manager/teacher/components/teacher-page/teacher-page.component";
+import {ClassPageComponent} from "./manager/class/components/class-page/class-page.component";
+import {StudentsPageComponent} from "./manager/students/components/students-page/students-page.component";
+import {TeacherDashboardComponent} from "./teacher/dashboard/components/dashboard/teacher-dashboard.component";
+import {IsTeacherGuard} from "./authentication/guards/is-teacher.guard";
+import {ActivitiesPageComponent} from "./teacher/activities/components/activities-page/activities-page.component";
+import {HomeGuard} from "./authentication/guards/home.guard";
+import {IsStudentGuard} from "./authentication/guards/is-student.guard";
+import {StudentDashboardComponent} from "./student/dashboard/components/dashboard/student-dashboard.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: AppComponent, canActivate: [HomeGuard] },
   { path: 'login', component: LoginPageComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'first-access', component: FirstAccessPageComponent, canActivate: [FirstAccessGuard] },
@@ -40,7 +48,6 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: AdminDashboardComponent},
       { path: 'schools', component: SchoolsPageComponent},
-      { path: 'schools/form', component: SchoolFormComponent},
       { path: 'configuration', component: ConfigurationComponent},
       { path: 'admins', component: UsersPageComponent},
       { path: 'managers', component: ManagerPageComponent },
@@ -53,11 +60,31 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       { path: 'dashboard', component: ManagerDashboardComponent},
-      { path: 'achievements', component: AchievementPageComponent},
       { path: 'teachers', component: TeacherPageComponent},
+      { path: 'classes', component: ClassPageComponent},
+      { path: 'students', component: StudentsPageComponent},
     ]
   },
-
+  {
+    path: 'teacher',
+    component: ToolbarComponent,
+    canActivate: [AngularFireAuthGuard, IsTeacherGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    children: [
+      { path: 'dashboard', component: TeacherDashboardComponent},
+      { path: 'activities', component: ActivitiesPageComponent},
+      { path: 'achievements', component: AchievementPageComponent},
+    ]
+  },
+  {
+    path: 'student',
+    component: ToolbarComponent,
+    canActivate: [AngularFireAuthGuard, IsStudentGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    children: [
+      { path: 'dashboard', component: StudentDashboardComponent},
+    ]
+  },
 
 ];
 

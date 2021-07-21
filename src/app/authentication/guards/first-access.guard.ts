@@ -19,6 +19,7 @@ export class FirstAccessGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.auth.verifyFirstAccess(route?.queryParams['token'] as string)
       .pipe(
+        tap(console.log),
         map(value => true),
         catchError((err, caught) => {
           console.log(err);

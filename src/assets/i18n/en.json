@@ -10,11 +10,15 @@
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordNotSame": "Passwords must match",
     "identifierIsRequired": "Identifier is required",
+<<<<<<< HEAD
     "minLengthSchool": "School name must has at least 5 characters.",
     "identifierNaN": "The identifier must be a number.",
     "minLengthTeacher": "Teacher name must has at least 5 characters.",
     "namePattern": "The name must has just letters.",
     "emailPattern": "Input a valid email."
+=======
+    "registryIsRequired": "Registry is required"
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
   },
   "labels": {
     "login": "Login",
@@ -43,8 +47,29 @@
     "teachers": "Teachers",
     "createTeacher": "Create Teacher",
     "return": "Return",
-    "resetPassword": "Reset Password"
-
+    "resetPassword": "Reset Password",
+    "classes": "Classes",
+    "createClass": "Create Class",
+    "editClass": "Edit Class",
+    "students": "Students",
+    "registerStudent": "Register Student",
+    "updateStudent": "Update Student",
+    "registry": "Registry",
+    "chooseTeachers": "Choose Teachers",
+    "chooseStudents": "Choose Students",
+    "chooseClassName": "Choose the classname",
+    "className": "Classname",
+    "next": "Next",
+    "previous": "Previous",
+    "activities": "Activities",
+    "addNewActivity": "Add new activity",
+    "createActivity": "Create Activity",
+    "updateActivity": "Update Activity",
+    "description": "Description",
+    "punctuation": "Punctuation",
+    "visible": "Visible",
+    "maxDeliveryDate": "Max Delivery Date",
+    "attachment": "Attachment"
   },
   "actions": {
     "addNewAdmin": "Add Admin",
@@ -64,8 +89,12 @@
     "teachers": "Teachers",
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher",
+<<<<<<< HEAD
     "registerManager": "Register Manager",
     "updateManager": "Edit Manager"
+=======
+    "yourClasses": "Your classes and activities"
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -83,11 +112,17 @@
     "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
     "schoolUpdated": "School updated successfully!",
+<<<<<<< HEAD
     "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one."
+=======
+    "studentRegistered": "Student registered successfully!",
+    "studentUpdated": "Student updated successfully!"
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
     "searchAchievements": "Search Achievement",
+<<<<<<< HEAD
     "searchManager": "Search Manager",
     "email": "user@email.com",
     "userName": "User name",
@@ -97,5 +132,12 @@
     "searchSchool": "Search School",
     "searchUser": "Search Admin User",
     "schoolIdentifier": "School Identifier"
+=======
+    "searchClass": "Search Class",
+    "studentEmail": "Student E-mail",
+    "addStudent": "Add Student",
+    "teacherEmail": "Teacher E-mail",
+    "chooseDeliveryDate": "Choose the maximum delivery datetime"
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
   }
 }

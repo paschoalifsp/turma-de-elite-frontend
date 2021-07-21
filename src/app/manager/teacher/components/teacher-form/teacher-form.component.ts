@@ -26,13 +26,16 @@ export class TeacherFormComponent implements OnInit {
   alreadyRegisteredEmail = false;
 
   teacherForm = this.fb.group({
+<<<<<<< HEAD
     email: ['', [Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
     name: ['', [Validators.required, Validators.min(5), Validators.pattern("^([a-zA-Zà-úÀ-Ú]|\\s+)+$")]],
     school: ['',Validators.required],
+=======
+    email: ['',Validators.email],
+    name: ['',Validators.required],
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
     isActive:['']
   });
-
-  filteredSchools$ = of([] as School[]);
 
   isLoading = false;
 
@@ -47,17 +50,20 @@ export class TeacherFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+<<<<<<< HEAD
     this.teacherForm.get('school')?.valueChanges.subscribe(value => {
       if(!value?.id && value !== ""){
         this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
       }
     })
+=======
+>>>>>>> 85b86e1e3539c8b14bec0fea75228ab17b197eb5
     this.route.params.subscribe(value => {
       if(value['id']){
         this.isEdit = true;
         this.teacherId = value['id'];
-        this.teacherService.getTeacherById(this.teacherId as number).subscribe(({email,name,isActive,school})=>{
-          this.teacherForm.setValue({email,name,isActive,school});
+        this.teacherService.getTeacherById(this.teacherId as number).subscribe(({email,name,isActive})=>{
+          this.teacherForm.setValue({email,name,isActive});
         });
       }
     })
@@ -69,8 +75,8 @@ export class TeacherFormComponent implements OnInit {
       this.teacherForm.reset();
     }
     else{
-      this.teacherService.getTeacherById(this.teacherId as number).subscribe( ({name,email,isActive,school}) => {
-        this.teacherForm.setValue({name,email,isActive,school})
+      this.teacherService.getTeacherById(this.teacherId as number).subscribe( ({name,email,isActive}) => {
+        this.teacherForm.setValue({name,email,isActive})
       })
     }
   }
