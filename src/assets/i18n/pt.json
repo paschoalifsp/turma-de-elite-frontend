@@ -67,8 +67,14 @@
     "punctuation": "Pontuação",
     "visible": "Visível",
     "maxDeliveryDate": "Data Máxima de Entrega",
-    "attachment": "Anexo"
-
+    "attachment": "Anexo",
+    "expiresIn": "Expira em",
+    "maxPunctuation": "Pontuação Máxima",
+    "postBy": "Postado por",
+    "class": "Turma",
+    "delivery": "Entrega",
+    "send": "Enviar",
+    "expired": "Expirado"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",

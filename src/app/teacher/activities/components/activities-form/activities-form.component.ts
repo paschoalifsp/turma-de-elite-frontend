@@ -69,7 +69,7 @@ export class ActivitiesFormComponent implements OnInit {
       this.activityForm.reset();
     }
     else{
-      this.activityService.getActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,classes,...rest}) =>{
+      this.activityService.getTeacherActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,classes,...rest}) =>{
         this.activityForm.setValue({
           maxDeliveryDate: moment(maxDeliveryDate),
           schoolClasses: classes.map((c: any) => c.id),
@@ -135,7 +135,7 @@ export class ActivitiesFormComponent implements OnInit {
   }
 
   downloadAttachment(){
-    this.activityService.downloadAttachment(this.activityId as number).subscribe( response => {
+    this.activityService.downloadTeacherAttachment(this.activityId as number).subscribe(response => {
       console.log(response.headers)
       const a = document.createElement('a')
       const objectUrl = URL.createObjectURL(response.body)

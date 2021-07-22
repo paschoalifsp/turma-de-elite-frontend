@@ -6,10 +6,10 @@ import {ActivityService} from "../../services/activity.service";
 
 @Component({
   selector: 'app-activities-page',
-  templateUrl: './activities-page.component.html',
-  styleUrls: ['./activities-page.component.scss']
+  templateUrl: './teacher-activities-page.component.html',
+  styleUrls: ['./teacher-activities-page.component.scss']
 })
-export class ActivitiesPageComponent implements OnInit {
+export class TeacherActivitiesPage implements OnInit {
 
   isLoading = false;
   isChangingPage = false;
@@ -36,7 +36,7 @@ export class ActivitiesPageComponent implements OnInit {
   }
 
   refresh(){
-    this.activityService.getActivities(this.pageSize,0).subscribe(response => {
+    this.activityService.getTeacherActivities(this.pageSize,0).subscribe(response => {
       this.activities = response.content;
       this.totalLength = response.totalElements;
       this.isLoading = false;
@@ -45,7 +45,7 @@ export class ActivitiesPageComponent implements OnInit {
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
-    this.activityService.getActivities(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
+    this.activityService.getTeacherActivities(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
       this.activities = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;

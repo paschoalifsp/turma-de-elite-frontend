@@ -31,6 +31,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {NgxMatMomentModule} from "@angular-material-components/moment-adapter";
 import {MatFileUploadModule} from "angular-material-fileupload";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { CountdownToPipe } from './pipes/countdown-to.pipe';
 
 @NgModule({
   imports: [
@@ -72,40 +73,42 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     NgxMatMomentModule,
     MatCheckboxModule
   ],
-  exports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    FlexLayoutModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
-    MatDividerModule,
-    MatListModule,
-    MatTabsModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    MatAutocompleteModule,
-    DashboardNavigatorButtonComponent,
-    MatStepperModule,
-    MatDatepickerModule,
-    NgxMatTimepickerModule,
-    NgxMatDatetimePickerModule,
-    NgxMatMomentModule,
-    MatCheckboxModule
-  ],
+    exports: [
+        CommonModule,
+        FormsModule,
+        RouterModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        FlexLayoutModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatMenuModule,
+        MatDividerModule,
+        MatListModule,
+        MatTabsModule,
+        MatTableModule,
+        MatTooltipModule,
+        MatPaginatorModule,
+        MatProgressSpinnerModule,
+        MatSlideToggleModule,
+        MatSelectModule,
+        MatAutocompleteModule,
+        DashboardNavigatorButtonComponent,
+        MatStepperModule,
+        MatDatepickerModule,
+        NgxMatTimepickerModule,
+        NgxMatDatetimePickerModule,
+        NgxMatMomentModule,
+        MatCheckboxModule,
+        CountdownToPipe
+    ],
   declarations: [
-    DashboardNavigatorButtonComponent
+    DashboardNavigatorButtonComponent,
+    CountdownToPipe
   ]
 })
 export class SharedModule { }
