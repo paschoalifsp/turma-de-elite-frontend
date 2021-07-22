@@ -36,7 +36,7 @@ export class TeacherActivitiesPage implements OnInit {
   }
 
   refresh(){
-    this.activityService.getTeacherActivities(this.pageSize,0).subscribe(response => {
+    this.activityService.getTeacherActivitiesPaginated(this.pageSize,0).subscribe(response => {
       this.activities = response.content;
       this.totalLength = response.totalElements;
       this.isLoading = false;
@@ -45,7 +45,7 @@ export class TeacherActivitiesPage implements OnInit {
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
-    this.activityService.getTeacherActivities(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
+    this.activityService.getTeacherActivitiesPaginated(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
       this.activities = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;

@@ -10,8 +10,12 @@ export class ActivityService {
 
   constructor(private http: HttpClient) { }
 
-  getTeacherActivities(pageSize: number, pageNumber: number) {
+  getTeacherActivitiesPaginated(pageSize: number, pageNumber: number) {
     return this.http.get<any>(`${environment.apiUrl}/api/activities?pageSize=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
+  }
+
+  getTeacherActivities() {
+    return this.http.get<any>(`${environment.apiUrl}/api/activities`).pipe(take(1));
   }
 
   getStudentActivities() {

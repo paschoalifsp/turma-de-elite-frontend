@@ -87,7 +87,10 @@
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button (click)="isEdit ? updateActivity() : createActivity()" [disabled]="false">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-flat-button color="primary" (click)="isEdit ? updateActivity() : createActivity()" [disabled]="false">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
+  <button *ngIf="isExpired()" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
+    {{'labels.viewDeliveries'|translate}}
+  </button>
 </div>

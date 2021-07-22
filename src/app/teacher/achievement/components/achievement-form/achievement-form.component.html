@@ -1,21 +1,10 @@
 <div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
 
   <h1 class="title">
-    {{(isEdit?'titles.updateManager' : 'titles.registerManager') |translate}}
+    {{(isEdit?'labels.updateAchievement' : 'labels.createAchievement') |translate}}
   </h1>
 
-  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="managerForm" (ngSubmit)="isEdit ? updateManager() : registerManager()">
-    <mat-form-field
-      fxFlex="45" appearance="outline">
-      <mat-label>E-mail</mat-label>
-      <input
-        matInput
-        type="text"
-        formControlName="email"
-        placeholder="user@email.com"
-        required>
-      <mat-error *ngIf="managerForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
-    </mat-form-field>
+  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="achievementForm">
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
@@ -23,18 +12,82 @@
         matInput
         type="text"
         formControlName="name"
-        placeholder="André Monteiro"
         required>
-      <mat-error *ngIf="managerForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="achievementForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>{{'labels.school'|translate}}</mat-label>
-      <input type="text" matInput formControlName="school" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySchoolName">
-        <mat-option *ngFor="let school of filteredSchools$ | async" [value]="school">
-          {{school.name + ' | ' + school.identifier}}
+    <mat-form-field
+      fxFlex="45" appearance="outline">
+      <mat-label>{{'labels.description'|translate}}</mat-label>
+      <textarea
+        matInput
+        type="text"
+        formControlName="description"
+        required>
+      </textarea>
+    </mat-form-field>
+    <div fxFlex="100" fxLayout="row wrap" class="icon-picker">
+      <div *ngFor="let icon of material_icons ">
+        <button (click)="selectIcon(icon)" mat-icon-button>
+          <mat-icon   [ngClass]="achievementForm.get('iconName')?.value !== icon? 'disabled' : 'picked'">
+            {{icon}}_filled
+          </mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-form-field fxFlex="100" appearance="outline">
+      <mat-label>{{'labels.deliveryBeforeAt'|translate}}</mat-label>
+      <input
+        matInput
+        [ngxMatDatetimePicker]="picker"
+        placeholder="{{'placeholder.chooseDeliveryDate'|translate}}"
+        formControlName="beforeAt">
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker
+        #picker>
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="45" appearance="outline">
+      <mat-label>{{'labels.deliveryEarlierOf'|translate}}</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="earlierOf"
+        required>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="45" appearance="outline">
+      <mat-label>{{'labels.deliveryBestOf'|translate}}</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="bestOf"
+        required>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="45" appearance="outline">
+      <mat-label>{{'labels.averageGradeGreaterOrEqualsThan'|translate}}</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="averageGradeGreaterOrEqualsThan"
+        required>
+    </mat-form-field>
+    <mat-form-field fxFlex="45" appearance="outline">
+      <mat-label>{{'labels.classes'|translate}}</mat-label>
+      <mat-select formControlName="classId" >
+        <mat-option *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id">
+          {{schoolClass.name}}
         </mat-option>
-      </mat-autocomplete>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="100" appearance="outline">
+      <mat-label>{{'labels.activities'|translate}}</mat-label>
+      <mat-select formControlName="activityId">
+        <mat-option *ngFor="let activity of activities" [value]="activity.id">
+          {{activity.name}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
@@ -42,7 +95,7 @@
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="managerForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-raised-button [disabled]="achievementForm.invalid" (click)="isEdit ? updateAchievement() : registerAchievement()">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

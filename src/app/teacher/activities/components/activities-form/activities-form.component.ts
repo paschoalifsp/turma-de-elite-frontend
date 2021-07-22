@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {of} from "rxjs";
+import {forkJoin, of} from "rxjs";
 import School from "../../../../shared/model/school";
 import {ActivatedRoute, Router} from "@angular/router";
 import {StudentsService} from "../../../../manager/students/services/students.service";
@@ -42,6 +42,7 @@ export class ActivitiesFormComponent implements OnInit {
   });
 
   filteredClasses = [] as any[];
+  activities = [] as any[];
 
   isLoading = false;
 
@@ -144,6 +145,11 @@ export class ActivitiesFormComponent implements OnInit {
       a.click();
       URL.revokeObjectURL(objectUrl);
     });
+  }
+
+  isExpired(){
+    const expireDate = this.activityForm.get('maxDeliveryDate')?.value;
+    return moment().isAfter(expireDate);
   }
 
   showSnackbar(message: string){

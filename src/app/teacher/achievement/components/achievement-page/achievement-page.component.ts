@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {ManagerService} from "../../../../admin/manager/services/manager.service";
 import {PageEvent} from "@angular/material/paginator";
+import {AchievementsService} from "../../../services/achievements.service";
 
 @Component({
   selector: 'app-achievement-page',
@@ -24,7 +25,7 @@ export class AchievementPageComponent implements OnInit {
 
   createMode = true;
 
-  constructor(private managerService: ManagerService) {
+  constructor(private achievementService: AchievementsService) {
     this.refresh();
   }
 
@@ -32,7 +33,7 @@ export class AchievementPageComponent implements OnInit {
   }
 
   refresh(){
-    this.managerService.getManagersUsers(this.pageSize,0).subscribe(response => {
+    this.achievementService.getAchievements(this.pageSize,0).subscribe(response => {
       this.achievements = response.content;
       this.totalLength = response.totalElements;
       this.isLoading = false;
@@ -41,7 +42,7 @@ export class AchievementPageComponent implements OnInit {
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
-    this.managerService.getManagersUsers(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
+    this.achievementService.getAchievements(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
       this.achievements = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;

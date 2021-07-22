@@ -67,7 +67,17 @@
     "class": "Class",
     "delivery": "Delivery",
     "send": "Send",
-    "expired": "Expired"
+    "expired": "Expired",
+    "viewDeliveries": "View Deliveries",
+    "close": "Close",
+    "gradePercentage": "Grade percentage",
+
+    "updateAchievement": "Update Achievement",
+    "deliveryBeforeAt": "For deliveries before at",
+    "deliveryEarlierOf": "For nth earlier delivery",
+    "deliveryBestOf": "For nth best grade",
+    "averageGradeGreaterOrEqualsThan": "For grade average greater or equals than"
+
   },
   "actions": {
     "addNewAdmin": "Add Admin"
@@ -86,7 +96,9 @@
     "teachers": "Teachers",
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher",
-    "yourClasses": "Your classes and activities"
+    "yourClasses": "Your classes and activities",
+    "deliveriesForThisActivity": "Deliveries for this activity"
+
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -105,7 +117,8 @@
     "schoolCreated": "School created sucessfully!",
     "schoolUpdated": "School updated successfully!",
     "studentRegistered": "Student registered successfully!",
-    "studentUpdated": "Student updated successfully!"
+    "studentUpdated": "Student updated successfully!",
+    "gradeSavedSuccessfully": "Grade saved successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",

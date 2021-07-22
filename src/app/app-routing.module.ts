@@ -31,6 +31,7 @@ import {HomeGuard} from "./authentication/guards/home.guard";
 import {IsStudentGuard} from "./authentication/guards/is-student.guard";
 import {StudentDashboardComponent} from "./student/dashboard/components/dashboard/student-dashboard.component";
 import {StudentActivitiesPageComponent} from "./student/activities/components/student-activities/student-activities-page.component";
+import {TeacherDeliveriesPageComponent} from "./teacher/grades/components/teacher-deliveries-page/teacher-deliveries-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -74,6 +75,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: TeacherDashboardComponent},
       { path: 'activities', component: TeacherActivitiesPage},
+      { path: 'activities/:id/grades', component: TeacherDeliveriesPageComponent },
       { path: 'achievements', component: AchievementPageComponent},
     ]
   },
