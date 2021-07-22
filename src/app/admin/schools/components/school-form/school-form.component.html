@@ -26,7 +26,7 @@
         type="text"
         formControlName="identifier"
         placeholder="{{'placeholder.schoolIdentifier'|translate}}"
-        pattern="^[0-9]$"
+        pattern="^[0-9.-]*$"
         required>
       <mat-error *ngIf="schoolForm.get('identifier')?.errors?.required">{{'fieldErrors.identifierIsRequired'|translate}}</mat-error>
       <mat-error *ngIf="schoolForm.get('identifier')?.errors?.pattern">{{'fieldErrors.identifierNaN'|translate}}</mat-error>
