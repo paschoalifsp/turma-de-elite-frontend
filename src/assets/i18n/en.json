@@ -14,7 +14,8 @@
     "identifierNaN": "The identifier must be a number.",
     "minLengthTeacher": "Theacher´s name must has at least 5 characters.",
     "namePattern": "The name must has just letters.",
-    "emailPattern": "Input a valid email."
+    "emailPattern": "Input a valid email.",
+    "registryIsRequired": "Registry is required"
   },
   "labels": {
     "login": "Login",
@@ -43,8 +44,36 @@
     "teachers": "Teachers",
     "createTeacher": "Create Teacher",
     "return": "Return",
-    "resetPassword": "Reset Password"
-
+    "resetPassword": "Reset Password",
+    "classes": "Classes",
+    "createClass": "Create Class",
+    "editClass": "Edit Class",
+    "students": "Students",
+    "registerStudent": "Register Student",
+    "updateStudent": "Update Student",
+    "registry": "Registry",
+    "chooseTeachers": "Choose Teachers",
+    "chooseStudents": "Choose Students",
+    "chooseClassName": "Choose the classname",
+    "className": "Classname",
+    "next": "Next",
+    "previous": "Previous",
+    "activities": "Activities",
+    "addNewActivity": "Add new activity",
+    "createActivity": "Create Activity",
+    "updateActivity": "Update Activity",
+    "description": "Description",
+    "punctuation": "Punctuation",
+    "visible": "Visible",
+    "maxDeliveryDate": "Max Delivery Date",
+    "attachment": "Attachment",
+    "expiresIn": "Expires in",
+    "maxPunctuation": "Max Punctuation",
+    "postBy": "Post by",
+    "class": "Class",
+    "delivery": "Delivery",
+    "send": "Send",
+    "expired": "Expired"
   },
   "actions": {
     "addNewAdmin": "Add Admin",
@@ -64,8 +93,12 @@
     "teachers": "Teachers",
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher",
+<<<<<<< HEAD
     "registerManager": "Register Manager",
     "updateManager": "Edit Manager"
+=======
+    "yourClasses": "Your classes and activities"
+>>>>>>> 5852b54f509742fdcfec62d14599f8fa5a0c19e9
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -83,11 +116,17 @@
     "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
     "schoolUpdated": "School updated successfully!",
+<<<<<<< HEAD
     "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one."
+=======
+    "studentRegistered": "Student registered successfully!",
+    "studentUpdated": "Student updated successfully!"
+>>>>>>> 5852b54f509742fdcfec62d14599f8fa5a0c19e9
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
     "searchAchievements": "Search Achievement",
+<<<<<<< HEAD
     "searchManager": "Search Manager",
     "email": "user@email.com",
     "userName": "User name",
@@ -97,5 +136,12 @@
     "searchSchool": "Search School",
     "searchUser": "Search Admin User",
     "schoolIdentifier": "School Identifier"
+=======
+    "searchClass": "Search Class",
+    "studentEmail": "Student E-mail",
+    "addStudent": "Add Student",
+    "teacherEmail": "Teacher E-mail",
+    "chooseDeliveryDate": "Choose the maximum delivery datetime"
+>>>>>>> 5852b54f509742fdcfec62d14599f8fa5a0c19e9
   }
 }

@@ -25,7 +25,7 @@ export class TeacherService {
   registerTeacher(value: any) {
     const {school,...rest} = value;
     const language = this.translateService.currentLang;
-    return this.http.post<any>(`${environment.apiUrl}/api/teachers`, {schoolId: school.id,language,...rest});
+    return this.http.post<any>(`${environment.apiUrl}/api/teachers`, {language,...rest});
   }
 
   getTeachersUsers(pageSize: number, pageNumber: number) {
@@ -40,7 +40,7 @@ export class TeacherService {
     this.isLoading = true;
     const {school,...rest} = value;
     const language = this.translateService.currentLang;
-    return this.http.put<any>(`${environment.apiUrl}/api/teachers/${managerId}`, {schoolId: school.id,language,...rest});
+    return this.http.put<any>(`${environment.apiUrl}/api/teachers/${managerId}`, {language,...rest});
     this.isLoading = false;
   }
 
@@ -52,4 +52,7 @@ export class TeacherService {
     this.snackbar.open(message,'Fechar');
   }
 
+  findByEmailSimilarity(email: string) {
+    return this.http.get<any[]>(`${environment.apiUrl}/api/teachers/email/${email}`).pipe(take(1));
+  }
 }

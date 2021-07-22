@@ -1,0 +1,49 @@
+<div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
+
+  <h1 class="title">
+    {{(isEdit?'labels.editClass' : 'labels.createClass') |translate}}
+  </h1>
+  <mat-stepper class="full-width" orientation="vertical" [linear]="true" #stepper fxFlex="100">
+    <mat-step [completed]="teachersCompleted">
+      <ng-template matStepLabel>{{'labels.chooseTeachers'|translate}}</ng-template>
+      <app-teacher-table
+        (next)="stepper.next()"
+        [(teachers)]="teachers"
+        [clear]="clear"
+        [classId]="classId"
+        [editMode]="isEdit">
+      </app-teacher-table>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>{{'labels.chooseStudents'|translate}}</ng-template>
+      <app-student-table
+        (previous)="stepper.previous()"
+        (next)="stepper.next()"
+        [(students)]="students"
+        [clear]="clear"
+        [classId]="classId">
+      </app-student-table>
+    </mat-step>
+    <mat-step [completed]="studentsCompleted">
+      <ng-template matStepLabel>{{'labels.chooseClassName'|translate}}</ng-template>
+      <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between">
+        <mat-form-field
+          fxFlex="80" appearance="outline">
+          <mat-label>{{'labels.className'|translate}}</mat-label>
+          <input
+            matInput
+            type="text"
+            [formControl]="classNameControl"
+            placeholder="{{'placeholder.className'|translate}}"
+            required>
+        </mat-form-field>
+        <mat-slide-toggle [formControl]="isActiveControl" >{{'labels.active'|translate}}</mat-slide-toggle>
+      </div>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!teachersCompleted || !studentsCompleted || classNameControl.invalid"
+        (click)="isEdit? updateStatusAndName():createClass()">{{(isEdit?'labels.save':'labels.createClass')|translate}}</button>
+    </mat-step>
+  </mat-stepper>
+</div>
