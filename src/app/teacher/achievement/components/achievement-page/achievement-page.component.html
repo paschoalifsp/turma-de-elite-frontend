@@ -28,7 +28,7 @@
         fxLayoutAlign="start center"
         *ngFor="let achievement of achievements"
         (click)="achievementToggleId=achievement.id;createMode=false">
-        <mat-icon [ngClass]="achievement.isActive?'primary':'disabled'">person</mat-icon>
+        <mat-icon [ngClass]="achievement.isActive?'primary':'disabled'">{{achievement.iconName}}</mat-icon>
         <p color="primary">{{achievement.name}}</p>
       </a>
       <mat-paginator

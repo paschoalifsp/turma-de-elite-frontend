@@ -76,7 +76,16 @@
     "deliveryBeforeAt": "For deliveries before at",
     "deliveryEarlierOf": "For nth earlier delivery",
     "deliveryBestOf": "For nth best grade",
-    "averageGradeGreaterOrEqualsThan": "For grade average greater or equals than"
+    "averageGradeGreaterOrEqualsThan": "For grade average greater or equals than",
+    "qualifiers": "Qualifiers",
+
+    "generalInfo": "General info",
+    "chooseIcon": "Choose an icon",
+    "modality": "Modality",
+
+    "byClass": "By class",
+    "byActivity": "By activity",
+    "activity": "Activity"
 
   },
   "actions": {
@@ -118,7 +127,9 @@
     "schoolUpdated": "School updated successfully!",
     "studentRegistered": "Student registered successfully!",
     "studentUpdated": "Student updated successfully!",
-    "gradeSavedSuccessfully": "Grade saved successfully!"
+    "gradeSavedSuccessfully": "Grade saved successfully!",
+    "achievementCreated": "Achievement created successfully!",
+    "achievementUpdated": "Achievement updated successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",

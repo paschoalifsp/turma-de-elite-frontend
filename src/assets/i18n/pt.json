@@ -76,7 +76,16 @@
     "deliveryBeforeAt": "Para entregas antes de",
     "deliveryEarlierOf": "Para n entregas mais rápidas",
     "deliveryBestOf": "Para n melhores entregas",
-    "averageGradeGreaterOrEqualsThan": "Para média de nota maior ou igual a"
+    "averageGradeGreaterOrEqualsThan": "Para média de nota maior ou igual a",
+    "qualifiers": "Qualificadores",
+
+    "generalInfo": "Informações gerais",
+    "chooseIcon": "Escolha um ícone",
+    "modality": "Modalidade",
+
+    "byClass": "Por turma",
+    "byActivity": "Por atividade",
+    "activity": "Atividade"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
@@ -119,7 +128,9 @@
     "teacherUpdated": "Professor atualizado com sucesso!",
     "studentRegistered": "Estudante registrado com sucesso!",
     "studentUpdated": "Estudante atualizado com sucesso!",
-    "gradeSavedSuccessfully": "Nota salva com sucesso!"
+    "gradeSavedSuccessfully": "Nota salva com sucesso!",
+    "achievementCreated": "Conquista criada com sucesso!",
+    "achievementUpdated": "Conquista atualizada com sucesso"
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",
