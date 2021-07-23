@@ -43,6 +43,8 @@ import { TeacherDashboardComponent } from './teacher/dashboard/components/dashbo
 import { ActivitiesPageComponent } from './teacher/activities/components/activities-page/activities-page.component';
 import { ActivitiesFormComponent } from './teacher/activities/components/activities-form/activities-form.component';
 import { StudentDashboardComponent } from './student/dashboard/components/dashboard/student-dashboard.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 registerLocaleData(localePt);
@@ -88,6 +90,8 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     AuthenticationModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

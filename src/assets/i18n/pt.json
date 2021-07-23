@@ -10,7 +10,15 @@
     "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueceu a senha?\" para redefini-la",
     "passwordNotSame": "As senhas devem corresponder",
     "identifierIsRequired": "É necessário um identificador único",
-    "registryIsRequired": "É necessário inserir uma matrícula"
+    "registryIsRequired": "É necessário inserir uma matrícula",
+    "activityNameIsRequired": "É necessário inserir o nome da atividade.",
+    "activityNamePattern": "O nome da atividade deve ter apenas letras e números.",
+    "punctuationIsRequired": "É necessário inserir a pontuação.",
+    "punctuationPattern": "A pontuação deve ter um valor númerico.",
+    "schoolClassesIsRequired": "É necessário escolher uma turma.",
+    "maxDeliveryDateIsRequired": "É necessário escolher um prazo máximo de entrega.",
+    "descriptionIsRequired": "É necessário inserir uma descrição."
+
   },
   "labels": {
     "login": "Login",
@@ -59,7 +67,8 @@
     "punctuation": "Pontuação",
     "visible": "Visível",
     "maxDeliveryDate": "Data Máxima de Entrega",
-    "attachment": "Anexo"
+    "attachment": "Anexo",
+    "deliverable": "Entregável"
 
   },
   "actions": {

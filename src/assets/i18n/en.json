@@ -10,7 +10,15 @@
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordNotSame": "Passwords must match",
     "identifierIsRequired": "Identifier is required",
-    "registryIsRequired": "Registry is required"
+    "registryIsRequired": "Registry is required",
+    "activityNameIsRequired": "Activity name is required.",
+    "activityNamePattern": "Activity´s name must has only letters and numbers.",
+    "punctuationIsRequired": "Punctuation is required.",
+    "punctuationPattern": "Punctuation must has a numerical value.",
+    "schoolClassesIsRequired": "Choose a class is required.",
+    "maxDeliveryDateIsRequired": "Choose a maximum delivery date is required.",
+    "descriptionIsRequired": "Description is required."
+
   },
   "labels": {
     "login": "Login",
@@ -60,7 +68,8 @@
     "punctuation": "Punctuation",
     "visible": "Visible",
     "maxDeliveryDate": "Max Delivery Date",
-    "attachment": "Attachment"
+    "attachment": "Attachment",
+    "deliverable": "Deliverable"
   },
   "actions": {
     "addNewAdmin": "Add Admin"
