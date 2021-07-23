@@ -10,7 +10,7 @@ context('Assertions', () => {
       // https://on.cypress.io/should
       cy.get('.assertion-table')
         .find('tbody tr:last')
-        .should('have.class', 'success')
+        .should('have.school-classes', 'success')
         .find('td')
         .first()
         // checking the text of the <td> element in various ways
@@ -41,7 +41,7 @@ context('Assertions', () => {
     it('.and() - chain multiple assertions together', () => {
       // https://on.cypress.io/and
       cy.get('.assertions-link')
-        .should('have.class', 'active')
+        .should('have.school-classes', 'active')
         .and('have.attr', 'href')
         .and('include', 'cypress.io')
     })
@@ -90,7 +90,7 @@ context('Assertions', () => {
         })
     })
 
-    it('finds element by class name regex', () => {
+    it('finds element by school-classes name regex', () => {
       cy.get('.docs-header')
         .find('div')
         // .should(cb) callback function will be retried

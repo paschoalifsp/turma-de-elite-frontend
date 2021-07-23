@@ -19,7 +19,7 @@ context('Querying', () => {
     //              ↲
     // Use CSS selectors just like jQuery
 
-    cy.get('[data-test-id="test-example"]').should('have.class', 'example')
+    cy.get('[data-test-id="test-example"]').should('have.school-classes', 'example')
 
     // 'cy.get()' yields jQuery object, you can get its attribute
     // by invoking `.attr()` method
@@ -43,26 +43,26 @@ context('Querying', () => {
     // https://on.cypress.io/contains
     cy.get('.query-list')
       .contains('bananas')
-      .should('have.class', 'third')
+      .should('have.school-classes', 'third')
 
     // we can pass a regexp to `.contains()`
     cy.get('.query-list')
       .contains(/^b\w+/)
-      .should('have.class', 'third')
+      .should('have.school-classes', 'third')
 
     cy.get('.query-list')
       .contains('apples')
-      .should('have.class', 'first')
+      .should('have.school-classes', 'first')
 
     // passing a selector to contains will
     // yield the selector containing the text
     cy.get('#querying')
       .contains('ul', 'oranges')
-      .should('have.class', 'query-list')
+      .should('have.school-classes', 'query-list')
 
     cy.get('.query-button')
       .contains('Save Form')
-      .should('have.class', 'btn')
+      .should('have.school-classes', 'btn')
   })
 
   it('.within() - query DOM elements within a specific element', () => {
@@ -81,7 +81,7 @@ context('Querying', () => {
 
     cy.get('.query-ul').within(() => {
       // In this within, the root is now the ul DOM element
-      cy.root().should('have.class', 'query-ul')
+      cy.root().should('have.school-classes', 'query-ul')
     })
   })
 

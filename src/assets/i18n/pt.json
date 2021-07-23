@@ -85,7 +85,10 @@
 
     "byClass": "Por turma",
     "byActivity": "Por atividade",
-    "activity": "Atividade"
+    "activity": "Atividade",
+    "closeClass": "Encerrar turma",
+    "school-classes": "Turmas",
+    "classClosed": "Turma encerrada"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
@@ -130,7 +133,10 @@
     "studentUpdated": "Estudante atualizado com sucesso!",
     "gradeSavedSuccessfully": "Nota salva com sucesso!",
     "achievementCreated": "Conquista criada com sucesso!",
-    "achievementUpdated": "Conquista atualizada com sucesso"
+    "achievementUpdated": "Conquista atualizada com sucesso!",
+    "classClosed": "Turma encerrada com sucesso!",
+    "activityCreated": "Atividade criada com sucesso!",
+    "activityUpdated": "Atividade atualizada com sucesso!"
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",

@@ -81,7 +81,6 @@
     </mat-form-field>
     <mat-checkbox [indeterminate]="false" formControlName="isActive">{{'labels.active'|translate}}</mat-checkbox>
     <mat-checkbox [indeterminate]="false" formControlName="isVisible">{{'labels.visible'|translate}}</mat-checkbox>
-    <mat-checkbox [indeterminate]="false" formControlName="isDeliverable">{{'labels.deliverable'|translate}}</mat-checkbox>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>

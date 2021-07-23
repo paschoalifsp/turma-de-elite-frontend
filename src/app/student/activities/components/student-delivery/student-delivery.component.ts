@@ -5,7 +5,7 @@ import {ActivityService} from "../../../../teacher/activities/services/activity.
 import {SchoolService} from "../../../../admin/schools/services/school.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
-import {ClassService} from "../../../../manager/class/services/class.service";
+import {ClassService} from "../../../../manager/school-classes/services/class.service";
 import * as moment from "moment";
 import {StudentDeliveryService} from "../../services/student-delivery.service";
 
