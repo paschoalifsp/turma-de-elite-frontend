@@ -109,6 +109,7 @@
     "studentEmail": "E-mail do Estudante",
     "addStudent": "Adicionar Estudante",
     "teacherEmail": "E-mail do Professor",
-    "chooseDeliveryDate": "Escolha o prazo máximo de entrega"
+    "chooseDeliveryDate": "Escolha o prazo máximo de entrega",
+    "studentRegistry": "Matrícula do Estudante"
   }
 }

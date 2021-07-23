@@ -107,6 +107,7 @@
     "studentEmail": "Student E-mail",
     "addStudent": "Add Student",
     "teacherEmail": "Teacher E-mail",
-    "chooseDeliveryDate": "Choose the maximum delivery datetime"
+    "chooseDeliveryDate": "Choose the maximum delivery datetime",
+    "studentRegistry": "Student Registry"
   }
 }
