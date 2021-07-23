@@ -22,7 +22,7 @@ describe('Realizar login na aplicação como gestor', () => {
       cy.viewport(1440, 900);
     });
   
-    it('Acessar cadastro de Alunos', () => {
+    it('Acessar cadastro de Alunos e cadastrar dois alunos', () => {
       cy.intercept({
         method: 'POST',
         url: '/api/students',
@@ -40,6 +40,8 @@ describe('Realizar login na aplicação como gestor', () => {
         cy.location('pathname', { timeout: 60000 })
           .should('include', 'students')
 
+          //cadastro do primeiro aluno
+
           cy.get('.toggled-tile > p').click()
           cy.get('#mat-input-3').type('serafina@gmil.com')
           cy.get('#mat-input-4').type('26105')
@@ -49,14 +51,24 @@ describe('Realizar login na aplicação como gestor', () => {
           cy.wait('@saveStudent').then((interception) => {
             assert.equal(interception.response?.statusCode, 201)
           })
-  
-  
+
+          //cadastro do segundo aluno
+
+          cy.get('.toggled-tile > p').click()
+          cy.get('#mat-input-3').type('lukinhastop@email.com')
+          cy.get('#mat-input-4').type('12445')
+          cy.get('#mat-input-5').type('Lucas Mendes')
+          cy.get('.mat-slide-toggle-thumb').click()
+          cy.get('.mat-raised-button').click()
+          cy.wait('@saveStudent').then((interception) => {
+            assert.equal(interception.response?.statusCode, 201)
+          })
       })
     })
   })
   
  
-  describe('Alterar Aluno', () => {
+  describe('Alterar Aluno ', () => {
   
     beforeEach(() => {
       cy.viewport(1440, 900);
@@ -70,7 +82,7 @@ describe('Realizar login na aplicação como gestor', () => {
   
     })
   
-    it('Alterar um dado de um Professor', () => {
+    it('Deve ser possivel alterar os dados de um aluno', () => {
   
       cy.intercept({
         method: 'PUT',

@@ -16,7 +16,7 @@ describe('Realizar login na aplicação como gestor', () => {
     })
   })
   
-  describe('Cadastrar uma turma', () => {
+  describe('Cadastrar uma turma e cadastrar uma turma', () => {
   
     beforeEach(() => {
       cy.viewport(1440, 900);
@@ -63,10 +63,7 @@ describe('Realizar login na aplicação como gestor', () => {
           cy.get('.mat-vertical-content > .mat-flat-button').click()
           cy.wait('@saveClass').then((interception) => {
             assert.equal(interception.response?.statusCode, 201)
-          })
-  
-  
-      })
+       })
     })
   })
   
@@ -79,7 +76,7 @@ describe('Realizar login na aplicação como gestor', () => {
   
     it('Na página de turmas, ao apagar um dado obrigatório o botao salvaar deverá ser desabilitado', () => {
   
-      cy.get(':nth-child(4) > p').click()
+      cy.get(':nth-child(3) > p').click()
       cy.get('#mat-input-3').clear()
       cy.get('.mat-vertical-content > .mat-flat-button').should('be.disabled')
   
@@ -89,12 +86,11 @@ describe('Realizar login na aplicação como gestor', () => {
   
       cy.intercept({
         method: 'PUT',
-        url: '/api/class/2',
+        url: '/api/class/7',
       }).as('changeClass')
   
-      cy.get(':nth-child(3) > p').click()
       cy.get('#mat-input-3').clear()
-      cy.get('#mat-input-5').type('Turma do bairro')
+      cy.get('#mat-input-3').type('Turma do bairro')
       cy.get('.mat-vertical-content > .mat-flat-button').click()
   
       cy.wait('@changeClass').then((interception) => {
@@ -104,19 +100,21 @@ describe('Realizar login na aplicação como gestor', () => {
   })
   
   
-  describe('Inativar um Aluno', () => {
+  describe('Inativar uma turma', () => {
   
     beforeEach(() => {
       cy.viewport(1440, 900);
     });
   
-    it('Ao inativar uma Professor, o seu icone deve ser listado na cor cinza', () => {
+    it('Ao inativar uma turma, o seu icone deve ser listado na cor cinza', () => {
   
-      cy.get(':nth-child(5) > p').click()
-      cy.get('.mat-slide-toggle-thumb').click()
-      cy.get('.mat-raised-button').click()
-      cy.get(':nth-child(4) > .mat-icon').should('have.class', 'disabled')
+      cy.get(':nth-child(3) > p').click()
+      cy.get('[data-cy=isActive]').click()
+      cy.get('.mat-vertical-content > .mat-flat-button').click()
+      cy.get(':nth-child(3) > .mat-icon').should('have.class', 'disabled')
 
   })
   
   })
+
+})
