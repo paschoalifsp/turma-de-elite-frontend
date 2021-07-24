@@ -27,4 +27,8 @@ export class AchievementsService {
     const formattedBeforeAt =  beforeAt.format('YYYY-MM-DD kk:mm:ss');
     return this.http.post<any>(`${environment.apiUrl}/api/achievements`, {beforeAt: formattedBeforeAt,...rest}).pipe(take(1));
   }
+
+  getStudentAchievements() {
+    return this.http.get<any>(`${environment.apiUrl}/api/achievements/student`).pipe(take(1));
+  }
 }

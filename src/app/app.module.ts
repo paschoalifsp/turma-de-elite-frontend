@@ -48,6 +48,7 @@ import { StudentDeliveryComponent } from './student/activities/components/studen
 import { TeacherDeliveriesPageComponent } from './teacher/grades/components/teacher-deliveries-page/teacher-deliveries-page.component';
 import { SchoolClassesComponent } from './teacher/school-classes/components/school-classes/school-classes.component';
 import { SchoolDetailsComponent } from './teacher/school-classes/components/school-details/school-details.component';
+import { AchievementsListPageComponent } from './student/achievements/components/achievements-list-page/achievements-list-page.component';
 
 
 registerLocaleData(localePt);
@@ -89,6 +90,7 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherDeliveriesPageComponent,
     SchoolClassesComponent,
     SchoolDetailsComponent,
+    AchievementsListPageComponent,
   ],
   imports: [
     BrowserModule,

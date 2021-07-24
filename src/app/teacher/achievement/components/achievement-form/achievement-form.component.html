@@ -37,7 +37,7 @@
     <mat-step [stepControl]="iconNameControl">
       <ng-template matStepLabel>{{'labels.chooseIcon'|translate}}</ng-template>
       <div fxFlex="100" fxLayout="row wrap" class="icon-picker">
-        <div *ngFor="let icon of material_icons ">
+        <div *ngFor="let icon of materialIcons ">
           <button (click)="selectIcon(icon)" mat-icon-button>
             <mat-icon  [ngClass]="iconNameControl?.value !== icon? 'disabled' : 'picked'">
               {{icon}}_filled

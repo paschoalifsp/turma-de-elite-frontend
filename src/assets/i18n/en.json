@@ -109,8 +109,8 @@
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher",
     "yourClasses": "Your classes and activities",
-    "deliveriesForThisActivity": "Deliveries for this activity"
-
+    "deliveriesForThisActivity": "Deliveries for this activity",
+    "yourAchievements": "Your achievements"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",

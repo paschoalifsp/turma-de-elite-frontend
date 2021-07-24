@@ -109,8 +109,8 @@
     "registerTeacher": "Criar Professor",
     "updateTeacher": "Atualizar Professor",
     "yourClasses": "Suas turmas e atividades",
-    "deliveriesForThisActivity": "Entregas para esta atividade"
-
+    "deliveriesForThisActivity": "Entregas para esta atividade",
+    "yourAchievements": "Suas conquistas"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
