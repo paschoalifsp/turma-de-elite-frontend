@@ -122,7 +122,7 @@ context('Cypress.dom', () => {
     let hiddenP = Cypress.$('.dom-p p.hidden').get(0)
     let visibleP = Cypress.$('.dom-p p.visible').get(0)
 
-    // our first paragraph has css class 'hidden'
+    // our first paragraph has css school-classes 'hidden'
     expect(Cypress.dom.isHidden(hiddenP)).to.be.true
     expect(Cypress.dom.isHidden(visibleP)).to.be.false
   })

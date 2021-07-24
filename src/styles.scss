@@ -53,6 +53,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 100vh;
 }
 
+.half-screen-height{
+  height: 50vh;
+}
+
 .full-height{
   height: 100%;
 }
@@ -142,4 +146,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .disabled{
   color: gray;
+}
+
+.attribution{
+  position: fixed;
+  top: 95vh;
+  left: 2vw;
+  color: gray;
+
+  text-decoration: none;
 }

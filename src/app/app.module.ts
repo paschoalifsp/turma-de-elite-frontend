@@ -28,11 +28,27 @@ import { SchoolFormComponent } from './admin/schools/components/school-form/scho
 import { ManagerPageComponent } from './admin/manager/components/manager-page/manager-page.component';
 import { ManagerFormComponent } from './admin/manager/components/manager-form/manager-form.component';
 import { ManagerDashboardComponent } from './manager/dashboard/components/manager-dashboard/manager-dashboard.component';
-import { AchievementPageComponent } from './manager/achievement/components/achievement-page/achievement-page.component';
-import { AchievementFormComponent } from './manager/achievement/components/achievement-form/achievement-form.component';
+import { AchievementPageComponent } from './teacher/achievement/components/achievement-page/achievement-page.component';
+import { AchievementFormComponent } from './teacher/achievement/components/achievement-form/achievement-form.component';
 import { TeacherPageComponent } from './manager/teacher/components/teacher-page/teacher-page.component';
 import { TeacherFormComponent } from './manager/teacher/components/teacher-form/teacher-form.component';
 import { HttpClientModule } from "@angular/common/http";
+import { ClassPageComponent } from './manager/school-classes/components/class-page/class-page.component';
+import { ClassFormComponent } from './manager/school-classes/components/class-form/class-form.component';
+import { StudentsPageComponent } from './manager/students/components/students-page/students-page.component';
+import { StudentsFormComponent } from './manager/students/components/students-form/students-form.component';
+import { TeacherTableComponent } from './manager/school-classes/components/teacher-table/teacher-table.component';
+import { StudentTableComponent } from './manager/school-classes/components/student-table/student-table.component';
+import { TeacherDashboardComponent } from './teacher/dashboard/components/dashboard/teacher-dashboard.component';
+import { TeacherActivitiesPage } from './teacher/activities/components/activities-page/teacher-activities-page.component';
+import { ActivitiesFormComponent } from './teacher/activities/components/activities-form/activities-form.component';
+import { StudentDashboardComponent } from './student/dashboard/components/dashboard/student-dashboard.component';
+import { StudentActivitiesPageComponent } from './student/activities/components/student-activities/student-activities-page.component';
+import { StudentDeliveryComponent } from './student/activities/components/student-delivery/student-delivery.component';
+import { TeacherDeliveriesPageComponent } from './teacher/grades/components/teacher-deliveries-page/teacher-deliveries-page.component';
+import { SchoolClassesComponent } from './teacher/school-classes/components/school-classes/school-classes.component';
+import { SchoolDetailsComponent } from './teacher/school-classes/components/school-details/school-details.component';
+import { AchievementsListPageComponent } from './student/achievements/components/achievements-list-page/achievements-list-page.component';
 
 
 registerLocaleData(localePt);
@@ -58,7 +74,23 @@ export function createTranslateLoader(http: HttpClient) {
     AchievementPageComponent,
     AchievementFormComponent,
     TeacherPageComponent,
-    TeacherFormComponent
+    TeacherFormComponent,
+    ClassPageComponent,
+    ClassFormComponent,
+    StudentsPageComponent,
+    StudentsFormComponent,
+    TeacherTableComponent,
+    StudentTableComponent,
+    TeacherDashboardComponent,
+    TeacherActivitiesPage,
+    ActivitiesFormComponent,
+    StudentDashboardComponent,
+    StudentActivitiesPageComponent,
+    StudentDeliveryComponent,
+    TeacherDeliveriesPageComponent,
+    SchoolClassesComponent,
+    SchoolDetailsComponent,
+    AchievementsListPageComponent,
   ],
   imports: [
     BrowserModule,

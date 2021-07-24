@@ -1,0 +1,31 @@
+<div fxLayout="column" fxLayoutAlign="center start">
+  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
+    <button mat-icon-button routerLink="/student/dashboard"><mat-icon>navigate_before</mat-icon></button>
+    <h1 class="mat-display-1">{{'titles.yourAchievements'|translate}}</h1>
+  </div>
+  <!--  <div fxLayout="row wrap" fxLayoutGap="15px" fxFlex="90" school-classes="school-classes-list">-->
+  <!--    <mat-icon>filter_list</mat-icon>-->
+  <!--    <div-->
+  <!--      school-classes="school-classes-name"-->
+  <!--      fxLayoutAlign="center center"-->
+  <!--      [style.border-color]="colors[(i % 7)]"-->
+  <!--      *ngFor="let school-classes of classes;let i = index">-->
+  <!--      <div>{{school-classes}}</div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <div class="full-width" fxLayout="row wrap" fxLayoutAlign="space-around  start" class="achievement-panel">
+    <div fxLayout="row wrap">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        class="achievement"
+        [ngClass]="achievement?.isAcquired?'disabled':'active'"
+        *ngFor="let achievement of achievements">
+        <div [matTooltip]="achievement?.description" >
+          <mat-icon>{{achievement?.iconName}}</mat-icon>
+        </div>
+        <p class="achievement-title">{{achievement.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>

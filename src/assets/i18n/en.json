@@ -14,7 +14,8 @@
     "identifierNaN": "The identifier must be a number.",
     "minLengthTeacher": "Theacher´s name must has at least 5 characters.",
     "namePattern": "The name must has just letters.",
-    "emailPattern": "Input a valid email."
+    "emailPattern": "Input a valid email.",
+    "registryIsRequired": "Registry is required"
   },
   "labels": {
     "login": "Login",
@@ -41,9 +42,59 @@
     "achievements": "Achievements",
     "createAchievement": "Create Achievement",
     "teachers": "Teachers",
-    "createTeacher": "Create Teacher"
+    "createTeacher": "Create Teacher",
     "return": "Return",
-    "resetPassword": "Reset Password"
+    "resetPassword": "Reset Password",
+    "classes": "Classes",
+    "createClass": "Create Class",
+    "editClass": "Edit Class",
+    "students": "Students",
+    "registerStudent": "Register Student",
+    "updateStudent": "Update Student",
+    "registry": "Registry",
+    "chooseTeachers": "Choose Teachers",
+    "chooseStudents": "Choose Students",
+    "chooseClassName": "Choose the classname",
+    "className": "Classname",
+    "next": "Next",
+    "previous": "Previous",
+    "activities": "Activities",
+    "addNewActivity": "Add new activity",
+    "createActivity": "Create Activity",
+    "updateActivity": "Update Activity",
+    "description": "Description",
+    "punctuation": "Punctuation",
+    "visible": "Visible",
+    "maxDeliveryDate": "Max Delivery Date",
+    "attachment": "Attachment",
+    "expiresIn": "Expires in",
+    "maxPunctuation": "Max Punctuation",
+    "postBy": "Post by",
+    "class": "Class",
+    "delivery": "Delivery",
+    "send": "Send",
+    "expired": "Expired",
+    "viewDeliveries": "View Deliveries",
+    "close": "Close",
+    "gradePercentage": "Grade percentage",
+
+    "updateAchievement": "Update Achievement",
+    "deliveryBeforeAt": "For deliveries before at",
+    "deliveryEarlierOf": "For nth earlier delivery",
+    "deliveryBestOf": "For nth best grade",
+    "averageGradeGreaterOrEqualsThan": "For grade average greater or equals than",
+    "qualifiers": "Qualifiers",
+
+    "generalInfo": "General info",
+    "chooseIcon": "Choose an icon",
+    "modality": "Modality",
+
+    "byClass": "By class",
+    "byActivity": "By activity",
+    "activity": "Activity",
+    "closeClass": "Close class",
+    "school-classes": "Classes",
+    "classClosed": "Class is closed"
 
   },
   "actions": {
@@ -65,7 +116,10 @@
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher",
     "registerManager": "Register Manager",
-    "updateManager": "Edit Manager"
+    "updateManager": "Edit Manager",
+    "yourClasses": "Your classes and activities",
+    "deliveriesForThisActivity": "Deliveries for this activity",
+    "yourAchievements": "Your achievements"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -82,19 +136,31 @@
     "managerCreated": "Manager registered successfully!",
     "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
-    "schoolUpdated": "School updated successfully!",
     "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one."
+    "schoolUpdated": "School updated successfully!",
+    "studentRegistered": "Student registered successfully!",
+    "studentUpdated": "Student updated successfully!",
+    "gradeSavedSuccessfully": "Grade saved successfully!",
+    "achievementCreated": "Achievement created successfully!",
+    "achievementUpdated": "Achievement updated successfully!",
+    "classClosed": "Class closed successfully!",
+    "activityCreated": "Activity created successfully!",
+    "activityUpdated": "Activity updated successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
-    "searchAchievements": "Search Achievement",
     "searchManager": "Search Manager",
     "email": "user@email.com",
-    "schoolName": "School´s Name",
     "managerName": "Manager´s Name",
     "teacherName": "Teacher´s Name",
     "searchSchool": "Search School",
     "schoolName": "School´s Name",
     "schoolIdentifier": "School´s Identifier"
+    "searchAchievements": "Search Achievement",
+    "searchClass": "Search Class",
+    "studentEmail": "Student E-mail",
+    "addStudent": "Add Student",
+    "teacherEmail": "Teacher E-mail",
+    "chooseDeliveryDate": "Choose the maximum delivery datetime"
   }
 }

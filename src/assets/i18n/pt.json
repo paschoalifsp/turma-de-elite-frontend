@@ -14,7 +14,8 @@
     "identifierNaN": "O identificador deve ser um valor numérico.",
     "minLengthTeacher": "O nome do professor deve ter no mínimo 5 caracteres.",
     "namePattern": "O nome deve conter apenas letras.",
-    "emailPattern": "Insira um e-mail válido."
+    "emailPattern": "Insira um e-mail válido.",
+    "registryIsRequired": "É necessário inserir uma matrícula"
   },
   "labels": {
     "login": "Login",
@@ -41,7 +42,58 @@
     "createTeacher": "Criar Professor",
     "inactive": "Inativo",
     "return": "Voltar",
-    "resetPassword": "Redefinir senha"
+    "resetPassword": "Redefinir senha",
+    "classes": "Turmas",
+    "createClass": "Criar Turma",
+    "editClass": "Alterar Turma",
+    "students": "Alunos",
+    "registerStudent": "Registrar Aluno",
+    "updateStudent": "Atualizar Aluno",
+    "registry": "Matrícula",
+    "chooseTeachers": "Escolha os Professores",
+    "chooseStudents": "Escolha os Alunos",
+    "chooseClassName": "Escolha o nome da turma",
+    "className": "Nome da Classe",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "activities": "Atividades",
+    "addNewActivity": "Adicionar nova atividade",
+    "createActivity": "Criar Atividade",
+    "updateActivity": "Editar Atividade",
+    "description": "Descrição",
+    "punctuation": "Pontuação",
+    "visible": "Visível",
+    "maxDeliveryDate": "Data Máxima de Entrega",
+    "attachment": "Anexo",
+    "expiresIn": "Expira em",
+    "maxPunctuation": "Pontuação Máxima",
+    "postBy": "Postado por",
+    "class": "Turma",
+    "delivery": "Entrega",
+    "send": "Enviar",
+    "expired": "Expirado",
+    "viewDeliveries": "Visualizar Entregas",
+    "close": "Fechar",
+    "gradePercentage": "Percentual da nota",
+    "registerAchievement": "Criar conquista",
+
+    "updateAchievement": "Editar conquista",
+    "deliveryBeforeAt": "Para entregas antes de",
+    "deliveryEarlierOf": "Para n entregas mais rápidas",
+    "deliveryBestOf": "Para n melhores entregas",
+    "averageGradeGreaterOrEqualsThan": "Para média de nota maior ou igual a",
+    "qualifiers": "Qualificadores",
+
+    "generalInfo": "Informações gerais",
+    "chooseIcon": "Escolha um ícone",
+    "modality": "Modalidade",
+
+    "byClass": "Por turma",
+    "byActivity": "Por atividade",
+    "activity": "Atividade",
+    "closeClass": "Encerrar turma",
+    "school-classes": "Turmas",
+    "classClosed": "Turma encerrada"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",
@@ -61,7 +113,10 @@
     "updateManager": "Atualizar Gestor",
     "achievements": "Conquistas",
     "registerTeacher": "Criar Professor",
-    "updateTeacher": "Atualizar Professor"
+    "updateTeacher": "Atualizar Professor",
+    "yourClasses": "Suas turmas e atividades",
+    "deliveriesForThisActivity": "Entregas para esta atividade",
+    "yourAchievements": "Suas conquistas"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
@@ -79,9 +134,17 @@
     "managerCreated": "Gestor registrado com sucesso!",
     "managerUpdated": "Gestor atualizado com sucesso!",
     "schoolUpdated": "Escola atualizada com sucesso!",
-    "teacherUpdated": "Professor atualizado com sucesso!",
     "alreadyRegisteredIdentifier": "Já existe uma escola cadastrada com este identificador. Por favor, escolha outro.",
-    "alreadyRegisteredEmail": "Este e-mail já foi cadastrado. Por favor, insira um e-mail válido"
+    "alreadyRegisteredEmail": "Este e-mail já foi cadastrado. Por favor, insira um e-mail válido",
+    "teacherUpdated": "Professor atualizado com sucesso!",
+    "studentRegistered": "Estudante registrado com sucesso!",
+    "studentUpdated": "Estudante atualizado com sucesso!",
+    "gradeSavedSuccessfully": "Nota salva com sucesso!",
+    "achievementCreated": "Conquista criada com sucesso!",
+    "achievementUpdated": "Conquista atualizada com sucesso!",
+    "classClosed": "Turma encerrada com sucesso!",
+    "activityCreated": "Atividade criada com sucesso!",
+    "activityUpdated": "Atividade atualizada com sucesso!"
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",
@@ -92,7 +155,11 @@
     "managerName": "Nome do Gestor",
     "teacherName": "Nome do Professor",
     "searchSchool": "Buscar Escola",
-    "schoolName": "Nome da Escola",
-    "schoolIdentifier": "Identificador da Escola"
+    "schoolIdentifier": "Identificador da Escola",
+    "searchClass": "Buscar Turma",
+    "studentEmail": "E-mail do Estudante",
+    "addStudent": "Adicionar Estudante",
+    "teacherEmail": "E-mail do Professor",
+    "chooseDeliveryDate": "Escolha o prazo máximo de entrega"
   }
 }
