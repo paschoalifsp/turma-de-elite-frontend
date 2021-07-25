@@ -1,0 +1,55 @@
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <p class="activity-name">{{activity?.name}}</p>
+    <p class="expires">{{'labels.expiresIn'|translate}} {{activity?.expireDate|countdownTo}}</p>
+  </div>
+  <p class="school-class-name">{{'labels.school-classes'|translate}}: {{activity?.schoolClassName}}</p>
+  <p class="description-title">{{'labels.description'|translate}}</p>
+  <p class="description">
+    {{activity?.description}}
+  </p>
+  <p class="attachment-title" *ngIf="activity?.filename">{{'labels.attachment'|translate}}</p>
+  <div fxLayout="row" fxLayoutAlign="start center" *ngIf="activity?.filename">
+    <p>{{activity?.filename}}</p>
+    <button
+      mat-icon-button
+      (click)="downloadAttachment()">
+      <mat-icon>file_download</mat-icon>
+    </button>
+  </div>
+  <p class="delivery-title">
+    <mat-form-field
+      fxFlex="90" appearance="outline">
+      <mat-label>{{'labels.delivery'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        [readonly]="true"
+        [formControl]="filenameControl">
+      <button
+        *ngIf="!isDelivered"
+        matSuffix
+        mat-icon-button
+        (click)="uploader.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <button
+        matSuffix
+        mat-icon-button
+        *ngIf="isDelivered"
+        (click)="downloadDelivery()">
+        <mat-icon>file_download</mat-icon>
+      </button>
+    </mat-form-field>
+    <input
+      hidden
+      type="file"
+      #uploader
+      (change)="uploadFile($event)">
+  </p>
+  <div class="full-width" fxLayout="row" fxLayoutAlign="end center">
+    <button mat-flat-button color="primary" *ngIf="!isDelivered" (click)="deliveryActivity()" [disabled]="filenameControl?.value === ''">
+      {{'labels.send'|translate}}
+    </button>
+  </div>
+</div>

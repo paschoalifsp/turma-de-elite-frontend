@@ -67,9 +67,37 @@
     "punctuation": "Pontuação",
     "visible": "Visível",
     "maxDeliveryDate": "Data Máxima de Entrega",
-    "attachment": "Anexo",
-    "deliverable": "Entregável"
+    "expiresIn": "Expira em",
+    "maxPunctuation": "Pontuação Máxima",
+    "postBy": "Postado por",
+    "class": "Turma",
+    "delivery": "Entrega",
+    "send": "Enviar",
+    "expired": "Expirado",
+    "viewDeliveries": "Visualizar Entregas",
+    "close": "Fechar",
+    "gradePercentage": "Percentual da nota",
+    "registerAchievement": "Criar conquista",
 
+    "updateAchievement": "Editar conquista",
+    "deliveryBeforeAt": "Para entregas antes de",
+    "deliveryEarlierOf": "Para n entregas mais rápidas",
+    "deliveryBestOf": "Para n melhores entregas",
+    "averageGradeGreaterOrEqualsThan": "Para média de nota maior ou igual a",
+    "qualifiers": "Qualificadores",
+    "attachment": "Anexo",
+    "deliverable": "Entregável",
+
+    "generalInfo": "Informações gerais",
+    "chooseIcon": "Escolha um ícone",
+    "modality": "Modalidade",
+
+    "byClass": "Por turma",
+    "byActivity": "Por atividade",
+    "activity": "Atividade",
+    "closeClass": "Encerrar turma",
+    "school-classes": "Turmas",
+    "classClosed": "Turma encerrada"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador"
@@ -89,7 +117,9 @@
     "achievements": "Conquistas",
     "registerTeacher": "Criar Professor",
     "updateTeacher": "Atualizar Professor",
-    "yourClasses": "Suas turmas e atividades"
+    "yourClasses": "Suas turmas e atividades",
+    "deliveriesForThisActivity": "Entregas para esta atividade",
+    "yourAchievements": "Suas conquistas"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",
@@ -109,7 +139,13 @@
     "schoolUpdated": "Escola atualizada com sucesso!",
     "teacherUpdated": "Professor atualizado com sucesso!",
     "studentRegistered": "Estudante registrado com sucesso!",
-    "studentUpdated": "Estudante atualizado com sucesso!"
+    "studentUpdated": "Estudante atualizado com sucesso!",
+    "gradeSavedSuccessfully": "Nota salva com sucesso!",
+    "achievementCreated": "Conquista criada com sucesso!",
+    "achievementUpdated": "Conquista atualizada com sucesso!",
+    "classClosed": "Turma encerrada com sucesso!",
+    "activityCreated": "Atividade criada com sucesso!",
+    "activityUpdated": "Atividade atualizada com sucesso!"
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",

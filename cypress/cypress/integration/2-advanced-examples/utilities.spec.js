@@ -20,9 +20,9 @@ context('Utilities', () => {
     let $li = Cypress.$('.utility-jquery li:first')
 
     cy.wrap($li)
-      .should('not.have.class', 'active')
+      .should('not.have.school-classes', 'active')
       .click()
-      .should('have.class', 'active')
+      .should('have.school-classes', 'active')
   })
 
   it('Cypress.Blob - blob utilities and base64 string conversion', () => {

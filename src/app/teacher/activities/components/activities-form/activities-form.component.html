@@ -100,4 +100,7 @@
       <button mat-raised-button (click)="isEdit ? updateActivity() : createActivity()" [disabled]="activityForm.invalid">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
+  <button *ngIf="isExpired()" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
+    {{'labels.viewDeliveries'|translate}}
+  </button>
 </div>

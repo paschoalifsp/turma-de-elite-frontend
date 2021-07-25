@@ -69,6 +69,36 @@
     "visible": "Visible",
     "maxDeliveryDate": "Max Delivery Date",
     "attachment": "Attachment",
+    "expiresIn": "Expires in",
+    "maxPunctuation": "Max Punctuation",
+    "postBy": "Post by",
+    "class": "Class",
+    "delivery": "Delivery",
+    "send": "Send",
+    "expired": "Expired",
+    "viewDeliveries": "View Deliveries",
+    "close": "Close",
+    "gradePercentage": "Grade percentage",
+
+    "updateAchievement": "Update Achievement",
+    "deliveryBeforeAt": "For deliveries before at",
+    "deliveryEarlierOf": "For nth earlier delivery",
+    "deliveryBestOf": "For nth best grade",
+    "averageGradeGreaterOrEqualsThan": "For grade average greater or equals than",
+    "qualifiers": "Qualifiers",
+
+    "generalInfo": "General info",
+    "chooseIcon": "Choose an icon",
+    "modality": "Modality",
+
+    "byClass": "By class",
+    "byActivity": "By activity",
+    "activity": "Activity",
+    "closeClass": "Close class",
+    "school-classes": "Classes",
+    "classClosed": "Class is closed",
+
+
     "deliverable": "Deliverable"
   },
   "actions": {
@@ -88,7 +118,9 @@
     "teachers": "Teachers",
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher",
-    "yourClasses": "Your classes and activities"
+    "yourClasses": "Your classes and activities",
+    "deliveriesForThisActivity": "Deliveries for this activity",
+    "yourAchievements": "Your achievements"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -107,7 +139,13 @@
     "schoolCreated": "School created sucessfully!",
     "schoolUpdated": "School updated successfully!",
     "studentRegistered": "Student registered successfully!",
-    "studentUpdated": "Student updated successfully!"
+    "studentUpdated": "Student updated successfully!",
+    "gradeSavedSuccessfully": "Grade saved successfully!",
+    "achievementCreated": "Achievement created successfully!",
+    "achievementUpdated": "Achievement updated successfully!",
+    "classClosed": "Class closed successfully!",
+    "activityCreated": "Activity created successfully!",
+    "activityUpdated": "Activity updated successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
