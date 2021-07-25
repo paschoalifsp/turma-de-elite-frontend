@@ -2,7 +2,7 @@
   "fieldErrors": {
     "invalidEmail": "The e-mail is invalid",
     "alreadyRegisteredEmail": "This E-mail has already been registered",
-    "emailIsRequired": "e-mail is required",
+    "emailIsRequired": "E-mail is required",
     "nameIsRequired": "Name is  required",
     "passwordIsTooShort": "Your password need has at least 6 characters",
     "passwordIsRequired": "Password is required",
@@ -11,7 +11,7 @@
     "passwordNotSame": "Passwords must match",
     "schoolNamePattern": "School´s name must has just letters and numbers.",
     "identifierNaN": "The identifier must be a number.",
-    "minLengthTeacher": "Theacher´s name must has at least 5 characters.",
+    "minLengthTeacher": "Teacher´s name must has at least 5 characters.",
     "namePattern": "The name must has just letters.",
     "emailPattern": "Input a valid email.",
     "minLengthNameAdmin": "Admin´s name must has at least 5 characters.",
@@ -19,6 +19,10 @@
     "schoolNameIsRequired": "School´s name is required.",
     "identifierIsRequired": "Identifier is required",
     "registryIsRequired": "Registry is required",
+    "minLengthStudent": "Student´s name must have at least 5 characters.",
+    "registryPattern": "Student´s registry must has only letters and numbers.",
+    "minLengthSchool": "School´s name must has at least 5 characters.",
+    "classNameIsRequired": "Class´s name is required.",
     "activityNameIsRequired": "Activity name is required.",
     "activityNamePattern": "Activity´s name must has only letters and numbers.",
     "punctuationIsRequired": "Punctuation is required.",
@@ -173,9 +177,14 @@
     "searchSchool": "Search School",
     "schoolIdentifier": "School´s Identifier",
     "searchClass": "Search Class",
+    "searchStudent": "Search Student",
     "studentEmail": "Student E-mail",
     "addStudent": "Add Student",
     "teacherEmail": "Teacher E-mail",
-    "chooseDeliveryDate": "Choose the maximum delivery datetime"
+    "studentRegistry": "Student´s Registry",
+    "studentName": "Student´s Name",
+    "className": "Class´s Name",
+    "chooseDeliveryDate": "Choose the maximum delivery datetime",
+    "password": "Type your password"
   }
 }

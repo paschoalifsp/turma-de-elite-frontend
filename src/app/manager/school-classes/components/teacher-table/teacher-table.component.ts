@@ -8,6 +8,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {of} from "rxjs";
 
+
 @Component({
   selector: 'app-teacher-table',
   templateUrl: './teacher-table.component.html',
@@ -109,4 +110,5 @@ export class TeacherTableComponent implements OnInit {
   emitNext(){
     this.next.emit();
   }
+
 }
