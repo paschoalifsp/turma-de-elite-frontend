@@ -1,7 +1,8 @@
 <div>
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <p class="activity-name">{{activity?.name}}</p>
-    <p class="expires">{{'labels.expiresIn'|translate}} {{activity?.expireDate|countdownTo}}</p>
+    <p class="expires" *ngIf="!isDelivered">{{'labels.expiresIn'|translate}} {{activity?.expireDate|countdownTo}}</p>
+    <p class="expires" *ngIf="isDelivered">{{'labels.scoreReceived'|translate}} {{activity?.scoreReceived| number : '1.2-2'}}</p>
   </div>
   <p class="school-class-name">{{'labels.school-classes'|translate}}: {{activity?.schoolClassName}}</p>
   <p class="description-title">{{'labels.description'|translate}}</p>

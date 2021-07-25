@@ -40,7 +40,6 @@ import { StudentsFormComponent } from './manager/students/components/students-fo
 import { TeacherTableComponent } from './manager/school-classes/components/teacher-table/teacher-table.component';
 import { StudentTableComponent } from './manager/school-classes/components/student-table/student-table.component';
 import { TeacherDashboardComponent } from './teacher/dashboard/components/dashboard/teacher-dashboard.component';
-//import { ActivitiesPageComponent } from './teacher/activities/components/activities-page/activities-page.component';
 import { ActivitiesFormComponent } from './teacher/activities/components/activities-form/activities-form.component';
 import { StudentDashboardComponent } from './student/dashboard/components/dashboard/student-dashboard.component';
 import { TeacherActivitiesPage } from './teacher/activities/components/activities-page/teacher-activities-page.component';
@@ -51,7 +50,9 @@ import { StudentDeliveryComponent } from './student/activities/components/studen
 import { TeacherDeliveriesPageComponent } from './teacher/grades/components/teacher-deliveries-page/teacher-deliveries-page.component';
 import { SchoolClassesComponent } from './teacher/school-classes/components/school-classes/school-classes.component';
 import { SchoolDetailsComponent } from './teacher/school-classes/components/school-details/school-details.component';
-//import { AchievementsListPageComponent } from './student/achievements/components/achievements-list-page/achievements-list-page.component';
+import { AchievementsListPageComponent } from './student/achievements/components/achievements-list-page/achievements-list-page.component';
+import { RankingPageComponent } from './student/ranking/components/ranking-page/ranking-page.component';
+import { RankingDetailsComponent } from './student/ranking/components/ranking-details/ranking-details.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -84,7 +85,6 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherTableComponent,
     StudentTableComponent,
     TeacherDashboardComponent,
-    //ActivitiesPageComponent,
     ActivitiesFormComponent,
     StudentDashboardComponent,
     StudentActivitiesPageComponent,
@@ -92,8 +92,10 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherDeliveriesPageComponent,
     SchoolClassesComponent,
     SchoolDetailsComponent,
-    //AchievementsListPageComponent,
     TeacherActivitiesPage
+    AchievementsListPageComponent,
+    RankingPageComponent,
+    RankingDetailsComponent,
   ],
   imports: [
     BrowserModule,

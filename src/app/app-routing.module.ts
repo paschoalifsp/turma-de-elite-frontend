@@ -33,7 +33,8 @@ import {StudentDashboardComponent} from "./student/dashboard/components/dashboar
 import {StudentActivitiesPageComponent} from "./student/activities/components/student-activities/student-activities-page.component";
 import {TeacherDeliveriesPageComponent} from "./teacher/grades/components/teacher-deliveries-page/teacher-deliveries-page.component";
 import {SchoolClassesComponent} from "./teacher/school-classes/components/school-classes/school-classes.component";
-//import {AchievementsListPageComponent} from "./student/achievements/components/achievements-list-page/achievements-list-page.component";
+import {AchievementsListPageComponent} from "./student/achievements/components/achievements-list-page/achievements-list-page.component";
+import {RankingPageComponent} from "./student/ranking/components/ranking-page/ranking-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -90,7 +91,8 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: StudentDashboardComponent},
       { path: 'activities', component: StudentActivitiesPageComponent},
-      //{ path: 'achievements', component: AchievementsListPageComponent }
+      { path: 'achievements', component: AchievementsListPageComponent },
+      { path: 'ranking', component: RankingPageComponent },
     ]
   },
 

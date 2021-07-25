@@ -19,7 +19,7 @@
         fxLayout="column"
         fxLayoutAlign="center center"
         class="achievement"
-        [ngClass]="achievement?.isAcquired?'disabled':'active'"
+        [ngClass]="achievement?.isAcquired?'active':'disabled'"
         *ngFor="let achievement of achievements">
         <div [matTooltip]="achievement?.description" >
           <mat-icon>{{achievement?.iconName}}</mat-icon>
