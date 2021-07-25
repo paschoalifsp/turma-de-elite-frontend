@@ -92,7 +92,7 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherDeliveriesPageComponent,
     SchoolClassesComponent,
     SchoolDetailsComponent,
-    TeacherActivitiesPage
+    TeacherActivitiesPage,
     AchievementsListPageComponent,
     RankingPageComponent,
     RankingDetailsComponent,
