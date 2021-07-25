@@ -24,9 +24,9 @@ describe('Cadastrar uma escola', () => {
         cy.location('pathname', { timeout: 60000 })
           .should('include', 'schools')
         cy.get(':nth-child(2) > p').click()
-        cy.get('#mat-input-3').type('Escola SP')
-        cy.get('#mat-input-4').type('ESC-SP')
-        cy.get('.mat-slide-toggle-thumb').click()
+        cy.get('#mat-input-3').type('Escola pSP')
+        cy.get('#mat-input-4').type('ESC-pSP')
+        cy.get('.mat-slide-toggle-bar').click()
         cy.get('.mat-raised-button').click()
         cy.wait('@saveSchool').then((interception) => {
           assert.equal(interception.response?.statusCode, 201)
@@ -54,10 +54,10 @@ describe('Cadastrar uma escola', () => {
   
       cy.intercept({
         method: 'PUT',
-        url: '/api/schools/2',
+        url: '/api/schools/1',
       }).as('changeSchool')
   
-      cy.get('.toggled-tile > p').click()
+      cy.get(':nth-child(3) > p').click()
       cy.get('#mat-input-4').clear()
       cy.get('#mat-input-4').type('NWS')
     
@@ -81,8 +81,8 @@ describe('Cadastrar uma escola', () => {
       cy.get(':nth-child(5) > p').click()
       cy.get('.mat-slide-toggle-thumb').click()
       cy.get('.mat-raised-button').click()
-  
-     // cy.get('#11').find('icon').should('be.disablade')
+      cy.get('.toggled-tile > .mat-icon').should('have.class', 'disabled')
+
   
   })
   

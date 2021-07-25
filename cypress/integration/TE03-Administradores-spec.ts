@@ -22,8 +22,8 @@ describe('Cadastrar uma administrador', () => {
         cy.location('pathname', { timeout: 60000 })
           .should('include', 'admins')
         cy.get('[data-cy=createAdmin]').click()
-        cy.get('[data-cy=email]').type('jcarlos@gmail.com')
-        cy.get('[data-cy=name]').type('João Carlos')
+        cy.get('[data-cy=email]').type('jpaulo@gmail.com')
+        cy.get('[data-cy=name]').type('João Paulo')
         cy.get('[data-cy=isActive]').click()
         cy.get('[data-cy=save]').click()
         cy.wait('@saveAdmin').then((interception) => {
@@ -43,7 +43,7 @@ describe('Cadastrar uma administrador', () => {
   
     it('Na página de administradores, ao apagar um dado obrigatório o botao salvaar deverá ser desabilitado', () => {
   
-      cy.get('#9').click()
+      cy.get(':nth-child(3) > p').click()
       cy.get('[data-cy=name]').clear()
 
       cy.get('[data-cy="save"]').should('be.disabled')
@@ -54,12 +54,12 @@ describe('Cadastrar uma administrador', () => {
   
       cy.intercept({
         method: 'PUT',
-        url: '/api/admins/8',
+        url: '/api/admin/72',
       }).as('changeAdmin')
   
-      cy.get('#8').click()
+      cy.get(':nth-child(4) > p').click()
       cy.get('[data-cy=name]').clear()
-      cy.get('[data-cy=name]').type('Maria Clara')
+      cy.get('[data-cy=name]').type('Joao Lucas')
 
       cy.get('[data-cy=save]').click()
   
@@ -78,11 +78,11 @@ describe('Cadastrar uma administrador', () => {
   
     it('Ao inativar uma escola, o seu icone deve ser listado na cor cinza', () => {
   
-      cy.get('#9').click()
+      cy.get(':nth-child(6) > p').click()
       cy.get('[data-cy=isActive]').click()
       cy.get('[data-cy=save]').click()
   
-     // cy.get('#11').find('icon').should('be.disablade')
+      cy.get(':nth-child(6) > .mat-icon').should('have.class', 'disabled')
   
   })
   
