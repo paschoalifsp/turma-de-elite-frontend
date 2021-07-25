@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {UsersService} from "../../services/users.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -34,16 +34,20 @@ export class UserFormComponent implements OnInit {
     private userService: UsersService,
     private snackbar: MatSnackBar,
     private translateService: TranslateService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
+    
+    this.userForm.get('isActive')?.valueChanges.subscribe (value => {
+      console.log(value);
+    })
+
     this.route.params.subscribe(value => {
       if(value['id']){
         this.isEdit = true;
         this.userId = value['id'];
-        this.userService.findUserById(this.userId).subscribe(({email,name,isActive})=>{
-          this.userForm.setValue({email,name,isActive});
+        this.userService.findUserById(this.userId).subscribe(({email,name})=>{
+          this.userForm.setValue({email,name});
         });
       }
     })
@@ -55,8 +59,8 @@ export class UserFormComponent implements OnInit {
       this.userForm.reset();
     }
     else{
-      this.userService.findUserById(this.userId as number).subscribe( ({name,email}) => {
-        this.userForm.setValue({name,email})
+      this.userService.findUserById(this.userId as number).subscribe( ({name,email,isActive}) => {
+        this.userForm.setValue({name,email,isActive})
       })
     }
 

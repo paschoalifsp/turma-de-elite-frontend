@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {UsersService} from "../../../users/services/users.service";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {PageEvent} from "@angular/material/paginator";
 import {ManagerService} from "../../services/manager.service";
+import { of } from 'rxjs';
+import Manager from 'src/app/shared/model/manager';
 
 @Component({
   selector: 'app-manager-page',
@@ -19,17 +20,39 @@ export class ManagerPageComponent implements OnInit {
   totalLength = 0;
   pageSize = 5;
 
+  filteredManagers$ = of([] as Manager[]);
+
   searchControl = new FormControl('');
+
+  managerForm = this.fb.group({
+    email: ['',Validators.email],
+    name: ['',Validators.required],
+    school: ['',Validators.required],
+    isActive:['']
+  });
 
   managerToggleId: number | null = null;
 
   createMode = true;
 
-  constructor(private managerService: ManagerService) {
+  constructor(private managerService: ManagerService, private fb: FormBuilder) {
     this.refresh();
   }
 
   ngOnInit(): void {
+
+    this.managerForm.get('name')?.valueChanges.subscribe(value => {
+      if(!value?.id){
+        if (value === ""){
+          this.refresh();
+        } else {
+          this.managerService.findManagerByNameSimilarity(value).subscribe (managers => {
+            this.managers = managers;
+          }
+        );
+        }
+      }
+    })
   }
 
   refresh(){
@@ -48,6 +71,10 @@ export class ManagerPageComponent implements OnInit {
       this.totalLength = response.totalElements;
       this.isChangingPage = false;
     })
+  }
+
+  displayManagerName(manager: Manager){
+    return manager && manager.name ? manager.name: '';
   }
 
 }

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {take} from "rxjs/operators";
 import School from "../../../shared/model/school";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class SchoolService {
     return this.http.put<any>(`${environment.apiUrl}/api/schools/${schoolId}`,school).pipe(take(1));
   }
 
-  findSchoolByNameSimilarity(value: string) {
+  findSchoolByNameSimilarity(value: string): Observable<School[]> {
     return this.http.get<School[]>(`${environment.apiUrl}/api/schools/name/${value}`).pipe(take(1));
   }
 

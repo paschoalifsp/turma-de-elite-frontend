@@ -115,11 +115,10 @@
     "teachers": "Teachers",
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher",
-    "registerManager": "Register Manager",
-    "updateManager": "Edit Manager",
-    "yourClasses": "Your classes and activities",
     "deliveriesForThisActivity": "Deliveries for this activity",
-    "yourAchievements": "Your achievements"
+    "yourAchievements": "Your achievements",
+    "updateManager": "Edit Manager",
+    "yourClasses": "Your classes and activities"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -136,7 +135,7 @@
     "managerCreated": "Manager registered successfully!",
     "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
-    "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one."
+    "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one.",
     "schoolUpdated": "School updated successfully!",
     "studentRegistered": "Student registered successfully!",
     "studentUpdated": "Student updated successfully!",
@@ -151,17 +150,23 @@
     "searchTeacher": "Search Teacher",
     "searchManager": "Search Manager",
     "email": "user@email.com",
-    "managerName": "Manager´s Name",
-    "teacherName": "Teacher´s Name",
+    "managerName": "Manager Name",
+    "teacherName": "Teacher Name",
     "searchSchool": "Search School",
-    "schoolName": "School´s Name",
-    "schoolIdentifier": "School´s Identifier"
+    "schoolName": "School Name",
+    "schoolIdentifier": "School´s Identifier",
     "searchAchievements": "Search Achievement",
     "searchClass": "Search Class",
     "studentEmail": "Student E-mail",
     "addStudent": "Add Student",
     "teacherEmail": "Teacher E-mail",
     "chooseDeliveryDate": "Choose the maximum delivery datetime",
-    "studentRegistry": "Student Registry"
+    "studentRegistry": "Student Registry",
+    "schoolUpdated": "School updated successfully!",
+    "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one.",
+    "studentRegistered": "Student registered successfully!",
+    "studentUpdated": "Student updated successfully!",
+    "userName": "User name",
+    "searchUser": "Search Admin User"
   }
 }
