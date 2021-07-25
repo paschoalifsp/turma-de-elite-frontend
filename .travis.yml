@@ -4,11 +4,6 @@ addons:
   apt:
     packages:
       - libgconf-2-4
-cache:
-  # cache both npm modules and Cypress binary
-  directories:
-    - ~/.npm
-    - ~/.cache
 before_script: npm install -g @angular/cli
 script:
 - npm install
