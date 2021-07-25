@@ -164,7 +164,9 @@
     "schoolUpdated": "School updated successfully!",
     "teacherCreated": "Teacher created successfully!",
     "teacherUpdated": "Teacher updated successfully!",
-    "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one."
+    "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one.",
+    "classCreated": "Class created successfully!",
+    "classNameAndStatusUpdated": "Class updated successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",

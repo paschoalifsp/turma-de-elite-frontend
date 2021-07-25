@@ -161,7 +161,9 @@
     "achievementUpdated": "Conquista atualizada com sucesso!",
     "classClosed": "Turma encerrada com sucesso!",
     "activityCreated": "Atividade criada com sucesso!",
-    "activityUpdated": "Atividade atualizada com sucesso!"
+    "activityUpdated": "Atividade atualizada com sucesso!",
+    "classCreated": "Turma criada com sucesso!",
+    "classNameAndStatusUpdated": "Turma atualizada com sucesso!"
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",
