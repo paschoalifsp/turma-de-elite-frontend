@@ -41,8 +41,8 @@ describe('Realizar login na aplicação como gestor', () => {
           .should('include', 'teachers')
 
           cy.get('[data-cy=create]').click()
-          cy.get('[data-cy=email]').type('jpedro@gmil.com')
-          cy.get('[data-cy=name]').type('José Pedro')
+          cy.get('[data-cy=email]').type('jpedro@gmil.com.br')
+          cy.get('[data-cy=name]').type('José Pedra')
           cy.get('[data-cy=isActive]').click()
           cy.get('[data-cy=save]').click()
           cy.wait('@saveTeacher').then((interception) => {
@@ -63,7 +63,7 @@ describe('Realizar login na aplicação como gestor', () => {
   
     it('Na página de professores, ao apagar um dado obrigatório o botao salvaar deverá ser desabilitado', () => {
   
-      cy.get('#25').click()
+      cy.get(':nth-child(3) > p').click()
       cy.get('[data-cy=name]').clear()
       cy.get('[data-cy=save]').should('be.disabled')
   
@@ -73,10 +73,10 @@ describe('Realizar login na aplicação como gestor', () => {
   
       cy.intercept({
         method: 'PUT',
-        url: '/api/teachers/18',
+        url: '/api/teachers/73',
       }).as('changeTeacher')
   
-      cy.get('#18').click()
+      cy.get(':nth-child(4) > p').click()
       cy.get('[data-cy=name]').clear()
       cy.get('[data-cy=name]').type('Professor')
       cy.get('[data-cy=save]').click()
@@ -96,7 +96,7 @@ describe('Realizar login na aplicação como gestor', () => {
   
     it('Ao inativar uma Professor, o seu icone deve ser listado na cor cinza', () => {
   
-      cy.get('#25').click()
+      cy.get(':nth-child(4) > p').click()
       cy.get('[data-cy=isActive]').click()
       cy.get('[data-cy=save]').click()
   

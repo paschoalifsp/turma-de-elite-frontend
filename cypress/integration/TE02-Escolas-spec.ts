@@ -82,6 +82,8 @@ describe('Cadastrar uma escola', () => {
       cy.get('.mat-slide-toggle-thumb').click()
       cy.get('.mat-raised-button').click()
       cy.get('.toggled-tile > .mat-icon').should('have.class', 'disabled')
+      cy.get('.mat-slide-toggle-thumb').click()
+      cy.get('.mat-raised-button').click()
 
   
   })

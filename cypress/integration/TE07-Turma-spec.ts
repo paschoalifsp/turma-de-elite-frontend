@@ -86,7 +86,7 @@ describe('Realizar login na aplicação como gestor', () => {
   
       cy.intercept({
         method: 'PUT',
-        url: '/api/class/7',
+        url: '/api/class/6',
       }).as('changeClass')
   
       cy.get('#mat-input-3').clear()
@@ -112,7 +112,8 @@ describe('Realizar login na aplicação como gestor', () => {
       cy.get('[data-cy=isActive]').click()
       cy.get('.mat-vertical-content > .mat-flat-button').click()
       cy.get(':nth-child(3) > .mat-icon').should('have.class', 'disabled')
-
+      cy.get('[data-cy=isActive]').click()
+      cy.get('.mat-vertical-content > .mat-flat-button').click()
   })
   
   })

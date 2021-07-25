@@ -12,18 +12,21 @@ describe('Cadastrar uma conquista', () => {
       }).as('saveAchievements')
   
       cy.visit('/login').then(currentSubject => {
-        cy.get('#email-login').type('p.santospaschoal@hotmail.com')
+        cy.get('#email-login').type('joaquim@gmail.com')
         cy.get('#password-login').type('123456')
         cy.get('#button-login').click()
         cy.location('pathname', { timeout: 60000 })
-          .should('include', 'teachers')
+          .should('include', 'teacher')
   
-        cy.get('[data-cy=achievements]').click()
+        cy.get('[ng-reflect-path="/teacher/achievements"] > .tile > p').click()
   
         cy.location('pathname', { timeout: 60000 })
           .should('include', 'achievements')
   
   
       })
+    })
+    it('Acessar cadastro de conquistas', () => {
+      
     })
   })

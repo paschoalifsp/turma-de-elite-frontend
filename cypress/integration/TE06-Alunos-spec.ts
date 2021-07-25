@@ -43,21 +43,9 @@ describe('Realizar login na aplicação como gestor', () => {
           //cadastro do primeiro aluno
 
           cy.get('.toggled-tile > p').click()
-          cy.get('#mat-input-3').type('serafina@gmil.com')
-          cy.get('#mat-input-4').type('26105')
-          cy.get('#mat-input-5').type('Serafina Arcanjo')
-          cy.get('.mat-slide-toggle-thumb').click()
-          cy.get('.mat-raised-button').click()
-          cy.wait('@saveStudent').then((interception) => {
-            assert.equal(interception.response?.statusCode, 201)
-          })
-
-          //cadastro do segundo aluno
-
-          cy.get('.toggled-tile > p').click()
-          cy.get('#mat-input-3').type('lukinhastop@email.com')
-          cy.get('#mat-input-4').type('12445')
-          cy.get('#mat-input-5').type('Lucas Mendes')
+          cy.get('#mat-input-3').type('serafina@gmil.com.br')
+          cy.get('#mat-input-4').type('26106')
+          cy.get('#mat-input-5').type('Serafina Novaes')
           cy.get('.mat-slide-toggle-thumb').click()
           cy.get('.mat-raised-button').click()
           cy.wait('@saveStudent').then((interception) => {
@@ -86,7 +74,7 @@ describe('Realizar login na aplicação como gestor', () => {
   
       cy.intercept({
         method: 'PUT',
-        url: '/api/students/42',
+        url: '/api/students/71',
       }).as('changeStudent')
   
       cy.get(':nth-child(4) > p').click()
@@ -112,7 +100,7 @@ describe('Realizar login na aplicação como gestor', () => {
       cy.get(':nth-child(5) > p').click()
       cy.get('.mat-slide-toggle-thumb').click()
       cy.get('.mat-raised-button').click()
-      cy.get(':nth-child(4) > .mat-icon').should('have.class', 'disabled')
+      cy.get(':nth-child(5) > .mat-icon').should('have.class', 'disabled')
 
   })
   
