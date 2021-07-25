@@ -10,12 +10,24 @@ export class ActivityService {
 
   constructor(private http: HttpClient) { }
 
-  getActivities(pageSize: number, pageNumber: number) {
+  getTeacherActivitiesPaginated(pageSize: number, pageNumber: number) {
     return this.http.get<any>(`${environment.apiUrl}/api/activities?pageSize=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
   }
 
-  getActivityById(activityId: number) {
+  getTeacherActivities() {
+    return this.http.get<any>(`${environment.apiUrl}/api/activities`).pipe(take(1));
+  }
+
+  getStudentActivities() {
+    return this.http.get<any>(`${environment.apiUrl}/api/activities/student`).pipe(take(1));
+  }
+
+  getTeacherActivityById(activityId: number) {
     return this.http.get<any>(`${environment.apiUrl}/api/activities/${activityId}`).pipe(take(1));
+  }
+
+  getStudentActivityById(activityId: number,classId: number) {
+    return this.http.get<any>(`${environment.apiUrl}/api/activities/${activityId}/class/${classId}/student`).pipe(take(1));
   }
 
   createActivity(activity: any) {
@@ -27,9 +39,16 @@ export class ActivityService {
   }
 
 
-  downloadAttachment(activityId: number) {
+  downloadTeacherAttachment(activityId: number) {
     return this.http.get<any>(
       `${environment.apiUrl}/api/activities/${activityId}/download`,
+      {responseType: 'blob' as 'json',observe: 'response'}
+    ).pipe(take(1));
+  }
+
+  downloadStudentAttachment(activityId: number) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/api/activities/${activityId}/student/download`,
       {responseType: 'blob' as 'json',observe: 'response'}
     ).pipe(take(1));
   }

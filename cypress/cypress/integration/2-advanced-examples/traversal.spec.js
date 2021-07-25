@@ -16,7 +16,7 @@ context('Traversal', () => {
     // https://on.cypress.io/closest
     cy.get('.traversal-badge')
       .closest('ul')
-      .should('have.class', 'list-group')
+      .should('have.school-classes', 'list-group')
   })
 
   it('.eq() - get a DOM element at a specific index', () => {

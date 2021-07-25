@@ -10,6 +10,11 @@
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordNotSame": "Passwords must match",
     "identifierIsRequired": "Identifier is required",
+    "minLengthSchool": "School´s name must has at least 5 characters.",
+    "identifierNaN": "The identifier must be a number.",
+    "minLengthTeacher": "Theacher´s name must has at least 5 characters.",
+    "namePattern": "The name must has just letters.",
+    "emailPattern": "Input a valid email.",
     "registryIsRequired": "Registry is required"
   },
   "labels": {
@@ -32,6 +37,7 @@
     "inactive": "Inactive",
     "registerManager": "Register Manager",
     "updateManager": "Update Manager",
+    "createManager" : "Create Manager",
     "schools": "Schools",
     "achievements": "Achievements",
     "createAchievement": "Create Achievement",
@@ -60,10 +66,40 @@
     "punctuation": "Punctuation",
     "visible": "Visible",
     "maxDeliveryDate": "Max Delivery Date",
-    "attachment": "Attachment"
+    "attachment": "Attachment",
+    "expiresIn": "Expires in",
+    "maxPunctuation": "Max Punctuation",
+    "postBy": "Post by",
+    "class": "Class",
+    "delivery": "Delivery",
+    "send": "Send",
+    "expired": "Expired",
+    "viewDeliveries": "View Deliveries",
+    "close": "Close",
+    "gradePercentage": "Grade percentage",
+
+    "updateAchievement": "Update Achievement",
+    "deliveryBeforeAt": "For deliveries before at",
+    "deliveryEarlierOf": "For nth earlier delivery",
+    "deliveryBestOf": "For nth best grade",
+    "averageGradeGreaterOrEqualsThan": "For grade average greater or equals than",
+    "qualifiers": "Qualifiers",
+
+    "generalInfo": "General info",
+    "chooseIcon": "Choose an icon",
+    "modality": "Modality",
+
+    "byClass": "By class",
+    "byActivity": "By activity",
+    "activity": "Activity",
+    "closeClass": "Close class",
+    "school-classes": "Classes",
+    "classClosed": "Class is closed"
+
   },
   "actions": {
-    "addNewAdmin": "Add Admin"
+    "addNewAdmin": "Add Admin",
+    "close": "Close"
   },
   "hint":{
     "schoolIdentifier": "Insert an unique identifier for school "
@@ -79,7 +115,11 @@
     "teachers": "Teachers",
     "registerTeacher": "Create Teacher",
     "updateTeacher": "Edit Teacher",
-    "yourClasses": "Your classes and activities"
+    "registerManager": "Register Manager",
+    "updateManager": "Edit Manager",
+    "yourClasses": "Your classes and activities",
+    "deliveriesForThisActivity": "Deliveries for this activity",
+    "yourAchievements": "Your achievements"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -96,12 +136,26 @@
     "managerCreated": "Manager registered successfully!",
     "managerUpdated": "Manager updated successfully!",
     "schoolCreated": "School created sucessfully!",
+    "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one."
     "schoolUpdated": "School updated successfully!",
     "studentRegistered": "Student registered successfully!",
-    "studentUpdated": "Student updated successfully!"
+    "studentUpdated": "Student updated successfully!",
+    "gradeSavedSuccessfully": "Grade saved successfully!",
+    "achievementCreated": "Achievement created successfully!",
+    "achievementUpdated": "Achievement updated successfully!",
+    "classClosed": "Class closed successfully!",
+    "activityCreated": "Activity created successfully!",
+    "activityUpdated": "Activity updated successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
+    "searchManager": "Search Manager",
+    "email": "user@email.com",
+    "managerName": "Manager´s Name",
+    "teacherName": "Teacher´s Name",
+    "searchSchool": "Search School",
+    "schoolName": "School´s Name",
+    "schoolIdentifier": "School´s Identifier"
     "searchAchievements": "Search Achievement",
     "searchClass": "Search Class",
     "studentEmail": "Student E-mail",

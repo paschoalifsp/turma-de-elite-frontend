@@ -81,13 +81,15 @@
     </mat-form-field>
     <mat-checkbox [indeterminate]="false" formControlName="isActive">{{'labels.active'|translate}}</mat-checkbox>
     <mat-checkbox [indeterminate]="false" formControlName="isVisible">{{'labels.visible'|translate}}</mat-checkbox>
-    <mat-checkbox [indeterminate]="false" formControlName="isDeliverable">{{'labels.deliverable'|translate}}</mat-checkbox>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button (click)="isEdit ? updateActivity() : createActivity()" [disabled]="false">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-flat-button color="primary" (click)="isEdit ? updateActivity() : createActivity()" [disabled]="false">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
+  <button *ngIf="isExpired()" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
+    {{'labels.viewDeliveries'|translate}}
+  </button>
 </div>

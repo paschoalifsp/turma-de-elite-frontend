@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {SchoolService} from "../../services/school.service";
 import {EventEmitter} from '@angular/core';
+import {transition} from "@angular/animations";
 
 @Component({
   selector: 'app-school-form',
@@ -23,8 +24,8 @@ export class SchoolFormComponent implements OnInit {
   @Output() save = new EventEmitter();
 
   schoolForm = this.fb.group({
-    name: ['',Validators.required],
-    identifier: ['',Validators.required],
+    name: ['',Validators.required, Validators.minLength(5)],
+    identifier: ['',Validators.required, Validators.pattern('^[0-9]')],
     isActive: ['']
   });
 
@@ -72,6 +73,9 @@ export class SchoolFormComponent implements OnInit {
       switch (error.status){
         case 409:
           this.alreadyRegisteredIdentifier = true;
+          this.translateService.get('messages.alreadyRegisteredIdentifier').subscribe(translation => {
+            this.snackbar.open(translation, 'Fechar');
+          })
           break;
       }
     });
@@ -90,10 +94,17 @@ export class SchoolFormComponent implements OnInit {
       this.isLoading = false;
       switch (error.status){
         case 409:
+          this.translateService.get('messages.alreadyRegisteredIdentifier').subscribe(translation => {
+            this.snackbar.open(translation, 'Fechar');
+          })
           this.alreadyRegisteredIdentifier = true;
           break;
       }
     });
+  }
+
+  showSnackbar(message: string){
+    return this.snackbar.open(message,'Fechar');
   }
 
 }

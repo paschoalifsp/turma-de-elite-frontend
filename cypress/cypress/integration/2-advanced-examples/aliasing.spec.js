@@ -21,7 +21,7 @@ context('Aliasing', () => {
     cy.get('@firstBtn').click()
 
     cy.get('@firstBtn')
-      .should('have.class', 'btn-success')
+      .should('have.school-classes', 'btn-success')
       .and('contain', 'Changed')
   })
 

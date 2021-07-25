@@ -1,0 +1,40 @@
+.achievement-panel{
+  margin: 40px;
+}
+
+.achievement{
+
+  width: 14vw;
+
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+
+  .mat-icon{
+    font-size: 80px;
+  }
+
+  div{
+    height: 80px;
+    width: 80px;
+  }
+
+  p.achievement-title{
+    font-size: 20px;
+    font-weight: lighter;
+    text-align: center;
+    padding: 10px;
+  }
+
+  border: #0074D9 1px solid;
+  border-radius: 5px;
+}
+
+.disabled{
+  color: gray;
+  border-color: gray;
+}
+
+.active{
+  color: #0074D9;
+}

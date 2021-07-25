@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {of} from "rxjs";
+import {forkJoin, of} from "rxjs";
 import School from "../../../../shared/model/school";
 import {ActivatedRoute, Router} from "@angular/router";
 import {StudentsService} from "../../../../manager/students/services/students.service";
@@ -9,7 +9,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {ActivityService} from "../../services/activity.service";
 import * as moment from "moment";
-import {ClassService} from "../../../../manager/class/services/class.service";
+import {ClassService} from "../../../../manager/school-classes/services/class.service";
+import {SnackbarService} from "../../../../shared/services/snackbar.service";
 
 @Component({
   selector: 'app-activities-form',
@@ -36,12 +37,12 @@ export class ActivitiesFormComponent implements OnInit {
     punctuation: ['',Validators.required],
     isVisible: [false,Validators.required],
     isActive: [false,Validators.required],
-    isDeliverable: [false, Validators.required],
     maxDeliveryDate:['',Validators.required],
     filename: [{value: ''}]
   });
 
   filteredClasses = [] as any[];
+  activities = [] as any[];
 
   isLoading = false;
 
@@ -52,7 +53,7 @@ export class ActivitiesFormComponent implements OnInit {
     private fb: FormBuilder,
     private activityService: ActivityService,
     private schoolService: SchoolService,
-    private snackbar: MatSnackBar,
+    private snackbarService: SnackbarService,
     private translateService: TranslateService,
     private classService: ClassService
   ) { }
@@ -69,7 +70,7 @@ export class ActivitiesFormComponent implements OnInit {
       this.activityForm.reset();
     }
     else{
-      this.activityService.getActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,classes,...rest}) =>{
+      this.activityService.getTeacherActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,classes,...rest}) =>{
         this.activityForm.setValue({
           maxDeliveryDate: moment(maxDeliveryDate),
           schoolClasses: classes.map((c: any) => c.id),
@@ -100,11 +101,9 @@ export class ActivitiesFormComponent implements OnInit {
     this.activityService.updateActivity(
       this.activityId,
       formDataRequestBody).subscribe(success => {
-      this.translateService.get('messages.studentRegistered').subscribe( translation => {
-        this.isLoading = false;
-        this.save.emit();
-        this.snackbar.open(translation,'Fechar');
-      })
+      this.snackbarService.showSnack('messages.activityUpdated','labels.close');
+      this.isLoading = false;
+      this.save.emit();
     }, error => {
       this.isLoading = false;
     });
@@ -123,19 +122,16 @@ export class ActivitiesFormComponent implements OnInit {
       formDataRequestBody.append(key,jsonRequestBody[key]);
     }
     this.activityService.createActivity(formDataRequestBody).subscribe(success => {
-      this.translateService.get('messages.studentRegistered').subscribe( translation => {
-        this.isLoading = false;
-        this.save.emit();
-        this.activityForm.reset();
-        this.snackbar.open(translation,'Fechar');
-      })
+      this.snackbarService.showSnack('messages.activityCreated','labels.close');
+      this.save.emit();
+      this.activityForm.reset();
     }, error => {
       this.isLoading = false;
     });
   }
 
   downloadAttachment(){
-    this.activityService.downloadAttachment(this.activityId as number).subscribe( response => {
+    this.activityService.downloadTeacherAttachment(this.activityId as number).subscribe(response => {
       console.log(response.headers)
       const a = document.createElement('a')
       const objectUrl = URL.createObjectURL(response.body)
@@ -146,8 +142,9 @@ export class ActivitiesFormComponent implements OnInit {
     });
   }
 
-  showSnackbar(message: string){
-    this.snackbar.open(message,'Fechar');
+  isExpired(){
+    const expireDate = this.activityForm.get('maxDeliveryDate')?.value;
+    return moment().isAfter(expireDate);
   }
 
 }

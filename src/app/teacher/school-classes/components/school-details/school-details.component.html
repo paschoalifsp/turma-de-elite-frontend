@@ -1,0 +1,24 @@
+<div *ngIf="schoolClass" fxLayout="column">
+  <h1>{{schoolClass?.name}}</h1>
+  <div>
+    <h2>{{'labels.teachers'|translate}}</h2>
+    <ul>
+      <li *ngFor="let teacher of schoolClass?.teachers">{{teacher.teacher.name}}</li>
+    </ul>
+  </div>
+  <div>
+    <h2>{{'labels.students'|translate}}</h2>
+    <ul>
+      <li *ngFor="let student of schoolClass?.students"> {{student.student.name}}</li>
+    </ul>
+  </div>
+  <div *ngIf="schoolClass?.isDone;then showIsDone;else showCloser"></div>
+  <ng-template #showIsDone>
+    <h1>{{'labels.classClosed'|translate}}</h1>
+  </ng-template>
+  <ng-template #showCloser>
+    <div>
+      <button mat-flat-button (click)="closeClass()" color="primary">{{'labels.closeClass'|translate}}</button>
+    </div>
+  </ng-template>
+</div>

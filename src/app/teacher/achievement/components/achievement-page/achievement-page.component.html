@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="center start">
   <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
-    <button mat-icon-button routerLink="/manager/dashboard"><mat-icon>navigate_before</mat-icon></button>
+    <button mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
     <h1 class="mat-display-1">{{'titles.achievements'|translate}}</h1>
   </div>
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
@@ -28,7 +28,7 @@
         fxLayoutAlign="start center"
         *ngFor="let achievement of achievements"
         (click)="achievementToggleId=achievement.id;createMode=false">
-        <mat-icon [ngClass]="achievement.isActive?'primary':'disabled'">person</mat-icon>
+        <mat-icon [ngClass]="achievement.isActive?'primary':'disabled'">{{achievement.iconName}}</mat-icon>
         <p color="primary">{{achievement.name}}</p>
       </a>
       <mat-paginator

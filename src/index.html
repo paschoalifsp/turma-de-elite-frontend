@@ -9,6 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.js" integrity="sha512-zUUZJUMK19j/aCgjs828G2oo+Xr/PPAjiCqE2nsvq6kVXcFs+9n5w8Jwe2tjKaCfNrejmL0AHvdUYq38qwZswg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    (function(){var countdown,moment,ref,ref1,slice=[].slice;countdown=(ref=typeof require==="function"?require("countdown"):void 0)!=null?ref:this.countdown;moment=(ref1=typeof require==="function"?require("moment"):void 0)!=null?ref1:this.moment;moment.fn.countdown=function(){var args,other;other=arguments[0],args=2<=arguments.length?slice.call(arguments,1):[];return countdown.apply(null,[this.toDate(),moment(other).toDate()].concat(slice.call(args)))}}).call(this);
+  </script>
 </head>
 <body class="mat-typography">
   <app-root></app-root>
