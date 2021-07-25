@@ -86,6 +86,9 @@ export class UserFormComponent implements OnInit {
       this.isLoading = false;
       switch (error.status){
         case 409:
+          this.translateService.get('messages.alreadyRegisteredEmail').subscribe(translation => {
+            this.snackbar.open(translation, 'Fechar');
+          })
           this.alreadyRegisteredEmail = true;
           break;
       }

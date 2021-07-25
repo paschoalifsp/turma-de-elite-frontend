@@ -9,6 +9,14 @@
     "accountNotFound": "Your account cannot be found",
     "passwordWrong": "Wrong password. Try again or click in \"Forgot password\" to reset it.",
     "passwordNotSame": "Passwords must match",
+    "schoolNamePattern": "School´s name must has just letters and numbers.",
+    "identifierNaN": "The identifier must be a number.",
+    "minLengthTeacher": "Theacher´s name must has at least 5 characters.",
+    "namePattern": "The name must has just letters.",
+    "emailPattern": "Input a valid email.",
+    "minLengthNameAdmin": "Admin´s name must has at least 5 characters.",
+    "nameMinLength": "Name must have at least 5 characters.",
+    "schoolNameIsRequired": "School´s name is required.",
     "identifierIsRequired": "Identifier is required",
     "registryIsRequired": "Registry is required",
     "activityNameIsRequired": "Activity name is required.",
@@ -40,6 +48,7 @@
     "inactive": "Inactive",
     "registerManager": "Register Manager",
     "updateManager": "Update Manager",
+    "createManager" : "Create Manager",
     "schools": "Schools",
     "achievements": "Achievements",
     "createAchievement": "Create Achievement",
@@ -102,7 +111,8 @@
     "deliverable": "Deliverable"
   },
   "actions": {
-    "addNewAdmin": "Add Admin"
+    "addNewAdmin": "Add Admin",
+    "close": "Close"
   },
   "hint":{
     "schoolIdentifier": "Insert an unique identifier for school "
@@ -120,7 +130,9 @@
     "updateTeacher": "Edit Teacher",
     "yourClasses": "Your classes and activities",
     "deliveriesForThisActivity": "Deliveries for this activity",
-    "yourAchievements": "Your achievements"
+    "yourAchievements": "Your achievements",
+    "registerManager": "Register Manager",
+    "updateManager": "Edit Manager"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
@@ -136,8 +148,6 @@
     "userUpdated": "User updated successfully!",
     "managerCreated": "Manager registered successfully!",
     "managerUpdated": "Manager updated successfully!",
-    "schoolCreated": "School created sucessfully!",
-    "schoolUpdated": "School updated successfully!",
     "studentRegistered": "Student registered successfully!",
     "studentUpdated": "Student updated successfully!",
     "gradeSavedSuccessfully": "Grade saved successfully!",
@@ -145,11 +155,23 @@
     "achievementUpdated": "Achievement updated successfully!",
     "classClosed": "Class closed successfully!",
     "activityCreated": "Activity created successfully!",
-    "activityUpdated": "Activity updated successfully!"
+    "activityUpdated": "Activity updated successfully!",
+    "schoolCreated": "School created successfully!",
+    "schoolUpdated": "School updated successfully!",
+    "teacherCreated": "Teacher created successfully!",
+    "teacherUpdated": "Teacher updated successfully!",
+    "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one."
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
     "searchAchievements": "Search Achievement",
+    "searchManager": "Search Manager",
+    "email": "user@email.com",
+    "schoolName": "School´s Name",
+    "managerName": "Manager´s Name",
+    "teacherName": "Teacher´s Name",
+    "searchSchool": "Search School",
+    "schoolIdentifier": "School´s Identifier",
     "searchClass": "Search Class",
     "studentEmail": "Student E-mail",
     "addStudent": "Add Student",

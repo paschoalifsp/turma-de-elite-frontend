@@ -17,8 +17,16 @@
     "punctuationPattern": "A pontuação deve ter um valor númerico.",
     "schoolClassesIsRequired": "É necessário escolher uma turma.",
     "maxDeliveryDateIsRequired": "É necessário escolher um prazo máximo de entrega.",
-    "descriptionIsRequired": "É necessário inserir uma descrição."
-
+    "descriptionIsRequired": "É necessário inserir uma descrição.",
+    "minLengthSchool": "O nome da escola deve ter no mínimo 5 caracteres.",
+    "identifierNaN": "O identificador deve ser um valor numérico.",
+    "minLengthTeacher": "O nome do professor deve ter no mínimo 5 caracteres.",
+    "namePattern": "O nome deve conter apenas letras.",
+    "schoolNamePattern": "O nome da escola deve conter apenas letras e números.",
+    "emailPattern": "Insira um e-mail válido.",
+    "minLengthNameAdmin": "O nome do administrador deve ter no mínimo 5 caracteres.",
+    "nameMinLength": "O nome deve ter pelo menos 5 caracteres.",
+    "schoolNameIsRequired": "É necessário inserir o nome da escola."
   },
   "labels": {
     "login": "Login",
@@ -100,7 +108,8 @@
     "classClosed": "Turma encerrada"
   },
   "actions": {
-    "addNewAdmin": "Adicionar Administrador"
+    "addNewAdmin": "Adicionar Administrador",
+    "close": "Fechar"
   },
   "hint":{
     "schoolIdentifier": "Insira um identificador único para esta escola"
@@ -108,7 +117,7 @@
   "titles":{
     "administrativePanel": "Painel Administrativo",
     "managers": "Gestores",
-    "createUser": "Criar Usuário Admin",
+    "createUser": "Criar Usuário Administrador",
     "editUser": "Editar Usuário",
     "createSchool": "Criar Escola",
     "editSchool": "Editar Escola",
@@ -137,7 +146,10 @@
     "managerCreated": "Gestor registrado com sucesso!",
     "managerUpdated": "Gestor atualizado com sucesso!",
     "schoolUpdated": "Escola atualizada com sucesso!",
+    "teacherCreated": "Professor criado com sucesso!",
     "teacherUpdated": "Professor atualizado com sucesso!",
+    "alreadyRegisteredIdentifier": "Já existe uma escola cadastrada com este identificador. Por favor, escolha outro.",
+    "alreadyRegisteredEmail": "Este e-mail já foi cadastrado. Por favor, insira um e-mail válido",
     "studentRegistered": "Estudante registrado com sucesso!",
     "studentUpdated": "Estudante atualizado com sucesso!",
     "gradeSavedSuccessfully": "Nota salva com sucesso!",
@@ -154,6 +166,13 @@
     "studentEmail": "E-mail do Estudante",
     "addStudent": "Adicionar Estudante",
     "teacherEmail": "E-mail do Professor",
-    "chooseDeliveryDate": "Escolha o prazo máximo de entrega"
+    "chooseDeliveryDate": "Escolha o prazo máximo de entrega",
+    "searchManager": "Buscar Gestor",
+    "email": "usuario@email.com",
+    "schoolName": "Nome da Escola",
+    "managerName": "Nome do Gestor",
+    "teacherName": "Nome do Professor",
+    "searchSchool": "Buscar Escola",
+    "schoolIdentifier": "Identificador da Escola"
   }
 }
