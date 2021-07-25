@@ -93,7 +93,8 @@
     "activity": "Atividade",
     "closeClass": "Encerrar turma",
     "school-classes": "Turmas",
-    "classClosed": "Turma encerrada"
+    "classClosed": "Turma encerrada",
+    "scoreReceived": "Nota recebida"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",
