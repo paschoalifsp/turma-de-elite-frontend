@@ -79,7 +79,6 @@
     "punctuation": "Pontuação",
     "visible": "Visível",
     "maxDeliveryDate": "Data Máxima de Entrega",
-    "attachment": "Anexo",
     "expiresIn": "Expira em",
     "maxPunctuation": "Pontuação Máxima",
     "postBy": "Postado por",
@@ -172,12 +171,7 @@
   "placeholder": {
     "searchTeacher": "Buscar Professor",
     "searchAchievements": "Buscar Conquista",
-    "searchClass": "Buscar Turma",
     "searchStudent": "Buscar Aluno",
-    "studentEmail": "E-mail do Aluno",
-    "addStudent": "Adicionar Aluno",
-    "teacherEmail": "E-mail do Professor",
-    "studentRegistry": "Matrícula do Aluno",
     "studentName": "Nome do Aluno",
     "searchManager": "Buscar Gestor",
     "email": "usuario@email.com",
@@ -187,12 +181,15 @@
     "teacherName": "Nome do Professor",
     "searchSchool": "Buscar Escola",
     "className": "Nome da Turma",
-    "chooseDeliveryDate": "Escolha o prazo máximo de entrega",
     "password": "Digite sua senha",
     "searchAdministrator": "Buscar Administrador",
-
     "searchUser": "Buscar Usuário Administrador",
-    "schoolIdentifier": "Identificador da Escola"
-
+    "schoolIdentifier": "Identificador da Escola",
+    "searchClass": "Buscar Turma",
+    "studentEmail": "E-mail do Estudante",
+    "addStudent": "Adicionar Estudante",
+    "teacherEmail": "E-mail do Professor",
+    "chooseDeliveryDate": "Escolha o prazo máximo de entrega",
+    "studentRegistry": "Matrícula do Estudante"
   }
 }

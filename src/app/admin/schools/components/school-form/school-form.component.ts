@@ -23,8 +23,8 @@ export class SchoolFormComponent implements OnInit {
   @Output() save = new EventEmitter();
 
   schoolForm = this.fb.group({
-    name: ['', [Validators.required, Validators.min(5)]],
-    identifier: ['',[Validators.required, Validators.pattern('^[0-9]')]],
+    name: ['', [Validators.required]],
+    identifier: ['',[Validators.required]],
     isActive: ['']
   });
 

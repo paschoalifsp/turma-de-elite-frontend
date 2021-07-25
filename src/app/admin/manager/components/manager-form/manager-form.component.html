@@ -1,3 +1,4 @@
+
 <div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
 
   <h1 class="title">
@@ -9,6 +10,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
+      data-cy="email"
         matInput
         type="text"
         formControlName="email"
@@ -23,6 +25,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
+      data-cy="name"
         matInput
         type="text"
         formControlName="name"
@@ -43,13 +46,13 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
-    <div *ngIf="isLoading;then showLoader;else showButton"></div>
+    <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <div  *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="managerForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button data-cy="save"mat-raised-button [disabled]="managerForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>
