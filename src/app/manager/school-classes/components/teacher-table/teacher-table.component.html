@@ -4,16 +4,19 @@
       matInput
       type="text"
       [formControl]="teacherEmail"
+      formControlName="email"
       placeholder="{{'placeholder.teacherEmail'|translate}}"
       required
       [matAutocomplete]="auto">
+    <mat-error *ngIf="teacherEmail.hasError('required')">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
+    <mat-error *ngIf="teacherEmail.hasError('pattern')">{{'fieldErrors.emailPattern'|translate}}</mat-error>
   </mat-form-field>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName">
     <mat-option *ngFor="let teacher of teachersOptions"  [value]="teacher">
       {{teacher.name}}
     </mat-option>
   </mat-autocomplete>
-  <button mat-mini-fab color="primary" (click)="addTeacher()">
+  <button mat-mini-fab color="primary"  (click)="addTeacher()">
     <mat-icon>add</mat-icon>
   </button>
 </div>

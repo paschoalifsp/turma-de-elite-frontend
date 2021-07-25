@@ -38,7 +38,7 @@
               matInput
               type="text"
               formControlName="email"
-              placeholder="user@email.com"
+              placeholder="{{'placeholder.email'|translate}}"
               id="email-login"
               required>
             <mat-error *ngIf="isEmailInvalid">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
@@ -52,6 +52,7 @@
               matInput
               type="password"
               formControlName="password"
+              placeholder="{{'placeholder.password'|translate}}"
               id="password-login">
             <mat-error *ngIf="isPasswordInvalid">{{'fieldErrors.passwordWrong'|translate}}</mat-error>
             <mat-error *ngIf="loginForm.get('password')?.errors?.required">{{'fieldErrors.passwordIsRequired'|translate}}</mat-error>

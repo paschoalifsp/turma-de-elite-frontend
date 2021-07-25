@@ -71,7 +71,7 @@ export class StudentsFormComponent implements OnInit {
     }
   }
 
-  updateTeacher(){
+  updateStudent(){
     this.isLoading = true;
     this.studentsService.updateStudent(this.teacherId,this.studentForm.value).subscribe(success => {
       this.translateService.get('messages.studentUpdated').subscribe( translation => {
@@ -84,7 +84,7 @@ export class StudentsFormComponent implements OnInit {
     })
   }
 
-  registerTeacher(){
+  registerStudent(){
     this.isLoading = true;
     this.studentsService.registerStudent(this.studentForm.value).subscribe(success => {
       this.translateService.get('messages.studentRegistered').subscribe( translation => {
@@ -97,6 +97,9 @@ export class StudentsFormComponent implements OnInit {
       this.isLoading = false;
       switch (error.status){
         case 409:
+          this.translateService.get('messages.alreadyRegisteredEmail').subscribe(translation => {
+            this.snackbar.open(translation, 'Fechar');
+          })
           this.alreadyRegisteredEmail = true;
           break;
       }
