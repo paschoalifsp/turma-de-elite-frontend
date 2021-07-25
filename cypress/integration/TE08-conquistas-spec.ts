@@ -16,7 +16,7 @@ describe('Cadastrar uma conquista', () => {
         cy.get('#password-login').type('123456')
         cy.get('#button-login').click()
         cy.location('pathname', { timeout: 60000 })
-          .should('include', 'manager')
+          .should('include', 'teachers')
   
         cy.get('[data-cy=achievements]').click()
   

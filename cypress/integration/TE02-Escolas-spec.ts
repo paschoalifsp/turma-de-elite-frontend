@@ -13,7 +13,7 @@ describe('Cadastrar uma escola', () => {
       }).as('saveSchool')
   
       cy.visit('/login').then(currentSubject => {
-        cy.get('#email-login').type('patricia.paschoal@aluno.ifsp.edu.br')
+        cy.get('#email-login').type('andre.montero702@gmail.com')
         cy.get('#password-login').type('123456')
         cy.get('#button-login').click()
         cy.location('pathname', { timeout: 60000 })
@@ -54,7 +54,7 @@ describe('Cadastrar uma escola', () => {
   
       cy.intercept({
         method: 'PUT',
-        url: '/api/schools/10',
+        url: '/api/schools/2',
       }).as('changeSchool')
   
       cy.get('.toggled-tile > p').click()

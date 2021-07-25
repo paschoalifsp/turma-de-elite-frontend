@@ -7,7 +7,7 @@ describe('Realizar login na aplicação como gestor', () => {
     it('Acessar a página de login, inserir e-mail e senha e entrar', () => {
       cy.visit('/login')
         .then(currentSubject => {
-          cy.get('#email-login').type('p.santospaschoal@hotmail.com')
+          cy.get('#email-login').type('bianca@gmail.com')
           cy.get('#password-login').type('123456')
           cy.get('#button-login').click()
           cy.location('pathname', { timeout: 60000 })
@@ -29,7 +29,7 @@ describe('Realizar login na aplicação como gestor', () => {
       }).as('saveStudent')
   
       cy.visit('/login').then(currentSubject => {
-        cy.get('#email-login').type('p.santospaschoal@hotmail.com')
+        cy.get('#email-login').type('bianca@gmail.com')
         cy.get('#password-login').type('123456')
         cy.get('#button-login').click()
         cy.location('pathname', { timeout: 60000 })

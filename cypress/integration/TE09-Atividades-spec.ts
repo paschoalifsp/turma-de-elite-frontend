@@ -29,7 +29,7 @@ describe('Realizar login na aplicação como professor', () => {
       }).as('saveActivity')
   
       cy.visit('/login').then(currentSubject => {
-        cy.get('#email-login').type('jpedro@gmil.com')
+        cy.get('#email-login').type('jose@gmail.com')
         cy.get('#password-login').type('123456')
         cy.get('#button-login').click()
         cy.location('pathname', { timeout: 60000 })

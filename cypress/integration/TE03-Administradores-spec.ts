@@ -11,7 +11,7 @@ describe('Cadastrar uma administrador', () => {
       }).as('saveAdmin')
   
       cy.visit('/login').then(currentSubject => {
-        cy.get('#email-login').type('patricia.paschoal@aluno.ifsp.edu.br')
+        cy.get('#email-login').type('andre.montero702@gmail.com')
         cy.get('#password-login').type('123456')
         cy.get('#button-login').click()
         cy.location('pathname', { timeout: 60000 })
