@@ -4,9 +4,12 @@
       matInput
       type="text"
       [formControl]="studentRegistryControl"
-      placeholder="{{'placeholder.studentRegistry'|translate}}"
+      placeholder="{{'placeholder.studentEmail'|translate}}"
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
       required
       [matAutocomplete]="auto">
+    <mat-error *ngIf="studentRegistryControl.hasError('required')">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
+    <mat-error *ngIf="studentRegistryControl.hasError('pattern')">{{'fieldErrors.emailPattern'|translate}}</mat-error>
   </mat-form-field>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName">
     <mat-option *ngFor="let teacher of studentOptions" [value]="teacher">

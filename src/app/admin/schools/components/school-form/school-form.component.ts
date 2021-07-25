@@ -29,7 +29,7 @@ export class SchoolFormComponent implements OnInit {
   });
 
   isLoading = false;
-  
+
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -52,6 +52,7 @@ export class SchoolFormComponent implements OnInit {
     else{
       this.schoolService.getSchoolById(this.schoolId as number).subscribe( ({name,identifier,isActive}) => {
         this.schoolForm.setValue({name,identifier,isActive})
+
       })
     }
 

@@ -10,7 +10,7 @@
     class="full-width"
     fxFlex="100"
     [formGroup]="studentForm"
-    (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
+    (ngSubmit)="isEdit ? updateStudent() : registerStudent()">
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
@@ -18,10 +18,12 @@
         matInput
         type="text"
         formControlName="email"
-        placeholder="user@email.com"
+        placeholder="{{'placeholder.studentEmail'| translate}}"
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
         required>
       <mat-error *ngIf="alreadyRegisteredEmail">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
       <mat-error *ngIf="studentForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="studentForm.get('email')?.errors?.pattern">{{'fieldErrors.emailPattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
       fxFlex="45" appearance="outline">
@@ -30,9 +32,11 @@
         matInput
         type="text"
         formControlName="registry"
-        placeholder="Andre Montero"
+        placeholder="{{'placeholder.studentRegistry'|translate}}"
+        pattern="[A-Za-z0-9]+"
         required>
       <mat-error *ngIf="studentForm.get('registry')?.errors?.required">{{'fieldErrors.registryIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="studentForm.get('registry')?.errors?.pattern">{{'fieldErrors.registryPattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
       fxFlex="45" appearance="outline">
@@ -41,9 +45,13 @@
         matInput
         type="text"
         formControlName="name"
-        placeholder="Andre Montero"
+        placeholder="{{'placeholder.studentName'| translate}}"
+        minlength="5"
+        pattern="^([a-zA-Zà-úÀ-Ú]|\s+)+$"
         required>
       <mat-error *ngIf="studentForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="studentForm.get('name')?.errors?.minlength">{{'fieldErrors.minLengthStudent'|translate}}</mat-error>
+      <mat-error *ngIf="studentForm.get('name')?.errors?.pattern">{{'fieldErrors.namePattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>

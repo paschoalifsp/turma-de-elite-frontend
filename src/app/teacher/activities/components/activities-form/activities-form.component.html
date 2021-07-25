@@ -17,35 +17,44 @@
         matInput
         type="text"
         formControlName="name"
+        pattern="^[a-z A-Z 0-9]*$"
         required>
+      <mat-error *ngIf="activityForm.get('name')?.errors?.required">{{'fieldErrors.activityNameIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="activityForm.get('name')?.errors?.pattern">{{'fieldErrors.activityNamePattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
       fxFlex="30" appearance="outline">
       <mat-label>{{'labels.punctuation'|translate}}</mat-label>
       <input
         matInput
-        type="number"
+        type="text"
         formControlName="punctuation"
+        pattern="^[\d,.?!]+$"
         required>
+      <mat-error *ngIf="activityForm.get('punctuation')?.errors?.required">{{'fieldErrors.punctuationIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="activityForm.get('punctuation')?.errors?.pattern">{{'fieldErrors.punctuationPattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field fxFlex="90" appearance="outline">
       <mat-label>{{'labels.classes'|translate}}</mat-label>
-      <mat-select multiple formControlName="schoolClasses" >
+      <mat-select multiple formControlName="schoolClasses" required>
         <mat-option *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id">
           {{schoolClass.name}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="activityForm.get('schoolClasses')?.errors?.required">{{'fieldErrors.schoolClassesIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field fxFlex="90" appearance="outline">
       <input
         matInput
         [ngxMatDatetimePicker]="picker"
         placeholder="{{'placeholder.chooseDeliveryDate'|translate}}"
-        formControlName="maxDeliveryDate">
+        formControlName="maxDeliveryDate"
+        required>
       <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
       <ngx-mat-datetime-picker
         #picker>
       </ngx-mat-datetime-picker>
+      <mat-error *ngIf="activityForm.get('maxDeliveryDate')?.errors?.required">{{'fieldErrors.maxDeliveryDateIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
       fxFlex="90" appearance="outline">
@@ -77,16 +86,18 @@
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.description'|translate}}</mat-label>
-      <textarea matInput formControlName="description"></textarea>
+      <textarea matInput formControlName="description" required></textarea>
+      <mat-error *ngIf="activityForm.get('description')?.errors?.required">{{'fieldErrors.descriptionIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-checkbox [indeterminate]="false" formControlName="isActive">{{'labels.active'|translate}}</mat-checkbox>
     <mat-checkbox [indeterminate]="false" formControlName="isVisible">{{'labels.visible'|translate}}</mat-checkbox>
+    <mat-checkbox [indeterminate]="false" formControlName="isDeliverable">{{'labels.deliverable'|translate}}</mat-checkbox>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-flat-button color="primary" (click)="isEdit ? updateActivity() : createActivity()" [disabled]="false">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-raised-button (click)="isEdit ? updateActivity() : createActivity()" [disabled]="activityForm.invalid">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
   <button *ngIf="isExpired()" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">

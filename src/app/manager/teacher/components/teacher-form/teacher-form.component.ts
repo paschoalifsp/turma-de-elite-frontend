@@ -98,6 +98,9 @@ export class TeacherFormComponent implements OnInit {
       this.isLoading = false;
       switch (error.status){
         case 409:
+          this.translateService.get('messages.alreadyRegisteredIdentifier').subscribe(translation => {
+            this.snackbar.open(translation, 'Fechar');
+          })
           this.alreadyRegisteredEmail = true;
           break;
       }

@@ -14,8 +14,10 @@
         type="text"
         formControlName="email"
         placeholder="{{'placeholder.email'| translate}}"
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
         required>
       <mat-error *ngIf="alreadyRegisteredEmail">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
+      <mat-error *ngIf="userForm.get('email')?.errors?.pattern">{{'fieldErrors.emailPattern'|translate}}</mat-error>
       <mat-error *ngIf="userForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
@@ -27,8 +29,12 @@
         type="text"
         formControlName="name"
         placeholder="{{'placeholder.userName'|translate}}"
+        minlength="5"
+        pattern="^([a-zA-Zà-úÀ-Ú]|\s+)+$"
         required>
       <mat-error *ngIf="userForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
+      <mat-error *ngIf="userForm.get('name')?.errors?.minlength">{{'fieldErrors.minLengthNameAdmin'|translate}}</mat-error>
+      <mat-error *ngIf="userForm.get('name')?.errors?.pattern">{{'fieldErrors.namePattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
