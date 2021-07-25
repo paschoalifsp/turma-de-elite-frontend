@@ -6,7 +6,6 @@
       [formControl]="teacherEmail"
       formControlName="email"
       placeholder="{{'placeholder.teacherEmail'|translate}}"
-      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
       required
       [matAutocomplete]="auto">
     <mat-error *ngIf="teacherEmail.hasError('required')">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
@@ -17,7 +16,7 @@
       {{teacher.name}}
     </mat-option>
   </mat-autocomplete>
-  <button mat-mini-fab color="primary" (click)="addTeacher()">
+  <button mat-mini-fab color="primary"  (click)="addTeacher()">
     <mat-icon>add</mat-icon>
   </button>
 </div>

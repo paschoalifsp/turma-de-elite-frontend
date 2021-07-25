@@ -13,7 +13,7 @@
         type="text"
         formControlName="name"
         placeholder="{{'placeholder.schoolName'|translate}}"
-        pattern="^[a-zA-Z0-9._\b]+$"
+        pattern="^[a-z A-Z 0-9._\b]+$"
         required>
       <mat-error *ngIf="schoolForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
       <mat-error *ngIf="schoolForm.get('name')?.errors?.pattern">{{'fieldErrors.schoolNamePattern'|translate}}</mat-error>
@@ -26,10 +26,8 @@
         type="text"
         formControlName="identifier"
         placeholder="{{'placeholder.schoolIdentifier'|translate}}"
-        pattern="^[0-9.-]*$"
         required>
       <mat-error *ngIf="schoolForm.get('identifier')?.errors?.required">{{'fieldErrors.identifierIsRequired'|translate}}</mat-error>
-      <mat-error *ngIf="schoolForm.get('identifier')?.errors?.pattern">{{'fieldErrors.identifierNaN'|translate}}</mat-error>
     </mat-form-field>
     <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>

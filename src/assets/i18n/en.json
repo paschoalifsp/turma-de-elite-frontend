@@ -50,8 +50,8 @@
     "identifier": "Identifier",
     "active": "Active",
     "inactive": "Inactive",
-    "registerManager": "Register Manager",
-    "updateManager": "Update Manager",
+    "registerManager": "Create Manager",
+    "updateManager": "Edit Manager",
     "createManager" : "Create Manager",
     "schools": "Schools",
     "achievements": "Achievements",
@@ -64,8 +64,8 @@
     "createClass": "Create Class",
     "editClass": "Edit Class",
     "students": "Students",
-    "registerStudent": "Register Student",
-    "updateStudent": "Update Student",
+    "registerStudent": "Create Student",
+    "updateStudent": "Edit Student",
     "registry": "Registry",
     "chooseTeachers": "Choose Teachers",
     "chooseStudents": "Choose Students",
@@ -74,7 +74,7 @@
     "next": "Next",
     "previous": "Previous",
     "activities": "Activities",
-    "addNewActivity": "Add new activity",
+    "addNewActivity": "Create Activity",
     "createActivity": "Create Activity",
     "updateActivity": "Update Activity",
     "description": "Description",
@@ -122,8 +122,8 @@
     "schoolIdentifier": "Insert an unique identifier for school "
   },
   "titles":{
-    "createUser": "Create Admin User",
-    "editUser": "Edit User",
+    "createUser": "Create Administrator",
+    "editUser": "Edit Administrator",
     "createSchool": "Create School",
     "editSchool": "Edit School",
     "administrativePanel": "Administrative Panel",
@@ -135,7 +135,7 @@
     "yourClasses": "Your classes and activities",
     "deliveriesForThisActivity": "Deliveries for this activity",
     "yourAchievements": "Your achievements",
-    "registerManager": "Register Manager",
+    "registerManager": "Create Manager",
     "updateManager": "Edit Manager"
   },
   "tooltip": {
@@ -185,6 +185,7 @@
     "studentName": "Student´s Name",
     "className": "Class´s Name",
     "chooseDeliveryDate": "Choose the maximum delivery datetime",
-    "password": "Type your password"
+    "password": "Type your password",
+    "searchAdministrator": "Search Administrator"
   }
 }
