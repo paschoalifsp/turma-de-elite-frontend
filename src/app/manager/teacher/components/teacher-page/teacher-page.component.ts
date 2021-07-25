@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {ManagerService} from "../../../../admin/manager/services/manager.service";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {PageEvent} from "@angular/material/paginator";
 import {TeacherService} from "../../services/teacher.service";
+import { of } from 'rxjs';
+import Teacher from 'src/app/shared/model/teacher';
 
 @Component({
   selector: 'app-teacher-page',
@@ -14,22 +15,46 @@ export class TeacherPageComponent implements OnInit {
   isLoading = true;
   isChangingPage = false;
 
-  teachers:any[] = [];
+  teachers: any[] = [];
 
   totalLength = 0;
   pageSize = 5;
 
+  teacherForm = this.fb.group({
+    email: ['',Validators.email],
+    name: ['',Validators.required],
+    school: ['', Validators.required],
+    isActive:['']
+  });
+
   searchControl = new FormControl('');
+
+  filteredTeachers$ = of([] as Teacher[]);
 
   teacherToggleId: number | null = null;
 
   createMode = true;
 
-  constructor(private teacherService: TeacherService) {
+  constructor(private teacherService: TeacherService, private fb: FormBuilder) {
     this.refresh();
   }
 
   ngOnInit(): void {
+
+    this.teacherForm.get('name')?.valueChanges.subscribe(value => {
+      if(!value?.id){
+        // this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
+        if (value === ""){
+          this.refresh();
+        } else {
+          this.teacherService.findTeacherByNameSimilarity(value).subscribe (teachers => {
+            this.teachers = teachers;
+          }
+        );
+        }
+      }
+    })
+
   }
 
   refresh(){
@@ -48,6 +73,10 @@ export class TeacherPageComponent implements OnInit {
       this.totalLength = response.totalElements;
       this.isChangingPage = false;
     })
+  }
+
+  displayTeacherName(teacher: Teacher){
+    return teacher && teacher.name ? teacher.name: '';
   }
 
 

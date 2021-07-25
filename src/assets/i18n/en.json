@@ -117,7 +117,6 @@
     "updateTeacher": "Edit Teacher",
     "deliveriesForThisActivity": "Deliveries for this activity",
     "yourAchievements": "Your achievements",
-    "registerManager": "Register Manager",
     "updateManager": "Edit Manager",
     "yourClasses": "Your classes and activities"
   },
@@ -162,11 +161,6 @@
     "studentRegistered": "Student registered successfully!",
     "studentUpdated": "Student updated successfully!",
     "userName": "User name",
-    "searchUser": "Search Admin User",
-    "searchClass": "Search Class",
-    "studentEmail": "Student E-mail",
-    "addStudent": "Add Student",
-    "teacherEmail": "Teacher E-mail",
-    "chooseDeliveryDate": "Choose the maximum delivery datetime"
+    "searchUser": "Search Admin User"
   }
 }

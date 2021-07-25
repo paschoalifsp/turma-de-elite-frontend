@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
 import User from "../../../../shared/model/user";
 import {UsersService} from "../../services/users.service";
 import {PageEvent} from "@angular/material/paginator";
-import {FormControl} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-users-page',
@@ -20,19 +20,42 @@ export class UsersPageComponent implements OnInit {
   totalLength = 0;
   pageSize = 5;
 
+  userForm = this.fb.group({
+    email: ['',Validators.email],
+    name: ['',Validators.required],
+    isActive:['']
+  });
+
   searchControl = new FormControl('');
 
   toggleForm = false;
 
-   usersToggleId: number | null = null;
+  usersToggleId: number | null = null;
+
+  filteredUsers$ = of([] as User[]);
 
   createMode = false;
 
-  constructor(private userService: UsersService) {
+  constructor(private userService: UsersService, private fb: FormBuilder) {
     this.refresh();
   }
 
   ngOnInit(): void {
+
+    this.userForm.get('name')?.valueChanges.subscribe(value => {
+      if(!value?.id){
+        // this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
+        if (value === ""){
+          this.refresh();
+        } else {
+          this.userService.findUserByNameSimilarity(value).subscribe (users => {
+            this.users = users;
+          }
+        );
+        }
+      }
+    })
+
   }
 
   refresh(){
@@ -52,4 +75,10 @@ export class UsersPageComponent implements OnInit {
       this.isChangingPage = false;
     })
   }
+
+  
+  displayUserName(user: User){
+    return user && user.name ? user.name: '';
+  }
+
 }

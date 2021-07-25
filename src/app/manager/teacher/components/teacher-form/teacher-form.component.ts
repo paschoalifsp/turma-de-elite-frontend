@@ -3,7 +3,6 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {of} from "rxjs";
 import School from "../../../../shared/model/school";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ManagerService} from "../../../../admin/manager/services/manager.service";
 import {SchoolService} from "../../../../admin/schools/services/school.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
@@ -26,12 +25,13 @@ export class TeacherFormComponent implements OnInit {
   alreadyRegisteredEmail = false;
 
   teacherForm = this.fb.group({
-    email: ['',Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
-    name: ['',Validators.required, Validators.minLength(5), Validators.pattern("^([a-zA-Zà-úÀ-Ú]|\\s+)+$")],
+    email: ['',Validators.email],
+    name: ['',Validators.required],
     isActive:['']
   });
 
   isLoading = false;
+  filteredSchools$ = of([] as School[]);
 
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +44,11 @@ export class TeacherFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.teacherForm.get('school')?.valueChanges.subscribe(value => {
+      if(!value?.id && value !== ""){
+        this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
+      }
+    })
     this.route.params.subscribe(value => {
       if(value['id']){
         this.isEdit = true;

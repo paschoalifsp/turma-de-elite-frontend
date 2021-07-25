@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {take} from "rxjs/operators";
+import Manager from 'src/app/shared/model/manager';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +35,9 @@ export class ManagerService {
     const language = this.translateService.currentLang;
     return this.http.put<any>(`${environment.apiUrl}/api/managers/${managerId}`, {schoolId: school.id,language,...rest});
   }
+
+  findManagerByNameSimilarity(value: string): Observable<Manager[]> {
+    return this.http.get<Manager[]>(`${environment.apiUrl}/api/managers/name/${value}`).pipe(take(1));
+  }
+
 }

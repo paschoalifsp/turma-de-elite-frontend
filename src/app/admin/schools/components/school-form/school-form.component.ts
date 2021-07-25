@@ -1,7 +1,6 @@
 import {Component, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {UsersService} from "../../../users/services/users.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {SchoolService} from "../../services/school.service";
@@ -16,7 +15,7 @@ import {transition} from "@angular/animations";
 export class SchoolFormComponent implements OnInit {
 
   isEdit = false;
-    alreadyRegisteredIdentifier = false;
+  alreadyRegisteredIdentifier = false;
 
   @Input() schoolId:number | null = null;
   @Input() createMode = true;
@@ -24,13 +23,13 @@ export class SchoolFormComponent implements OnInit {
   @Output() save = new EventEmitter();
 
   schoolForm = this.fb.group({
-    name: ['',Validators.required, Validators.minLength(5)],
-    identifier: ['',Validators.required, Validators.pattern('^[0-9]')],
+    name: ['', [Validators.required, Validators.min(5)]],
+    identifier: ['',[Validators.required, Validators.pattern('^[0-9]')]],
     isActive: ['']
   });
 
   isLoading = false;
-
+  
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -53,7 +52,6 @@ export class SchoolFormComponent implements OnInit {
     else{
       this.schoolService.getSchoolById(this.schoolId as number).subscribe( ({name,identifier,isActive}) => {
         this.schoolForm.setValue({name,identifier,isActive})
-
       })
     }
 
