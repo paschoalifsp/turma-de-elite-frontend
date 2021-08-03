@@ -46,8 +46,8 @@ export class UserFormComponent implements OnInit {
       if(value['id']){
         this.isEdit = true;
         this.userId = value['id'];
-        this.userService.findUserById(this.userId).subscribe(({email,name})=>{
-          this.userForm.setValue({email,name});
+        this.userService.findUserById(this.userId).subscribe(({email,name,isActive})=>{
+          this.userForm.setValue({email,name,isActive});
         });
       }
     })

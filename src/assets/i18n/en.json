@@ -110,7 +110,6 @@
     "closeClass": "Close class",
     "school-classes": "Classes",
     "classClosed": "Class is closed",
-    "classClosed": "Class is closed",
     "scoreReceived": "Score received",
 
 
@@ -154,6 +153,7 @@
     "userUpdated": "User updated successfully!",
     "managerCreated": "Manager registered successfully!",
     "managerUpdated": "Manager updated successfully!",
+    "alreadyRegisteredEmail": "This e-mail was already registered. Please, try another one",
     "alreadyRegisteredIdentifier": "There is already a school registered with this identifier. Please, choose another one.",
     "studentRegistered": "Student registered successfully!",
     "studentUpdated": "Student updated successfully!",

@@ -48,7 +48,7 @@ export class ManagerFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.managerForm.get('school')?.valueChanges.subscribe(value => {
-      if(!value?.id){
+      if(!value?.id && !(value == "")){
         this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
       }
     })
@@ -102,6 +102,9 @@ export class ManagerFormComponent implements OnInit {
       switch (error.status){
         case 409:
           this.alreadyRegisteredEmail = true;
+          this.translateService.get('messages.alreadyRegisteredEmail').subscribe(translation => {
+            this.snackbar.open(translation, 'Fechar');
+          })
           break;
       }
     });

@@ -28,7 +28,7 @@
         fxLayoutAlign="start center"
         *ngFor="let classroom of classes"
         (click)="classToggleId=classroom.id;createMode=false">
-        <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
+        <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">class</mat-icon>
         <p color="primary">{{classroom.name}}</p>
       </a>
       <mat-paginator
