@@ -30,7 +30,7 @@
         <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
         <div class="top-padding full-width" fxLayoutAlign="space-between end" fxLayout="column">
           <div fxFlex="10"></div>
-          <button mat-flat-button matStepperNext [disabled]="generalInfo.invalid">{{'labels.next'|translate}}</button>
+          <button mat-flat-button color="primary" matStepperNext [disabled]="generalInfo.invalid">{{'labels.next'|translate}}</button>
         </div>
       </form>
     </mat-step>
@@ -49,7 +49,7 @@
         <button mat-raised-button color="primary" matStepperPrevious>
           {{'labels.previous'|translate}}
         </button>
-        <button mat-flat-button color="primary" [disabled]="iconNameControl.value == ''" matStepperNext>
+        <button mat-flat-button color="primary" [disabled]="iconNameControl.value === ''" matStepperNext>
           {{'labels.next'|translate}}
         </button>
       </div>

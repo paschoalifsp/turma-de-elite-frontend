@@ -30,7 +30,8 @@
     "minLengthStudent": "O nome do aluno deve ter no mínimo 5 caracteres.",
     "registryPattern": "A matrícula do aluno deve conter apenas letras e números.",
     "classNameIsRequired": "É necessário inserir o nome da turma",
-    "classNamePattern": "O nome da turma deve conter apenas letras e números."
+    "classNamePattern": "O nome da turma deve conter apenas letras e números.",
+    "studentIsRequired": "É necessário inserir a matrícula ou e-mail do aluno"
   },
   "labels": {
     "login": "Login",
@@ -145,8 +146,8 @@
   },
   "messages": {
     "firstAccessAlreadyDone": "Primeiro acesso já foi realizado",
-    "userCreated": "Usuário criado com sucesso!",
-    "userUpdated": "Usuário atualizado com sucesso!",
+    "userCreated": "Administrador criado com sucesso!",
+    "userUpdated": "Admnistrador atualizado com sucesso!",
     "schoolCreated": "Escola criada com sucesso!",
     "managerCreated": "Gestor criado com sucesso!",
     "managerUpdated": "Gestor atualizado com sucesso!",
@@ -164,8 +165,8 @@
     "activityCreated": "Atividade criada com sucesso!",
     "activityUpdated": "Atividade atualizada com sucesso!",
     "classCreated": "Turma criada com sucesso!",
-    "classNameAndStatusUpdated": "Turma atualizada com sucesso!"
-
+    "classNameAndStatusUpdated": "Turma atualizada com sucesso!",
+    "activityDelivered": "Atividade entregue com sucesso!"
 
   },
   "placeholder": {
@@ -183,13 +184,14 @@
     "className": "Nome da Turma",
     "password": "Digite sua senha",
     "searchAdministrator": "Buscar Administrador",
-    "searchUser": "Buscar Usuário Administrador",
+    "searchUser": "Buscar Administrador",
     "schoolIdentifier": "Identificador da Escola",
     "searchClass": "Buscar Turma",
-    "studentEmail": "E-mail do Estudante",
-    "addStudent": "Adicionar Estudante",
+    "studentEmail": "E-mail do Aluno",
+    "addStudent": "Adicionar Aluno",
     "teacherEmail": "E-mail do Professor",
     "chooseDeliveryDate": "Escolha o prazo máximo de entrega",
-    "studentRegistry": "Matrícula do Estudante"
+    "studentRegistry": "Matrícula do Aluno",
+    "studentEmailOrRegistry": "E-mail ou matrícula do aluno"
   }
 }

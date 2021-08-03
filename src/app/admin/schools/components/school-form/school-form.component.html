@@ -13,7 +13,7 @@
         type="text"
         formControlName="name"
         placeholder="{{'placeholder.schoolName'|translate}}"
-        pattern="^[a-z A-Z 0-9._\b]+$"
+        pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ 0-9 °ª]+$"
         required>
       <mat-error *ngIf="schoolForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
       <mat-error *ngIf="schoolForm.get('name')?.errors?.pattern">{{'fieldErrors.schoolNamePattern'|translate}}</mat-error>

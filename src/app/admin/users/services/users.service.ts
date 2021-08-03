@@ -25,7 +25,7 @@ export class UsersService {
     return this.http.get<any>(`${environment.apiUrl}/api/admin?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
   }
 
-  findUserById(userId: any): Observable<User> {
+  getUserById(userId: any): Observable<User> {
     return this.http.get<User>(`${environment.apiUrl}/api/admin/${userId}`).pipe(take(1));
   }
 
@@ -33,8 +33,8 @@ export class UsersService {
     return this.http.get<User[]>(`${environment.apiUrl}/api/admin/name/${value}`).pipe(take(1));
   }
 
-  updateUser(userId: any, value: User) {
-    return this.http.put<any>(`${environment.apiUrl}/api/admin/${userId}`,value);
+  updateUser(userId: number, user: User) {
+    return this.http.put<any>(`${environment.apiUrl}/api/admin/${userId}`,user).pipe(take(1));
   }
 
 

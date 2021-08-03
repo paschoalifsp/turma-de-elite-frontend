@@ -35,11 +35,8 @@
             type="text"
             [formControl]="classNameControl"
             placeholder="{{'placeholder.className'|translate}}"
-            maxlength="20"
-            pattern="[A-Z a-z 0-9]+"
             required>
           <mat-error *ngIf="classNameControl.hasError('required')">{{'fieldErrors.classNameIsRequired'|translate}}</mat-error>
-          <mat-error *ngIf="classNameControl.hasError('pattern')">{{'fieldErrors.classNamePattern'|translate}}</mat-error>
         </mat-form-field>
         <mat-slide-toggle data-cy="isActive" [formControl]="isActiveControl" >{{'labels.active'|translate}}</mat-slide-toggle>
       </div>

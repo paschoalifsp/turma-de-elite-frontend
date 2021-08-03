@@ -9,15 +9,6 @@
         <input type="tel" matInput placeholder="{{'placeholder.searchClass'|translate}}" [formControl]="searchControl">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <a
-        [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        (click)="createMode=true;classToggleId=null;">
-        <mat-icon color="primary">add</mat-icon>
-        <p color="primary">{{'labels.createClass'|translate}}</p>
-      </a>
       <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>
@@ -28,7 +19,7 @@
         fxLayoutAlign="start center"
         *ngFor="let classroom of classes"
         (click)="classToggleId=classroom.id;createMode=false">
-        <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
+        <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">class</mat-icon>
         <p color="primary">{{classroom.name}}</p>
       </a>
       <mat-paginator

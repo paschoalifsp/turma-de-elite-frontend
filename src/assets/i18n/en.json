@@ -29,7 +29,8 @@
     "punctuationPattern": "Punctuation must has a numerical value.",
     "schoolClassesIsRequired": "Choose a class is required.",
     "maxDeliveryDateIsRequired": "Choose a maximum delivery date is required.",
-    "descriptionIsRequired": "Description is required."
+    "descriptionIsRequired": "Description is required.",
+    "studentIsRequired": "Student´s email or registry is required"
 
   },
   "labels": {
@@ -110,7 +111,6 @@
     "closeClass": "Close class",
     "school-classes": "Classes",
     "classClosed": "Class is closed",
-    "classClosed": "Class is closed",
     "scoreReceived": "Score received",
 
 
@@ -168,7 +168,8 @@
     "teacherCreated": "Teacher created successfully!",
     "teacherUpdated": "Teacher updated successfully!",
     "classCreated": "Class created successfully!",
-    "classNameAndStatusUpdated": "Class updated successfully!"
+    "classNameAndStatusUpdated": "Class updated successfully!",
+    "activityDelivered": "Activity delivered successfully!"
 
   },
   "placeholder": {
@@ -197,6 +198,7 @@
     "studentRegistered": "Student registered successfully!",
     "studentUpdated": "Student updated successfully!",
     "userName": "User name",
-    "searchUser": "Search Admin User"
+    "searchUser": "Search Admin User",
+    "studentEmailOrRegistry": "Student´s email or registry"
   }
 }

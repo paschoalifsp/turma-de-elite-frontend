@@ -37,17 +37,12 @@ export class UserFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
-    this.userForm.get('isActive')?.valueChanges.subscribe (value => {
-      console.log(value);
-    })
-
     this.route.params.subscribe(value => {
       if(value['id']){
         this.isEdit = true;
         this.userId = value['id'];
-        this.userService.findUserById(this.userId).subscribe(({email,name})=>{
-          this.userForm.setValue({email,name});
+        this.userService.getUserById(this.userId as number).subscribe(({email,name, isActive})=>{
+          this.userForm.setValue({email,name,isActive});
         });
       }
     })
@@ -59,7 +54,7 @@ export class UserFormComponent implements OnInit {
       this.userForm.reset();
     }
     else{
-      this.userService.findUserById(this.userId as number).subscribe( ({name,email,isActive}) => {
+      this.userService.getUserById(this.userId as number).subscribe( ({name,email,isActive}) => {
         this.userForm.setValue({name,email,isActive})
       })
     }
@@ -68,13 +63,24 @@ export class UserFormComponent implements OnInit {
 
   updateUser(){
     this.isLoading = true;
-    this.userService.updateUser(this.userId,this.userForm.value).subscribe(success => {
+    this.userService.updateUser(this.userId as number,this.userForm.value).subscribe(success => {
       this.translateService.get('messages.userUpdated').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
         this.snackbar.open(translation,'Fechar').afterDismissed();
       })
-    })
+    }, error => {
+      console.log(error);
+      this.isLoading = false;
+      switch (error.status) {
+        case 409:
+          this.alreadyRegisteredEmail = true;
+          this.translateService.get('messages.alreadyRegisteredEmail').subscribe(translation => {
+            this.snackbar.open(translation, 'Fechar');
+          })
+          break;
+      }
+    });
   }
 
   createUser(){

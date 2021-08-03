@@ -11,7 +11,7 @@ import {AchievementsService} from "../../../services/achievements.service";
 })
 export class AchievementPageComponent implements OnInit {
 
-  isLoading = true;
+  isLoading = false;
   isChangingPage = false;
 
   achievements:any[] = [];

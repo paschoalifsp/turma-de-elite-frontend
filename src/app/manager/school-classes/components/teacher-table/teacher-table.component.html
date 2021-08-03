@@ -16,7 +16,7 @@
       {{teacher.name}}
     </mat-option>
   </mat-autocomplete>
-  <button mat-mini-fab color="primary"  (click)="addTeacher()">
+  <button mat-mini-fab [disabled]="!teacherEmail.get('email')?.value?.id" color="primary"  (click)="addTeacher()">
     <mat-icon>add</mat-icon>
   </button>
 </div>
