@@ -26,11 +26,13 @@ export class SchoolClassesComponent implements OnInit {
 
   clear = false;
 
+
   constructor(private classService: ClassService) {
     this.refresh();
   }
 
   ngOnInit(): void {
+
   }
 
   refresh(){
