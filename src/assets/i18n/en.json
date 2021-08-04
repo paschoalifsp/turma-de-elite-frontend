@@ -22,15 +22,15 @@
     "minLengthStudent": "Student´s name must have at least 5 characters.",
     "registryPattern": "Student´s registry must has only letters and numbers.",
     "minLengthSchool": "School´s name must has at least 5 characters.",
-    "classNameIsRequired": "Class´s name is required.",
+    "classNameIsRequired": "Class name is required.",
     "activityNameIsRequired": "Activity name is required.",
     "activityNamePattern": "Activity´s name must has only letters and numbers.",
     "punctuationIsRequired": "Punctuation is required.",
     "punctuationPattern": "Punctuation must has a numerical value.",
     "schoolClassesIsRequired": "Choose a class is required.",
     "maxDeliveryDateIsRequired": "Choose a maximum delivery date is required.",
-    "descriptionIsRequired": "Description is required."
-
+    "descriptionIsRequired": "Description is required.",
+    "tooManyRequests": "You have made too many incorrect requests! Please, try again later."
   },
   "labels": {
     "login": "Login",
@@ -168,8 +168,8 @@
     "teacherCreated": "Teacher created successfully!",
     "teacherUpdated": "Teacher updated successfully!",
     "classCreated": "Class created successfully!",
-    "classNameAndStatusUpdated": "Class updated successfully!"
-
+    "classNameAndStatusUpdated": "Class updated successfully!",
+    "closeSnackbar": "Close" 
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",

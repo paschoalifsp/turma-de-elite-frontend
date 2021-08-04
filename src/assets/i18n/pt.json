@@ -7,7 +7,7 @@
     "passwordIsTooShort": "Sua senha deve ter no mínimo 6 caracteres",
     "passwordIsRequired": "É necessário inserir uma senha",
     "accountNotFound": "Não foi possível encontrar sua conta",
-    "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueceu a senha?\" para redefini-la",
+    "passwordWrong": "Senha incorreta. Tente novamente ou clique em \"Esqueci a senha\" para redefini-la",
     "passwordNotSame": "As senhas devem corresponder",
     "identifierIsRequired": "É necessário um identificador único",
     "activityNameIsRequired": "É necessário inserir o nome da atividade.",
@@ -30,7 +30,8 @@
     "minLengthStudent": "O nome do aluno deve ter no mínimo 5 caracteres.",
     "registryPattern": "A matrícula do aluno deve conter apenas letras e números.",
     "classNameIsRequired": "É necessário inserir o nome da turma",
-    "classNamePattern": "O nome da turma deve conter apenas letras e números."
+    "classNamePattern": "O nome da turma deve conter apenas letras e números.",
+    "tooManyRequests": "Você fez muitas tentativas incorretas! Por favor, tente novamente mais tarde."
   },
   "labels": {
     "login": "Login",
@@ -90,7 +91,6 @@
     "close": "Fechar",
     "gradePercentage": "Percentual da nota",
     "registerAchievement": "Criar conquista",
-
     "updateAchievement": "Editar conquista",
     "deliveryBeforeAt": "Para entregas antes de",
     "deliveryEarlierOf": "Para n entregas mais rápidas",
@@ -165,8 +165,6 @@
     "activityUpdated": "Atividade atualizada com sucesso!",
     "classCreated": "Turma criada com sucesso!",
     "classNameAndStatusUpdated": "Turma atualizada com sucesso!"
-
-
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",
