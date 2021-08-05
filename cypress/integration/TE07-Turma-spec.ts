@@ -79,7 +79,6 @@ describe('Realizar login na aplicação como gestor', () => {
       cy.get(':nth-child(3) > p').click()
       cy.get('#mat-input-3').clear()
       cy.get('.mat-vertical-content > .mat-flat-button').should('be.disabled')
-  
     })
   
     it('Alterar um dado de uma turma', () => {

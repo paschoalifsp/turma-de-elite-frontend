@@ -8,16 +8,19 @@
     </div>
     <div fxFlex="35" fxFlexAlign="start">
       <navigator-button
+        data-cy-school="access"
         [path]="'/admin/schools'"
         [label]="'labels.schools'"
         [iconName]="'school'">
       </navigator-button>
       <navigator-button
+        data-cy-admin="access"
         [path]="'/admin/admins'"
         [label]="'labels.admins'"
         [iconName]="'manage_accounts'">
       </navigator-button>
       <navigator-button
+      data-cy-school="manager"
         [path]="'/admin/managers'"
         [label]="'titles.managers'"
         [iconName]="'person'">
