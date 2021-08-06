@@ -22,25 +22,25 @@ export function visitSchoolPage(){
 }
 
 export function accessSchollPage(){
-    cy.get('')
+    cy.get('[data-cy-school="access"]').click()
 }
 
 export function tryInactiveSchool(){
-    return cy.get('')
+    return cy.get('[data-cy-input="isActive:true"]')
 
 }
 
 export function tryActiveSchool(){
-    return cy.get('')
+    return cy.get('[data-cy-input="isActive:false"]').click()
 }
 
 export function fillSchoolFields(school: School){
-    cy.get('').clear().type(school.name);
-    cy.get('').clear().type(school.identifier);
-    cy.get('').then((element) =>{
+    cy.get('[data-cy-input="name"]').clear().type(school.name);
+    cy.get('[data-cy-input="identifier"]').clear().type(school.identifier);
+    cy.get('[data-cy-input*="isActive"]').then((element) =>{
         if(school.isActive){
             if(element.data().cyInput !== 'isActive:true'){
-                tryActiveSchool
+                tryActiveSchool();
             }
         }else{
             if(element.data().cyInput !== 'isActive:false'){
@@ -50,23 +50,27 @@ export function fillSchoolFields(school: School){
     });
 }
 
-export function editCompany(id: number){
-    cy.get('').click();
+export function clearIdentifier(){
+    cy.get('[data-cy-input="identifier"]').clear()
+}
+
+export function editSchool(id: number){
+    cy.get(`[data-cy-edit-school=${id}]`).click();
 }
 
 export function save(){
-
+ cy.get('[data-cy-school-button="save"]').click()
 }
 
 export function saveButtonShouldDisabled(){
-    cy.get('')
+    cy.get('[data-cy-is-disabled="true"]')
 }
 
 export function closeSnackbar(){
-    cy.contains('').click()
+    cy.contains('Fechar').click()
 }
 
 export function createSchool(){
-    cy.get('').click();
+    cy.get('[data-cy-school = "create"]').click();
 }
 
