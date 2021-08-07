@@ -25,29 +25,11 @@ export function accessSchollPage(){
     cy.get('[data-cy-school="access"]').click()
 }
 
-export function tryInactiveSchool(){
-    return cy.get('[data-cy-input="isActive:true"]')
-
-}
-
-export function tryActiveSchool(){
-    return cy.get('[data-cy-input="isActive:false"]').click()
-}
 
 export function fillSchoolFields(school: School){
     cy.get('[data-cy-input="name"]').clear().type(school.name);
     cy.get('[data-cy-input="identifier"]').clear().type(school.identifier);
-    cy.get('[data-cy-input*="isActive"]').then((element) =>{
-        if(school.isActive){
-            if(element.data().cyInput !== 'isActive:true'){
-                tryActiveSchool();
-            }
-        }else{
-            if(element.data().cyInput !== 'isActive:false'){
-                tryInactiveSchool();
-            }
-        }
-    });
+    cy.get('[data-cy-input*="isActive"]').click
 }
 
 export function clearIdentifier(){

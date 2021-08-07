@@ -31,7 +31,9 @@
         required>
       <mat-error *ngIf="schoolForm.get('identifier')?.errors?.required">{{'fieldErrors.identifierIsRequired'|translate}}</mat-error>
     </mat-form-field>
-    <mat-slide-toggle [attr.data-cy-input]="'isActive:'" formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <mat-slide-toggle  
+    formControlName="isActive" 
+    [attr.data-cy-input]="'isActive:' + schoolForm.get('isActive')?.value">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>

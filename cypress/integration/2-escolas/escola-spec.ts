@@ -12,7 +12,7 @@ describe('CRUD de escolas', ()=>{
             cy.intercept('PUT','/api/schools/*',{statusCode: 200})
         })
 
-        it
+
 
 
         it('Ao clicar em escolas, deverá ser redirecionado para a tela de cadastros de escolas e cadastrar uma escola', () => {

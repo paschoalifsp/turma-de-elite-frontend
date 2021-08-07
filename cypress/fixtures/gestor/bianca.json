@@ -1,0 +1,12 @@
+{
+   "id":42,
+   "email":"bianca@gmail.com",
+   "name":"Bianca",
+   "school":{
+      "id":3,
+      "name":"Colegio Pe Otavio Moreira",
+      "identifier":"CPOM",
+      "isActive":true
+   },
+   "isActive":true
+}

@@ -2,7 +2,7 @@ export interface Admin{
     id?: number,
     email: string,
     name: string,
-    isActive:true
+    isActive: boolean
 }
 
 export interface Login{
@@ -15,7 +15,7 @@ export function login(){
 }
 
 export function visitAdminPanel(){
-    cy.visit('admin')
+    cy.get('[data-cy-return ="dashboard"]').click()
 }
 
 export function visitAdminPage(){
@@ -26,29 +26,12 @@ export function accessAdminPage(){
     cy.get('[data-cy-admin="access"] ').click()
 }
 
-export function tryInactiveAdmin(){
-    return cy.get('[data-cy-input="isActive:true"]')
 
-}
-
-export function tryActiveAdmin(){
-    return cy.get('[data-cy-input="isActive:false"]').click()
-}
 
 export function fillAdminFields(admin: Admin){
+    cy.get('[data-cy-input="email"]').clear().type(admin.email);
     cy.get('[data-cy-input="name"]').clear().type(admin.name);
-    cy.get('[data-cy-input="identifier"]').clear().type(admin.email);
-    cy.get('[data-cy-input*="isActive"]').then((element) =>{
-        if(admin.isActive){
-            if(element.data().cyInput !== 'isActive:true'){
-                tryActiveAdmin();
-            }
-        }else{
-            if(element.data().cyInput !== 'isActive:false'){
-                tryInactiveAdmin();
-            }
-        }
-    });
+    cy.get('[data-cy-input*="isActive"]').click();
 }
 
 export function clearEmail(){
@@ -60,7 +43,7 @@ export function editAdmin(id: number){
 }
 
 export function save(){
- cy.get('[data-cy-school-button="save"]').click()
+ cy.get('[data-cy-admin-button="save"]').click()
 }
 
 export function saveButtonShouldDisabled(){
