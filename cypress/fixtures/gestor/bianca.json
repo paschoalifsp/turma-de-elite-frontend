@@ -1,11 +1,11 @@
 {
-   "id":42,
+   "id":76,
    "email":"bianca@gmail.com",
    "name":"Bianca",
    "school":{
-      "id":3,
-      "name":"Colegio Pe Otavio Moreira",
-      "identifier":"CPOM",
+      "id":76,
+      "name":"Jose Marcelino",
+      "identifier":"JML",
       "isActive":true
    },
    "isActive":true

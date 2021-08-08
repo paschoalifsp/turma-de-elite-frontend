@@ -25,16 +25,16 @@
           "isActive":true
        },
        {
-          "id":42,
-          "email":"bianca@gmail.com",
-          "name":"Bianca",
-          "school":{
-             "id":3,
-             "name":"Colegio Pe Otavio Moreira",
-             "identifier":"CPOM",
-             "isActive":true
-          },
-          "isActive":true
+         "id":76,
+         "email":"bianca@gmail.com",
+         "name":"Bianca",
+         "school":{
+            "id":1,
+            "name":"Jose Marcelino",
+            "identifier":"JML",
+            "isActive":true
+         },
+         "isActive":true
        },
        {
           "id":69,
@@ -47,19 +47,8 @@
              "isActive":true
           },
           "isActive":true
-       },
-       {
-          "id":80,
-          "email":"p.paschoal15@gmail.com",
-          "name":"Patricia Paschoal",
-          "school":{
-             "id":3,
-             "name":"Colegio Pe Otavio Moreira",
-             "identifier":"CPOM",
-             "isActive":true
-          },
-          "isActive":true
        }
+
     ],
     "pageable":{
        "sort":{
@@ -73,17 +62,17 @@
        "paged":true,
        "unpaged":false
     },
-    "totalPages":2,
-    "totalElements":6,
+    "totalPages":1,
+    "totalElements":4,
     "last":false,
     "sort":{
        "sorted":false,
        "unsorted":true,
        "empty":true
     },
-    "numberOfElements":5,
+    "numberOfElements":4,
     "first":true,
-    "size":5,
+    "size":4,
     "number":0,
     "empty":false
  }

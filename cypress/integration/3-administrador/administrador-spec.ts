@@ -4,11 +4,12 @@ import { accessAdminPage, clearEmail, closeSnackbar, createAdmin, editAdmin, fil
 describe('CRUD de Administradores', () => {
     beforeEach(() => {
         cy.viewport(1366, 768);
-
+    
         cy.intercept('GET', '/api/admin?*', { fixture: 'administrador/administradores' })
         cy.intercept('GET', '/api/admin/*', { fixture: 'administrador/andre'})
         cy.intercept('POST', '/api/admin', { statusCode: 201 })
         cy.intercept('PUT', '/api/admin/*', { statusCode: 200 })
+        
     })
 
 
@@ -42,7 +43,7 @@ describe('CRUD de Administradores', () => {
             assert.strictEqual(interception.response?.statusCode, 201)
         })
 
-        closeSnackbar()
+        
 
     })
 
@@ -71,7 +72,7 @@ describe('CRUD de Administradores', () => {
             assert.strictEqual(interception.response?.statusCode, 200)
         })
 
-        closeSnackbar()
+    
 
     })
 

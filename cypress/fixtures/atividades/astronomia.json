@@ -1,0 +1,17 @@
+{
+    "id":7,
+    "name":"Astronomina",
+    "description":"Responda o questionario",
+    "punctuation":10.0,
+    "isVisible":true,
+    "isActive":true,
+    "isDeliverable":null,
+    "maxDeliveryDate":"2021-08-25 10:23:54",
+    "filename":"file_download_black_24dp (3) (1).svg",
+    "classes":[
+       {
+        "id":2,
+        "name":"Literatura 8 ano EF"
+       }
+    ]
+ }

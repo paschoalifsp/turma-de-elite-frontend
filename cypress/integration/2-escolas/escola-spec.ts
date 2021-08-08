@@ -10,11 +10,10 @@ describe('CRUD de escolas', ()=>{
             cy.intercept('GET','/api/schools/*',{fixture: 'escola/jose-marcelino'})
             cy.intercept('POST','/api/schools',{statusCode: 201})
             cy.intercept('PUT','/api/schools/*',{statusCode: 200})
+        
         })
 
-
-
-
+   
         it('Ao clicar em escolas, deverá ser redirecionado para a tela de cadastros de escolas e cadastrar uma escola', () => {
             cy.visit('/login').then(currentSubject => {
                 cy.get('#email-login').type('andre.montero702@gmail.com')
@@ -52,6 +51,7 @@ describe('CRUD de escolas', ()=>{
             })
         })
 
+
         it('Deve ser possível editar uma escola', () => {
             editSchool(1)
 
@@ -75,6 +75,7 @@ describe('CRUD de escolas', ()=>{
                 assert.strictEqual(interception.response?.statusCode, 200)
             })
         })
+
         
             it('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () =>{
                 editSchool(1)

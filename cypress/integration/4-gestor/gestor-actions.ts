@@ -23,9 +23,11 @@ export function accessManagerPage(){
 }
 
 export function visitManagerPanel(){
-    cy.get('[data-cy-return ="dashboard"]').click()
+    cy.get('[data-cy-return="dashboard"]').click()
 }
-
+export function visitManagerPage(){
+    cy.visit('admin/managers')
+}
 export function createManager(){
     cy.get('[data-cy-manager="create"]').click();
 }
@@ -35,10 +37,17 @@ export function editManager(id: number){
 }
 
 
-export function fillAdminFields(manager: Manager){
+export function fillManagerFields(manager: Manager){
+    if(manager?.email?.length > 0){
     cy.get('[data-cy-input="email"]').clear().type(manager.email);
+    }
+    if(manager?.name?.length > 0){
     cy.get('[data-cy-input="name"]').clear().type(manager.name);
-    cy.get(`[attr.data-cy-input-school-id]=${manager.schoolId}`)
+    }
+    if(manager?.school){
+        cy.get('[data-cy-input="school"]').clear().type(manager.school?.name  || '')
+    }
+
     cy.get('[data-cy-input*="isActive"]').click()
 }
 

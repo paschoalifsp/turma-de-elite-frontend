@@ -1,15 +1,15 @@
 import { isEndToEnd } from "../configuration";
 
-import { accessManagerPage, clearEmail, closeSnackbar, createManager, editManager, save, saveButtonShouldDisabled, visitManagerPanel } from "./gestor-actions";
+import { accessManagerPage, clearEmail, createManager, editManager, fillManagerFields, save, saveButtonShouldDisabled, visitManagerPage, visitManagerPanel } from "./gestor-actions";
 
-describe('CRUD de Administradores', () => {
+describe('CRUD de gestores', () => {
     beforeEach(() => {
         cy.viewport(1366, 768);
-
         cy.intercept('GET', '/api/managers?*', { fixture: 'gestor/gestores' })
-        cy.intercept('GET', '/api/managers/*', { fixture: 'gestor/bianca'})
+        cy.intercept('GET', '/api/managers/*', { fixture: 'gestor/bianca' })
         cy.intercept('POST', '/api/managers', { statusCode: 201 })
         cy.intercept('PUT', '/api/managers/*', { statusCode: 200 })
+
     })
 
     it('Ao clicar em gestor, deverá ser redirecionado para a tela de cadastros de gestores e cadastrar um gestor', () => {
@@ -19,16 +19,21 @@ describe('CRUD de Administradores', () => {
         cy.location('pathname', { timeout: 60000 })
             .should('include', 'managers')
 
+        visitManagerPage()
+
         createManager()
 
         const manager = {
-            "id":42,
-            "email":"bianca@gmail.com",
-            "name":"Bianca",
+            "id": 76,
+            "email": "bianca@gmail.com",
+            "name": "Bianca",
             school: {
-                id: 3,
-                description:'Colegio Pe Otavio'
-              },
+                id: 1,
+                name:'Jose Marcelino',
+                identifier:'JML',
+                isActive: true
+            },
+            "schoolId": 1,
             "isActive": true
 
         };
@@ -46,22 +51,24 @@ describe('CRUD de Administradores', () => {
             assert.strictEqual(interception.response?.statusCode, 201)
         })
 
- 
+
     })
 
+    it('Deve ser possível editar um usuário Gestor', () => {
 
-    it('Deve ser possível editar um usuário administrador', () => {
-        
-        editManager(42)
+        editManager(76)
 
         const manager = {
-            "id":42,
-            "email":"bianca@gmail.com",
-            "name":"Bianca",
+            "id": 76,
+            "email": "bianca@gmail.com",
+            "name": "Bianca",
             school: {
-                id: 3,
-                description:'Colegio Pe Otavio'
-              },
+                id: 1,
+                name:'Jose Marcelino',
+                identifier:'JML',
+                isActive: true
+            },
+            "schoolId": 1,
             "isActive": true
 
         };
@@ -70,7 +77,7 @@ describe('CRUD de Administradores', () => {
 
         cy.intercept({
             method: 'PUT',
-            url: '/api/managers/42',
+            url: '/api/managers/76',
         }).as('updateManager')
 
         save()
@@ -82,7 +89,7 @@ describe('CRUD de Administradores', () => {
     })
 
     it('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
-        editManager(42)
+        editManager(76)
 
         clearEmail()
 
@@ -91,10 +98,5 @@ describe('CRUD de Administradores', () => {
     })
 
 
-})     
-            
-
-function fillManagerFields(manager: { id: number; email: string; name: string; school: { id: number; description: string; }; isActive: boolean; }) {
-    throw new Error("Function not implemented.");
-}
+})
 

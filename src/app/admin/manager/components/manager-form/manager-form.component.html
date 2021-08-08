@@ -39,7 +39,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>{{'labels.school'|translate}}</mat-label>
-      <input type="text" placeholder="{{'placeholder.schoolName'| translate}}" matInput formControlName="school" [matAutocomplete]="auto">
+      <input data-cy-input="school" type="text" placeholder="{{'placeholder.schoolName'| translate}}" matInput formControlName="school" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySchoolName">
         <mat-option [attr.data-cy-input-school-id]="school.id" *ngFor="let school of filteredSchools$ | async" [value]="school">
           {{school.name + ' | ' + school.identifier}}
@@ -57,7 +57,7 @@
     <ng-template #showButton>
       <button 
       mat-raised-button [disabled]="managerForm.invalid" 
-      data-cy-school-button="save" 
+      data-cy-manager-button="save" 
       [attr.data-cy-is-disabled]="managerForm.invalid"  
       type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
