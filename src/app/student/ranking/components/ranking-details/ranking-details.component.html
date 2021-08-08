@@ -1,7 +1,7 @@
 <div *ngIf="classId" fxLayout="column" fxLayoutGap="10px">
   <h1 class="mat-display-1">Ranking</h1>
   <div fxLayout="row" fxLayoutAlign="start center"  *ngFor="let student of students">
-    <div class="position gold" fxLayout="row" fxLayoutAlign="center center">
+    <div [ngClass]="'position ' + getTier(student?.tier)" fxLayout="row" fxLayoutAlign="center center">
       {{student.position}}
     </div>
     <div class="name">{{student.name}}</div>

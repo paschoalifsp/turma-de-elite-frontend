@@ -51,4 +51,13 @@ export class RankingDetailsComponent implements OnInit {
     return teacher && teacher.name ? teacher.name: '';
   }
 
+  getTier(tier: any) {
+    if(tier=== 'BRONZE'){
+      return 'bronze';
+    } else if(tier==='SILVER'){
+      return 'silver';
+    } else {
+      return 'gold';
+    }
+  }
 }
