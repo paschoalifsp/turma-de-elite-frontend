@@ -1,0 +1,13 @@
+{
+    "id":10,
+    "name":"Desbravador",
+    "description":"Seja o primeiro a entregar a atividade",
+    "iconName":"3d_rotation",
+    "beforeAt":null,
+    "earlierOf":1,
+    "bestOf":null,
+    "averageGradeGreaterOrEqualsThan":null,
+    "isActive":true,
+    "classId":null,
+    "activityId":7
+ }

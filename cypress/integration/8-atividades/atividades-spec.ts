@@ -1,7 +1,7 @@
 import { accessActivityPage, accessLoginPage, Atividade, clearName, createActivity, editActivity, editActivityDisable, fillActivityFields, loginActivity, save, saveButtonShouldDisabled } from "./atividades-actions";
 
 
-describe('CRUD de turmas', () => {
+describe('CRUD de atividades', () => {
     beforeEach(() => {
         cy.viewport(1366, 768);
         cy.intercept('GET', '/api/activities?*', { fixture: 'atividades/atividades' })

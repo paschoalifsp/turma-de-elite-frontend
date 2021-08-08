@@ -22,6 +22,7 @@
         <mat-spinner></mat-spinner>
       </div>
       <a
+        [attr.data-cy-edit-class]="classroom.id"
         [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"

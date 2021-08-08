@@ -1,0 +1,55 @@
+{
+   "content":[
+      {
+         "id":9,
+         "name":"Indiana Jones",
+         "description":"Seja o primeiro a entregar a atividade de Biomas",
+         "iconName":"hourglass_full",
+         "beforeAt":null,
+         "earlierOf":1,
+         "bestOf":null,
+         "averageGradeGreaterOrEqualsThan":null,
+         "isActive":true,
+         "classId":null,
+         "activityId":4
+      },
+      {
+         "id":10,
+         "name":"Desbravador",
+         "description":"Seja o primeiro a entregar a atividade",
+         "iconName":"3d_rotation",
+         "beforeAt":null,
+         "earlierOf":1,
+         "bestOf":null,
+         "averageGradeGreaterOrEqualsThan":null,
+         "isActive":true,
+         "classId":null,
+         "activityId":7
+      }
+   ],
+   "pageable":{
+      "sort":{
+         "unsorted":true,
+         "sorted":false,
+         "empty":true
+      },
+      "offset":0,
+      "pageSize":5,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalElements":2,
+   "totalPages":1,
+   "last":true,
+   "size":5,
+   "number":0,
+   "first":true,
+   "sort":{
+      "unsorted":true,
+      "sorted":false,
+      "empty":true
+   },
+   "numberOfElements":2,
+   "empty":false
+}

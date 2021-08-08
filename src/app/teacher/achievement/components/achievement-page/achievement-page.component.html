@@ -10,6 +10,7 @@
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
       <a
+        data-cy-achievement="create"
         [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
@@ -22,6 +23,7 @@
         <mat-spinner></mat-spinner>
       </div>
       <a
+        [attr.data-cy-edit-achievement]="achievement.id"
         [ngClass]="'mat-elevation-z1 ' + (achievementToggleId===achievement.id?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"

@@ -1,0 +1,37 @@
+{
+    "content":[
+       {
+          "id":6,
+          "name":"Turma do bairro"
+       },
+       {
+          "id":10,
+          "name":"7 ano Geografia"
+       }
+    ],
+    "pageable":{
+       "sort":{
+          "unsorted":true,
+          "sorted":false,
+          "empty":true
+       },
+       "offset":0,
+       "pageSize":5,
+       "pageNumber":0,
+       "paged":true,
+       "unpaged":false
+    },
+    "totalElements":2,
+    "totalPages":1,
+    "last":true,
+    "size":5,
+    "number":0,
+    "first":true,
+    "sort":{
+       "unsorted":true,
+       "sorted":false,
+       "empty":true
+    },
+    "numberOfElements":2,
+    "empty":false
+ }

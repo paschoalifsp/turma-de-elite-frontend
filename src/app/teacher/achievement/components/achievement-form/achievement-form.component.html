@@ -6,11 +6,12 @@
   <mat-stepper orientation="vertical" [linear]="false " #stepper>
     <mat-step [stepControl]="generalInfo">
       <form [formGroup]="generalInfo" fxLayout="column">
-        <ng-template matStepLabel>{{'labels.generalInfo'|translate}}</ng-template>
+        <ng-template  matStepLabel>{{'labels.generalInfo'|translate}}</ng-template>
         <mat-form-field
           fxFlex="45" appearance="outline">
           <mat-label>{{'labels.name'|translate}}</mat-label>
           <input
+            data-cy-input="name"
             matInput
             type="text"
             formControlName="name"
@@ -21,6 +22,7 @@
           fxFlex="45" appearance="outline">
           <mat-label>{{'labels.description'|translate}}</mat-label>
           <textarea
+            data-cy-input="description"
             matInput
             type="text"
             formControlName="description"
@@ -30,26 +32,28 @@
         <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
         <div class="top-padding full-width" fxLayoutAlign="space-between end" fxLayout="column">
           <div fxFlex="10"></div>
-          <button mat-flat-button matStepperNext [disabled]="generalInfo.invalid">{{'labels.next'|translate}}</button>
+          <button data-cy-button="goToStep2" 
+          [attr.data-cy-is-disabled]="generalInfo.invalid" 
+          mat-flat-button matStepperNext [disabled]="generalInfo.invalid">{{'labels.next'|translate}}</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="iconNameControl">
       <ng-template matStepLabel>{{'labels.chooseIcon'|translate}}</ng-template>
       <div fxFlex="100" fxLayout="row wrap" class="icon-picker">
-        <div *ngFor="let icon of materialIcons ">
-          <button (click)="selectIcon(icon)" mat-icon-button>
-            <mat-icon  [ngClass]="iconNameControl?.value !== icon? 'disabled' : 'picked'">
+        <div  *ngFor="let icon of materialIcons ">
+          <button  (click)="selectIcon(icon)" mat-icon-button>
+            <mat-icon [attr.data-cy-input]="materialIcons[0]" [ngClass]="iconNameControl?.value !== icon? 'disabled' : 'picked'">
               {{icon}}_filled
             </mat-icon>
           </button>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="space-between center" class="top-padding">
-        <button mat-raised-button color="primary" matStepperPrevious>
+        <button  mat-raised-button color="primary" matStepperPrevious>
           {{'labels.previous'|translate}}
         </button>
-        <button mat-flat-button color="primary" [disabled]="iconNameControl.value == ''" matStepperNext>
+        <button data-cy-button="goToStep3" mat-flat-button color="primary" [disabled]="iconNameControl.value == ''" matStepperNext>
           {{'labels.next'|translate}}
         </button>
       </div>
@@ -59,8 +63,8 @@
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <mat-form-field fxFlex="45" appearance="outline">
           <mat-label>{{'labels.modality'|translate}}</mat-label>
-          <mat-select [formControl]="modalityChosenControl" >
-            <mat-option [value]="'activity'">
+          <mat-select data-cy-input="modalidade" [formControl]="modalityChosenControl" >
+            <mat-option data-cy-option="activity" [value]="'activity'">
               {{'labels.byActivity'|translate}}
             </mat-option>
             <mat-option [value]="'school-classes'">
@@ -78,8 +82,8 @@
         </mat-form-field>
         <mat-form-field *ngIf="modalityChosenControl?.value == 'activity'" fxFlex="45" appearance="outline">
           <mat-label>{{'labels.activity'|translate}}</mat-label>
-          <mat-select [formControl]="activityIdControl">
-            <mat-option *ngFor="let activity of activities" [value]="activity.id">
+          <mat-select data-cy-activity="activity" [formControl]="activityIdControl">
+            <mat-option [attr.data-cy-activity]="activity.id"*ngFor="let activity of activities" [value]="activity.id">
               {{activity.name}}
             </mat-option>
           </mat-select>
@@ -87,7 +91,7 @@
       </div>
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <button mat-raised-button color="primary" matStepperPrevious>{{'labels.previous'|translate}}</button>
-        <button mat-flat-button color="primary" [disabled]="!(activityIdControl.value || classIdControl.value)"  matStepperNext>{{'labels.next'|translate}}</button>
+        <button data-cy-button="goToStep4" mat-flat-button color="primary" [disabled]="!(activityIdControl.value || classIdControl.value)"  matStepperNext>{{'labels.next'|translate}}</button>
       </div>
     </mat-step>
     <mat-step>
@@ -120,6 +124,7 @@
             fxFlex="45" appearance="outline">
             <mat-label>{{'labels.deliveryEarlierOf'|translate}}</mat-label>
             <input
+              data-cy-input="earlierOf"
               matInput
               type="number"
               formControlName="earlierOf">
@@ -136,7 +141,9 @@
       </form>
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <div fxFlex="10"></div>
-        <button mat-flat-button color="primary" (click)="isEdit ? updateAchievement() : registerAchievement()" matStepperNext>{{(isEdit?'labels.save':'labels.createAchievement')|translate}}</button>
+        <button mat-flat-button color="primary"
+        data-cy-achievement-button="save" 
+        (click)="isEdit ? updateAchievement() : registerAchievement()" matStepperNext>{{(isEdit?'labels.save':'labels.createAchievement')|translate}}</button>
       </div>
     </mat-step>
   </mat-stepper>
