@@ -1,0 +1,78 @@
+{
+    "content":[
+       {
+          "id":79,
+          "email":"joana@gmail.com",
+          "name":"Marcela",
+          "school":{
+             "id":1,
+             "name":"Escola A",
+             "identifier":"NWS",
+             "isActive":true
+          },
+          "isActive":false
+       },
+       {
+          "id":14,
+          "email":"patricia.paschoal@aluno.ifsp.edu.br",
+          "name":"Patrícia Paschoal",
+          "school":{
+             "id":3,
+             "name":"Colegio Pe Otavio Moreira",
+             "identifier":"CPOM",
+             "isActive":true
+          },
+          "isActive":true
+       },
+       {
+         "id":76,
+         "email":"bianca@gmail.com",
+         "name":"Bianca",
+         "school":{
+            "id":1,
+            "name":"Jose Marcelino",
+            "identifier":"JML",
+            "isActive":true
+         },
+         "isActive":true
+       },
+       {
+          "id":69,
+          "email":"ro@email.com",
+          "name":"Rosangela",
+          "school":{
+             "id":3,
+             "name":"Colegio Pe Otavio Moreira",
+             "identifier":"CPOM",
+             "isActive":true
+          },
+          "isActive":true
+       }
+
+    ],
+    "pageable":{
+       "sort":{
+          "sorted":false,
+          "unsorted":true,
+          "empty":true
+       },
+       "pageNumber":0,
+       "pageSize":5,
+       "offset":0,
+       "paged":true,
+       "unpaged":false
+    },
+    "totalPages":1,
+    "totalElements":4,
+    "last":false,
+    "sort":{
+       "sorted":false,
+       "unsorted":true,
+       "empty":true
+    },
+    "numberOfElements":4,
+    "first":true,
+    "size":4,
+    "number":0,
+    "empty":false
+ }

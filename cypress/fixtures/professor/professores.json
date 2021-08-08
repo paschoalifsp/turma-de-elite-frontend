@@ -1,0 +1,77 @@
+{
+    "content":[
+       {
+          "id":4,
+          "email":"hleonardo@cpom.com",
+          "name":"Henrique Leonardo",
+          "school":{
+             "id":4,
+             "name":"Jose Marcelino",
+             "identifier":"JML",             
+             "isActive":true
+          },
+          "isActive":true
+       },
+       {
+          "id":5,
+          "email":"pmonteiro@cpom.com",
+          "name":"Patricia Monteiro",
+          "school":{
+             "id":1,
+             "name":"Jose Marcelino",
+             "identifier":"JML",
+             "isActive":true
+          },
+          "isActive":true
+       },
+       {
+          "id":6,
+          "email":"jgonzalez@cpom.com",
+          "name":"Judith Gonzalez",
+          "school":{
+             "id":1,
+             "name":"Jose Marcelino",
+             "identifier":"JML",
+             "isActive":true
+          },
+          "isActive":true
+       },
+       {
+          "id":7,
+          "email":"asufiatti@cpom.com",
+          "name":"Alex Sufiatti",
+          "school":{
+             "id":1,
+             "name":"Jose Marcelino",
+             "identifier":"JML",      
+             "isActive":true
+          },
+          "isActive":true
+       }
+    ],
+    "pageable":{
+       "sort":{
+          "sorted":false,
+          "unsorted":true,
+          "empty":true
+       },
+       "pageNumber":0,
+       "pageSize":5,
+       "offset":0,
+       "paged":true,
+       "unpaged":false
+    },
+    "last":true,
+    "totalPages":1,
+    "totalElements":4,
+    "first":true,
+    "sort":{
+       "sorted":false,
+       "unsorted":true,
+       "empty":true
+    },
+    "numberOfElements":4,
+    "size":5,
+    "number":0,
+    "empty":false
+ }

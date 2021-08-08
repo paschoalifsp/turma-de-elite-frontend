@@ -1,0 +1,12 @@
+{
+    "id":4,
+    "email":"hleonardo@cpom.com",
+    "name":"Henrique Leonardo",
+    "school":{
+       "id":1,
+       "name":"Jose Marcelino",
+       "identifier":"JML",             
+       "isActive":true
+    },
+    "isActive":true
+ }

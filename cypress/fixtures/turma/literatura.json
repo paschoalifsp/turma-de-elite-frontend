@@ -1,0 +1,35 @@
+{
+    "id":2,
+    "name":"Literatura 8 ano EF",
+    "students":[
+       {
+          "student":{
+             "id":8,
+             "email":"kmanoela@gmail.com",
+             "name":"Karina Manoela Pepe",
+             "registry":"0001",
+             "isActive":true
+          },
+          "isActive":true
+       }
+    ],
+    "teachers":[
+       {
+          "teacher":{
+              "id":4,
+              "email":"hleonardo@cpom.com",
+              "name":"Henrique Leonardo",
+              "school":{
+                 "id":1,
+                 "name":"Jose Marcelino",
+                 "identifier":"JML",             
+                 "isActive":true
+             },
+             "isActive":true
+          },
+          "isActive":true
+       }
+    ],
+    "isActive":true,
+    "isDone":false
+ }

@@ -31,6 +31,7 @@
           fxFlex="80" appearance="outline">
           <mat-label>{{'labels.className'|translate}}</mat-label>
           <input
+            data-cy-input="name"
             matInput
             type="text"
             [formControl]="classNameControl"
@@ -41,12 +42,16 @@
           <mat-error *ngIf="classNameControl.hasError('required')">{{'fieldErrors.classNameIsRequired'|translate}}</mat-error>
           <mat-error *ngIf="classNameControl.hasError('pattern')">{{'fieldErrors.classNamePattern'|translate}}</mat-error>
         </mat-form-field>
-        <mat-slide-toggle data-cy="isActive" [formControl]="isActiveControl" >{{'labels.active'|translate}}</mat-slide-toggle>
+        <mat-slide-toggle 
+        [formControl]="isActiveControl"
+        [attr.data-cy-input]="'isActive:' + classNameControl.get('isActive')?.value" >{{'labels.active'|translate}}</mat-slide-toggle>
       </div>
       <button
         mat-flat-button
         color="primary"
         [disabled]="!teachersCompleted || !studentsCompleted || classNameControl.invalid"
+        data-cy-class-button="save" 
+        [attr.data-cy-is-disabled]="classNameControl.invalid" 
         (click)="isEdit? updateStatusAndName():createClass()">{{(isEdit?'labels.save':'labels.createClass')|translate}}</button>
     </mat-step>
   </mat-stepper>

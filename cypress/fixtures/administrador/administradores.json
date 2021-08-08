@@ -1,0 +1,53 @@
+{
+    "content":[
+       {
+          "id":1,
+          "email":"andre.montero702@gmail.com",
+          "name":"André Monteiro",
+          "isActive":true
+       },
+       {
+          "id":2,
+          "email":"joaolucas@email.com",
+          "name":"Joao Lucas",
+          "isActive":true
+       },
+       {
+          "id":3,
+          "email":"jcarlos@gmail.com",
+          "name":"João Carlos",
+          "isActive": false
+       },
+       {
+          "id":4,
+          "email":"jpaulo@gmail.com",
+          "name":"João Paulo",
+          "isActive":true
+       }
+    ],
+    "pageable":{
+       "sort":{
+          "unsorted":true,
+          "sorted":false,
+          "empty":true
+       },
+       "offset":0,
+       "pageNumber":0,
+       "pageSize":5,
+       "paged":true,
+       "unpaged":false
+    },
+    "last":true,
+    "totalPages":1,
+    "totalElements":4,
+    "size":5,
+    "number":0,
+    "first":true,
+    "sort":{
+       "unsorted":true,
+       "sorted":false,
+       "empty":true
+    },
+    "numberOfElements":4,
+    "empty":false
+ }

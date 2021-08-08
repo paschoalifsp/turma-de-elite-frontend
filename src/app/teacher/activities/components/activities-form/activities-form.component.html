@@ -14,6 +14,7 @@
       fxFlex="60" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
+        data-cy-input="name"
         matInput
         type="text"
         formControlName="name"
@@ -28,6 +29,7 @@
       <input
         matInput
         type="text"
+        data-cy-input="punctuation"
         formControlName="punctuation"
         pattern="^[\d,.?!]+$"
         required>
@@ -36,8 +38,8 @@
     </mat-form-field>
     <mat-form-field fxFlex="90" appearance="outline">
       <mat-label>{{'labels.classes'|translate}}</mat-label>
-      <mat-select multiple formControlName="schoolClasses" required>
-        <mat-option *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id">
+      <mat-select data-cy-select="class" multiple formControlName="schoolClasses" required>
+        <mat-option [attr.data-cy-select]="schoolClass.id" *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id">
           {{schoolClass.name}}
         </mat-option>
       </mat-select>
@@ -46,6 +48,7 @@
     <mat-form-field fxFlex="90" appearance="outline">
       <input
         matInput
+        data-cy-input="maxDeliveryDate"
         [ngxMatDatetimePicker]="picker"
         placeholder="{{'placeholder.chooseDeliveryDate'|translate}}"
         formControlName="maxDeliveryDate"
@@ -60,6 +63,7 @@
       fxFlex="90" appearance="outline">
       <mat-label>{{'labels.attachment'|translate}}</mat-label>
       <input
+        data-cy-input="fileName"
         matInput
         type="text"
         [readonly]="true"
@@ -86,18 +90,21 @@
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.description'|translate}}</mat-label>
-      <textarea matInput formControlName="description" required></textarea>
+      <textarea matInput data-cy-input="description" formControlName="description" required></textarea>
       <mat-error *ngIf="activityForm.get('description')?.errors?.required">{{'fieldErrors.descriptionIsRequired'|translate}}</mat-error>
     </mat-form-field>
-    <mat-checkbox [indeterminate]="false" formControlName="isActive">{{'labels.active'|translate}}</mat-checkbox>
-    <mat-checkbox [indeterminate]="false" formControlName="isVisible">{{'labels.visible'|translate}}</mat-checkbox>
-    <mat-checkbox [indeterminate]="false" formControlName="isDeliverable">{{'labels.deliverable'|translate}}</mat-checkbox>
+    <mat-checkbox data-cy-input="isVisible" [indeterminate]="false" formControlName="isActive">{{'labels.active'|translate}}</mat-checkbox>
+    <mat-checkbox data-cy-input="isActive" [indeterminate]="false" formControlName="isVisible">{{'labels.visible'|translate}}</mat-checkbox>
+    <mat-checkbox data-cy-input="isDeliverable" [indeterminate]="false" formControlName="isDeliverable">{{'labels.deliverable'|translate}}</mat-checkbox>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button (click)="isEdit ? updateActivity() : createActivity()" [disabled]="activityForm.invalid">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-raised-button
+      data-cy-activity-button="save" 
+      [attr.data-cy-is-disabled]="activityForm.invalid"  
+       (click)="isEdit ? updateActivity() : createActivity()" [disabled]="activityForm.invalid">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
   <button *ngIf="isExpired()" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">

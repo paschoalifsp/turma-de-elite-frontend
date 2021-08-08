@@ -9,7 +9,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
-        data-cy="email"
+        data-cy-input="email"
         matInput
         type="text"
         formControlName="email"
@@ -24,7 +24,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
-        data-cy="name"
+        data-cy-input="name"
         matInput
         type="text"
         formControlName="name"
@@ -36,13 +36,20 @@
       <mat-error *ngIf="userForm.get('name')?.errors?.minlength">{{'fieldErrors.minLengthNameAdmin'|translate}}</mat-error>
       <mat-error *ngIf="userForm.get('name')?.errors?.pattern">{{'fieldErrors.namePattern'|translate}}</mat-error>
     </mat-form-field>
-    <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <mat-slide-toggle
+     formControlName="isActive"
+     [attr.data-cy-input]="'isActive:' + userForm.get('isActive')?.value">
+     {{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button data-cy="save" mat-raised-button [disabled]="userForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button 
+      mat-raised-button [disabled]="userForm.invalid" 
+      data-cy-admin-button="save" 
+      [attr.data-cy-is-disabled]="userForm.invalid"  
+      type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

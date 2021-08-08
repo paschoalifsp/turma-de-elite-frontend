@@ -5,6 +5,7 @@
   </h1>
 
   <form
+    
     fxLayout="row wrap"
     fxLayoutAlign="space-between"
     class="full-width"
@@ -15,6 +16,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
+       data-cy-input="email"
         matInput
         type="text"
         formControlName="email"
@@ -29,6 +31,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.registry'|translate}}</mat-label>
       <input
+        data-cy-input="registry"
         matInput
         type="text"
         formControlName="registry"
@@ -42,6 +45,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
+        data-cy-input="name"
         matInput
         type="text"
         formControlName="name"
@@ -53,13 +57,19 @@
       <mat-error *ngIf="studentForm.get('name')?.errors?.minlength">{{'fieldErrors.minLengthStudent'|translate}}</mat-error>
       <mat-error *ngIf="studentForm.get('name')?.errors?.pattern">{{'fieldErrors.namePattern'|translate}}</mat-error>
     </mat-form-field>
-    <mat-slide-toggle formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <mat-slide-toggle 
+    formControlName="isActive"
+    [attr.data-cy-input]="'isActive:' + studentForm.get('isActive')?.value">{{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button mat-raised-button [disabled]="studentForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button 
+      mat-raised-button [disabled]="studentForm.invalid" 
+      data-cy-student-button="save" 
+      [attr.data-cy-is-disabled]="studentForm.invalid" 
+      type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>
