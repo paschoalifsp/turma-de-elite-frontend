@@ -1,0 +1,144 @@
+{
+    "content":[
+       {
+          "id":2,
+          "name":"Literatura 8 ano EF",
+          "students":[
+             {
+                "student":{
+                   "id":8,
+                   "email":"kmanoela@gmail.com",
+                   "name":"Karina Manoela Pepe",
+                   "registry":"0001      ",
+                   "isActive":true
+                },
+                "isActive":true
+             }
+          ],
+          "teachers":[
+             {
+                "teacher":{
+                    "id":4,
+                    "email":"hleonardo@cpom.com",
+                    "name":"Henrique Leonardo",
+                    "school":{
+                       "id":1,
+                       "name":"Jose Marcelino",
+                       "identifier":"JML",             
+                       "isActive":true
+                   },
+                   "isActive":true
+                },
+                "isActive":true
+             }
+          ],
+          "isActive":true,
+          "isDone":false
+       },
+       {
+          "id":3,
+          "name":"Geografia 8 ano EF",
+          "students":[
+             {
+                "student":{
+                   "id":8,
+                   "email":"kmanoela@gmail.com",
+                   "name":"Karina Manoela Pepe",
+                   "registry":"0001      ",
+                   "isActive":true
+                },
+                "isActive":true
+             },
+             {
+                "student":{
+                   "id":9,
+                   "email":"mdallorto@cpom.com",
+                   "name":"Maria Cecilia Dallorto",
+                   "registry":"0002      ",
+                   "isActive":true
+                },
+                "isActive":true
+             }
+          ],
+          "teachers":[
+             {
+                "teacher":{
+                   "id":7,
+                   "email":"asufiatti@cpom.com",
+                   "name":"Alex Sufiatti",
+                   "school":{
+                      "id":1,
+                      "name":"Colegio Pe Otavio Moreira",
+                      "identifier":"CPOM                ",
+                      "isActive":true
+                   },
+                   "isActive":true
+                },
+                "isActive":true
+             }
+          ],
+          "isActive":true,
+          "isDone":false
+       },
+       {
+          "id":4,
+          "name":"Espanhol 8 ano EF",
+          "students":[
+             {
+                "student":{
+                   "id":11,
+                   "email":"mcamara@cpom.com",
+                   "name":"Marcia Camara",
+                   "registry":"0004      ",
+                   "isActive":true
+                },
+                "isActive":true
+             }
+          ],
+          "teachers":[
+             {
+                "teacher":{
+                   "id":6,
+                   "email":"jgonzalez@cpom.com",
+                   "name":"Judith Gonzalez",
+                   "school":{
+                      "id":1,
+                      "name":"Colegio Pe Otavio Moreira",
+                      "identifier":"CPOM                ",
+                      "isActive":true
+                   },
+                   "isActive":true
+                },
+                "isActive":true
+             }
+          ],
+          "isActive":true,
+          "isDone":false
+       }
+    ],
+    "pageable":{
+       "sort":{
+          "sorted":false,
+          "unsorted":true,
+          "empty":true
+       },
+       "pageNumber":0,
+       "pageSize":5,
+       "offset":0,
+       "paged":true,
+       "unpaged":false
+    },
+    "last":true,
+    "totalPages":1,
+    "totalElements":3,
+    "first":true,
+    "sort":{
+       "sorted":false,
+       "unsorted":true,
+       "empty":true
+    },
+    "numberOfElements":3,
+    "size":5,
+    "number":0,
+    "empty":false
+ }

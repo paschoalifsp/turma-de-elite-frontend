@@ -2,6 +2,7 @@
   <mat-form-field appearance="outline" fxFlex="80">
     <input
       matInput
+      data-cy-input="student"
       type="text"
       [formControl]="studentRegistryControl"
       placeholder="{{'placeholder.studentEmail'|translate}}"
@@ -12,11 +13,11 @@
     <mat-error *ngIf="studentRegistryControl.hasError('pattern')">{{'fieldErrors.emailPattern'|translate}}</mat-error>
   </mat-form-field>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName">
-    <mat-option *ngFor="let teacher of studentOptions" [value]="teacher">
+    <mat-option [attr.data-cy-input-student-id]="teacher.id" *ngFor="let teacher of studentOptions" [value]="teacher">
       {{teacher.name}}
     </mat-option>
   </mat-autocomplete>
-  <button mat-mini-fab color="primary" (click)="addTeacher()">
+  <button data-cy-button="addStudent" mat-mini-fab color="primary" (click)="addTeacher()">
     <mat-icon>add</mat-icon>
   </button>
 </div>
@@ -52,7 +53,7 @@
 </table>
 <div fxLayout="row" class="full-width default-padding" fxLayoutAlign="end center">
   <div fxLayout="row" fxFlex="50" fxLayoutAlign="space-between">
-    <button mat-flat-button (click)="emitPrevious()" color="primary">{{'labels.previous'|translate}}</button>
-    <button mat-flat-button [disabled]="isInvalid()" (click)="emitNext()" color="primary">{{'labels.next'|translate}}</button>
+    <button  mat-flat-button (click)="emitPrevious()" color="primary">{{'labels.previous'|translate}}</button>
+    <button data-cy-button="goToStep3" mat-flat-button [disabled]="isInvalid()" (click)="emitNext()" color="primary">{{'labels.next'|translate}}</button>
   </div>
 </div>

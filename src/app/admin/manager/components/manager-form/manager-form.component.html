@@ -10,7 +10,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
-      data-cy="email"
+        data-cy-input="email"
         matInput
         type="text"
         formControlName="email"
@@ -25,7 +25,7 @@
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
-      data-cy="name"
+        data-cy-input="name"
         matInput
         type="text"
         formControlName="name"
@@ -39,20 +39,27 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>{{'labels.school'|translate}}</mat-label>
-      <input type="text" placeholder="{{'placeholder.schoolName'| translate}}" matInput formControlName="school" [matAutocomplete]="auto">
+      <input data-cy-input="school" type="text" placeholder="{{'placeholder.schoolName'| translate}}" matInput formControlName="school" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySchoolName">
-        <mat-option *ngFor="let school of filteredSchools$ | async" [value]="school">
+        <mat-option [attr.data-cy-input-school-id]="school.id" *ngFor="let school of filteredSchools$ | async" [value]="school">
           {{school.name + ' | ' + school.identifier}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{'labels.active'|translate}}</mat-slide-toggle>
+    <mat-slide-toggle 
+     formControlName="isActive"
+     [attr.data-cy-input]="'isActive:' + managerForm.get('isActive')?.value"
+     >{{'labels.active'|translate}}</mat-slide-toggle>
     <div  *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button data-cy="save"mat-raised-button [disabled]="managerForm.invalid" type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button 
+      mat-raised-button [disabled]="managerForm.invalid" 
+      data-cy-manager-button="save" 
+      [attr.data-cy-is-disabled]="managerForm.invalid"  
+      type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
 </div>

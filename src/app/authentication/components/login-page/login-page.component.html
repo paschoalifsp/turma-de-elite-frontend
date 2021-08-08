@@ -34,6 +34,7 @@
             fxFlex appearance="outline">
             <mat-label>E-mail</mat-label>
             <input
+              data-cy-input="email"
               fxFlex="100"
               matInput
               type="text"
@@ -48,6 +49,7 @@
             appearance="outline">
             <mat-label>{{'labels.password'|translate}}</mat-label>
             <input
+              data-cy-input="password"
               fxFlex="100"
               matInput
               type="password"
@@ -66,6 +68,7 @@
         </ng-template>
         <ng-template #showButton>
           <button
+            data-cy-button="login"
             mat-raised-button
             color="primary"
             class="button-margin"
