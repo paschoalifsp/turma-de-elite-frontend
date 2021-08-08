@@ -30,7 +30,9 @@
     "minLengthStudent": "O nome do aluno deve ter no mínimo 5 caracteres.",
     "registryPattern": "A matrícula do aluno deve conter apenas letras e números.",
     "classNameIsRequired": "É necessário inserir o nome da turma",
-    "classNamePattern": "O nome da turma deve conter apenas letras e números."
+    "classNamePattern": "O nome da turma deve conter apenas letras e números.",
+    "tierPercentError": "A soma das porcentagens deve ser 100",
+    "undefinedError": "Erro indefinido"
   },
   "labels": {
     "login": "Login",
@@ -110,7 +112,14 @@
     "closeClass": "Encerrar turma",
     "school-classes": "Turmas",
     "classClosed": "Turma encerrada",
-    "scoreReceived": "Nota recebida"
+    "scoreReceived": "Nota recebida",
+
+    "rankingConfig": "Configuração do ranking",
+    "goldPercent": "Percentual no Tier Ouro",
+    "silverPercent": "Percentual no Tier Prata",
+    "bronzePercent": "Percentual no Tier Bronze"
+
+
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",
@@ -164,9 +173,9 @@
     "activityCreated": "Atividade criada com sucesso!",
     "activityUpdated": "Atividade atualizada com sucesso!",
     "classCreated": "Turma criada com sucesso!",
-    "classNameAndStatusUpdated": "Turma atualizada com sucesso!"
-
-
+    "classNameAndStatusUpdated": "Turma atualizada com sucesso!",
+    "tierConfigSavedSuccessfully": "Configuração de Tier salva com sucesso!",
+    "tierConfigUpdatedSuccessfully": "Configuração de Tier atualizada com sucesso!"
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",

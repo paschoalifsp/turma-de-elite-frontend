@@ -95,7 +95,7 @@ const routes: Routes = [
       { path: 'ranking', component: RankingPageComponent },
     ]
   },
-
+  // /student/dashboard
 ];
 
 @NgModule({

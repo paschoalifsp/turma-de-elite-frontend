@@ -29,8 +29,9 @@
     "punctuationPattern": "Punctuation must has a numerical value.",
     "schoolClassesIsRequired": "Choose a class is required.",
     "maxDeliveryDateIsRequired": "Choose a maximum delivery date is required.",
-    "descriptionIsRequired": "Description is required."
-
+    "descriptionIsRequired": "Description is required.",
+    "tierPercentError": "The sum of percents should be 100",
+    "undefinedError": "Undefined error"
   },
   "labels": {
     "login": "Login",
@@ -110,11 +111,13 @@
     "closeClass": "Close class",
     "school-classes": "Classes",
     "classClosed": "Class is closed",
-    "classClosed": "Class is closed",
     "scoreReceived": "Score received",
+    "deliverable": "Deliverable",
 
-
-    "deliverable": "Deliverable"
+    "rankingConfig": "Ranking configuration",
+    "goldPercent": "Percentage in Gold tier",
+    "silverPercent": "Percentage in Silver tier",
+    "bronzePercent": "Percentage in Bronze tier"
   },
   "actions": {
     "addNewAdmin": "Add Admin",
@@ -168,8 +171,9 @@
     "teacherCreated": "Teacher created successfully!",
     "teacherUpdated": "Teacher updated successfully!",
     "classCreated": "Class created successfully!",
-    "classNameAndStatusUpdated": "Class updated successfully!"
-
+    "classNameAndStatusUpdated": "Class updated successfully!",
+    "tierConfigSavedSuccessfully": "Tier config saved successfully!",
+    "tierConfigUpdatedSuccessfully": "Tier config updated successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
