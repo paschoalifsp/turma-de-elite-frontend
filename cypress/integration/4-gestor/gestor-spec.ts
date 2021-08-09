@@ -1,6 +1,6 @@
 import { isEndToEnd } from "../configuration";
 
-import { accessManagerPage, clearEmail, createManager, editManager, fillManagerFields, save, saveButtonShouldDisabled, visitManagerPage, visitManagerPanel } from "./gestor-actions";
+import { accessLoginPage, accessManagerPage, clearEmail, createManager, editManager, fillManagerFields, loginManager, save, saveButtonShouldDisabled, visitManagerPage, visitManagerPanel } from "./gestor-actions";
 
 describe('CRUD de gestores', () => {
     beforeEach(() => {
@@ -12,9 +12,23 @@ describe('CRUD de gestores', () => {
 
     })
 
+    it('Deve realizar login como gestor', () => {
+        
+        accessLoginPage()
+        const login = {
+            "email": "andre.montero702@gmail.com",
+            "password": "123456"
+        }
+
+        loginManager(login)
+
+        cy.location('pathname', { timeout: 60000 })
+        .should('include', 'admin')
+    })
+
+
     it('Ao clicar em gestor, deverá ser redirecionado para a tela de cadastros de gestores e cadastrar um gestor', () => {
 
-        visitManagerPanel();
         accessManagerPage();
         cy.location('pathname', { timeout: 60000 })
             .should('include', 'managers')

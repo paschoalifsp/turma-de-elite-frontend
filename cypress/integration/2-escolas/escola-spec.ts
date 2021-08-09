@@ -1,5 +1,5 @@
 import { isEndToEnd } from "../configuration";
-import { accessSchollPage, clearIdentifier, closeSnackbar, createSchool, editSchool, fillSchoolFields, save, saveButtonShouldDisabled } from "./escola-actions";
+import { accessLoginPage, accessSchollPage, clearIdentifier, closeSnackbar, createSchool, editSchool, fillSchoolFields, loginManager, save, saveButtonShouldDisabled } from "./escola-actions";
 
 
 describe('CRUD de escolas', ()=>{
@@ -13,15 +13,23 @@ describe('CRUD de escolas', ()=>{
         
         })
 
+        it('Deve realizar login como gestor', () => {
+        
+            accessLoginPage()
+            const login = {
+                "email": "andre.montero702@gmail.com",
+                "password": "123456"
+            }
+    
+            loginManager(login)
+    
+            cy.location('pathname', { timeout: 60000 })
+            .should('include', 'admin')
+        })
+
    
         it('Ao clicar em escolas, deverá ser redirecionado para a tela de cadastros de escolas e cadastrar uma escola', () => {
-            cy.visit('/login').then(currentSubject => {
-                cy.get('#email-login').type('andre.montero702@gmail.com')
-                cy.get('#password-login').type('123456')
-                cy.get('#button-login').click()
-                cy.location('pathname', { timeout: 60000 })
-                  .should('include', 'admin')
-                   
+                              
                 accessSchollPage()
 
                 createSchool()
@@ -49,7 +57,7 @@ describe('CRUD de escolas', ()=>{
                 closeSnackbar()
 
             })
-        })
+       
 
 
         it('Deve ser possível editar uma escola', () => {
@@ -75,6 +83,7 @@ describe('CRUD de escolas', ()=>{
                 assert.strictEqual(interception.response?.statusCode, 200)
             })
         })
+              
 
         
             it('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () =>{
@@ -87,6 +96,8 @@ describe('CRUD de escolas', ()=>{
             })
 
 
-       
+})  
             
-        })
+     
+
+     

@@ -1,5 +1,5 @@
 import { isEndToEnd } from "../configuration";
-import { accessAdminPage, clearEmail, closeSnackbar, createAdmin, editAdmin, fillAdminFields, save, saveButtonShouldDisabled, visitAdminPage, visitAdminPanel } from "./admistrador-actions";
+import { accessAdminPage, accessLoginPage, clearEmail, closeSnackbar, createAdmin, editAdmin, fillAdminFields, loginManager, save, saveButtonShouldDisabled, visitAdminPage, visitAdminPanel } from "./admistrador-actions";
 
 describe('CRUD de Administradores', () => {
     beforeEach(() => {
@@ -12,10 +12,23 @@ describe('CRUD de Administradores', () => {
         
     })
 
+    it('Deve realizar login como gestor', () => {
+        
+        accessLoginPage()
+        const login = {
+            "email": "andre.montero702@gmail.com",
+            "password": "123456"
+        }
+
+        loginManager(login)
+
+        cy.location('pathname', { timeout: 60000 })
+        .should('include', 'admin')
+    })
+
 
     it('Ao clicar em administrador, deverá ser redirecionado para a tela de cadastros de administradores e cadastrar um administrador', () => {
 
-        visitAdminPanel();
         accessAdminPage();
         cy.location('pathname', { timeout: 60000 })
             .should('include', 'admins')

@@ -9,7 +9,6 @@ export interface Conquista{
     activityId: number
 }
 
-
 export interface Login{
     email: string,
     password: string
@@ -41,6 +40,7 @@ export function editAchievement(id: number, name: string){
 }
 
 export function editAchievementDisable(id: number){
+    cy.reload()
     cy.get(`[data-cy-edit-achievement=${id}]`).click();
 }
 

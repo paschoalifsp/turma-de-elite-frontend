@@ -10,9 +10,18 @@ export interface Login{
     password: string
 }
 
-export function login(){
-
+export function accessLoginPage(){
+    cy.visit('/login')
 }
+
+export function loginManager(login: Login){
+
+    cy.get('[data-cy-input="email"]').clear().type(login.email);    
+    cy.get('[data-cy-input="password"]').clear().type(login.password);    
+    cy.get('[data-cy-button="login"]').click()
+    
+}
+
 
 export function visitAdminPanel(){
     cy.get('[data-cy-return ="dashboard"]').click()
