@@ -23,7 +23,7 @@ export class StudentsService {
   registerStudent(value: any) {
     const {school,...rest} = value;
     const language = this.translateService.currentLang;
-    return this.http.post<any>(`${environment.apiUrl}/api/students`, {language,...rest});
+    return this.http.post<any>(`${environment.apiUrl}/api/students`, {language,...rest}).pipe(take(1));
   }
 
   getStudents(pageSize: number, pageNumber: number) {

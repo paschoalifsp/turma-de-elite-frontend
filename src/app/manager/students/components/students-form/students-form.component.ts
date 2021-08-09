@@ -54,6 +54,8 @@ export class StudentsFormComponent implements OnInit {
         this.teacherId = value['id'];
         this.studentsService.getStudentById(this.teacherId as number).subscribe(({email,name,isActive,registry})=>{
           this.studentForm.setValue({email,name,isActive,registry});
+        }, error => {
+
         });
       }
     })

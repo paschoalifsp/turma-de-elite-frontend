@@ -16,7 +16,6 @@ export class AchievementsService {
 
   getAchievementById(achievementId: number) {
     return this.http.get<any>(`${environment.apiUrl}/api/achievements/${achievementId}`).pipe(take(1));
-
   }
 
   updateAchievement(achievementId: number | null, achievement: any) {

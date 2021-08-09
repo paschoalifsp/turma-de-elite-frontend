@@ -23,12 +23,12 @@
         <mat-spinner></mat-spinner>
       </div>
       <a
-        [attr.data-cy-edit-class]="classroom.id" 
+        [attr.data-cy-edit-class]="classroom.id"
+        *ngFor="let classroom of classes"
         [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        *ngFor="let classroom of classes"
         (click)="classToggleId=classroom.id;createMode=false">
         <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{classroom.name}}</p>

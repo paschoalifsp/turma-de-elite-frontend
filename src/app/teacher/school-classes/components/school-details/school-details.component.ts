@@ -5,6 +5,7 @@ import {ClassService} from "../../../../manager/school-classes/services/class.se
 import {TranslateService} from "@ngx-translate/core";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackbarService} from "../../../../shared/services/snackbar.service";
+import {TierConfigService} from "../../services/tier-config.service";
 
 @Component({
   selector: 'app-school-details',
@@ -29,11 +30,50 @@ export class SchoolDetailsComponent implements OnInit {
 
   isLoading = false;
 
+  tierConfigForm = this.fb.group({
+    goldPercent: [
+      '',
+      Validators.compose([
+        Validators.min(1),
+        Validators.max(98),
+        Validators.required
+      ])
+    ],
+    silverPercent: [
+      '',
+      Validators.compose([
+        Validators.min(1),
+        Validators.max(98),
+        Validators.required
+      ])
+    ],
+    bronzePercent: [
+      '',
+      Validators.compose([
+        Validators.min(1),
+        Validators.max(98),
+        Validators.required
+      ])
+    ],
+  },{ validators: control => {
+      const bronzePercent = control.get('bronzePercent')?.value as number;
+      const silverPercent = control.get('silverPercent')?.value as number;
+      const goldPercent = control.get('goldPercent')?.value as number;
+
+      if((bronzePercent + silverPercent + goldPercent) != 100){
+        return {invalidValues: true};
+      }else{
+        return null;
+      }
+    }
+  })
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private classService: ClassService,
-    private snackbarService: SnackbarService
+    private tierConfigService: TierConfigService,
+    private snackbarService: SnackbarService,
+    private snackbar: SnackbarService
   ) { }
 
   ngOnInit(): void {
@@ -43,8 +83,25 @@ export class SchoolDetailsComponent implements OnInit {
     if(this.classId !== 0){
       this.classService.getGeneralInfoById(this.classId).subscribe(response => {
         this.schoolClass = response;
+        this.tierConfigForm.setValue(response?.tierConfig);
       })
     }
+  }
+
+  createTierConfig(){
+    this.tierConfigService.createTierConfig(this.tierConfigForm.value,this.classId).subscribe( response => {
+      this.snackbar.showSnack('messages.tierConfigSavedSuccessfully','labels.close');
+    }, error => {
+      this.snackbar.showSnack('fieldErrors.undefinedError','labels.close');
+    })
+  }
+
+  updateTierConfig(){
+    this.tierConfigService.updateTierConfig(this.tierConfigForm.value,this.classId).subscribe( response => {
+      this.snackbar.showSnack('messages.tierConfigUpdatedSuccessfully','labels.close');
+    }, error => {
+      this.snackbar.showSnack('fieldErrors.undefinedError','labels.close');
+    })
   }
 
   displayName(teacher: any){
