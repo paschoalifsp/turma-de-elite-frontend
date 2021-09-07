@@ -26,7 +26,7 @@ describe('CRUD de Aluno', () => {
     })
 
  
-    it('Ao clicar em alunos, deverá ser redirecionado para a tela de cadastros de administradores e cadastrar um aluno', () => {
+    it('Ao clicar em alunos, deverá ser redirecionado para a tela de cadastros de alunos e cadastrar um aluno', () => {
 
 
         accessStudentPage();

@@ -62,7 +62,7 @@ describe('CRUD de conquistas', () => {
     })
 
 
-    it('Deve ser possível editar uma atividade', () => {
+    it('Deve ser possível editar uma conquista', () => {
 
         cy.reload()
 

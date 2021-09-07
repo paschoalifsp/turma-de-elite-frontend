@@ -13,7 +13,7 @@ describe('CRUD de escolas', ()=>{
         
         })
 
-        it('Deve realizar login como gestor', () => {
+        it('Deve realizar login como administrador', () => {
         
             accessLoginPage()
             const login = {

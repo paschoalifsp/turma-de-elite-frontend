@@ -12,7 +12,7 @@ describe('CRUD de gestores', () => {
 
     })
 
-    it('Deve realizar login como gestor', () => {
+    it('Deve realizar login como administrador', () => {
         
         accessLoginPage()
         const login = {

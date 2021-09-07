@@ -26,7 +26,7 @@ describe('CRUD de Professores', () => {
     })
 
  
-    it('Ao clicar em professores, deverá ser redirecionado para a tela de cadastros de administradores e cadastrar um professor', () => {
+    it('Ao clicar em professores, deverá ser redirecionado para a tela de cadastros de professores e cadastrar um professor', () => {
 
 
         accessTeacherPage();
@@ -67,7 +67,7 @@ describe('CRUD de Professores', () => {
     })
 
 
-    it('Deve ser possível editar um usuário administrador', () => {
+    it('Deve ser possível editar um professor', () => {
         
         editTeacher(4)
 
