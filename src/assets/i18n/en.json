@@ -166,6 +166,7 @@
     "classClosed": "Class closed successfully!",
     "activityCreated": "Activity created successfully!",
     "activityUpdated": "Activity updated successfully!",
+    "activityDelivery": "Activity delivered!",
     "schoolCreated": "School created successfully!",
     "schoolUpdated": "School updated successfully!",
     "teacherCreated": "Teacher created successfully!",
