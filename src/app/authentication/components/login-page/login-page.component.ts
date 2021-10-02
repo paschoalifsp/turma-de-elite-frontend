@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-page',
@@ -24,7 +25,8 @@ export class LoginPageComponent {
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private snackbar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
     ) { }
 
   login(){
