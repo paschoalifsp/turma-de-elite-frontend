@@ -85,4 +85,8 @@ export class AuthenticationService {
   sendResetPasswordEmail(email: string) {
     return this.afAuth.sendPasswordResetEmail(email);
   }
+
+  authWithClassroom() {
+    return this.http.get(`${environment.apiUrl}/api/classroom/auth`,{responseType: 'text'}).pipe(take(1));
+  }
 }

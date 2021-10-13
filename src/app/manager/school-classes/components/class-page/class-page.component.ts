@@ -3,6 +3,8 @@ import {FormControl} from "@angular/forms";
 import {ManagerService} from "../../../../admin/manager/services/manager.service";
 import {PageEvent} from "@angular/material/paginator";
 import {ClassService} from "../../services/class.service";
+import {concatMap, map} from "rxjs/operators";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-class-page',
@@ -35,11 +37,15 @@ export class ClassPageComponent implements OnInit {
   }
 
   refresh(){
-    this.classService.getPaginatedClasses(this.pageSize,0).subscribe(response => {
-      this.classes = response.content;
-      this.totalLength = response.totalElements;
-      this.isLoading = false;
-    })
+    forkJoin(
+      this.classService.getExternalClasses(),
+      this.classService.getPaginatedClasses(this.pageSize,0))
+      .subscribe(([externalClasses,ownClasses])=> {
+        this.classes = [...externalClasses,...ownClasses.content];
+        this.totalLength = ownClasses.totalElements + externalClasses.length;
+        this.isLoading = false;
+      })
+    //TODO: Do exception handling for non authenticated external services call
   }
 
   pageChange(pageEvent: PageEvent) {

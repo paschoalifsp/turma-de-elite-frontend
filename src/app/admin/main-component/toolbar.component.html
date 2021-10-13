@@ -4,7 +4,8 @@
     <span>TURMA DE ELITE</span>
   </div>
 
-  <span>
+  <span fxLayout="row" fxLayoutAlign="center">
+    <img src="assets/classroom-logo.svg" height="30" (click)="bindWithClassroom()"/>
     <button mat-icon-button aria-label="Configuration page" [matMenuTriggerFor]="menu">
       <mat-icon>settings</mat-icon>
     </button>
