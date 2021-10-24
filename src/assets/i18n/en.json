@@ -117,7 +117,10 @@
     "rankingConfig": "Ranking configuration",
     "goldPercent": "Percentage in Gold tier",
     "silverPercent": "Percentage in Silver tier",
-    "bronzePercent": "Percentage in Bronze tier"
+    "bronzePercent": "Percentage in Bronze tier",
+
+    "connections": "Connections",
+    "syncInfo": "Syncronize Turma de Elite with others learning systems"
   },
   "actions": {
     "addNewAdmin": "Add Admin",
@@ -141,7 +144,8 @@
     "deliveriesForThisActivity": "Deliveries for this activity",
     "yourAchievements": "Your achievements",
     "registerManager": "Create Manager",
-    "updateManager": "Edit Manager"
+    "updateManager": "Edit Manager",
+    "yourConnections": "Your Connections"
   },
   "tooltip": {
     "addNewUser": "Register new admin user",
