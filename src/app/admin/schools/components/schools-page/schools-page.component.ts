@@ -49,7 +49,10 @@ export class SchoolsPageComponent implements OnInit {
 
   filteredSchools$ = of([] as School[]);
 
-  constructor(private schoolService: SchoolService, private fb: FormBuilder, private breakpointObserver: BreakpointObserver) { 
+  constructor(
+    private schoolService: SchoolService, 
+    private fb: FormBuilder, 
+    private breakpointObserver: BreakpointObserver) { 
     this.refresh();
   }
 

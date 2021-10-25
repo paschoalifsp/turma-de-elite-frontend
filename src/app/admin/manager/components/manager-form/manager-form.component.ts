@@ -23,6 +23,8 @@ export class ManagerFormComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
+
   alreadyRegisteredEmail = false;
 
   managerForm = this.fb.group({
@@ -62,7 +64,7 @@ export class ManagerFormComponent implements OnInit {
       }
     })
   }
-
+  
   ngOnChanges(changes: SimpleChanges){
     this.isEdit = !this.createMode;
     if(this.createMode){
@@ -109,6 +111,10 @@ export class ManagerFormComponent implements OnInit {
 
   displaySchoolName(school: School){
     return school && school.name ? school.name: '';
+  }
+
+  closeForm(){
+    this.cancel.emit();
   }
 
 }

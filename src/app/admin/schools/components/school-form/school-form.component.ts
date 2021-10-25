@@ -27,13 +27,6 @@ export class SchoolFormComponent implements OnInit {
   @Output() save = new EventEmitter();
   @Output() cancel = new EventEmitter();
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  .pipe(
-    map(result => result.matches),
-    shareReplay()
-  );
-
-
 
   schoolForm = this.fb.group({
     name: ['', [Validators.required]],

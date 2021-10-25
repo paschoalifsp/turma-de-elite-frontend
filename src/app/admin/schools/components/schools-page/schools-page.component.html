@@ -24,11 +24,14 @@
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
         <mat-nav-list>
-          <a *ngIf="(isHandset$ | async)" data-cy-school="create" [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')" fxLayout="row"
-            fxFlexAlign="center center" fxLayoutAlign="start center"
-            (click)="createMode=true;schoolToggleId=null; drawer.toggle() ">
-            <mat-icon color="primary">add</mat-icon>
-            <p color="primary">{{'titles.createSchool'|translate}}</p>
+          <a *ngIf="(isHandset$ | async)" 
+          data-cy-school="create" 
+          [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')" 
+          fxLayout="row"
+          fxFlexAlign="center center" fxLayoutAlign="start center"
+          (click)="createMode=true;schoolToggleId=null; drawer.toggle() ">
+          <mat-icon color="primary">add</mat-icon>
+          <p color="primary">{{'titles.createSchool'|translate}}</p>
           </a>
           <a *ngIf="!(isHandset$ | async)" data-cy-school="create" [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')" fxLayout="row"
           fxFlexAlign="center center" fxLayoutAlign="start center"
@@ -40,26 +43,34 @@
             <mat-spinner></mat-spinner>
           </div>
           <div *ngFor="let school of schools">
-          <a *ngIf="!(isHandset$ | async)" [attr.data-cy-edit-school]="school.id"
-            [ngClass]="'mat-elevation-z1 ' + (schoolToggleId===school.id?'toggled-tile':'tile')" fxLayout="row"
-            fxFlexAlign="center center" fxLayoutAlign="start center" 
+          <a *ngIf="!(isHandset$ | async)" 
+            [attr.data-cy-edit-school]="school.id"
+            [ngClass]="'mat-elevation-z1 ' + (schoolToggleId===school.id?'toggled-tile':'tile')" 
+            fxLayout="row"
+            fxFlexAlign="center center" 
+            fxLayoutAlign="start center" 
             (click)="schoolToggleId=school.id === undefined ? null : school.id;createMode=false ">
             <mat-icon [ngClass]="school.isActive?'primary':'disabled'">school</mat-icon>
             <p color="primary">{{school.name}}</p>
           </a>
         </div>
         <div *ngFor="let school of schools">
-          <a *ngIf="(isHandset$ | async)" [attr.data-cy-edit-school]="school.id"
-            [ngClass]="'mat-elevation-z1 ' + (schoolToggleId===school.id?'toggled-tile':'tile')" fxLayout="row"
-            fxFlexAlign="center center" fxLayoutAlign="start center" 
+          <a *ngIf="(isHandset$ | async)" 
+            [attr.data-cy-edit-school]="school.id"
+            [ngClass]="'mat-elevation-z1 ' + (schoolToggleId===school.id?'toggled-tile':'tile')" 
+            fxLayout="row"
+            fxFlexAlign="center center" 
+            fxLayoutAlign="start center" 
             (click)="schoolToggleId=school.id === undefined ? null : school.id;createMode=false;drawer.toggle()">
             <mat-icon [ngClass]="school.isActive?'primary':'disabled'">school</mat-icon>
             <p color="primary">{{school.name}}</p>
           </a>
-        </div>
-        
-          <mat-paginator class="full-width" [length]="totalLength" [pageSize]="pageSize"
-            [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageChange($event)">
+        </div>        
+          <mat-paginator 
+          class="full-width" [length]="totalLength" 
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[5, 10, 25, 100]" 
+          (page)="pageChange($event)">
           </mat-paginator>
         </mat-nav-list>
       </mat-sidenav>
@@ -68,8 +79,8 @@
           <app-school-form *ngIf="schoolToggleId || createMode" 
           [schoolId]="schoolToggleId" 
           [createMode]="createMode"
-            (save)="refresh()" 
-            (cancel)="drawer.toggle($event)">
+          (save)="refresh()" 
+          (cancel)="drawer.toggle($event)">
           </app-school-form>
         </div>
       </mat-sidenav-content>
