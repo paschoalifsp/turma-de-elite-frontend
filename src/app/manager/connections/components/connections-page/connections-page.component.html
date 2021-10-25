@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayoutAlign="center start">
+  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
+    <button mat-icon-button routerLink="/manager/dashboard"><mat-icon>navigate_before</mat-icon></button>
+    <h1 class="mat-display-1">{{'titles.yourConnections'|translate}}</h1>
+  </div>
+  <div class="page-subtitle" fxFlexAlign="start" fxLayoutAlign="center start">
+    <h4>{{'labels.syncInfo'|translate}}</h4>
+  </div>
+  <div class="full-width" fxLayout="row" fxLayoutAlign="space-around start">
+    <mat-accordion class="default-padding" fxFlex="100">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+            <div fxFlex="15" fxLayout="row" fxLayoutAlign="space-between center">
+              <img src="assets/classroom-logo.svg">
+              <h3>Classroom</h3>
+            </div>
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon>sync</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>Com a sincronização ativada você poderá visualizar as turmas, atividades, alunos e professores criados no Google Classroom</li>
+          <li>As conquistas poderão ser atribuídas a atividades criadas pelo google Classroom.</li>
+          <li>Todas atividades poderão ser entregues pelo Google Classroom.</li>
+          <li>Ao acessar o Turma de Elite será necessário ativar a sincronização para visualizar a alteração dos dados</li>
+          <li>Ao clicar em sincronzar, você será redirecionado para tela de autenticação do Google, onde deverá realizar o login com sua conta do Google Classroom.</li>
+        </ul>
+        <div>
+          <button (click)="bindWithClassroom()" mat-button>Sincronizar</button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

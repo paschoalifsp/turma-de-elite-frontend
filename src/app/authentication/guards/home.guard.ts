@@ -12,6 +12,7 @@ import {environment} from "../../../environments/environment";
 import {concatMap, take} from "rxjs/operators";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {HttpClient} from "@angular/common/http";
+import {AuthenticationService} from "../services/authentication.service";
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +23,15 @@ export class HomeGuard implements CanActivate {
     private router: Router,
     private firebaseAuth: AngularFireAuth,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthenticationService
   ) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    this.auth.isSynchronizedWithClassroom = route.queryParams['authenticationSuccess'];
     return this.firebaseAuth.user.pipe(
       concatMap(user => {
         if(user!=null){

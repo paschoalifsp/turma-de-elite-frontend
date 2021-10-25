@@ -53,6 +53,7 @@ import { SchoolDetailsComponent } from './teacher/school-classes/components/scho
 import { AchievementsListPageComponent } from './student/achievements/components/achievements-list-page/achievements-list-page.component';
 import { RankingPageComponent } from './student/ranking/components/ranking-page/ranking-page.component';
 import { RankingDetailsComponent } from './student/ranking/components/ranking-details/ranking-details.component';
+import { ConnectionsPageComponent } from './manager/connections/components/connections-page/connections-page.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -96,6 +97,7 @@ export function createTranslateLoader(http: HttpClient) {
     AchievementsListPageComponent,
     RankingPageComponent,
     RankingDetailsComponent,
+    ConnectionsPageComponent,
   ],
   imports: [
     BrowserModule,

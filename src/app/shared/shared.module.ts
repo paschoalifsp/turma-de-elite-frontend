@@ -33,6 +33,7 @@ import {MatFileUploadModule} from "angular-material-fileupload";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { CountdownToPipe } from './pipes/countdown-to.pipe';
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatExpansionModule, MatExpansionPanel} from "@angular/material/expansion";
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     NgxMatDatetimePickerModule,
     NgxMatMomentModule,
     MatCheckboxModule,
-    MatGridListModule
+    MatGridListModule,
+    MatExpansionModule
   ],
     exports: [
       CommonModule,
@@ -107,7 +109,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
       NgxMatMomentModule,
       MatCheckboxModule,
       CountdownToPipe,
-      MatGridListModule
+      MatGridListModule,
+      MatExpansionModule
     ],
   declarations: [
     DashboardNavigatorButtonComponent,
