@@ -19,6 +19,7 @@ export class RankingDetailsComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   students: any[] = [];
 
@@ -59,5 +60,8 @@ export class RankingDetailsComponent implements OnInit {
     } else {
       return 'gold';
     }
+  }
+  closeForm(){
+    this.cancel.emit();
   }
 }

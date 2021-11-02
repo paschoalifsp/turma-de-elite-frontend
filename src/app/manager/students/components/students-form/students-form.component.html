@@ -5,7 +5,7 @@
   </h1>
 
   <form
-    
+    fxLayout.xs="column"
     fxLayout="row wrap"
     fxLayoutAlign="space-between"
     class="full-width"
@@ -72,4 +72,7 @@
       type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+    (click)="closeForm()">{{('labels.close')|translate}}
+  </button>
 </div>
