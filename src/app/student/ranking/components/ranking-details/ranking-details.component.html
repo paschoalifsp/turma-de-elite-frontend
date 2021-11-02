@@ -1,4 +1,4 @@
-<div *ngIf="classId" fxLayout="column" fxLayoutGap="10px">
+<div class="default-padding" *ngIf="classId" fxLayout="column" fxLayoutGap="10px">
   <h1 class="mat-display-1">Ranking</h1>
   <div fxLayout="row" fxLayoutAlign="start center"  *ngFor="let student of students">
     <div [ngClass]="'position ' + getTier(student?.tier)" fxLayout="row" fxLayoutAlign="center center">
@@ -7,4 +7,7 @@
     <div class="name">{{student.name}}</div>
     <div class="name">{{student.grade|number:'1.2-2'}} pts</div>
   </div>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

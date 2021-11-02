@@ -1,11 +1,11 @@
 <div fxLayout="row" class="full-width">
-  <mat-form-field appearance="outline" fxFlex="80">
+  <mat-form-field appearance="outline" fxFlex="90">
     <input
       matInput
       data-cy-input="student"
       type="text"
       [formControl]="studentRegistryControl"
-      placeholder="{{'placeholder.studentEmail'|translate}}"
+      placeholder="{{'placeholder.studentRegistry'|translate}}"
       pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
       required
       [matAutocomplete]="auto">
@@ -52,7 +52,7 @@
   <tr mat-row *matRowDef="let row; columns: studentColumns;"></tr>
 </table>
 <div fxLayout="row" class="full-width default-padding" fxLayoutAlign="end center">
-  <div fxLayout="row" fxFlex="50" fxLayoutAlign="space-between">
+  <div fxLayout="row" fxFlex="30" fxFlex.xs="100" fxLayoutAlign="space-between">
     <button  mat-flat-button (click)="emitPrevious()" color="primary">{{'labels.previous'|translate}}</button>
     <button data-cy-button="goToStep3" mat-flat-button [disabled]="isInvalid()" (click)="emitNext()" color="primary">{{'labels.next'|translate}}</button>
   </div>

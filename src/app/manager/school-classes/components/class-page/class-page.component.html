@@ -4,35 +4,63 @@
     <h1 class="mat-display-1">{{'labels.classes'|translate}}</h1>
   </div>
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
-    <div fxFlex="45">
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav #drawer class="sidenav" fixedInViewport 
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'" 
+      [opened]="true">
       <mat-form-field class="full-width" appearance="outline">
         <input type="tel" matInput placeholder="{{'placeholder.searchClass'|translate}}" [formControl]="searchControl">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <a
+      <mat-nav-list>
+        <a *ngIf="(isHandset$ | async)" 
         data-cy-class="create"
         [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="createMode=true;classToggleId=null;">
+        (click)="createMode=true;classToggleId=null; drawer.toggle()">
+        <mat-icon color="primary">add</mat-icon>
+        <p color="primary">{{'labels.createClass'|translate}}</p>
+      </a>
+      <a *ngIf="!(isHandset$ | async)" 
+        data-cy-class="create"
+        [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        (click)="createMode=true;classToggleId=null">
         <mat-icon color="primary">add</mat-icon>
         <p color="primary">{{'labels.createClass'|translate}}</p>
       </a>
       <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>
-      <a
+      <div *ngFor="let classroom of classes">
+        <a *ngIf="(isHandset$ | async)" 
         [attr.data-cy-edit-class]="classroom.id"
-        *ngFor="let classroom of classes"
         [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="classToggleId=classroom.id;createMode=false">
+        (click)="classToggleId=classroom.id;createMode=false; drawer.toggle()">
         <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{classroom.name}}</p>
       </a>
+    </div>
+    <div *ngFor="let classroom of classes">
+      <a *ngIf="!(isHandset$ | async)" 
+      [attr.data-cy-edit-class]="classroom.id"
+      [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
+      fxLayout="row"
+      fxFlexAlign="center center"
+      fxLayoutAlign="start center"
+      (click)="classToggleId=classroom.id;createMode=false;">
+      <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
+      <p color="primary">{{classroom.name}}</p>
+    </a>
+  </div>
       <mat-paginator
         class="full-width"
         [length]="totalLength"
@@ -40,14 +68,19 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         (page)="pageChange($event)">
       </mat-paginator>
-    </div>
-    <div fxFlex="45" fxFlexAlign="start">
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div fxFlex="100" fxFlexAlign="end">
       <app-class-form
         *ngIf="classToggleId || createMode"
         [classId]="classToggleId"
         [createMode]="createMode"
-        (save)="refresh()">
+        (save)="refresh()"
+        (cancel)="drawer.toggle($event)">
       </app-class-form>
     </div>
-  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
 </div>

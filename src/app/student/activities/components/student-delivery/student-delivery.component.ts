@@ -22,6 +22,7 @@ export class StudentDeliveryComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   isDelivered = false;
 
@@ -77,7 +78,7 @@ export class StudentDeliveryComponent implements OnInit {
     const formDataRequestBody = new FormData();
     formDataRequestBody.append("document",this.file);
     this.studentDeliveryService.deliveryResolution(this.activityId[0],formDataRequestBody).subscribe(success => {
-      this.translateService.get('messages.studentRegistered').subscribe( translation => {
+      this.translateService.get('messages.activityDelivered').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
         this.isDelivered = true;
@@ -108,6 +109,10 @@ export class StudentDeliveryComponent implements OnInit {
       a.click();
       URL.revokeObjectURL(objectUrl);
     });
+  }
+
+  closeForm(){
+    this.cancel.emit();
   }
 
   showSnackbar(message: string){

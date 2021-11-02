@@ -3,6 +3,9 @@ import {FormControl} from "@angular/forms";
 import {ClassService} from "../../../../manager/school-classes/services/class.service";
 import {PageEvent} from "@angular/material/paginator";
 import {RankingService} from "../../services/ranking.service";
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ranking-page',
@@ -13,6 +16,12 @@ export class RankingPageComponent implements OnInit {
 
   isLoading = true;
   isChangingPage = false;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
 
   classes:any[] = [];
 
@@ -27,7 +36,9 @@ export class RankingPageComponent implements OnInit {
 
   clear = false;
 
-  constructor(private rankingService: RankingService) {
+  constructor(
+    private rankingService: RankingService,
+    private breakpointObserver: BreakpointObserver) {
     this.refresh();
   }
 

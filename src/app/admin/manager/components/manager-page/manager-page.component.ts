@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {PageEvent} from "@angular/material/paginator";
 import {ManagerService} from "../../services/manager.service";
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import Manager from 'src/app/shared/model/manager';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-manager-page',
@@ -17,12 +19,20 @@ export class ManagerPageComponent implements OnInit {
 
   managers:any[] = [];
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+
   totalLength = 0;
   pageSize = 5;
 
   filteredManagers$ = of([] as Manager[]);
 
   searchControl = new FormControl('');
+
+  
 
   managerForm = this.fb.group({
     email: ['',Validators.email],
@@ -35,7 +45,10 @@ export class ManagerPageComponent implements OnInit {
 
   createMode = true;
 
-  constructor(private managerService: ManagerService, private fb: FormBuilder) {
+  constructor(
+    private managerService: ManagerService, 
+    private fb: FormBuilder,
+    private breakpointObserver: BreakpointObserver) {
     this.refresh();
   }
 
