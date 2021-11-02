@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-page',
@@ -19,12 +20,14 @@ export class LoginPageComponent {
   isEmailInvalid = false;
   isPasswordInvalid = false;
   isLoading = false;
-
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   constructor(
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private snackbar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
     ) { }
 
   login(){
@@ -51,7 +54,10 @@ export class LoginPageComponent {
   }
 
   showSnackbar(message: string){
-    this.snackbar.open(message,'Fechar');
+    this.snackbar.open(message,'Fechar', {
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition
+    });
   }
 
 }
