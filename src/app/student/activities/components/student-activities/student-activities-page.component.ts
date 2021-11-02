@@ -4,6 +4,9 @@ import {ActivityService} from "../../../../teacher/activities/services/activity.
 import {PageEvent} from "@angular/material/paginator";
 import {CountdownService} from "../../../../shared/services/countdown.service";
 import * as moment from "moment";
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map, shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-student-activities',
@@ -14,6 +17,12 @@ export class StudentActivitiesPageComponent implements OnInit {
 
   isLoading = false;
   isChangingPage = false;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
 
   activities:any[] = [];
 
@@ -30,7 +39,8 @@ export class StudentActivitiesPageComponent implements OnInit {
   colors = ['#FFC600','#BCED09','#8338EC','#FCF300','#FF715B','#B5179E','#FB5607','#B5179E']
 
   constructor(
-    private activityService: ActivityService,) {
+    private activityService: ActivityService,
+    private breakpointObserver: BreakpointObserver) {
     this.refresh();
   }
 

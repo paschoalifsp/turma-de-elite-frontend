@@ -7,6 +7,7 @@
   <form
     fxLayout="row wrap"
     fxLayoutAlign="space-between"
+    fxLayout.xs="column"
     class="full-width"
     fxFlex="100"
     [formGroup]="activityForm">
@@ -110,4 +111,7 @@
   <button *ngIf="isExpired()" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
     {{'labels.viewDeliveries'|translate}}
   </button>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

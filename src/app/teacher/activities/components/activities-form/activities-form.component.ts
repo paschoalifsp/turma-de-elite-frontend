@@ -25,6 +25,7 @@ export class ActivitiesFormComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   alreadyRegisteredEmail = false;
 
@@ -145,6 +146,10 @@ export class ActivitiesFormComponent implements OnInit {
   isExpired(){
     const expireDate = this.activityForm.get('maxDeliveryDate')?.value;
     return moment().isAfter(expireDate);
+  }
+
+  closeForm(){
+    this.cancel.emit();
   }
 
 }

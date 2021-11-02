@@ -5,7 +5,7 @@
     {{(isEdit?'titles.updateManager' : 'titles.registerManager') |translate}}
   </h1>
 
-  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="managerForm" (ngSubmit)="isEdit ? updateManager() : registerManager()">
+  <form fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="managerForm" (ngSubmit)="isEdit ? updateManager() : registerManager()">
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
@@ -37,7 +37,7 @@
       <mat-error *ngIf="managerForm.get('name')?.errors?.pattern">{{'fieldErrors.namePattern'|translate}}</mat-error>
       <mat-error *ngIf="managerForm.get('name')?.errors?.minlength">{{'fieldErrors.nameMinLength'|translate}}</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field fxFlex="100" appearance="outline">
       <mat-label>{{'labels.school'|translate}}</mat-label>
       <input data-cy-input="school" type="text" placeholder="{{'placeholder.schoolName'| translate}}" matInput formControlName="school" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySchoolName">
@@ -47,6 +47,7 @@
       </mat-autocomplete>
     </mat-form-field>
     <mat-slide-toggle 
+    fxFlex="45"
      formControlName="isActive"
      [attr.data-cy-input]="'isActive:' + managerForm.get('isActive')?.value"
      >{{'labels.active'|translate}}</mat-slide-toggle>
@@ -62,4 +63,7 @@
       type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

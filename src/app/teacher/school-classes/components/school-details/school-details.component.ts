@@ -22,6 +22,7 @@ export class SchoolDetailsComponent implements OnInit {
   schoolClass: any;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   clear = false;
 
@@ -112,6 +113,10 @@ export class SchoolDetailsComponent implements OnInit {
     this.classService.closeClass(this.classId as number).subscribe( success => {
       this.snackbarService.showSnack('messages.classClosed','labels.close')
     })
+  }
+
+  closeForm(){
+    this.cancel.emit();
   }
 
 }
