@@ -39,7 +39,7 @@ import { StudentsPageComponent } from './manager/students/components/students-pa
 import { StudentsFormComponent } from './manager/students/components/students-form/students-form.component';
 import { TeacherTableComponent } from './manager/school-classes/components/teacher-table/teacher-table.component';
 import { StudentTableComponent } from './manager/school-classes/components/student-table/student-table.component';
-import { TeacherDashboardComponent } from './teacher/dashboard/components/dashboard/teacher-dashboard.component';
+import { TeacherDashboardComponent } from './teacher/dashboard/components/teacher-dashboard/teacher-dashboard.component';
 import { ActivitiesFormComponent } from './teacher/activities/components/activities-form/activities-form.component';
 import { StudentDashboardComponent } from './student/dashboard/components/dashboard/student-dashboard.component';
 import { TeacherActivitiesPage } from './teacher/activities/components/activities-page/teacher-activities-page.component';
@@ -53,6 +53,10 @@ import { SchoolDetailsComponent } from './teacher/school-classes/components/scho
 import { AchievementsListPageComponent } from './student/achievements/components/achievements-list-page/achievements-list-page.component';
 import { RankingPageComponent } from './student/ranking/components/ranking-page/ranking-page.component';
 import { RankingDetailsComponent } from './student/ranking/components/ranking-details/ranking-details.component';
+import { DashboardKpiComponent } from './admin/dashboard-kpi/dashboard-kpi.component';
+import { MatIconModule } from '@angular/material/icon'
+
+import { ChartsModule } from 'ng2-charts';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -96,6 +100,7 @@ export function createTranslateLoader(http: HttpClient) {
     AchievementsListPageComponent,
     RankingPageComponent,
     RankingDetailsComponent,
+    DashboardKpiComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,7 +121,9 @@ export function createTranslateLoader(http: HttpClient) {
       },
       defaultLanguage: 'pt'
     }),
-    SharedModule
+    SharedModule,
+    ChartsModule,
+    MatIconModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: BearerInterceptor, multi: true},

@@ -1,0 +1,21 @@
+.dashboards {
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    width: 95vw;
+}
+
+.dashboards__item {
+    height: 50vh;
+    width: 45vw;
+    padding: 2vw;
+}
+
+.dashboards__item__title {
+    display: flex;
+    justify-content: center;
+    color: rgb(48, 63, 159);
+    font-weight: bold;
+}

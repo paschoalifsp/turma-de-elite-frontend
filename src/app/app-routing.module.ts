@@ -9,6 +9,7 @@ import {FirstAccessGuard} from "./authentication/guards/first-access.guard";
 import {FirstAccessAlreadyDoneComponent} from "./authentication/components/first-access-already-done/first-access-already-done.component";
 import {ResetPasswordComponent} from "./authentication/components/reset-password/reset-password.component";
 import {AdminDashboardComponent} from "./admin/dashboard/components/admin-dashboard/admin-dashboard.component";
+import {DashboardKpiComponent} from "./admin/dashboard-kpi/dashboard-kpi.component";
 import {IsAdminGuard} from "./authentication/guards/is-admin.guard"
 import {ToolbarComponent} from "./admin/main-component/toolbar.component";
 import {ConfigurationComponent} from "./admin/configuration/components/configuration.component";
@@ -24,7 +25,7 @@ import {AchievementPageComponent} from "./teacher/achievement/components/achieve
 import {TeacherPageComponent} from "./manager/teacher/components/teacher-page/teacher-page.component";
 import {ClassPageComponent} from "./manager/school-classes/components/class-page/class-page.component";
 import {StudentsPageComponent} from "./manager/students/components/students-page/students-page.component";
-import {TeacherDashboardComponent} from "./teacher/dashboard/components/dashboard/teacher-dashboard.component";
+import {TeacherDashboardComponent} from "./teacher/dashboard/components/teacher-dashboard/teacher-dashboard.component";
 import {IsTeacherGuard} from "./authentication/guards/is-teacher.guard";
 import {TeacherActivitiesPage} from "./teacher/activities/components/activities-page/teacher-activities-page.component";
 import {HomeGuard} from "./authentication/guards/home.guard";
@@ -35,6 +36,7 @@ import {TeacherDeliveriesPageComponent} from "./teacher/grades/components/teache
 import {SchoolClassesComponent} from "./teacher/school-classes/components/school-classes/school-classes.component";
 import {AchievementsListPageComponent} from "./student/achievements/components/achievements-list-page/achievements-list-page.component";
 import {RankingPageComponent} from "./student/ranking/components/ranking-page/ranking-page.component";
+import { DashboardFollowUpComponent } from './teacher/dashboard-follow-up/dashboard-follow-up.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -56,6 +58,7 @@ const routes: Routes = [
       { path: 'configuration', component: ConfigurationComponent},
       { path: 'admins', component: UsersPageComponent},
       { path: 'managers', component: ManagerPageComponent },
+      { path: 'dash', component: DashboardKpiComponent },
     ]
   },
   {
@@ -81,6 +84,7 @@ const routes: Routes = [
       { path: 'activities/:id/grades', component: TeacherDeliveriesPageComponent },
       { path: 'achievements', component: AchievementPageComponent},
       { path: 'classes', component: SchoolClassesComponent},
+      { path: 'dash', component: DashboardFollowUpComponent },
     ]
   },
   {
