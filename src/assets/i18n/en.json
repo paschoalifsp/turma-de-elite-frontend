@@ -124,7 +124,8 @@
   },
   "actions": {
     "addNewAdmin": "Add Admin",
-    "close": "Close"
+    "close": "Close",
+    "syncClassroomClasses": "Synchronize Classroom Classes"
   },
   "hint":{
     "schoolIdentifier": "Insert an unique identifier for school "

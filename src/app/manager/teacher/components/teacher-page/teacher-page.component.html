@@ -22,7 +22,7 @@
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="createMode=true;teacherToggleId=null">
+        (click)="createMode=true;teacherToggleId=null;isFromLms=null">
         <mat-icon color="primary">add</mat-icon>
         <p color="primary">{{'labels.createTeacher'|translate}}</p>
       </a>
@@ -36,7 +36,7 @@
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
         *ngFor="let teacher of teachers"
-        (click)="teacherToggleId=teacher.id;createMode=false">
+        (click)="teacherToggleId=teacher.id;createMode=false;isFromLms=teacher.isFromLms">
         <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{teacher.name}}</p>
       </a>
@@ -52,6 +52,7 @@
       <app-teacher-form
         *ngIf="teacherToggleId || createMode"
         [teacherId]="teacherToggleId"
+        [isFromLms]="isFromLms"
         [createMode]="createMode"
         (save)="refresh()">
       </app-teacher-form>

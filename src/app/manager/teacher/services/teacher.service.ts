@@ -41,7 +41,6 @@ export class TeacherService {
     const {school,...rest} = value;
     const language = this.translateService.currentLang;
     return this.http.put<any>(`${environment.apiUrl}/api/teachers/${managerId}`, {language,...rest});
-    this.isLoading = false;
   }
 
   findTeacherByNameSimilarity(value: string): Observable<Teacher[]> {
@@ -54,5 +53,13 @@ export class TeacherService {
 
   findByEmailSimilarity(email: string) {
     return this.http.get<any[]>(`${environment.apiUrl}/api/teachers/email/${email}`).pipe(take(1));
+  }
+
+  getExternalTeachers(){
+    return this.http.get<any>(`${environment.apiUrl}/api/external/teachers`).pipe(take(1));
+  }
+
+  getPaginatedTeachers(pageSize:any, pageNumber:any){
+    return this.http.get<any>(`${environment.apiUrl}/api/teachers?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
   }
 }

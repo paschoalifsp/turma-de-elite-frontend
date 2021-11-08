@@ -3,10 +3,10 @@
     <h1 class="mat-display-1 page-title">{{'titles.administrativePanel'|translate}}</h1>
   </div>
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around center">
-    <div fxFlex="50">
+    <div fxFlex="50" fxHide fxShow.gt-sm>
       <img class="half-screen-width" src="assets/student-dashboard.svg">
     </div>
-    <div fxFlex="35" fxFlexAlign="start">
+    <div class="tile-container" fxFlex="35" fxFlexAlign="start">
       <navigator-button
         [path]="'/student/activities'"
         [label]="'labels.activities'"
@@ -25,4 +25,3 @@
     </div>
   </div>
 </div>
-

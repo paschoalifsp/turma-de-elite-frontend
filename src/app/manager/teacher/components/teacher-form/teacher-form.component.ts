@@ -20,6 +20,7 @@ export class TeacherFormComponent implements OnInit {
 
   @Input() teacherId:number | null = null;
   @Input() createMode = true;
+  @Input() isFromLms: any = null
 
   @Output() save = new EventEmitter();
   alreadyRegisteredEmail = false;
@@ -40,7 +41,6 @@ export class TeacherFormComponent implements OnInit {
     private schoolService: SchoolService,
     private snackbar: MatSnackBar,
     private translateService: TranslateService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,11 +51,22 @@ export class TeacherFormComponent implements OnInit {
     })
     this.route.params.subscribe(value => {
       if(value['id']){
-        this.isEdit = true;
-        this.teacherId = value['id'];
-        this.teacherService.getTeacherById(this.teacherId as number).subscribe(({email,name,isActive})=>{
-          this.teacherForm.setValue({email,name,isActive});
-        });
+        
+        if(this.isFromLms === true) {
+          this.isEdit = true;
+          this.teacherId = value['id'];
+          this.teacherService.getExternalTeachers().subscribe(({email,name,isActive}) => {
+            this.teacherForm.setValue({email, name, isActive});
+          });
+        }
+        else if (this.isFromLms === false || this.isFromLms === null) {
+          this.isEdit = true;
+          this.teacherId = value['id'];
+          this.teacherService.getTeacherById(this.teacherId as number).subscribe(({email,name,isActive})=>{
+            this.teacherForm.setValue({email,name,isActive});
+          });
+        }
+
       }
     })
   }
@@ -66,9 +77,17 @@ export class TeacherFormComponent implements OnInit {
       this.teacherForm.reset();
     }
     else{
-      this.teacherService.getTeacherById(this.teacherId as number).subscribe( ({name,email,isActive}) => {
-        this.teacherForm.setValue({name,email,isActive})
-      })
+
+      if(this.isFromLms === true) {
+        this.teacherService.getTeacherById(this.teacherId as number).subscribe( ({name,email,isActive}) => {
+          this.teacherForm.setValue({name,email,isActive})
+        })
+      }
+      else if (this.isFromLms === false || this.isFromLms === null) {
+        this.teacherService.getTeacherById(this.teacherId as number).subscribe( ({name,email,isActive}) => {
+          this.teacherForm.setValue({name,email,isActive})
+        })
+      }
     }
   }
 

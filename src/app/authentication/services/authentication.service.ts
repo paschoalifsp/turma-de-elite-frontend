@@ -107,4 +107,5 @@ export class AuthenticationService {
   set isSynchronizedWithClassroom(isSynchronized){
     localStorage.setItem('isSynchronizedWithClassroom',`${isSynchronized}`);
   }
+  
 }

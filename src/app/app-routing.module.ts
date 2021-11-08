@@ -57,6 +57,7 @@ const routes: Routes = [
       { path: 'configuration', component: ConfigurationComponent},
       { path: 'admins', component: UsersPageComponent},
       { path: 'managers', component: ManagerPageComponent },
+      { path: 'connections', component: ConnectionsPageComponent}
     ]
   },
   {
@@ -83,6 +84,7 @@ const routes: Routes = [
       { path: 'activities/:id/grades', component: TeacherDeliveriesPageComponent },
       { path: 'achievements', component: AchievementPageComponent},
       { path: 'classes', component: SchoolClassesComponent},
+      { path: 'connections', component: ConnectionsPageComponent}
     ]
   },
   {
@@ -95,6 +97,7 @@ const routes: Routes = [
       { path: 'activities', component: StudentActivitiesPageComponent},
       { path: 'achievements', component: AchievementsListPageComponent },
       { path: 'ranking', component: RankingPageComponent },
+      { path: 'connections', component: ConnectionsPageComponent}
     ]
   },
   // /student/dashboard
