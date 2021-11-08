@@ -1,0 +1,10 @@
+@media (max-width: 960px) {
+    .tile-container{
+        max-width: 80% !important;
+    }
+
+    .tile-container navigator-button[label] {
+        font-size: 100%;
+    }
+
+} 

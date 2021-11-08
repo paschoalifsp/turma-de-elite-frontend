@@ -36,6 +36,7 @@ import {TeacherDeliveriesPageComponent} from "./teacher/grades/components/teache
 import {SchoolClassesComponent} from "./teacher/school-classes/components/school-classes/school-classes.component";
 import {AchievementsListPageComponent} from "./student/achievements/components/achievements-list-page/achievements-list-page.component";
 import {RankingPageComponent} from "./student/ranking/components/ranking-page/ranking-page.component";
+import {ConnectionsPageComponent} from "./manager/connections/components/connections-page/connections-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -58,6 +59,7 @@ const routes: Routes = [
       { path: 'admins', component: UsersPageComponent},
       { path: 'managers', component: ManagerPageComponent },
       { path: 'dash', component: DashboardKpiComponent },
+      { path: 'connections', component: ConnectionsPageComponent}
     ]
   },
   {
@@ -70,6 +72,7 @@ const routes: Routes = [
       { path: 'teachers', component: TeacherPageComponent},
       { path: 'classes', component: ClassPageComponent},
       { path: 'students', component: StudentsPageComponent},
+      { path: 'connections', component: ConnectionsPageComponent}
     ]
   },
   {
@@ -83,6 +86,7 @@ const routes: Routes = [
       { path: 'activities/:id/grades', component: TeacherDeliveriesPageComponent },
       { path: 'achievements', component: AchievementPageComponent},
       { path: 'classes', component: SchoolClassesComponent},
+      { path: 'connections', component: ConnectionsPageComponent}
     ]
   },
   {
@@ -95,6 +99,7 @@ const routes: Routes = [
       { path: 'activities', component: StudentActivitiesPageComponent},
       { path: 'achievements', component: AchievementsListPageComponent },
       { path: 'ranking', component: RankingPageComponent },
+      { path: 'connections', component: ConnectionsPageComponent}
     ]
   },
   // /student/dashboard

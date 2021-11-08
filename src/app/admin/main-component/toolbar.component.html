@@ -4,7 +4,7 @@
     <span>TURMA DE ELITE</span>
   </div>
 
-  <span>
+  <span fxLayout="row" fxLayoutAlign="center">
     <button mat-icon-button aria-label="Configuration page" [matMenuTriggerFor]="menu">
       <mat-icon>settings</mat-icon>
     </button>
@@ -12,6 +12,10 @@
       <button mat-menu-item [matMenuTriggerFor]="languages">
         <mat-icon>translate</mat-icon>
         <span>{{ 'labels.language' | translate }}</span>
+      </button>
+      <button mat-menu-item routerLink="connections">
+        <mat-icon>sync</mat-icon>
+        <span>{{ 'labels.connections' | translate }}</span>
       </button>
     </mat-menu>
     <mat-menu #languages="matMenu">

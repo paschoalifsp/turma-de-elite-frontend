@@ -49,4 +49,12 @@ export class StudentsService {
   findByRegistrySimilarity(registry: any) {
     return this.http.get<any[]>(`${environment.apiUrl}/api/students/registry/${registry}`)
   }
+
+  getExternalStudents(){
+    return this.http.get<any>(`${environment.apiUrl}/api/external/students`).pipe(take(1));
+  }
+
+  getStudentsUsers(pageSize:any, pageNumber:any){
+    return this.http.get<any>(`${environment.apiUrl}/api/students?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
+  }
 }
