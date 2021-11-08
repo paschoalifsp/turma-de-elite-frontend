@@ -39,6 +39,7 @@
       <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>
+      <div>
       <a
         [attr.data-cy-edit-student]="student.id"
         [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.id?'toggled-tile':'tile')"

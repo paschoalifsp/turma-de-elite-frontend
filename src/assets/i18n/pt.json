@@ -120,7 +120,10 @@
     "bronzePercent": "Percentual no Tier Bronze",
 
     "connections": "Conexões",
-    "syncInfo": "Sincronize o Turma de Elite com outras plataformas de aprendizado"
+    "syncInfo": "Sincronize o Turma de Elite com outras plataformas de aprendizado",
+
+    "newUsersDashboard": "Novos usuários nos últimos 12 meses",
+    "activeInactiveUsers": "Usuários ativos e inativos nos últimos 12 meses"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",

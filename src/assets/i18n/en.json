@@ -120,7 +120,10 @@
     "bronzePercent": "Percentage in Bronze tier",
 
     "connections": "Connections",
-    "syncInfo": "Syncronize Turma de Elite with others learning systems"
+    "syncInfo": "Syncronize Turma de Elite with others learning systems",
+
+    "newUsersDashboard": "New users (last 12 months)",
+    "activeInactiveUsers": "Active and inactive users (last 12 months)"
   },
   "actions": {
     "addNewAdmin": "Add Admin",

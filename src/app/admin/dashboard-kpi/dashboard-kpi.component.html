@@ -3,10 +3,10 @@
     <button data-cy-return="dashboard" mat-icon-button routerLink="/admin/dashboard"><mat-icon>navigate_before</mat-icon></button>
     <h1 class="mat-display-1">Dashboards</h1>
   </div>
-  <div class="dashboards" fxLayout="row wrap" fxFlexAlign="start" fxLayoutAlign="center start">
+  <div class="dashboards" fxLayout="row wrap" fxFlexAlign="center" fxLayoutAlign="center start">
     <div class="dashboards__item" >
       <div class="dashboards__item__title">
-        Usuários ativos e inativos nos últimos 12 meses
+        {{ 'labels.activeInactiveUsers' | translate }}
       </div>
       <canvas baseChart 
         [datasets]="barChartData"
@@ -19,7 +19,7 @@
     </div>
     <div class="dashboards__item">
       <div class="dashboards__item__title">
-        Novos usuários nos últimos 12 meses
+        {{ 'labels.newUsersDashboard' | translate }}
       </div>
         <canvas baseChart 
           [datasets]="lineChartData"

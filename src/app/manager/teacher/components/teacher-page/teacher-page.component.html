@@ -57,9 +57,8 @@
         <p color="primary">{{teacher.name}}</p>
       </a>
     </div>
-    <div *ngFor="let teacher of teachers">
+    <div>
       <a
-        *ngIf="!(isHandset$ | async)" 
         [attr.data-cy-edit-teacher]="teacher.id"
         [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===teacher.id?'toggled-tile':'tile')"
         fxLayout="row"

@@ -1,16 +1,13 @@
 .dashboards {
     display: flex;
     flex-direction: row;
-    padding-left: 20px;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     width: 95vw;
 }
 
 .dashboards__item {
-    height: 50vh;
-    width: 500px;
-    padding: 1vw;
+    width: 45%;
 }
 
 .dashboards__item__title {
@@ -18,4 +15,17 @@
     justify-content: center;
     color: rgb(48, 63, 159);
     font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+
+    .dashboards {
+        padding-left: 20px;
+        width: 80vw;
+    }
+
+    .dashboards__item {
+        width: 100%;
+        margin-bottom: 80px;
+    }
 }
