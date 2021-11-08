@@ -1,4 +1,4 @@
-<div *ngIf="schoolClass" fxLayout="row" fxLayoutAlign="space-between">
+<div class="default-padding" *ngIf="schoolClass" fxflex.xs="90" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between" fxLayoutAlign.xs="center">
   <div  fxLayout="column">
     <h1>{{schoolClass?.name}}</h1>
     <div>
@@ -48,4 +48,7 @@
       </button>
     </form>
   </div>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

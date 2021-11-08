@@ -4,7 +4,7 @@
     {{(isEdit?'titles.updateTeacher' : 'titles.registerTeacher') |translate}}
   </h1>
 
-  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="teacherForm" (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
+  <form fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="teacherForm" (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
@@ -51,4 +51,7 @@
       type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

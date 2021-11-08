@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -19,6 +19,8 @@ export class FirstAccessPageComponent implements OnInit {
   isEmailInvalid = false;
   isPasswordInvalid = false;
   isAlreadyRegistered = false;
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
 
   constructor(
     private fb: FormBuilder,
@@ -62,7 +64,10 @@ export class FirstAccessPageComponent implements OnInit {
   }
 
   showSnackbar(message: string){
-    return this.snackbar.open(message,'Fechar');
+    return this.snackbar.open(message,'Fechar', {
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition
+    });
   }
 
 }

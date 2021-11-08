@@ -3,6 +3,9 @@ import {FormControl} from "@angular/forms";
 import {ManagerService} from "../../../../admin/manager/services/manager.service";
 import {PageEvent} from "@angular/material/paginator";
 import {ClassService} from "../../services/class.service";
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map, shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-class-page',
@@ -13,6 +16,12 @@ export class ClassPageComponent implements OnInit {
 
   isLoading = true;
   isChangingPage = false;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
 
   classes:any[] = [];
 
@@ -27,7 +36,9 @@ export class ClassPageComponent implements OnInit {
 
   clear = false;
 
-  constructor(private classService: ClassService) {
+  constructor(
+    private classService: ClassService,
+    private breakpointObserver: BreakpointObserver) {
     this.refresh();
   }
 

@@ -173,7 +173,8 @@
     "classCreated": "Class created successfully!",
     "classNameAndStatusUpdated": "Class updated successfully!",
     "tierConfigSavedSuccessfully": "Tier config saved successfully!",
-    "tierConfigUpdatedSuccessfully": "Tier config updated successfully!"
+    "tierConfigUpdatedSuccessfully": "Tier config updated successfully!",
+    "activityDelivered": "Activity delivered successfully!"
   },
   "placeholder": {
     "searchTeacher": "Search Teacher",
