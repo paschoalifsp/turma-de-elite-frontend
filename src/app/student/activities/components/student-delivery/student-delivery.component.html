@@ -1,4 +1,4 @@
-<div>
+<div class="default-padding">
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <p class="activity-name">{{activity?.name}}</p>
     <p class="expires" *ngIf="!isDelivered">{{'labels.expiresIn'|translate}} {{activity?.expireDate|countdownTo}}</p>
@@ -53,4 +53,7 @@
       {{'labels.send'|translate}}
     </button>
   </div>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

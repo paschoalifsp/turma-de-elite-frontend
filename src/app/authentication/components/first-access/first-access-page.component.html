@@ -6,23 +6,25 @@
     class="full-width full-screen-height"
     fxFlex="100"
     fxLayout="row"
-    fxLayoutAlign="space-around center">
-    <div fxFlex="65" class="full-screen-height" fxLayoutAlign="center center">
+    fxLayoutAlign="space-around center"
+    >
+    <div fxFlex="65" class="full-screen-height" fxLayoutAlign="center center" fxHide fxShow.gt-xs>
       <img src="assets/login.svg">
     </div>
     <div
-      fxFlex="35"
+      fxFlex
       fxLayout="column"
       fxLayoutAlign="center center"
-      class="full-height full-width login-container">
+      class="full-height full-width login-container"
+      fxShow fxHide.md>
       <div
         fxFlexAlign="center center"
         fxLayout="column">
         <div fxLayout="row"  fxLayoutAlign="center center" class="title">
           <div>
-            <mat-icon>military_tech</mat-icon>
+            <mat-icon [ngStyle.xs] = "{'font-size.px': 30}">military_tech</mat-icon>
           </div>
-          <h1>
+          <h1 [ngStyle.xs] = "{'font-size.px': 30}">
             Turma de Elite
           </h1>
         </div>

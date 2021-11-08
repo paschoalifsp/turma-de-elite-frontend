@@ -18,6 +18,8 @@ export class UserFormComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
+
   alreadyRegisteredEmail = false;
 
   userForm = this.fb.group({
@@ -98,5 +100,10 @@ export class UserFormComponent implements OnInit {
       }
     });
   }
+
+  closeForm(){
+    this.cancel.emit();
+  }
+
 
 }

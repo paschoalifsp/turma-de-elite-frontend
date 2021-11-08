@@ -25,6 +25,7 @@ export class ClassFormComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   clear = false;
 
@@ -119,5 +120,9 @@ export class ClassFormComponent implements OnInit {
 
   get studentsCompleted(){
     return this.students.length > 0;
+  }
+
+  closeForm(){
+    this.cancel.emit();
   }
 }

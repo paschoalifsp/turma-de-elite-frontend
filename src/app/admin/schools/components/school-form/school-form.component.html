@@ -1,49 +1,41 @@
-<div class="default-padding full-width" fxLayout="column" fxLayoutAlign="center start">
+<div class="default-padding full-width" fxLayout="column" fxLayoutAlign="space-between">
 
   <h1 class="title">
     {{(isEdit?'titles.editSchool' : 'titles.createSchool') |translate}}
   </h1>
 
-  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="schoolForm" (ngSubmit)="isEdit ? updateSchool() : createSchool()">
-    <mat-form-field
-      fxFlex="45" appearance="outline">
+  <form fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between" class="full-width" fxFlex="100"
+    [formGroup]="schoolForm" (ngSubmit)="isEdit ? updateSchool() : createSchool()">
+    <mat-form-field fxFlex="45" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
-      <input
-        matInput
-        data-cy-input="name"
-        type="text"
-        formControlName="name"
-        placeholder="{{'placeholder.schoolName'|translate}}"
-        pattern="^[a-z A-Z 0-9._\b]+$"
-        required>
+      <input matInput data-cy-input="name" type="text" formControlName="name"
+        placeholder="{{'placeholder.schoolName'|translate}}" required>
       <mat-error *ngIf="schoolForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
-      <mat-error *ngIf="schoolForm.get('name')?.errors?.pattern">{{'fieldErrors.schoolNamePattern'|translate}}</mat-error>
+      <mat-error *ngIf="schoolForm.get('name')?.errors?.pattern">{{'fieldErrors.schoolNamePattern'|translate}}
+      </mat-error>
     </mat-form-field>
-    <mat-form-field
-      fxFlex="45" appearance="outline">
+    <mat-form-field fxFlex="45" appearance="outline">
       <mat-label>{{'labels.identifier'|translate}}</mat-label>
-      <input
-        matInput
-        data-cy-input="identifier"
-        type="text"
-        formControlName="identifier"
-        placeholder="{{'placeholder.schoolIdentifier'|translate}}"
-        required>
-      <mat-error *ngIf="schoolForm.get('identifier')?.errors?.required">{{'fieldErrors.identifierIsRequired'|translate}}</mat-error>
+      <input matInput data-cy-input="identifier" type="text" formControlName="identifier"
+        placeholder="{{'placeholder.schoolIdentifier'|translate}}" required>
+      <mat-error *ngIf="schoolForm.get('identifier')?.errors?.required">{{'fieldErrors.identifierIsRequired'|translate}}
+      </mat-error>
     </mat-form-field>
-    <mat-slide-toggle  
-    formControlName="isActive" 
-    [attr.data-cy-input]="'isActive:' + schoolForm.get('isActive')?.value">{{'labels.active'|translate}}</mat-slide-toggle>
+    <mat-slide-toggle formControlName="isActive" [attr.data-cy-input]="'isActive:' + schoolForm.get('isActive')?.value">
+      {{'labels.active'|translate}}</mat-slide-toggle>
     <div *ngIf="isLoading;then showLoader;else showButton"></div>
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button
-      mat-raised-button [disabled]="schoolForm.invalid"  
-      data-cy-school-button="save" 
-      [attr.data-cy-is-disabled]="schoolForm.invalid" 
-      type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
+      <button mat-raised-button [disabled]="schoolForm.invalid" data-cy-school-button="save"
+        [attr.data-cy-is-disabled]="schoolForm.invalid" type="submit">{{(isEdit ?
+        'labels.save':'labels.create')|translate}}
+      </button>
     </ng-template>
+
   </form>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+    (click)="closeForm()">{{('labels.close')|translate}}
+  </button>
 </div>

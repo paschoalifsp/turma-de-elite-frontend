@@ -1,6 +1,5 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -54,9 +53,10 @@ import { AchievementsListPageComponent } from './student/achievements/components
 import { RankingPageComponent } from './student/ranking/components/ranking-page/ranking-page.component';
 import { RankingDetailsComponent } from './student/ranking/components/ranking-details/ranking-details.component';
 import { DashboardKpiComponent } from './admin/dashboard-kpi/dashboard-kpi.component';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
 
 import { ChartsModule } from 'ng2-charts';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -112,6 +112,7 @@ export function createTranslateLoader(http: HttpClient) {
     AuthenticationModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSidenavModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

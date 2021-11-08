@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {CustomStateMatcher} from "../../../shared/utils/error-state-matcher";
 
@@ -18,6 +18,8 @@ export class ResetPasswordComponent {
 
   isEmailInvalid = false;
   stateMatcher = new CustomStateMatcher();
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
 
   constructor(
     private authentication: AuthenticationService,
@@ -40,7 +42,10 @@ export class ResetPasswordComponent {
   }
 
   sendSuccess(){
-    this.snackbar.open('E-mail de reset de senha enviado com sucesso','OK')
+    this.snackbar.open('E-mail de reset de senha enviado com sucesso','OK', {
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition
+    })
       .afterDismissed()
       .subscribe(value => {
         this.router.navigate(['/login']);
@@ -48,6 +53,9 @@ export class ResetPasswordComponent {
   }
 
   invalidEmailMessage(){
-    this.snackbar.open('Não foi possível encontrar sua conta','Fechar');
+    this.snackbar.open('Não foi possível encontrar sua conta','Fechar',{
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition
+    });
   }
 }
