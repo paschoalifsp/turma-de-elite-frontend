@@ -74,7 +74,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .page-title{
   color: #303f9f;
-  padding: 40px;
+  padding: 20px;
+  margin-top: 5vh;
+}
+
+.page-subtitle{
+  margin-top: 8vh;
 }
 
 .tile{
@@ -165,18 +170,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   
   .sidenav {
     width: 500px;
-    margin-top: 30vh;
-    height: 70vh;   
+    margin-top: 8vh;
+    height: 92vh;   
     
   }
+
+  .content{
+    margin-top: 25px;
+  }
+
+  .search{
+
+    margin: 10px 10px;
+    display: block;
+
+  }
+  
 
 @media (max-width: 500px)
   {
 
     .sidenav {
       width: 100%;
-      margin-top: 20vh;
-      height: 80vh;
+      margin-top: 8vh;
+      height: 92vh;
     }
     
     .tile{
