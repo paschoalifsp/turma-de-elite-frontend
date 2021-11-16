@@ -1,14 +1,14 @@
 <div fxLayout="column" fxLayoutAlign="center start">
-  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
-    <button mat-icon-button routerLink="/student/dashboard"><mat-icon>navigate_before</mat-icon></button>
-    <h1 class="mat-display-1">Ranking</h1>
-  </div>
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
     <mat-sidenav-container class="sidenav-container">
       <mat-sidenav #drawer class="sidenav" fixedInViewport 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'" 
       [opened]="true">
+      <div class="page-title" fxFlexAlign="start" fxLayoutAlign="start">
+        <button mat-icon-button routerLink="/student/dashboard"><mat-icon>navigate_before</mat-icon></button>
+        <h1 class="mat-display-1">Ranking</h1>
+      </div>
       <mat-nav-list>
       <mat-form-field class="full-width" appearance="outline">
         <input type="tel" matInput placeholder="{{'placeholder.searchClass'|translate}}" [formControl]="searchControl">
@@ -48,7 +48,7 @@
       </mat-paginator>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content classv="content">
     <div fxFlex="100" fxFlexAlign="end">
       <app-ranking-details
         *ngIf="classToggleId || createMode"

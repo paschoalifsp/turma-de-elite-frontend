@@ -1,10 +1,4 @@
 <div fxLayout="column" fxLayoutAlign="center start">
-  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
-    <button mat-icon-button routerLink="/student/dashboard">
-      <mat-icon>navigate_before</mat-icon>
-    </button>
-    <h1 class="mat-display-1">{{'titles.yourClasses'|translate}}</h1>
-  </div>
   <!--  <div fxLayout="row wrap" fxLayoutGap="15px" fxFlex="90" school-classes="school-classes-list">-->
   <!--    <mat-icon>filter_list</mat-icon>-->
   <!--    <div-->
@@ -21,6 +15,12 @@
         <mat-sidenav #drawer class="sidenav" fixedInViewport
           [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
           [opened]="true">
+          <div class="page-title" fxFlexAlign="start" fxLayoutAlign="start">
+            <button mat-icon-button routerLink="/student/dashboard">
+              <mat-icon>navigate_before</mat-icon>
+            </button>
+            <h1 class="mat-display-1">{{'titles.yourClasses'|translate}}</h1>
+          </div>
           <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
             <mat-spinner></mat-spinner>
           </div>
@@ -85,7 +85,7 @@
             </div>
           </mat-nav-list>
           </mat-sidenav>
-      <mat-sidenav-content>
+      <mat-sidenav-content class="content">
           <div fxFlex="100" fxFlexAlign="end">
             <app-student-delivery *ngIf="activityToggleId[0]!==0" [activityId]="activityToggleId"
               [createMode]="createMode" (save)="refresh()" (cancel)="drawer.toggle($event)">

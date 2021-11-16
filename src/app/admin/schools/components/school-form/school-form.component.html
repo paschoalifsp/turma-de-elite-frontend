@@ -6,7 +6,7 @@
 
   <form fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between" class="full-width" fxFlex="100"
     [formGroup]="schoolForm" (ngSubmit)="isEdit ? updateSchool() : createSchool()">
-    <mat-form-field fxFlex="45" appearance="outline">
+    <mat-form-field fxFlex="48" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input matInput data-cy-input="name" type="text" formControlName="name"
         placeholder="{{'placeholder.schoolName'|translate}}" required>
@@ -14,7 +14,7 @@
       <mat-error *ngIf="schoolForm.get('name')?.errors?.pattern">{{'fieldErrors.schoolNamePattern'|translate}}
       </mat-error>
     </mat-form-field>
-    <mat-form-field fxFlex="45" appearance="outline">
+    <mat-form-field fxFlex="48" appearance="outline">
       <mat-label>{{'labels.identifier'|translate}}</mat-label>
       <input matInput data-cy-input="identifier" type="text" formControlName="identifier"
         placeholder="{{'placeholder.schoolIdentifier'|translate}}" required>
