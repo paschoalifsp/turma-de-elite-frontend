@@ -90,7 +90,7 @@
     "expired": "Expirado",
     "viewDeliveries": "Visualizar Entregas",
     "close": "Fechar",
-    "gradePercentage": "Percentual da nota",
+    "gradePercentage": "Nota (%)",
     "registerAchievement": "Criar conquista",
 
     "updateAchievement": "Editar conquista",
@@ -175,7 +175,8 @@
     "classCreated": "Turma criada com sucesso!",
     "classNameAndStatusUpdated": "Turma atualizada com sucesso!",
     "tierConfigSavedSuccessfully": "Configuração de Tier salva com sucesso!",
-    "tierConfigUpdatedSuccessfully": "Configuração de Tier atualizada com sucesso!"
+    "tierConfigUpdatedSuccessfully": "Configuração de Tier atualizada com sucesso!",
+    "activityDelivered": "Activity delivered successfully!"
   },
   "placeholder": {
     "searchTeacher": "Buscar Professor",

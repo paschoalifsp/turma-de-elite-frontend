@@ -4,7 +4,7 @@
     {{(isEdit?'titles.editUser' : 'titles.createUser') |translate}}
   </h1>
 
-  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="userForm" (ngSubmit)="isEdit ? updateUser() : createUser()">
+  <form fxLayout="row wrap"  fxLayout.xs="column" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="userForm" (ngSubmit)="isEdit ? updateUser() : createUser()">
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
@@ -14,7 +14,6 @@
         type="text"
         formControlName="email"
         placeholder="{{'placeholder.email'| translate}}"
-        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
         required>
       <mat-error *ngIf="alreadyRegisteredEmail">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
       <mat-error *ngIf="userForm.get('email')?.errors?.pattern">{{'fieldErrors.emailPattern'|translate}}</mat-error>
@@ -52,4 +51,7 @@
       type="submit">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
   </form>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

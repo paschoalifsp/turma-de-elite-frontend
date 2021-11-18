@@ -6,6 +6,10 @@ import {TranslateService} from "@ngx-translate/core";
 import {SchoolService} from "../../services/school.service";
 import {EventEmitter} from '@angular/core';
 import {transition} from "@angular/animations";
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-school-form',
@@ -21,6 +25,8 @@ export class SchoolFormComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
+
 
   schoolForm = this.fb.group({
     name: ['', [Validators.required]],
@@ -30,12 +36,15 @@ export class SchoolFormComponent implements OnInit {
 
   isLoading = false;
 
+
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private schoolService: SchoolService,
     private snackbar: MatSnackBar,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private breakpointObserver: BreakpointObserver
+
   ) { }
 
   ngOnInit(): void {
@@ -100,6 +109,10 @@ export class SchoolFormComponent implements OnInit {
           break;
       }
     });
+  }
+
+  closeForm(){
+    this.cancel.emit();
   }
 
   showSnackbar(message: string){

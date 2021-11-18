@@ -23,6 +23,7 @@ export class StudentsFormComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   alreadyRegisteredEmail = false;
 
@@ -110,6 +111,10 @@ export class StudentsFormComponent implements OnInit {
 
   showSnackbar(message: string){
     this.snackbar.open(message,'Fechar');
+  }
+  
+  closeForm(){
+    this.cancel.emit();
   }
 
 }

@@ -3,7 +3,7 @@
   <h1 class="title">
     {{(isEdit?'labels.updateAchievement' : 'labels.createAchievement') |translate}}
   </h1>
-  <mat-stepper orientation="vertical" [linear]="false " #stepper>
+  <mat-stepper class="full-width" orientation="vertical" [linear]="false " #stepper fxFlex="100">
     <mat-step [stepControl]="generalInfo">
       <form [formGroup]="generalInfo" fxLayout="column">
         <ng-template matStepLabel>{{'labels.generalInfo'|translate}}</ng-template>
@@ -140,4 +140,7 @@
       </div>
     </mat-step>
   </mat-stepper>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

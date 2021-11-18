@@ -3,6 +3,7 @@
   <h1 class="title">
     {{(isEdit?'labels.editClass' : 'labels.createClass') |translate}}
   </h1>
+
   <mat-stepper class="full-width" orientation="vertical" [linear]="true" #stepper fxFlex="100">
     <mat-step [completed]="teachersCompleted">
       <ng-template matStepLabel>{{'labels.chooseTeachers'|translate}}</ng-template>
@@ -46,13 +47,19 @@
         [formControl]="isActiveControl"
         [attr.data-cy-input]="'isActive:' + classNameControl.get('isActive')?.value" >{{'labels.active'|translate}}</mat-slide-toggle>
       </div>
+      <div fxLayout="row" class="full-width default-padding" fxLayoutAlign="end center">
       <button
         mat-flat-button
         color="primary"
         [disabled]="!teachersCompleted || !studentsCompleted || classNameControl.invalid"
         data-cy-class-button="save" 
         [attr.data-cy-is-disabled]="classNameControl.invalid" 
-        (click)="isEdit? updateStatusAndName():createClass()">{{(isEdit?'labels.save':'labels.createClass')|translate}}</button>
+        (click)="isEdit? updateStatusAndName():createClass()">{{(isEdit?'labels.save':'labels.createClass')|translate}}
+      </button>
+    </div>
     </mat-step>
   </mat-stepper>
+  <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
+  (click)="closeForm()">{{('labels.close')|translate}}
+</button>
 </div>

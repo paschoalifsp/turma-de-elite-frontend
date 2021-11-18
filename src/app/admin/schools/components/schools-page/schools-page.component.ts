@@ -5,6 +5,9 @@ import School from "../../../../shared/model/school";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {of} from "rxjs";
 import {map, tap} from "rxjs/operators";
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-schools-page',
@@ -15,6 +18,13 @@ export class SchoolsPageComponent implements OnInit {
 
   isLoading = true;
   isChangingPage = false;
+  showFiller = false;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
 
   schools: School[] = [];
 
@@ -35,9 +45,14 @@ export class SchoolsPageComponent implements OnInit {
 
   createMode = false;
 
+  opening = false;
+
   filteredSchools$ = of([] as School[]);
 
-  constructor(private schoolService: SchoolService, private fb: FormBuilder) { 
+  constructor(
+    private schoolService: SchoolService, 
+    private fb: FormBuilder, 
+    private breakpointObserver: BreakpointObserver) { 
     this.refresh();
   }
 

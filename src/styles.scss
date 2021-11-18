@@ -79,13 +79,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .tile{
   border: #303f9f 1px solid;
-  height: 100px;
-  margin: 20px 0;
+  height: 80px;
+  margin: 20px 20px;
   display: block;
 
   .mat-icon{
     margin: 20px 40px;
-    font-size: 35px;
+    font-size: 25px;
   }
   text-decoration: none;
   color: black;
@@ -94,8 +94,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: 140%;
     text-align: start;
     margin: 0;
-    font-weight: 300;
-    height: 100%;
+    font-weight: 400;
+    height: 120%;
     width: 100%;
     line-height: 100px;
     white-space: normal;
@@ -109,13 +109,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .toggled-tile{
   border: #303f9f 1px solid;
-  height: 100px;
-  margin: 20px 0;
+  height: 80px;
+  margin: 20px 20px;
   display: block;
 
   .mat-icon{
     margin: 20px 40px;
-    font-size: 35px;
+    font-size: 25px;
     color: white;
   }
 
@@ -124,11 +124,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: #000066;
 
   p{
-    font-size: 30px;
+    font-size: 25px;
     text-align: start;
+    color: white;
     margin: 0;
-    font-weight: 300;
-    height: 100%;
+    font-weight: 400;
+    height: 120%;
     width: 100%;
     line-height: 100px;
     white-space: normal;
@@ -156,3 +157,106 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   text-decoration: none;
 }
+
+.sidenav-container {
+    width: 100%;
+    background-color: white;
+  }
+  
+  .sidenav {
+    width: 500px;
+    margin-top: 30vh;
+    height: 70vh;   
+    
+  }
+
+@media (max-width: 500px)
+  {
+
+    .sidenav {
+      width: 100%;
+      margin-top: 20vh;
+      height: 80vh;
+    }
+    
+    .tile{
+      border: #303f9f 1px solid;
+      height: 80px;
+      margin: 10px 10px;
+      display: block;
+    
+      .mat-icon{
+        margin: 10px 10px;
+        font-size: 25px;
+      }
+      text-decoration: none;
+      color: black;
+    
+      p{
+        font-size: 25px;
+        text-align: start;
+        margin: 0;
+        font-weight: 400;
+        height: 120%;
+        width: 100%;
+        line-height: 100px;
+        white-space: normal;
+        vertical-align: middle;
+      }
+    
+      :hover{
+        cursor: pointer;
+      }
+    }
+    
+    .toggled-tile{
+      border: #303f9f 1px solid;
+      height: 80px;
+      margin: 10px 10px;
+      display: block;
+    
+      .mat-icon{
+        margin: 10px 10px;
+        font-size: 25px;
+        color: white;
+      }
+    
+      text-decoration: none;
+      color: white;
+      background: #000066;
+    
+      p{
+        font-size: 25px;
+        text-align: start;
+        margin: 0;
+        color:white;
+        font-weight: 400;
+        height: 120%;
+        width: 100%;
+        line-height: 100px;
+        white-space: normal;
+        vertical-align: middle;
+      }
+    
+      :hover{
+        cursor: pointer;
+      }
+    }
+
+    }  
+
+    *::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    *::-webkit-scrollbar-track {
+      background:#EBEBEB;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+      background-color: #2F52E0;
+      border-radius: 20px;
+      border: 1px solid #EBEBEB;
+    }
+
+    

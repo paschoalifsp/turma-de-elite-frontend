@@ -3,7 +3,9 @@ import User from "../../../../shared/model/user";
 import {UsersService} from "../../services/users.service";
 import {PageEvent} from "@angular/material/paginator";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users-page',
@@ -36,7 +38,17 @@ export class UsersPageComponent implements OnInit {
 
   createMode = false;
 
-  constructor(private userService: UsersService, private fb: FormBuilder) {
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+
+
+  constructor
+  (private userService: UsersService, 
+    private fb: FormBuilder,
+    private breakpointObserver: BreakpointObserver) {
     this.refresh();
   }
 

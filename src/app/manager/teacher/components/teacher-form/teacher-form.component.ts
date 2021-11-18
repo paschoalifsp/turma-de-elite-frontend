@@ -22,6 +22,8 @@ export class TeacherFormComponent implements OnInit {
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
+
   alreadyRegisteredEmail = false;
 
   teacherForm = this.fb.group({
@@ -75,7 +77,7 @@ export class TeacherFormComponent implements OnInit {
   updateTeacher(){
     this.isLoading = true;
     this.teacherService.updateTeacher(this.teacherId,this.teacherForm.value).subscribe(success => {
-      this.translateService.get('messages.managerUpdated').subscribe( translation => {
+      this.translateService.get('messages.teacherUpdated').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
         this.snackbar.open(translation,'Fechar').afterDismissed();
@@ -88,7 +90,7 @@ export class TeacherFormComponent implements OnInit {
   registerTeacher(){
     this.isLoading = true;
     this.teacherService.registerTeacher(this.teacherForm.value).subscribe(success => {
-      this.translateService.get('messages.managerCreated').subscribe( translation => {
+      this.translateService.get('messages.teacherCreated').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
         this.teacherForm.reset();
@@ -113,6 +115,11 @@ export class TeacherFormComponent implements OnInit {
 
   showSnackbar(message: string){
     this.snackbar.open(message,'Fechar');
+  }
+
+  
+  closeForm(){
+    this.cancel.emit();
   }
 
 }
