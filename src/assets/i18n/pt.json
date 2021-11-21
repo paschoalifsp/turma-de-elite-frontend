@@ -123,7 +123,10 @@
     "syncInfo": "Sincronize o Turma de Elite com outras plataformas de aprendizado",
 
     "newUsersDashboard": "Novos usuários nos últimos 12 meses",
-    "activeInactiveUsers": "Usuários ativos e inativos nos últimos 12 meses"
+    "activeInactiveUsers": "Usuários ativos e inativos nos últimos 12 meses",
+
+    "postedDeliveredActivities": "Atividades postadas x entregues",
+    "studentsRanking": "Ranking de alunos"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",

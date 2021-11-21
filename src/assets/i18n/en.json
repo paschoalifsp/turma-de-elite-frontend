@@ -123,7 +123,10 @@
     "syncInfo": "Syncronize Turma de Elite with others learning systems",
 
     "newUsersDashboard": "New users (last 12 months)",
-    "activeInactiveUsers": "Active and inactive users (last 12 months)"
+    "activeInactiveUsers": "Active and inactive users (last 12 months)",
+
+    "postedDeliveredActivities": "Posted x delivered activities",
+    "studentsRanking": "Students ranking"
   },
   "actions": {
     "addNewAdmin": "Add Admin",

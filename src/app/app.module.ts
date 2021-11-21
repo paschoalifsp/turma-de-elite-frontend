@@ -58,6 +58,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ChartsModule } from 'ng2-charts';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ConnectionsPageComponent } from './manager/connections/components/connections-page/connections-page.component';
+import { DashboardFollowUpComponent } from './teacher/dashboard-follow-up/dashboard-follow-up.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -103,6 +104,7 @@ export function createTranslateLoader(http: HttpClient) {
     RankingDetailsComponent,
     DashboardKpiComponent,
     ConnectionsPageComponent,
+    DashboardFollowUpComponent,
   ],
   imports: [
     BrowserModule,
