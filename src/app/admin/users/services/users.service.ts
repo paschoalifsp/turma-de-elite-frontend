@@ -42,7 +42,7 @@ export class UsersService {
     return this.http.get<activeInactiveUser[]>(`${environment.apiUrl}/api/admin/dash`);
   }
 
- getUsersByAccessionDate() : Observable<number[]>{
+  getUsersByAccessionDate() : Observable<number[]>{
     return this.http.get<number[]>(`${environment.apiUrl}/api/admin/kpi`);
   }
 }

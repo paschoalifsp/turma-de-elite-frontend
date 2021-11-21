@@ -18,6 +18,8 @@ export class DashboardKpiComponent implements OnInit {
   numberActiveUsers: number[] = [];
   numberInactiveUsers: number[] = [];
 
+  monthsInAYear = 12;
+
   barChartOptions: ChartOptions = {
     responsive: true,
     scales: {
@@ -43,11 +45,13 @@ export class DashboardKpiComponent implements OnInit {
       label: 'Ativos', 
       data: this.activeUsers(),
       backgroundColor: 'rgb(48, 63, 159)',
+      hoverBackgroundColor: 'rgb(12, 16, 42)',
     },
     {
       label: 'Inativos',
       data: this.inactiveUsers(),
       backgroundColor: 'rgb(255, 0, 0)',
+      hoverBackgroundColor: 'rgb(150, 0, 0)'
     }
   ];
 
@@ -76,6 +80,7 @@ export class DashboardKpiComponent implements OnInit {
       fill: false,
       borderColor: 'rgb(48, 63, 159)',
       pointBackgroundColor: 'rgb(48, 63, 159)',
+      hoverBorderColor: 'rgb(48, 63, 159)',
     }
   ];
 
@@ -86,49 +91,11 @@ export class DashboardKpiComponent implements OnInit {
   }
 
   months() {
+    const monthNames = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
     this.userService.getActiveInactiveUsers().subscribe(result => {
       this.users = result;
-      for (var i = 0; i < 13; i++) {
-        switch(this.users[i].month) {
-          case 1:
-            this.userMonth[i] = "Jan/" + this.users[i].year;
-            break;
-          case 2:
-            this.userMonth[i] = "Fev/" + this.users[i].year;
-            break;
-          case 3:
-            this.userMonth[i] = "Mar/" + this.users[i].year;
-            break;
-          case 4:
-            this.userMonth[i] = "Abr/" + this.users[i].year;
-            break;
-          case 5:
-            this.userMonth[i] = "Mai/" + this.users[i].year;
-            break;
-          case 6:
-            this.userMonth[i] = "Jun/" + this.users[i].year;
-            break;
-          case 7:
-            this.userMonth[i] = "Jul/" + this.users[i].year;
-            break;
-          case 8:
-            this.userMonth[i] = "Ago/" + this.users[i].year;
-            break;
-          case 9:
-            this.userMonth[i] = "Set/" + this.users[i].year;
-            break;
-          case 10:
-            this.userMonth[i] = "Out/" + this.users[i].year;
-            break;
-          case 11:
-            this.userMonth[i] = "Nov/" + this.users[i].year;
-            break;
-          case 12:
-            this.userMonth[i] = "Dez/" + this.users[i].year;
-            break;
-          default:
-            break;
-        }
+      for (var i = 0; i <= this.monthsInAYear; i++) {
+        this.userMonth[i] = monthNames[this.users[i].month - 1] + "/" + this.users[i].year;
       }
     });
     return this.userMonth;
@@ -137,7 +104,7 @@ export class DashboardKpiComponent implements OnInit {
   activeUsers() {
     this.userService.getActiveInactiveUsers().subscribe(result => {
       this.users = result;
-      for (var i = 0; i < 13; i++) {
+      for (var i = 0; i <= this.monthsInAYear; i++) {
         this.numberActiveUsers[i] = this.users[i].activeUser;
       }
     });
@@ -147,7 +114,7 @@ export class DashboardKpiComponent implements OnInit {
   inactiveUsers() {
     this.userService.getActiveInactiveUsers().subscribe(result => {
       this.users = result;
-      for (var i = 0; i < 13; i++) {
+      for (var i = 0; i <= this.monthsInAYear; i++) {
         this.numberInactiveUsers[i] = this.users[i].inactiveUser;
       }
     });
@@ -158,7 +125,7 @@ export class DashboardKpiComponent implements OnInit {
   usersByMonthAndYear() {
       this.userService.getUsersByAccessionDate().subscribe(result => {
         this.newUsers = result;
-        for (var i = 0; i < 13; i++) {
+        for (var i = 0; i <= this.monthsInAYear; i++) {
           this.numberNewUsers[i] = this.newUsers[i];
         }
       });
