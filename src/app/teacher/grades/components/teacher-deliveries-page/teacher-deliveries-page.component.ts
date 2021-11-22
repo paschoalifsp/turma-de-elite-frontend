@@ -25,6 +25,8 @@ export class TeacherDeliveriesPageComponent implements OnInit {
     })
   }
 
+  panelOpenState = false;
+
   isLoading = false;
   isChangingPage = false;
 

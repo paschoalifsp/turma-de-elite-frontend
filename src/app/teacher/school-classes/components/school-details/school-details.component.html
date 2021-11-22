@@ -1,53 +1,67 @@
 <div class="default-padding" *ngIf="schoolClass" fxflex.xs="90" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between" fxLayoutAlign.xs="center">
   <div  fxLayout="column">
     <h1>{{schoolClass?.name}}</h1>
-    <div>
-      <h2>{{'labels.teachers'|translate}}</h2>
-      <ul>
-        <li *ngFor="let teacher of schoolClass?.teachers">{{teacher.teacher.name}}</li>
-      </ul>
-    </div>
-    <div>
-      <h2>{{'labels.students'|translate}}</h2>
-      <ul>
-        <li *ngFor="let student of schoolClass?.students"> {{student.student.name}}</li>
-      </ul>
-    </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Informações da turma
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <h4>{{'labels.teachers'|translate}}</h4>
+        <ul>
+          <li *ngFor="let teacher of schoolClass?.teachers">{{teacher.teacher.name}}</li>
+        </ul>
+      </div>
+      <div>
+        <h4>{{'labels.students'|translate}}</h4>
+        <ul>
+          <li *ngFor="let student of schoolClass?.students"> {{student.student.name}}</li>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'labels.rankingConfig'|translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div fxLayout="column">
+        <form [formGroup]="tierConfigForm" fxLayout="column">
+          <mat-form-field>
+            <mat-label>{{'labels.goldPercent'|translate}}</mat-label>
+            <input matInput type="number" formControlName="goldPercent">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{'labels.silverPercent'|translate}}</mat-label>
+            <input matInput type="number" formControlName="silverPercent">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{'labels.bronzePercent'|translate}}</mat-label>
+            <input matInput type="number" formControlName="bronzePercent">
+          </mat-form-field>
+          <p class="error" *ngIf="tierConfigForm.errors?.invalidValues">{{'fieldErrors.tierPercentError'|translate}}</p>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="schoolClass?.tierConfig? updateTierConfig():createTierConfig()"
+            [disabled]="tierConfigForm.invalid">
+            {{'labels.save'|translate}}
+          </button>
+        </form>
+      </div>
+    </mat-expansion-panel>
     <div *ngIf="schoolClass?.isDone;then showIsDone;else showCloser"></div>
     <ng-template #showIsDone>
       <h1>{{'labels.classClosed'|translate}}</h1>
     </ng-template>
     <ng-template #showCloser>
       <div>
-        <button mat-flat-button (click)="closeClass()" color="primary">{{'labels.closeClass'|translate}}</button>
+        <button class="full-width" 
+      mat-flat-button (click)="closeClass()" color="primary">{{'labels.closeClass'|translate}}</button>
       </div>
     </ng-template>
-  </div>
-  <div fxLayout="column">
-    <h1>{{'labels.rankingConfig'|translate}}</h1>
-    <form [formGroup]="tierConfigForm" fxLayout="column">
-      <mat-form-field>
-        <mat-label>{{'labels.goldPercent'|translate}}</mat-label>
-        <input matInput type="number" formControlName="goldPercent">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>{{'labels.silverPercent'|translate}}</mat-label>
-        <input matInput type="number" formControlName="silverPercent">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>{{'labels.bronzePercent'|translate}}</mat-label>
-        <input matInput type="number" formControlName="bronzePercent">
-      </mat-form-field>
-      <p class="error" *ngIf="tierConfigForm.errors?.invalidValues">{{'fieldErrors.tierPercentError'|translate}}</p>
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="schoolClass?.tierConfig? updateTierConfig():createTierConfig()"
-        [disabled]="tierConfigForm.invalid">
-        {{'labels.save'|translate}}
-      </button>
-    </form>
-  </div>
+  
   <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
   (click)="closeForm()">{{('labels.close')|translate}}
 </button>

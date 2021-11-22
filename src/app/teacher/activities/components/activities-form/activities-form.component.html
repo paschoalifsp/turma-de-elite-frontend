@@ -8,7 +8,7 @@
     fxLayout="row wrap"
     fxLayoutAlign="space-between"
     fxLayout.xs="column"
-    class="full-width"
+    class="full-width margin-button"
     fxFlex="100"
     [formGroup]="activityForm">
     <mat-form-field
@@ -107,10 +107,11 @@
       [attr.data-cy-is-disabled]="activityForm.invalid"  
        (click)="isEdit ? updateActivity() : createActivity()" [disabled]="activityForm.invalid">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
+    <button *ngIf="isExpired()" class="margin-button" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
+      {{'labels.viewDeliveries'|translate}}
+    </button>
   </form>
-  <button *ngIf="isExpired()" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
-    {{'labels.viewDeliveries'|translate}}
-  </button>
+
   <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
   (click)="closeForm()">{{('labels.close')|translate}}
 </button>
