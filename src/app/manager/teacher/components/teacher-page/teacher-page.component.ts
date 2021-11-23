@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {PageEvent} from "@angular/material/paginator";
 import {TeacherService} from "../../services/teacher.service";
-import { Observable, of } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import Teacher from 'src/app/shared/model/teacher';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
@@ -18,6 +18,8 @@ export class TeacherPageComponent implements OnInit {
   isChangingPage = false;
 
   teachers: any[] = [];
+  lmsTeachers: Observable<any> | undefined;
+  localTeachers: Observable<any> | undefined;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
@@ -41,6 +43,7 @@ export class TeacherPageComponent implements OnInit {
   filteredTeachers$ = of([] as Teacher[]);
 
   teacherToggleId: number | null = null;
+  isFromLms: any = null;
 
   createMode = true;
 
@@ -55,26 +58,32 @@ export class TeacherPageComponent implements OnInit {
 
     this.teacherForm.get('name')?.valueChanges.subscribe(value => {
       if(!value?.id){
-        // this.filteredSchools$ = this.schoolService.findSchoolByNameSimilarity(value);
         if (value === ""){
-          this.refresh();
+            this.refresh();
         } else {
           this.teacherService.findTeacherByNameSimilarity(value).subscribe (teachers => {
             this.teachers = teachers;
-          }
-        );
+          });
+
         }
       }
     })
-
   }
 
   refresh(){
-    this.teacherService.getTeachersUsers(this.pageSize,0).subscribe(response => {
-      this.teachers = response.content;
-      this.totalLength = response.totalElements;
-      this.isLoading = false;
-    })
+    try{
+    forkJoin(
+      this.lmsTeachers = this.teacherService.getExternalTeachers(),
+      this.localTeachers = this.teacherService.getTeachersUsers(this.pageSize,0))
+      .subscribe(([externalTeachers,ownTeachers])=> {
+        this.teachers = [...externalTeachers,...ownTeachers.content];
+        this.totalLength = ownTeachers.totalElements + externalTeachers.length;
+        this.isLoading = false;
+        console.log(this.teachers);
+      })
+    } catch (e) {
+      
+    }
   }
 
   pageChange(pageEvent: PageEvent) {
@@ -90,6 +99,5 @@ export class TeacherPageComponent implements OnInit {
   displayTeacherName(teacher: Teacher){
     return teacher && teacher.name ? teacher.name: '';
   }
-
 
 }

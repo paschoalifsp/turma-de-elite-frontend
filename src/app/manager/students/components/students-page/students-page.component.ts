@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {TeacherService} from "../../../teacher/services/teacher.service";
 import {PageEvent} from "@angular/material/paginator";
 import {StudentsService} from "../../services/students.service";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-students-page',
@@ -24,6 +24,7 @@ export class StudentsPageComponent implements OnInit {
   );
 
   teachers:any[] = [];
+  students:any[] = [];
 
   totalLength = 0;
   pageSize = 5;
@@ -43,19 +44,21 @@ export class StudentsPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   refresh(){
-    this.studentsService.getStudents(this.pageSize,0).subscribe(response => {
-      this.teachers = response.content;
-      this.totalLength = response.totalElements;
-      this.isLoading = false;
-    })
+    forkJoin(
+      this.studentsService.getExternalStudents(),
+      this.studentsService.getStudentsUsers(this.pageSize,0))
+      .subscribe(([externalStudents,ownStudents])=> {
+        this.students = [...externalStudents,...ownStudents.content];
+        this.totalLength = ownStudents.totalElements + externalStudents.length;
+        this.isLoading = false;
+      })
   }
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
     this.studentsService.getStudents(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
-      this.teachers = response.content;
+      this.students = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;
       this.isChangingPage = false;

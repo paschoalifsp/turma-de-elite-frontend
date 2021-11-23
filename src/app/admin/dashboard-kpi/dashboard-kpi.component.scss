@@ -1,0 +1,31 @@
+.dashboards {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 95vw;
+}
+
+.dashboards__item {
+    width: 45%;
+}
+
+.dashboards__item__title {
+    display: flex;
+    justify-content: center;
+    color: rgb(48, 63, 159);
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+
+    .dashboards {
+        padding-left: 20px;
+        width: 80vw;
+    }
+
+    .dashboards__item {
+        width: 100%;
+        margin-bottom: 80px;
+    }
+}

@@ -14,6 +14,10 @@ export class ClassService {
     return this.http.post(`${environment.apiUrl}/api/class`,classValue).pipe(take(1));
   }
 
+  getExternalClasses(){
+    return this.http.get<any>(`${environment.apiUrl}/api/external/courses`).pipe(take(1));
+  }
+
   getPaginatedClasses(pageSize:any, pageNumber:any){
     return this.http.get<any>(`${environment.apiUrl}/api/class?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
   }

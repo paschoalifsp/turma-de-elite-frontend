@@ -6,6 +6,8 @@ import {ClassService} from "../../services/class.service";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import {concatMap } from "rxjs/operators";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-class-page',
@@ -46,11 +48,15 @@ export class ClassPageComponent implements OnInit {
   }
 
   refresh(){
-    this.classService.getPaginatedClasses(this.pageSize,0).subscribe(response => {
-      this.classes = response.content;
-      this.totalLength = response.totalElements;
-      this.isLoading = false;
-    })
+    forkJoin(
+      this.classService.getExternalClasses(),
+      this.classService.getPaginatedClasses(this.pageSize,0))
+      .subscribe(([externalClasses,ownClasses])=> {
+        this.classes = [...externalClasses,...ownClasses.content];
+        this.totalLength = ownClasses.totalElements + externalClasses.length;
+        this.isLoading = false;
+      })
+    //TODO: Do exception handling for non authenticated external services call
   }
 
   pageChange(pageEvent: PageEvent) {

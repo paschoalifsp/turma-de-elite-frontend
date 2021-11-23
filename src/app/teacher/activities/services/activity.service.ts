@@ -52,4 +52,12 @@ export class ActivityService {
       {responseType: 'blob' as 'json',observe: 'response'}
     ).pipe(take(1));
   }
+
+  getExternalActivities(){
+    return this.http.get<any>(`${environment.apiUrl}/api/external/activities`).pipe(take(1));
+  }
+
+  getPaginatedActivities(pageSize:any, pageNumber:any){
+    return this.http.get<any>(`${environment.apiUrl}/api/activities?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
+  }
 }

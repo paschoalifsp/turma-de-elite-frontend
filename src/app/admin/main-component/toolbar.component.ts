@@ -26,4 +26,10 @@ export class ToolbarComponent implements OnInit {
     await this.auth.logout();
     await this.router.navigate(['/login']);
   }
+
+  bindWithClassroom(){
+    this.auth.authWithClassroom().subscribe( url => {
+      window.open(url);
+    });
+  }
 }
