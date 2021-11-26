@@ -87,7 +87,6 @@ export class DashboardKpiComponent implements OnInit {
   constructor(private userService: UsersService, private elementRef: ElementRef) { }
 
   ngOnInit(): void { 
-    
   }
 
   months() {

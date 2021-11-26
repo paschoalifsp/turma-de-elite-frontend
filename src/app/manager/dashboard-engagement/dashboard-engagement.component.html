@@ -4,16 +4,31 @@
       <h1 class="mat-display-1">Dashboard</h1>
     </div>
     <div class="dashboards" fxLayout="row wrap" fxFlexAlign="center" fxLayoutAlign="center start">
-        <div class="dashboards__item" >
-            <div class="dashboards__item__title">
-              Engajamento por turma
-            </div>
-          </div>
-          <div class="dashboards__item">
-            <div class="dashboards__item__title">
-              Engajamento por professor
-            </div>
-          </div>
+      <div class="dashboards__item" >
+        <div class="dashboards__item__title">
+          {{ 'labels.activeInactiveStudents' | translate }}
+        </div>
+        <canvas baseChart 
+          [datasets]="barMultiChartData"
+          [labels]="barMultiChartLabels"
+          [options]="barMultiChartOptions"
+          [plugins]="barMultiChartPlugins"
+          [legend]="barMultiChartLegend"
+          [chartType]="barMultiChartType"
+        ></canvas>
+      </div>
+      <div class="dashboards__item">
+        <div class="dashboards__item__title">
+          {{ 'labels.teachersEngagement' | translate }}
+        </div>
+        <canvas baseChart 
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+        ></canvas>
+      </div>
     </div>
 </div>
-  

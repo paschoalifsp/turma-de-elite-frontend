@@ -126,7 +126,10 @@
     "activeInactiveUsers": "Active and inactive users (last 12 months)",
 
     "postedDeliveredActivities": "Posted x delivered activities",
-    "studentsRanking": "Students ranking"
+    "studentsRanking": "Students ranking",
+
+    "activeInactiveStudents": "Active and inactive students (last 12 months)",
+    "teachersEngagement": "Teachers' engagement in the system"
   },
   "actions": {
     "addNewAdmin": "Add Admin",
