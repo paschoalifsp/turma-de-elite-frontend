@@ -53,7 +53,7 @@ import { AchievementsListPageComponent } from './student/achievements/components
 import { RankingPageComponent } from './student/ranking/components/ranking-page/ranking-page.component';
 import { RankingDetailsComponent } from './student/ranking/components/ranking-details/ranking-details.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule} from '@angular/material/expansion';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
