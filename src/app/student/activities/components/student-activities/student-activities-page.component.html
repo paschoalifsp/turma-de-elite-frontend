@@ -56,32 +56,32 @@
             </div>
             <div *ngFor="let activity of activities">
               <div *ngIf="!(isHandset$ | async)"
-                [ngClass]="'mat-elevation-z1 ' + (activityToggleId===activity.id?'toggled-tile':'tile')"
-                fxLayout="column" fxLayoutAlign="start center"
-                (click)="activityToggleId=[activity.id,activity.classId];createMode=false">
-                <div fxLayout="row" class="full-width full-height" fxLayoutAlign="start start" fxLayoutGap="15px">
-                  <div [ngClass]="'status ' + activityStatus(activity)"> </div>
-                  <div fxLayout="column" fxLayoutAlign="space-between" fxFlexAlign="start" class="activity-info"
-                    fxFlex="40">
-                    <span class="activity-name" color="primary">{{activity.name}}</span>
-                    <span class="punctuation">{{'labels.maxPunctuation'|translate}}: {{activity.maxPunctuation}}</span>
-                    <span class="teacher">{{'labels.postBy'|translate}}: {{activity.teacherName}}</span>
-                  </div>
-                  <div
-                    *ngIf="!(activityStatus(activity) == 'status-delivered' || activityStatus(activity) == 'status-revised')"
-                    class="expires" fxLayout="row" fxLayoutAlign="start center" fxFlex="40">
-                    <mat-icon>schedule</mat-icon>
-                    <p *ngIf="isExpired(activity);else showTimeToExpire;then showExpired" class="full-width expires">
-                    </p>
-                    <ng-template #showExpired>
-                      {{'labels.expired'|translate}}
-                    </ng-template>
-                    <ng-template #showTimeToExpire>
-                      {{'labels.expiresIn'|translate}} {{activity.expireDate|countdownTo}}
-                    </ng-template>
-                  </div>
+              [ngClass]="'mat-elevation-z1 ' + (activityToggleId===activity.id?'toggled-tile':'tile')"
+              fxLayout="column" fxLayoutAlign="start center"
+              (click)="activityToggleId=[activity.id,activity.classId];createMode=false">
+              <div fxLayout="row" class="full-width full-height" fxLayoutAlign="start start" fxLayoutGap="15px">
+                <div [ngClass]="'status ' + activityStatus(activity)"> </div>
+                <div fxLayout="column" fxLayoutAlign="space-between" fxFlexAlign="start" class="activity-info"
+                  fxFlex.xs="80">
+                  <span class="activity-name" color="primary">{{activity.name}}</span>
+                  <span class="punctuation">{{'labels.maxPunctuation'|translate}}: {{activity.maxPunctuation}}</span>
+                  <span class="teacher">{{'labels.postBy'|translate}}: {{activity.teacherName}}</span>
+                </div>
+                <div
+                  *ngIf="!(activityStatus(activity) == 'status-delivered' || activityStatus(activity) == 'status-revised')"
+                  class="expires" fxLayout="row" fxLayoutAlign="start center" fxFlex="25">
+                  <mat-icon>schedule</mat-icon>
+                  <p *ngIf="isExpired(activity);else showTimeToExpire;then showExpired" class="full-width expires">
+                  </p>
+                  <ng-template #showExpired>
+                    {{'labels.expired'|translate}}
+                  </ng-template>
+                  <ng-template #showTimeToExpire>
+                    {{'labels.expiresIn'|translate}} {{activity.expireDate|countdownTo}}
+                  </ng-template>
                 </div>
               </div>
+            </div>
             </div>
           </mat-nav-list>
           </mat-sidenav>

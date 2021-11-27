@@ -6,7 +6,7 @@
 
   <form fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="teacherForm" (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
     <mat-form-field
-      fxFlex="45" appearance="outline">
+      fxFlex="48" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
        data-cy-input="email"
@@ -21,7 +21,7 @@
       <mat-error *ngIf="teacherForm.get('email')?.errors?.pattern">{{'fieldErrors.emailPattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
-      fxFlex="45" appearance="outline">
+      fxFlex="48" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
         data-cy-input="name"

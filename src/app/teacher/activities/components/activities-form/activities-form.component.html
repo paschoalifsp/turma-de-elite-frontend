@@ -89,7 +89,7 @@
       #uploader
       (change)="uploadFile($event)">
     <mat-form-field
-      fxFlex="70" appearance="outline">
+      fxFlex="100" appearance="outline">
       <mat-label>{{'labels.description'|translate}}</mat-label>
       <textarea matInput data-cy-input="description" formControlName="description" required></textarea>
       <mat-error *ngIf="activityForm.get('description')?.errors?.required">{{'fieldErrors.descriptionIsRequired'|translate}}</mat-error>
@@ -101,17 +101,18 @@
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
+    <div>
+    <button *ngIf="isExpired()" class="margin-button" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
+      {{'labels.viewDeliveries'|translate}}
+    </button>
     <ng-template #showButton>
       <button mat-raised-button
       data-cy-activity-button="save" 
       [attr.data-cy-is-disabled]="activityForm.invalid"  
        (click)="isEdit ? updateActivity() : createActivity()" [disabled]="activityForm.invalid">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
-    <button *ngIf="isExpired()" class="margin-button" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
-      {{'labels.viewDeliveries'|translate}}
-    </button>
+  </div>
   </form>
-
   <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
   (click)="closeForm()">{{('labels.close')|translate}}
 </button>
