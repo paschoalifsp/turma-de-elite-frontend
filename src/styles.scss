@@ -74,13 +74,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .page-title{
   color: #303f9f;
-  padding: 40px;
-  margin-top: 5vh;
+  padding: 20px;
+  
+  
 }
 
 .page-subtitle{
   margin-top: 8vh;
 }
+
+
 
 .tile{
   border: #303f9f 1px solid;
@@ -89,7 +92,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: block;
 
   .mat-icon{
-    margin: 20px 40px;
+    margin: 20px 20px;
     font-size: 25px;
   }
   text-decoration: none;
@@ -119,7 +122,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: block;
 
   .mat-icon{
-    margin: 20px 40px;
+    margin: 20px 20px;
     font-size: 25px;
     color: white;
   }
@@ -129,7 +132,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: #000066;
 
   p{
-    font-size: 25px;
+    font-size: 140%;
     text-align: start;
     color: white;
     margin: 0;
@@ -180,7 +183,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   .search{
 
-    margin: 10px 10px;
+    margin: 20px 20px;
     display: block;
 
   }

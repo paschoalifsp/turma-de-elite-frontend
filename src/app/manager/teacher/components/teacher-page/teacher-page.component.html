@@ -9,7 +9,8 @@
         <button mat-icon-button routerLink="/manager/dashboard"><mat-icon>navigate_before</mat-icon></button>
         <h1 class="mat-display-1">{{'labels.teachers'|translate}}</h1>
       </div>
-      <mat-form-field class="full-width" appearance="outline">
+      <div class="search" >
+        <mat-form-field class = "full-width" appearance="outline" ><
         <form [formGroup] = "teacherForm">
           <input type="tel" matInput placeholder="{{'placeholder.searchTeacher'| translate}}" [formControl]="searchControl" [matAutocomplete]="auto" formControlName="name">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayTeacherName">
@@ -20,6 +21,7 @@
         </form>
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+      </div>
       <mat-nav-list>
         <a *ngIf="(isHandset$ | async)" 
         data-cy-teacher="create"

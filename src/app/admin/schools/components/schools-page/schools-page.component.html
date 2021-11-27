@@ -11,6 +11,7 @@
         </button>
         <h1 class="mat-display-1">{{'labels.schools'|translate}}</h1>
       </div>
+      <div class="search" >
       <mat-form-field class="full-width" appearance="outline">
         <form [formGroup]="schoolForm">
           <input type="tel" matInput placeholder="{{'placeholder.searchSchool'|translate}}"
@@ -23,6 +24,7 @@
         </form>
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+    </div>
         <mat-nav-list>
           <a *ngIf="(isHandset$ | async)" 
           data-cy-school="create" 

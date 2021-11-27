@@ -11,10 +11,10 @@
         <mat-spinner></mat-spinner>
       </div>
       <mat-accordion>
-      <div class="row" fxLayout="row" fxLayoutAlign="center center" fxFlex="70" *ngFor="let delivery of deliveries"
+      <div class="row" fxLayout="row" fxLayoutAlign="start center" fxFlex="70" *ngFor="let delivery of deliveries"
         (click)="activityToggleId=delivery.id;createMode=false">
         
-        <mat-expansion-panel gitclass="full-width">
+        <mat-expansion-panel class="full-width">
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{delivery.studentName}}

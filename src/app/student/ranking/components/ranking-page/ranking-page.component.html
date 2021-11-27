@@ -10,10 +10,12 @@
         <h1 class="mat-display-1">Ranking</h1>
       </div>
       <mat-nav-list>
+      <div class="search">
       <mat-form-field class="full-width" appearance="outline">
         <input type="tel" matInput placeholder="{{'placeholder.searchClass'|translate}}" [formControl]="searchControl">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+      </div>
       <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>

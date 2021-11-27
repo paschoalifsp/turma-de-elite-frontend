@@ -9,10 +9,12 @@
         <button mat-icon-button routerLink="/manager/dashboard"><mat-icon>navigate_before</mat-icon></button>
         <h1 class="mat-display-1">{{'labels.classes'|translate}}</h1>
       </div>
-      <mat-form-field class="full-width" appearance="outline">
+      <div class="search" >
+        <mat-form-field class = "full-width" appearance="outline" >
         <input type="tel" matInput placeholder="{{'placeholder.searchClass'|translate}}" [formControl]="searchControl">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+      </div>
       <mat-nav-list>
         <a *ngIf="(isHandset$ | async)" 
         data-cy-class="create"

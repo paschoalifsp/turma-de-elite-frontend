@@ -9,6 +9,7 @@
         <button mat-icon-button routerLink="/admin/dashboard"><mat-icon>navigate_before</mat-icon></button>
         <h1 class="mat-display-1">{{'titles.managers'|translate}}</h1>
       </div>
+      <div class="search">
       <mat-form-field class="full-width" appearance="outline">
         <form [formGroup] = "managerForm">
         <input type="tel" matInput placeholder="{{'placeholder.searchManager'| translate}}" [formControl]="searchControl" [matAutocomplete]="auto" formControlName="name">
@@ -20,6 +21,7 @@
         </form>
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+      </div>
       <mat-nav-list>
         <a *ngIf="(isHandset$ | async)" 
         data-cy-manager="create"
