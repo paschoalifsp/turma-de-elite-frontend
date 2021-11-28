@@ -1,3 +1,4 @@
+import { doLogin } from "../1-login/user-actions-spec";
 import { Turma, accessClassPage, accessLoginPage, createClass, loginClass, fillClassFields, save, editClass, clearName, saveButtonShouldDisabled, editClassDisable } from "./turma-actions";
 
 describe('CRUD de turmas', () => {
@@ -12,14 +13,7 @@ describe('CRUD de turmas', () => {
 
     it('Deve realizar login como gestor', () => {
         
-        accessLoginPage()
-        
-        const login = {
-            "email": "bianca@gmail.com",
-            "password": "123456"
-        }
-
-        loginClass(login)
+        doLogin("MANAGER")
 
         cy.location('pathname', { timeout: 60000 })
         .should('include', 'manager')

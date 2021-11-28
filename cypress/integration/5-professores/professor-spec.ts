@@ -1,9 +1,10 @@
+import { doLogin } from "../1-login/user-actions-spec";
 import { accessLoginPage, accessTeacherPage, clearEmail, createTeacher, editTeacher, fillTeacherFields, loginManager, save, saveButtonShouldDisabled } from "./professor-actions";
 
 describe('CRUD de Professores', () => {
     beforeEach(() => {
         cy.viewport(1366, 768);
-    
+
         cy.intercept('GET', '/api/teachers?*', { fixture: 'professor/professores' })
         cy.intercept('GET', '/api/teachers/*', { fixture: 'professor/henrique'})
         cy.intercept('POST', '/api/teachers', { statusCode: 201 })
@@ -12,14 +13,9 @@ describe('CRUD de Professores', () => {
     })
 
     it('Deve realizar login como gestor', () => {
-        
-        accessLoginPage()
-        const login = {
-            "email": "bianca@gmail.com",
-            "password": "123456"
-        }
 
-        loginManager(login)
+        doLogin("MANAGER")
+        
 
         cy.location('pathname', { timeout: 60000 })
         .should('include', 'manager')
