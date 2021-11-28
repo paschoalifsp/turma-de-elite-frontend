@@ -1,3 +1,4 @@
+import { doLogin } from "../1-login/user-actions-spec";
 import { accessLoginPage, accessStudentPage, clearEmail, createStudent, editStudent, fillStudentFields, loginStudent, save, saveButtonShouldDisabled } from "./aluno-actions";
 
 describe('CRUD de Aluno', () => {
@@ -11,15 +12,8 @@ describe('CRUD de Aluno', () => {
     })
 
     it('Deve realizar login como gestor', () => {
-        
-        accessLoginPage()
-        
-        const login = {
-            "email": "bianca@gmail.com",
-            "password": "123456"
-        }
 
-        loginStudent(login)
+        doLogin("MANAGER")
 
         cy.location('pathname', { timeout: 60000 })
         .should('include', 'manager')

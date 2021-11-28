@@ -1,0 +1,39 @@
+[debug] [2021-11-27T23:55:35.031Z] ----------------------------------------------------------------------
+[debug] [2021-11-27T23:55:35.032Z] Command:       /usr/local/bin/firebase /Users/eduardopaschoal/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init
+[debug] [2021-11-27T23:55:35.033Z] CLI Version:   9.23.0
+[debug] [2021-11-27T23:55:35.033Z] Platform:      darwin
+[debug] [2021-11-27T23:55:35.033Z] Node Version:  v12.18.1
+[debug] [2021-11-27T23:55:35.037Z] Time:          Sat Nov 27 2021 20:55:35 GMT-0300 (GMT-03:00)
+[debug] [2021-11-27T23:55:35.037Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-11-27T23:55:35.079Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-27T23:55:35.079Z] > authorizing via signed-in user (p.paschoal15@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/eduardopaschoal/Documents/Turma/turma-de-elite-frontend
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[debug] [2021-11-28T01:34:21.900Z] Error: write EIO
+    at afterWriteDispatched (internal/stream_base_commons.js:154:25)
+    at writeGeneric (internal/stream_base_commons.js:145:3)
+    at WriteStream.Socket._writeGeneric (net.js:786:11)
+    at WriteStream.Socket._write (net.js:798:8)
+    at doWrite (_stream_writable.js:403:12)
+    at writeOrBuffer (_stream_writable.js:387:5)
+    at WriteStream.Writable.write (_stream_writable.js:318:11)
+    at EventEmitter.signalExit.alwaysLast (/Users/eduardopaschoal/.cache/firebase/tools/lib/node_modules/restore-cursor/index.js:7:18)
+    at EventEmitter.emit (events.js:315:20)
+    at EventEmitter.emit (domain.js:482:12)
+    at emit (/Users/eduardopaschoal/.cache/firebase/tools/lib/node_modules/signal-exit/index.js:103:13)
+    at process.listener (/Users/eduardopaschoal/.cache/firebase/tools/lib/node_modules/signal-exit/index.js:123:9)
+    at process.emit (events.js:315:20)

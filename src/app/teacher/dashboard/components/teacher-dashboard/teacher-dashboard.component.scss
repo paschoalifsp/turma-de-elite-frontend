@@ -1,0 +1,12 @@
+img{
+  height: 70vh;
+}
+.mat-display-1{
+  padding-bottom: 0;
+}
+
+@media (max-width: 960px) {
+  .tile-container{
+      max-width: 80% !important;
+  }
+}

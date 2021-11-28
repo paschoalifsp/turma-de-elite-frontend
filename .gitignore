@@ -4,6 +4,9 @@
 /dist
 /tmp
 /out-tsc
+/.firebase/*
+/.nyc_output/*
+
 # Only exists if Bazel was run
 /bazel-out
 
@@ -45,3 +48,6 @@ testem.log
 Thumbs.db
 cypress/videos/*
 cypress/screenshots/*
+
+# Config Files
+launch.json

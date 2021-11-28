@@ -1,3 +1,4 @@
+import { doLogin } from "../1-login/user-actions-spec";
 import { accessActivityPage, accessLoginPage, Atividade, clearName, createActivity, editActivity, editActivityDisable, fillActivityFields, loginActivity, save, saveButtonShouldDisabled } from "./atividades-actions";
 
 
@@ -13,14 +14,7 @@ describe('CRUD de turmas', () => {
 
     it('Deve realizar login como professor', () => {
         
-        accessLoginPage()
-        
-        const login = {
-            "email": "jose@gmail.com",
-            "password": "123456"
-        }
-
-        loginActivity(login)
+        doLogin("TEACHER")
 
         cy.location('pathname', { timeout: 60000 })
         .should('include', 'teacher')
