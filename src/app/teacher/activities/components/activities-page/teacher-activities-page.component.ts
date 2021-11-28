@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {StudentsService} from "../../../../manager/students/services/students.service";
 import {PageEvent} from "@angular/material/paginator";
 import {ActivityService} from "../../services/activity.service";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-activities-page',
@@ -47,11 +46,18 @@ export class TeacherActivitiesPage implements OnInit {
   }
 
   refresh(){
-    this.activityService.getTeacherActivitiesPaginated(this.pageSize,0).subscribe(response => {
-      this.activities = response.content;
-      this.totalLength = response.totalElements;
-      this.isLoading = false;
-    })
+    try{
+      forkJoin(
+        this.activityService.getExternalActivities(),
+        this.activityService.getPaginatedActivities(this.pageSize,0))
+        .subscribe(([externalActivities,ownActivities])=> {
+          this.activities = [...externalActivities,...ownActivities.content]; 
+          this.totalLength = ownActivities.totalElements + externalActivities.length;
+          this.isLoading = false;
+        })  
+    } catch (e){
+      
+    }
   }
 
   pageChange(pageEvent: PageEvent) {

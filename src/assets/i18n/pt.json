@@ -117,13 +117,21 @@
     "rankingConfig": "Configuração do ranking",
     "goldPercent": "Percentual no Tier Ouro",
     "silverPercent": "Percentual no Tier Prata",
-    "bronzePercent": "Percentual no Tier Bronze"
+    "bronzePercent": "Percentual no Tier Bronze",
 
+    "connections": "Conexões",
+    "syncInfo": "Sincronize o Turma de Elite com outras plataformas de aprendizado",
 
+    "newUsersDashboard": "Novos usuários nos últimos 12 meses",
+    "activeInactiveUsers": "Usuários ativos e inativos nos últimos 12 meses",
+
+    "postedDeliveredActivities": "Atividades postadas x entregues",
+    "studentsRanking": "Ranking de alunos"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",
-    "close": "Fechar"
+    "close": "Fechar",
+    "syncClassroomClasses": "Synchronize Classroom Classes"
   },
   "hint":{
     "schoolIdentifier": "Insira um identificador único para esta escola"
@@ -142,7 +150,8 @@
     "updateTeacher": "Atualizar Professor",
     "yourClasses": "Suas turmas e atividades",
     "deliveriesForThisActivity": "Entregas para esta atividade",
-    "yourAchievements": "Suas conquistas"
+    "yourAchievements": "Suas conquistas",
+    "yourConnections": "Suas Conexões"
   },
   "tooltip": {
     "addNewUser": "Registrar novo usuário Admin",

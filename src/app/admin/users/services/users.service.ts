@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import User from "../../../shared/model/user";
+import activeInactiveUser from "../../../shared/model/activeInactiveUser";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
@@ -37,5 +38,11 @@ export class UsersService {
     return this.http.put<any>(`${environment.apiUrl}/api/admin/${userId}`,value);
   }
 
+  getActiveInactiveUsers(): Observable<activeInactiveUser[]> {
+    return this.http.get<activeInactiveUser[]>(`${environment.apiUrl}/api/admin/dash`);
+  }
 
+  getUsersByAccessionDate() : Observable<number[]>{
+    return this.http.get<number[]>(`${environment.apiUrl}/api/admin/kpi`);
+  }
 }

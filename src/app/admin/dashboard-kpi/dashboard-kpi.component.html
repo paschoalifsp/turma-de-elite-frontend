@@ -1,0 +1,32 @@
+<div fxLayout="column" fxLayoutAlign="center start">
+  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
+    <button data-cy-return="dashboard" mat-icon-button routerLink="/admin/dashboard"><mat-icon>navigate_before</mat-icon></button>
+    <h1 class="mat-display-1">Dashboard</h1>
+  </div>
+  <div class="dashboards" fxLayout="row wrap" fxFlexAlign="center" fxLayoutAlign="center start">
+    <div class="dashboards__item" >
+      <div class="dashboards__item__title">
+        {{ 'labels.activeInactiveUsers' | translate }}
+      </div>
+      <canvas baseChart 
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+      ></canvas>
+    </div>
+    <div class="dashboards__item">
+      <div class="dashboards__item__title">
+        {{ 'labels.newUsersDashboard' | translate }}
+      </div>
+        <canvas baseChart 
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [chartType]="lineChartType"
+        ></canvas>
+    </div>
+  </div>
+</div>
