@@ -63,7 +63,7 @@ describe('CRUD de Professores', () => {
     })
 
 
-    it('Deve ser possível editar um usuário administrador', () => {
+    it.skip('Deve ser possível editar um usuário administrador', () => {
         
         editTeacher(4)
 
@@ -98,7 +98,7 @@ describe('CRUD de Professores', () => {
 
     })
 
-    it('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
+    it.skip('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
         editTeacher(4)
 
         clearEmail()

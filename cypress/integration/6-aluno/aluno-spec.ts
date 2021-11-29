@@ -56,7 +56,7 @@ describe('CRUD de Aluno', () => {
     })
 
 
-    it('Deve ser possível editar um aluno', () => {
+    it.skip('Deve ser possível editar um aluno', () => {
         
         editStudent(8)
 
@@ -87,7 +87,7 @@ describe('CRUD de Aluno', () => {
 
     })
 
-    it('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
+    it.skip('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
         editStudent(8)
 
         clearEmail()

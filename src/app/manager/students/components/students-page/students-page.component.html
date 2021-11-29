@@ -41,29 +41,28 @@
       <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>
-      <div>
-      <a
+      <div *ngFor="let student of students">
+        <a *ngIf="!(isHandset$ | async)" 
         [attr.data-cy-edit-student]="student.id"
         [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.id?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        *ngFor="let student of students"
         (click)="teacherToggleId=student.id;createMode=false">
         <mat-icon [ngClass]="student.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{student.name}}</p>
       </a>
     </div>
-    <div *ngFor="let teacher of teachers">
+    <div *ngFor="let student of students">
       <a *ngIf="!(isHandset$ | async)" 
-      [attr.data-cy-edit-student]="teacher.id"
-      [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===teacher.id?'toggled-tile':'tile')"
+      [attr.data-cy-edit-student]="student.id"
+      [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.id?'toggled-tile':'tile')"
       fxLayout="row"
       fxFlexAlign="center center"
       fxLayoutAlign="start center"
-      (click)="teacherToggleId=teacher.id;createMode=false">
-      <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
-      <p color="primary">{{teacher.name}}</p>
+      (click)="teacherToggleId=student.id;createMode=false">
+      <mat-icon [ngClass]="student.isActive?'primary':'disabled'">person</mat-icon>
+      <p color="primary">{{student.name}}</p>
     </a>
   </div> 
       <mat-paginator
