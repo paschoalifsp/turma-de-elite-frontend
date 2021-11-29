@@ -1,3 +1,4 @@
+import { doLogin } from "../1-login/user-actions-spec";
 import { accessLoginPage, accessStudentPage, clearEmail, createStudent, editStudent, fillStudentFields, loginStudent, save, saveButtonShouldDisabled } from "./aluno-actions";
 
 describe('CRUD de Aluno', () => {
@@ -11,15 +12,8 @@ describe('CRUD de Aluno', () => {
     })
 
     it('Deve realizar login como gestor', () => {
-        
-        accessLoginPage()
-        
-        const login = {
-            "email": "bianca@gmail.com",
-            "password": "123456"
-        }
 
-        loginStudent(login)
+        doLogin("MANAGER")
 
         cy.location('pathname', { timeout: 60000 })
         .should('include', 'manager')
@@ -62,7 +56,7 @@ describe('CRUD de Aluno', () => {
     })
 
 
-    it('Deve ser possível editar um aluno', () => {
+    it.skip('Deve ser possível editar um aluno', () => {
         
         editStudent(8)
 
@@ -93,7 +87,7 @@ describe('CRUD de Aluno', () => {
 
     })
 
-    it('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
+    it.skip('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
         editStudent(8)
 
         clearEmail()
