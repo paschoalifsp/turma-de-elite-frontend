@@ -26,28 +26,11 @@ jobs:
       run: curl -sL https://firebase.tools | bash
     - name: Install Angular CLI
       run: npm install -g @angular/cli
-    - name: Install OS packages
-      run: sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-    - uses: bahmutov/npm-install@v1
-      env:
-        CYPRESS_INSTALL_BINARY: 0
-    # confirm there is no Cypress installed
-    - run: npx cypress cache path
-    # should return empty list of installed versions
-    - run: npx cypress cache list
-    # restore / cache the binary ourselves on Linux
-    # see https://github.com/actions/cache
-    - name: Cache Cypress
-      id: cache-cypress
-      uses: actions/cache@v1
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
       with:
-        path: ~/.cache/Cypress
-        key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
-    # now let's install Cypress binary
-    - run: npx cypress install
-    - run: npx cypress cache list
-    - name: Run tests
-      run: firebase emulators:exec --only auth --project turma-de-elite-app './run_tests.sh'
+        build: curl -sL https://firebase.tools | bash
+        start: firebase emulators:exec --only auth --project turma-de-elite-app './run_tests.sh'
     - name: Build application
       run: ng build --prod
     - name: Deploy on Firebase Hosting
