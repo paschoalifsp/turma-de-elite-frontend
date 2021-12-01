@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   apiUrl: 'https://turma-de-elite.herokuapp.com',
   useEmulators: false,
   firebaseConfig: {
