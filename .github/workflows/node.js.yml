@@ -27,7 +27,11 @@ jobs:
     - name: Install Angular CLI
       run: npm install -g @angular/cli
     - name: Execute Tests
-      run: firebase emulators:exec --only auth --project turma-de-elite-app './run_tests.sh'
+      uses: cypress-io/github-action@v2.9.7
+      with:
+        browser: chrome
+        build: curl -sL https://firebase.tools | bash && npm install -g @angular/cli
+        start: firebase emulators:exec --only auth --project turma-de-elite-app './run_tests.sh'
     - name: Build application
       run: ng build --prod
     - name: Deploy on Firebase Hosting
