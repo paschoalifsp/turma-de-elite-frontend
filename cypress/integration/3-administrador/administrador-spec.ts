@@ -1,3 +1,4 @@
+import { doLogin } from "../1-login/user-actions-spec";
 import { isEndToEnd } from "../configuration";
 import { accessAdminPage, clearEmail, closeSnackbar, createAdmin, editAdmin, fillAdminFields, save, saveButtonShouldDisabled, visitAdminPage, visitAdminPanel } from "./admistrador-actions";
 
@@ -15,7 +16,7 @@ describe('CRUD de Administradores', () => {
 
     it('Ao clicar em administrador, deverá ser redirecionado para a tela de cadastros de administradores e cadastrar um administrador', () => {
 
-        visitAdminPanel();
+        doLogin("ADMIN");
         accessAdminPage();
         cy.location('pathname', { timeout: 60000 })
             .should('include', 'admins')
