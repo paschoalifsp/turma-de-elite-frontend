@@ -25,7 +25,7 @@ jobs:
     - name: Install Angular CLI
       run: npm install -g @angular/cli
     - name: Download firebase install script
-      run: wget https://firebase.tools -o firebase-tools.sh
+      run: url -sL https://firebase.tools >> firebase-tools.sh
     - name: Install Firebase
       run: bash firebase-tools.sh
     - name: Cypress run
