@@ -31,6 +31,7 @@ jobs:
     - name: Cypress run
       uses: cypress-io/github-action@v2
       with:
+        tag: node-16
         build: bash firebase-tools.sh
         start: firebase emulators:exec --only auth --project turma-de-elite-app './run_tests.sh'
     - name: Build application
