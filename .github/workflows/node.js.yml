@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ develop,release ]
   pull_request:
     branches: [ develop ]
 
@@ -22,14 +22,16 @@ jobs:
         node-version: lts/*
         cache: 'npm'
     - run: npm ci
-    - name: Install Firebase CLI
-      run: curl -sL https://firebase.tools | bash
     - name: Install Angular CLI
       run: npm install -g @angular/cli
+    - name: Download firebase install script
+      run: wget https://firebase.tools -o firebase-tools.sh
+    - name: Install Firebase
+      run: bash firebase-tools.sh
     - name: Cypress run
       uses: cypress-io/github-action@v2
       with:
-        build: curl -sL https://firebase.tools | bash
+        build: bash firebase-tools.sh
         start: firebase emulators:exec --only auth --project turma-de-elite-app './run_tests.sh'
     - name: Build application
       run: ng build --prod
