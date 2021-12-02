@@ -54,7 +54,7 @@ export class DashboardFollowUpComponent implements OnInit {
       yAxes: [{
         scaleLabel: {
           display: true,
-          labelString: 'Quantidade de atividades'
+          labelString: 'Atividades'
         },
         ticks: {
           precision: 0,
