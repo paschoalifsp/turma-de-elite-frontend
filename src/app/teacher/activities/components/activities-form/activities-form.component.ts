@@ -21,6 +21,7 @@ export class ActivitiesFormComponent implements OnInit {
 
   isEdit = false;
 
+  @Input() isFromLms: boolean = false;
   @Input() activityId:number | null = null;
   @Input() createMode = true;
 
@@ -41,6 +42,7 @@ export class ActivitiesFormComponent implements OnInit {
     filename: [{value: ''}]
   });
 
+  lmsActivities = [] as any[];
   filteredClasses = [] as any[];
   activities = [] as any[];
 
@@ -49,12 +51,9 @@ export class ActivitiesFormComponent implements OnInit {
   displayClassName = (schoolClass:any) => schoolClass?.name || '' ;
 
   constructor(
-    private route: ActivatedRoute,
     private fb: FormBuilder,
     private activityService: ActivityService,
-    private schoolService: SchoolService,
     private snackbarService: SnackbarService,
-    private translateService: TranslateService,
     private classService: ClassService
   ) { }
 
@@ -70,13 +69,30 @@ export class ActivitiesFormComponent implements OnInit {
       this.activityForm.reset();
     }
     else{
-      this.activityService.getTeacherActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,classes,...rest}) =>{
-        this.activityForm.setValue({
-          maxDeliveryDate: moment(maxDeliveryDate),
-          schoolClasses: classes.map((c: any) => c.id),
-          ...rest
+      if (this.isFromLms === true){
+        this.activityService.getTeacherExternalActivityById(this.activityId as number).subscribe((response) =>{
+          console.log(response);
+          this.activityForm.setValue({
+            name: response.name,
+            schoolClasses: [],
+            punctuation: response.punctuation,
+            description: response.description,
+            isVisible: response.isVisible,
+            isActive: response.isActive, 
+            maxDeliveryDate: [],
+            filename: []
+          });
         });
-      });
+      }
+      else if (this.isFromLms === false || this.isFromLms == null){
+        this.activityService.getTeacherActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,classes,...rest}) =>{
+          this.activityForm.setValue({
+            maxDeliveryDate: moment(maxDeliveryDate),
+            schoolClasses: classes.map((c: any) => c.id),
+            ...rest
+          });
+        });
+      }
     }
   }
 

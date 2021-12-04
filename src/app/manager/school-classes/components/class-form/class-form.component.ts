@@ -1,15 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {of} from "rxjs";
-import School from "../../../../shared/model/school";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ManagerService} from "../../../../admin/manager/services/manager.service";
-import {SchoolService} from "../../../../admin/schools/services/school.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
-import {MatTableDataSource} from "@angular/material/table";
-import {TeacherService} from "../../../teacher/services/teacher.service";
-import {concatMap, debounceTime, exhaustMap, filter, switchMap} from "rxjs/operators";
 import {ClassService} from "../../services/class.service";
 
 @Component({
@@ -23,6 +16,7 @@ export class ClassFormComponent implements OnInit {
 
   @Input() classId:number | null = null;
   @Input() createMode = true;
+  @Input() isFromLms: boolean = false;
 
   @Output() save = new EventEmitter();
 
@@ -34,7 +28,6 @@ export class ClassFormComponent implements OnInit {
   isActiveControl = this.fb.control('',Validators.required);
 
   isLoading = false;
-
 
   constructor(
     private route: ActivatedRoute,
@@ -66,12 +59,21 @@ export class ClassFormComponent implements OnInit {
       },500)
     }
     else{
-      this.classService.getClassById(this.classId).subscribe(response => {
-        this.teachers = response.teachers.map((t:any) => ({isActive: t.isActive,name: t.teacher.name,email: t.teacher.email,id:t.teacher.id}));
-        this.students = response.students.map((s:any) => ({isActive: s.isActive,name: s.student.name,registry: s.student.registry,id:s.student.id}));
-        this.classNameControl.setValue(response.name);
-        this.isActiveControl.setValue(response.isActive);
-      })
+      if(this.isFromLms === true){
+        this.classService.getExternalClassById(this.classId).subscribe(response => {
+          this.teachers = response.teachers.map((t:any) => ({isActive: t.isActive,name: t.teacher.name,email: t.teacher.email,id:t.teacher.id}));
+          this.students = response.students.map((s:any) => ({isActive: s.isActive,name: s.student.name,registry: s.student.registry,id:s.student.id}));
+          this.classNameControl.setValue(response.name);
+          this.isActiveControl.setValue(response.isActive);
+        })
+      } else if (this.isFromLms === false || this.isFromLms === null) {
+        this.classService.getClassById(this.classId).subscribe(response => {
+          this.teachers = response.teachers.map((t:any) => ({isActive: t.isActive,name: t.teacher.name,email: t.teacher.email,id:t.teacher.id}));
+          this.students = response.students.map((s:any) => ({isActive: s.isActive,name: s.student.name,registry: s.student.registry,id:s.student.id}));
+          this.classNameControl.setValue(response.name);
+          this.isActiveControl.setValue(response.isActive);
+        })
+      }
     }
   }
 

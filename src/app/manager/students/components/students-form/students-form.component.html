@@ -12,7 +12,7 @@
     fxFlex="100"
     [formGroup]="studentForm"
     (ngSubmit)="isEdit ? updateStudent() : registerStudent()">
-    <mat-form-field
+    <mat-form-field 
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
@@ -22,6 +22,7 @@
         formControlName="email"
         placeholder="{{'placeholder.studentEmail'| translate}}"
         pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        readonly="{{isFromLms}}"
         required>
       <mat-error *ngIf="alreadyRegisteredEmail">{{'fieldErrors.accountNotFound'|translate}}</mat-error>
       <mat-error *ngIf="studentForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
@@ -37,6 +38,7 @@
         formControlName="registry"
         placeholder="{{'placeholder.studentRegistry'|translate}}"
         pattern="[A-Za-z0-9]+"
+        readonly="{{isFromLms}}"
         required>
       <mat-error *ngIf="studentForm.get('registry')?.errors?.required">{{'fieldErrors.registryIsRequired'|translate}}</mat-error>
       <mat-error *ngIf="studentForm.get('registry')?.errors?.pattern">{{'fieldErrors.registryPattern'|translate}}</mat-error>
@@ -52,6 +54,7 @@
         placeholder="{{'placeholder.studentName'| translate}}"
         minlength="5"
         pattern="^([a-zA-Zà-úÀ-Ú]|\s+)+$"
+        readonly="{{isFromLms}}"
         required>
       <mat-error *ngIf="studentForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
       <mat-error *ngIf="studentForm.get('name')?.errors?.minlength">{{'fieldErrors.minLengthStudent'|translate}}</mat-error>
@@ -65,7 +68,7 @@
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button 
+      <button *ngIf="!isFromLms"
       mat-raised-button [disabled]="studentForm.invalid" 
       data-cy-student-button="save" 
       [attr.data-cy-is-disabled]="studentForm.invalid" 

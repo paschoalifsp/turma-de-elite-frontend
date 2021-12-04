@@ -9,13 +9,15 @@
         <input type="tel" matInput placeholder="{{'placeholder.searchClass'|translate}}" [formControl]="searchControl">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <a
+      <mat-tab-group (selectedTabChange)="loadClasses($event.index)">
+        <mat-tab label="Turma de Elite">
+          <a
         data-cy-class="create"
         [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="createMode=true;classToggleId=null;">
+        (click)="createMode=true;classToggleId=null;isFromLms=false;">
         <mat-icon color="primary">add</mat-icon>
         <p color="primary">{{'labels.createClass'|translate}}</p>
       </a>
@@ -24,12 +26,12 @@
       </div>
       <a
         [attr.data-cy-edit-class]="classroom.id"
-        *ngFor="let classroom of classes"
+        *ngFor="let classroom of localClasses"
         [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="classToggleId=classroom.id;createMode=false">
+        (click)="classToggleId=classroom.id;createMode=false;isFromLms=false;">
         <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{classroom.name}}</p>
       </a>
@@ -40,12 +42,36 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         (page)="pageChange($event)">
       </mat-paginator>
+      </mat-tab>
+        <mat-tab label="Google Classroom">
+          <a
+        [attr.data-cy-edit-class]="classroom.id"
+        *ngFor="let classroom of lmsClasses"
+        [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.externalId?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        (click)="classToggleId=classroom.externalId;createMode=false;isFromLms=true;">
+        <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
+        <p color="primary">{{classroom.name}}</p>
+      </a>
+      <mat-paginator
+        class="full-width"
+        [length]="totalLength"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="pageChange($event)">
+      </mat-paginator>
+        </mat-tab>
+      </mat-tab-group>
+      
     </div>
     <div fxFlex="45" fxFlexAlign="start">
       <app-class-form
         *ngIf="classToggleId || createMode"
         [classId]="classToggleId"
         [createMode]="createMode"
+        [isFromLms]="isFromLms"
         (save)="refresh()">
       </app-class-form>
     </div>

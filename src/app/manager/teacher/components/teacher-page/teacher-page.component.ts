@@ -15,9 +15,8 @@ export class TeacherPageComponent implements OnInit {
   isLoading = true;
   isChangingPage = false;
 
-  teachers: any[] = [];
-  lmsTeachers: Observable<any> | undefined;
-  localTeachers: Observable<any> | undefined;
+  localTeachers: any[] = [];
+  lmsTeachers: any[] = [];
 
   totalLength = 0;
   pageSize = 5;
@@ -34,7 +33,7 @@ export class TeacherPageComponent implements OnInit {
   filteredTeachers$ = of([] as Teacher[]);
 
   teacherToggleId: number | null = null;
-  isFromLms: any = null;
+  isFromLms: boolean = false;
 
   createMode = true;
 
@@ -49,8 +48,8 @@ export class TeacherPageComponent implements OnInit {
         if (value === ""){
             this.refresh();
         } else {
-          this.teacherService.findTeacherByNameSimilarity(value).subscribe (teachers => {
-            this.teachers = teachers;
+          this.teacherService.findTeacherByNameSimilarity(value).subscribe (localTeachers => {
+            this.localTeachers = localTeachers;
           });
 
         }
@@ -59,25 +58,33 @@ export class TeacherPageComponent implements OnInit {
   }
 
   refresh(){
-    try{
-    forkJoin(
-      this.lmsTeachers = this.teacherService.getExternalTeachers(),
-      this.localTeachers = this.teacherService.getTeachersUsers(this.pageSize,0))
-      .subscribe(([externalTeachers,ownTeachers])=> {
-        this.teachers = [...externalTeachers,...ownTeachers.content];
-        this.totalLength = ownTeachers.totalElements + externalTeachers.length;
+    this.teacherService.getTeachersUsers(this.pageSize,0).subscribe(response => {
+      this.localTeachers = response.content;
+      this.totalLength = response.totalElements;
+      this.isLoading = false;
+    })
+  }
+
+  loadTeachers(index: number){
+    if (index == 0){
+      this.teacherService.getTeachersUsers(this.pageSize,0).subscribe(response => {
+        this.localTeachers = response.content;
+        this.totalLength = response.totalElements;
         this.isLoading = false;
-        console.log(this.teachers);
       })
-    } catch (e) {
-      
+    } else if (index == 1){
+      this.teacherService.getExternalTeachers().subscribe(response => {
+        this.lmsTeachers = response;
+        this.totalLength = response.totalElements;
+        this.isLoading = false;
+      })   
     }
   }
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
     this.teacherService.getTeachersUsers(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
-      this.teachers = response.content;
+      this.localTeachers = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;
       this.isChangingPage = false;

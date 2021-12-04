@@ -4,7 +4,7 @@
     {{(isEdit?'titles.updateTeacher' : 'titles.registerTeacher') |translate}}
   </h1>
 
-  <form fxLayout="row wrap" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="teacherForm" (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
+  <form fxLayout="row wrap" class="mat-form-field" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="teacherForm" (ngSubmit)="isEdit ? updateTeacher() : registerTeacher()">
     <mat-form-field
       fxFlex="45" appearance="outline">
       <mat-label>E-mail</mat-label>
@@ -24,16 +24,15 @@
       fxFlex="45" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
+      [disabled]="isFromLms === true"
         data-cy-input="name"
         matInput
         type="text"
         formControlName="name"
         placeholder="{{'placeholder.teacherName'| translate}}"
-        minlength="5"
         pattern="^([a-zA-Zà-úÀ-Ú]|\s+)+$"
         required>
       <mat-error *ngIf="teacherForm.get('name')?.errors?.required">{{'fieldErrors.nameIsRequired'|translate}}</mat-error>
-      <mat-error *ngIf="teacherForm.get('name')?.errors?.minlength">{{'fieldErrors.minLengthTeacher'|translate}}</mat-error>
       <mat-error *ngIf="teacherForm.get('name')?.errors?.pattern">{{'fieldErrors.namePattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-slide-toggle 
@@ -44,7 +43,7 @@
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
     <ng-template #showButton>
-      <button  
+      <button *ngIf="!isFromLms"  
       mat-raised-button [disabled]="teacherForm.invalid" 
       data-cy-teacher-button="save" 
       [attr.data-cy-is-disabled]="teacherForm.invalid" 

@@ -9,42 +9,67 @@
         <input type="tel" matInput placeholder="{{'placeholder.searchStudent'| translate}}" [formControl]="searchControl">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <a
-        data-cy-student="create"
-        [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        (click)="createMode=true;teacherToggleId=null">
-        <mat-icon color="primary">add</mat-icon>
-        <p color="primary">{{'labels.registerStudent'|translate}}</p>
-      </a>
-      <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
-        <mat-spinner></mat-spinner>
-      </div>
-      <a
-        [attr.data-cy-edit-student]="student.id"
-        [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.id?'toggled-tile':'tile')"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        *ngFor="let student of students"
-        (click)="teacherToggleId=student.id;createMode=false">
-        <mat-icon [ngClass]="student.isActive?'primary':'disabled'">person</mat-icon>
-        <p color="primary">{{student.name}}</p>
-      </a>
-      <mat-paginator
-        class="full-width"
-        [length]="totalLength"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        (page)="pageChange($event)">
-      </mat-paginator>
+      <mat-tab-group (selectedTabChange)="loadStudents($event.index)">
+        <mat-tab label="Turma de Elite">
+          <a
+          data-cy-student="create"
+          [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
+          fxLayout="row"
+          fxFlexAlign="center center"
+          fxLayoutAlign="start center"
+          (click)="createMode=true;teacherToggleId=null;isFromLms=false;">
+          <mat-icon color="primary">add</mat-icon>
+          <p color="primary">{{'labels.registerStudent'|translate}}</p>
+        </a>
+        <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
+          <mat-spinner></mat-spinner>
+        </div>
+        <a
+          [attr.data-cy-edit-student]="student.id"
+          [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.id?'toggled-tile':'tile')"
+          fxLayout="row"
+          fxFlexAlign="center center"
+          fxLayoutAlign="start center"
+          *ngFor="let student of localStudents"
+          (click)="teacherToggleId=student.id; createMode=false;isFromLms=false;">
+          <mat-icon [ngClass]="student.isActive?'primary':'disabled'">person</mat-icon>
+          <p color="primary">{{student.name}}</p>
+        </a>
+        <mat-paginator
+          class="full-width"
+          [length]="totalLength"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          (page)="pageChange($event)">
+        </mat-paginator>
+        </mat-tab>
+        <mat-tab label="Google Classroom">
+          <a
+            [attr.data-cy-edit-student]="student.id"
+            [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.externalId?'toggled-tile':'tile')"
+            fxLayout="row"
+            fxFlexAlign="center center"
+            fxLayoutAlign="start center"
+            *ngFor="let student of lmsStudents"
+            (click)="teacherToggleId=student.externalId; createMode=false;isFromLms=true;">
+            <mat-icon [ngClass]="student.isActive?'primary':'disabled'">person</mat-icon>
+            <p color="primary">{{student.name}}</p>
+          </a>
+          <mat-paginator
+            class="full-width"
+            [length]="totalLength"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            (page)="pageChange($event)">
+          </mat-paginator>
+        </mat-tab>
+      </mat-tab-group>
     </div>
     <div fxFlex="45" fxFlexAlign="start">
       <app-students-form
         *ngIf="teacherToggleId || createMode"
         [teacherId]="teacherToggleId"
+        [isFromLms]="isFromLms"
         [createMode]="createMode"
         (save)="refresh()">
       </app-students-form>

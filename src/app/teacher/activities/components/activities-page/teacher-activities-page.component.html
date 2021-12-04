@@ -3,25 +3,17 @@
     <button mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
     <h1 class="mat-display-1">{{'titles.yourClasses'|translate}}</h1>
   </div>
-<!--  <div fxLayout="row wrap" fxLayoutGap="15px" fxFlex="90" school-classes="school-classes-list">-->
-<!--    <mat-icon>filter_list</mat-icon>-->
-<!--    <div-->
-<!--      school-classes="school-classes-name"-->
-<!--      fxLayoutAlign="center center"-->
-<!--      [style.border-color]="colors[(i % 7)]"-->
-<!--      *ngFor="let school-classes of classes;let i = index">-->
-<!--      <div>{{school-classes}}</div>-->
-<!--    </div>-->
-<!--  </div>-->
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
     <div fxFlex="45">
-      <a
+      <mat-tab-group (selectedTabChange)="loadTeacherActivities($event.index)">
+        <mat-tab label="Turma de Elite">
+          <a
         data-cy-activity="create"
         [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="createMode=true;activityToggleId=null">
+        (click)="createMode=true;activityToggleId=null;isFromLms=false;">
         <mat-icon color="primary">add</mat-icon>
         <p color="primary">{{'labels.addNewActivity'|translate}}</p>
       </a>
@@ -34,9 +26,9 @@
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        *ngFor="let activity of activities"
-        (click)="activityToggleId=activity.id;createMode=false">
-        <mat-icon [ngClass]="activity.isActive?'primary':'disabled'">person</mat-icon>
+        *ngFor="let activity of teacherLocalActivities"
+        (click)="activityToggleId=activity.id;createMode=false;isFromLms=false;">
+        <mat-icon [ngClass]="activity.isActive?'primary':'disabled'">book</mat-icon>
         <p color="primary">{{activity.name}}</p>
       </a>
       <mat-paginator
@@ -46,12 +38,35 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         (page)="pageChange($event)">
       </mat-paginator>
+        </mat-tab>
+        <mat-tab label="Google Classroom">
+      <a
+        [attr.data-cy-edit-activity]="activity.id" 
+        [ngClass]="'mat-elevation-z1 ' + (activityToggleId===activity.externalId?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        *ngFor="let activity of teacherLmsActivities"
+        (click)="activityToggleId=activity.externalId;createMode=false;isFromLms=true;">
+        <mat-icon [ngClass]="activity.isActive?'primary':'disabled'">book</mat-icon>
+        <p color="primary">{{activity.name}}</p>
+      </a>
+      <mat-paginator
+        class="full-width"
+        [length]="totalLength"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="pageChange($event)">
+      </mat-paginator>
+        </mat-tab>
+      </mat-tab-group>      
     </div>
     <div fxFlex="45" fxFlexAlign="start">
       <app-activities-form
         *ngIf="activityToggleId || createMode"
         [activityId]="activityToggleId"
         [createMode]="createMode"
+        [isFromLms]="isFromLms"
         (save)="refresh()">
       </app-activities-form>
     </div>

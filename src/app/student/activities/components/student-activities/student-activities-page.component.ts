@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {ActivityService} from "../../../../teacher/activities/services/activity.service";
-import {PageEvent} from "@angular/material/paginator";
-import {CountdownService} from "../../../../shared/services/countdown.service";
 import * as moment from "moment";
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-student-activities',
@@ -14,8 +13,10 @@ export class StudentActivitiesPageComponent implements OnInit {
 
   isLoading = false;
   isChangingPage = false;
+  isFromLms: boolean = false;
 
-  activities:any[] = [];
+  studentLocalActivities:any[] = [];
+  studentLmsActivities: any[] = [];
 
   totalLength = 0;
   pageSize = 5;
@@ -38,9 +39,26 @@ export class StudentActivitiesPageComponent implements OnInit {
 
   refresh(){
     this.activityService.getStudentActivities().subscribe(response => {
-      this.activities = response;
+      this.studentLocalActivities = response;
+      this.totalLength = response.totalElements;
       this.isLoading = false;
     })
+  }
+
+  loadStudentActivities(index: number){
+    if (index === 0){
+      this.activityService.getStudentActivities().subscribe(response => {
+        this.studentLocalActivities = response;
+        this.totalLength = response.totalElements;
+        this.isLoading = false;
+      })
+    } else if (index === 1){
+      this.activityService.getExternalStudentActivities().subscribe(response => {
+        this.studentLmsActivities = response;
+        this.totalLength = response.totalElements;
+        this.isLoading = false;
+      })   
+    }
   }
 
   activityStatus(activity: any){

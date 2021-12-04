@@ -20,6 +20,7 @@ export class StudentDeliveryComponent implements OnInit {
 
   @Input() activityId:[number,number] = [0,0];
   @Input() createMode = true;
+  @Input() isFromLms: boolean = false;
 
   @Output() save = new EventEmitter();
 
@@ -38,10 +39,7 @@ export class StudentDeliveryComponent implements OnInit {
   displayClassName = (schoolClass:any) => schoolClass?.name || '' ;
 
   constructor(
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
     private activityService: ActivityService,
-    private schoolService: SchoolService,
     private snackbar: MatSnackBar,
     private translateService: TranslateService,
     private classService: ClassService,
@@ -59,11 +57,13 @@ export class StudentDeliveryComponent implements OnInit {
     if(this.createMode){
     }
     else{
-      this.activityService.getStudentActivityById(this.activityId[0],this.activityId[1]).subscribe(({filename,deliveryFilename,...rest}) =>{
-        this.activity = {filename,deliveryFilename,...rest};
-        this.filenameControl.setValue(deliveryFilename);
-        this.isDelivered = !!deliveryFilename;
-      });
+      if(!this.isFromLms){
+        this.activityService.getStudentActivityById(this.activityId[0],this.activityId[1]).subscribe(({filename,deliveryFilename,...rest}) =>{
+          this.activity = {filename,deliveryFilename,...rest};
+          this.filenameControl.setValue(deliveryFilename);
+          this.isDelivered = !!deliveryFilename;
+        });
+      }
     }
   }
 
@@ -77,7 +77,7 @@ export class StudentDeliveryComponent implements OnInit {
     const formDataRequestBody = new FormData();
     formDataRequestBody.append("document",this.file);
     this.studentDeliveryService.deliveryResolution(this.activityId[0],formDataRequestBody).subscribe(success => {
-      this.translateService.get('messages.studentRegistered').subscribe( translation => {
+      this.translateService.get('messages.activityDelivered').subscribe( translation => {
         this.isLoading = false;
         this.save.emit();
         this.isDelivered = true;
@@ -112,5 +112,12 @@ export class StudentDeliveryComponent implements OnInit {
 
   showSnackbar(message: string){
     this.snackbar.open(message,'Fechar');
+  }
+
+  isExpired(activity: any){
+    const deliveryDate = moment(activity.expireDate);
+    const now = moment();
+    let diff = deliveryDate.diff(now,'minutes');
+    return diff < 1;
   }
 }

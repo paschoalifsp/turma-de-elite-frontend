@@ -14,7 +14,9 @@ export class TeacherActivitiesPage implements OnInit {
   isLoading = false;
   isChangingPage = false;
 
-  activities:any[] = [];
+  teacherLocalActivities:any[] = [];
+  teacherLmsActivities: any[] = [];
+  isFromLms: boolean = false;
 
   totalLength = 0;
   pageSize = 5;
@@ -33,27 +35,42 @@ export class TeacherActivitiesPage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activityService.getPaginatedActivities(this.pageSize,0).subscribe(response => {
+      this.teacherLocalActivities = response;
+      this.totalLength = response.totalElements;
+      this.isLoading = false;
+    })
   }
 
   refresh(){
-    try{
-      forkJoin(
-        this.activityService.getExternalActivities(),
-        this.activityService.getPaginatedActivities(this.pageSize,0))
-        .subscribe(([externalActivities,ownActivities])=> {
-          this.activities = [...externalActivities,...ownActivities.content]; 
-          this.totalLength = ownActivities.totalElements + externalActivities.length;
-          this.isLoading = false;
-        })  
-    } catch (e){
-      
+    this.activityService.getPaginatedActivities(this.pageSize,0).subscribe(response => {
+      this.teacherLocalActivities = response;
+      this.totalLength = response.totalElements;
+      this.isLoading = false;
+    })
+  }
+
+  loadTeacherActivities(index: number){
+    if (index == 0){
+      this.activityService.getPaginatedActivities(this.pageSize,0).subscribe(response => {
+        this.teacherLocalActivities = response;
+        this.totalLength = response.totalElements;
+        this.isLoading = false;
+        console.log(this.teacherLocalActivities);
+      })
+    } else if (index == 1){
+      this.activityService.getTeacherExternalActivities().subscribe(response => {
+        this.teacherLmsActivities = response;
+        this.totalLength = response.totalElements;
+        this.isLoading = false;
+      })   
     }
   }
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
     this.activityService.getTeacherActivitiesPaginated(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
-      this.activities = response.content;
+      this.teacherLocalActivities = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;
       this.isChangingPage = false;
