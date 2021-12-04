@@ -1,6 +1,8 @@
-<div fxLayout="column" fxLayoutAlign="center start">
+<div fxLayout="column" fxLayoutAlign="center start" fxFlex="100">
   <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
-    <button mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
+    <button mat-icon-button routerLink="/teacher/dashboard">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
     <h1 class="mat-display-1">{{'titles.deliveriesForThisActivity'|translate}}</h1>
   </div>
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
@@ -8,37 +10,37 @@
       <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>
-
-      <div
-        class="row"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
-        *ngFor="let delivery of deliveries"
+      <mat-accordion>
+      <div class="row" fxLayout="row" fxLayoutAlign="start center" fxFlex="70" *ngFor="let delivery of deliveries"
         (click)="activityToggleId=delivery.id;createMode=false">
-        <p class="student-name">{{delivery.studentName}}</p>
-        <div  fxLayout="row"
-              fxFlexAlign="center center">
-          <span class="filename">{{delivery.filename}}</span>
-          <button mat-icon-button (click)="downloadDelivery(delivery.deliveryId)">
-            <mat-icon>
-              file_download
-            </mat-icon>
-          </button>
-        </div>
-        <mat-form-field
-          class="fieldWidth"
-          appearance="outline">
-          <mat-label>{{'labels.gradePercentage' | translate}}</mat-label>
-          <input
-            fxFlex="100"
-            matInput
-            type="number"
-            [formControl]="delivery.gradePercentage">
-        </mat-form-field>
-        <button mat-icon-button color="primary" [disabled]="delivery.gradePercentage.invalid" (click)="saveGrade(delivery.deliveryId,delivery.gradePercentage.value)">
-          <mat-icon>check</mat-icon>
-        </button>
+        
+        <mat-expansion-panel class="full-width">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{delivery.studentName}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div fxLayout.lg="row" fxLayout.xs="column" fxLayoutAlign="space-between " fxFlexAlign="center center">
+            <span class="filename">{{delivery.filename}}</span>
+            <mat-form-field  appearance="outline">
+              <mat-label>{{'labels.gradePercentage' | translate}}</mat-label>
+              <input fxFlex="100" matInput type="number" [formControl]="delivery.gradePercentage">
+            </mat-form-field>
+            <div class="fieldWidth">
+            <button mat-icon-button (click)="downloadDelivery(delivery.deliveryId)">
+              <mat-icon>
+                file_download
+              </mat-icon>
+            </button>
+            <button mat-icon-button color="primary" [disabled]="delivery.gradePercentage.invalid"
+              (click)="saveGrade(delivery.deliveryId,delivery.gradePercentage.value)">
+              <mat-icon>check</mat-icon>
+            </button>
+          </div>
+          </div>
+        </mat-expansion-panel>
       </div>
+    </mat-accordion>
     </div>
     <div fxFlex="40"></div>
   </div>

@@ -57,6 +57,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ChartsModule } from 'ng2-charts';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatExpansionModule} from '@angular/material/expansion';
 import { ConnectionsPageComponent } from './manager/connections/components/connections-page/connections-page.component';
 import { DashboardFollowUpComponent } from './teacher/dashboard-follow-up/dashboard-follow-up.component';
 import { DashboardEngagementComponent } from './manager/dashboard-engagement/dashboard-engagement.component';
@@ -119,6 +120,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSidenavModule,
+    MatExpansionModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

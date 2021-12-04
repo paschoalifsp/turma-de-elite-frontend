@@ -8,7 +8,7 @@
     fxLayout="row wrap"
     fxLayoutAlign="space-between"
     fxLayout.xs="column"
-    class="full-width"
+    class="full-width margin-button"
     fxFlex="100"
     [formGroup]="activityForm">
     <mat-form-field
@@ -25,7 +25,7 @@
       <mat-error *ngIf="activityForm.get('name')?.errors?.pattern">{{'fieldErrors.activityNamePattern'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
-      fxFlex="30" appearance="outline">
+      fxFlex="35" appearance="outline">
       <mat-label>{{'labels.punctuation'|translate}}</mat-label>
       <input
         matInput
@@ -37,7 +37,7 @@
       <mat-error *ngIf="activityForm.get('punctuation')?.errors?.required">{{'fieldErrors.punctuationIsRequired'|translate}}</mat-error>
       <mat-error *ngIf="activityForm.get('punctuation')?.errors?.pattern">{{'fieldErrors.punctuationPattern'|translate}}</mat-error>
     </mat-form-field>
-    <mat-form-field fxFlex="90" appearance="outline">
+    <mat-form-field fxFlex="100" appearance="outline">
       <mat-label>{{'labels.classes'|translate}}</mat-label>
       <mat-select data-cy-select="class" multiple formControlName="schoolClasses" required>
         <mat-option [attr.data-cy-select]="schoolClass.id" *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id">
@@ -46,7 +46,7 @@
       </mat-select>
       <mat-error *ngIf="activityForm.get('schoolClasses')?.errors?.required">{{'fieldErrors.schoolClassesIsRequired'|translate}}</mat-error>
     </mat-form-field>
-    <mat-form-field fxFlex="90" appearance="outline">
+    <mat-form-field fxFlex="100" appearance="outline">
       <input
         matInput
         data-cy-input="maxDeliveryDate"
@@ -61,7 +61,7 @@
       <mat-error *ngIf="activityForm.get('maxDeliveryDate')?.errors?.required">{{'fieldErrors.maxDeliveryDateIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
-      fxFlex="90" appearance="outline">
+      fxFlex="100" appearance="outline">
       <mat-label>{{'labels.attachment'|translate}}</mat-label>
       <input
         data-cy-input="fileName"
@@ -89,7 +89,7 @@
       #uploader
       (change)="uploadFile($event)">
     <mat-form-field
-      fxFlex="45" appearance="outline">
+      fxFlex="100" appearance="outline">
       <mat-label>{{'labels.description'|translate}}</mat-label>
       <textarea matInput data-cy-input="description" formControlName="description" required></textarea>
       <mat-error *ngIf="activityForm.get('description')?.errors?.required">{{'fieldErrors.descriptionIsRequired'|translate}}</mat-error>
@@ -101,16 +101,18 @@
     <ng-template #showLoader>
       <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
+    <div>
+    <button *ngIf="isExpired()" class="margin-button" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
+      {{'labels.viewDeliveries'|translate}}
+    </button>
     <ng-template #showButton>
       <button mat-raised-button
       data-cy-activity-button="save" 
       [attr.data-cy-is-disabled]="activityForm.invalid"  
        (click)="isEdit ? updateActivity() : createActivity()" [disabled]="activityForm.invalid">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>
     </ng-template>
+  </div>
   </form>
-  <button *ngIf="isExpired()" mat-flat-button [routerLink]="[activityId,'grades']" color="primary">
-    {{'labels.viewDeliveries'|translate}}
-  </button>
   <button class="full-width" fxShow fxHide.gt-xs mat-raised-button color="primary"
   (click)="closeForm()">{{('labels.close')|translate}}
 </button>

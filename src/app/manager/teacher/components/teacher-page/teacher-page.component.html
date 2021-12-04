@@ -1,15 +1,16 @@
 <div fxLayout="column" fxLayoutAlign="center start">
-  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
-    <button mat-icon-button routerLink="/manager/dashboard"><mat-icon>navigate_before</mat-icon></button>
-    <h1 class="mat-display-1">{{'labels.teachers'|translate}}</h1>
-  </div>
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
     <mat-sidenav-container class="sidenav-container">
       <mat-sidenav #drawer class="sidenav" fixedInViewport 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'" 
       [opened]="true">
-      <mat-form-field class="full-width" appearance="outline">
+      <div class="page-title" fxFlexAlign="start" fxLayoutAlign="start">
+        <button mat-icon-button routerLink="/manager/dashboard"><mat-icon>navigate_before</mat-icon></button>
+        <h1 class="mat-display-1">{{'labels.teachers'|translate}}</h1>
+      </div>
+      <div class="search" >
+        <mat-form-field class = "full-width" appearance="outline" >
         <form [formGroup] = "teacherForm">
           <input type="tel" matInput placeholder="{{'placeholder.searchTeacher'| translate}}" [formControl]="searchControl" [matAutocomplete]="auto" formControlName="name">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayTeacherName">
@@ -20,6 +21,7 @@
         </form>
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+      </div>
       <mat-nav-list>
         <a *ngIf="(isHandset$ | async)" 
         data-cy-teacher="create"
@@ -57,14 +59,27 @@
         <p color="primary">{{teacher.name}}</p>
       </a>
     </div>
-    <div>
+    <div *ngFor="let teacher of teachers">
       <a
+        *ngIf="(isHandset$ | async)" 
         [attr.data-cy-edit-teacher]="teacher.id"
         [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===teacher.id?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        *ngFor="let teacher of teachers"
+        (click)="teacherToggleId=teacher.id;createMode=false;isFromLms=teacher.isFromLms;drawer.toggle()">
+        <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
+        <p color="primary">{{teacher.name}}</p>
+      </a>
+    </div>
+    <div *ngFor="let teacher of teachers">
+      <a
+        *ngIf="!(isHandset$ | async)" 
+        [attr.data-cy-edit-teacher]="teacher.id"
+        [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===teacher.id?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
         (click)="teacherToggleId=teacher.id;createMode=false;isFromLms=teacher.isFromLms">
         <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{teacher.name}}</p>
@@ -79,7 +94,7 @@
       </mat-paginator>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content  class="content">
     <div fxFlex="100" fxFlexAlign="end">
       <app-teacher-form
         *ngIf="teacherToggleId || createMode"
