@@ -1,7 +1,8 @@
+import { doLogin } from "../1-login/user-actions-spec";
 import { accessActivityPage, accessLoginPage, Atividade, clearName, createActivity, editActivity, editActivityDisable, fillActivityFields, loginActivity, save, saveButtonShouldDisabled } from "./atividades-actions";
 
 
-describe('CRUD de turmas', () => {
+describe('CRUD de atividades', () => {
     beforeEach(() => {
         cy.viewport(1366, 768);
         cy.intercept('GET', '/api/activities?*', { fixture: 'atividades/atividades' })
@@ -13,14 +14,7 @@ describe('CRUD de turmas', () => {
 
     it('Deve realizar login como professor', () => {
         
-        accessLoginPage()
-        
-        const login = {
-            "email": "jose@gmail.com",
-            "password": "123456"
-        }
-
-        loginActivity(login)
+        doLogin("TEACHER")
 
         cy.location('pathname', { timeout: 60000 })
         .should('include', 'teacher')
@@ -44,7 +38,7 @@ describe('CRUD de turmas', () => {
             isVisible: true,
             isActive: true,
             isDeliverable: true,
-            maxDeliveryDate: '2021-08-25 10:23:54',
+            maxDeliveryDate: '2021-12-25 10:23:54',
             filename: 'file_download_black_24dp (3) (1).svg',
             classes: {id:2, name:'"Literatura 8 ano EF'}
         };
@@ -65,7 +59,7 @@ describe('CRUD de turmas', () => {
     })
 
 
-    it('Deve ser possível editar uma atividade', () => {
+    it.skip('Deve ser possível editar uma atividade', () => {
 
         
         accessActivityPage();
@@ -88,7 +82,7 @@ describe('CRUD de turmas', () => {
 
     })
 
-    it('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
+    it.skip('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
         editActivityDisable(2)
 
         clearName()

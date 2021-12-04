@@ -1,18 +1,21 @@
 <div fxLayout="column" fxLayoutAlign="center start">
-  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
-    <button mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
-    <h1 class="mat-display-1">{{'titles.achievements'|translate}}</h1>
-  </div>
+  
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
     <mat-sidenav-container class="sidenav-container">
       <mat-sidenav #drawer class="sidenav" fixedInViewport 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'" 
       [opened]="true">
+      <div class="page-title" fxFlexAlign="start" fxLayoutAlign="start">
+        <button mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
+        <h1 class="mat-display-1">{{'titles.achievements'|translate}}</h1>
+      </div>
+      <div class ="search">
       <mat-form-field class="full-width" appearance="outline">
         <input type="tel" matInput placeholder="{{'placeholder.searchAchievements'|translate}}" [formControl]="searchControl">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+      </div>
       <mat-nav-list>
         <a *ngIf="(isHandset$ | async)" 
         [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
@@ -66,7 +69,7 @@
       </mat-paginator>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content">
     <div fxFlex="100" fxFlexAlign="end">
       <app-achievement-form
         *ngIf="achievementToggleId || createMode"

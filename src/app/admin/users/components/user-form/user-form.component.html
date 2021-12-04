@@ -6,7 +6,7 @@
 
   <form fxLayout="row wrap"  fxLayout.xs="column" fxLayoutAlign="space-between" class="full-width" fxFlex="100" [formGroup]="userForm" (ngSubmit)="isEdit ? updateUser() : createUser()">
     <mat-form-field
-      fxFlex="45" appearance="outline">
+      fxFlex="48" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
         data-cy-input="email"
@@ -20,7 +20,7 @@
       <mat-error *ngIf="userForm.get('email')?.errors?.required">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-form-field
-      fxFlex="45" appearance="outline">
+      fxFlex="48" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
         data-cy-input="name"

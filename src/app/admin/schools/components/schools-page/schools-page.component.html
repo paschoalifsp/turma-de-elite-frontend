@@ -1,16 +1,17 @@
 <div fxLayout="column" fxLayoutAlign="center start">
-  <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
-    <button data-cy-return="dashboard" mat-icon-button routerLink="/admin/dashboard">
-      <mat-icon>navigate_before</mat-icon>
-    </button>
-    <h1 class="mat-display-1">{{'labels.schools'|translate}}</h1>
-  </div>
   <div class="full-width" fxLayout="row" fxLayoutAlign="start">
     <mat-sidenav-container class="sidenav-container">
       <mat-sidenav #drawer class="sidenav" fixedInViewport 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'" 
       [opened]="true">
+      <div class="page-title" fxFlexAlign="start" fxLayoutAlign="start">
+        <button data-cy-return="dashboard" mat-icon-button routerLink="/admin/dashboard">
+          <mat-icon>navigate_before</mat-icon>
+        </button>
+        <h1 class="mat-display-1">{{'labels.schools'|translate}}</h1>
+      </div>
+      <div class="search" >
       <mat-form-field class="full-width" appearance="outline">
         <form [formGroup]="schoolForm">
           <input type="tel" matInput placeholder="{{'placeholder.searchSchool'|translate}}"
@@ -23,6 +24,7 @@
         </form>
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+    </div>
         <mat-nav-list>
           <a *ngIf="(isHandset$ | async)" 
           data-cy-school="create" 
@@ -74,7 +76,7 @@
           </mat-paginator>
         </mat-nav-list>
       </mat-sidenav>
-      <mat-sidenav-content>
+      <mat-sidenav-content class="content">
         <div fxFlex="100" fxFlexAlign="end">
           <app-school-form *ngIf="schoolToggleId || createMode" 
           [schoolId]="schoolToggleId" 
