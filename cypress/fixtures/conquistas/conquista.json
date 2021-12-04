@@ -1,0 +1,13 @@
+{
+    "id": 2,
+    "name": "conquista teste 2",
+    "description": "teste de conquista 2",
+    "iconName": "airplanemode_active",
+    "beforeAt": null,
+    "earlierOf": null,
+    "bestOf": 1,
+    "averageGradeGreaterOrEqualsThan": null,
+    "isActive": true,
+    "classId": null,
+    "activityId": 2
+}

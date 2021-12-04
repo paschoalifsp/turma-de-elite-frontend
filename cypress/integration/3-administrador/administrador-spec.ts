@@ -16,7 +16,7 @@ describe('CRUD de Administradores', () => {
 
     it('Ao clicar em administrador, deverá ser redirecionado para a tela de cadastros de administradores e cadastrar um administrador', () => {
 
-        doLogin("ADMIN");
+        doLogin('ADMIN');
         accessAdminPage();
         cy.location('pathname', { timeout: 60000 })
             .should('include', 'admins')

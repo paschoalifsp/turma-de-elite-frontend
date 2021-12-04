@@ -1,0 +1,59 @@
+{
+    "content":[
+       {
+          "id":1,
+          "name":"Jose Marcelino",
+          "identifier":"JML",
+          "isActive":true
+       },
+       {
+          "id":2,
+          "name":"Escola B",
+          "identifier":"ESCOB",
+          "isActive":true
+       },
+       {
+          "id":3,
+          "name":"Colegio Pe Otavio Moreira",
+          "identifier":"CPOM",
+          "isActive":true
+       },
+       {
+          "id":4,
+          "name":"Escola D",
+          "identifier":"ESCD",
+          "isActive":true
+       },
+       {
+          "id":5,
+          "name":"Escola E",
+          "identifier":"ESCE",
+          "isActive":true
+       }
+    ],
+    "pageable":{
+       "sort":{
+          "sorted":false,
+          "unsorted":true,
+          "empty":true
+       },
+       "pageNumber":0,
+       "pageSize":5,
+       "offset":0,
+       "unpaged":false,
+       "paged":true
+    },
+    "totalElements":5,
+    "totalPages":1,
+    "last":false,
+    "sort":{
+       "sorted":false,
+       "unsorted":true,
+       "empty":true
+    },
+    "first":true,
+    "numberOfElements":5,
+    "size":5,
+    "number":0,
+    "empty":false
+ }

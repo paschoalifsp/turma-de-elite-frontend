@@ -1,0 +1,68 @@
+{
+    "content": [
+        {
+            "id": 1,
+            "name": "conquista teste",
+            "description": "teste conquista",
+            "iconName": "account_balance",
+            "beforeAt": null,
+            "earlierOf": 1,
+            "bestOf": null,
+            "averageGradeGreaterOrEqualsThan": null,
+            "isActive": true,
+            "classId": null,
+            "activityId": 1
+        },
+        {
+            "id": 2,
+            "name": "conquista teste 2",
+            "description": "teste de conquista 2",
+            "iconName": "airplanemode_active",
+            "beforeAt": null,
+            "earlierOf": null,
+            "bestOf": 1,
+            "averageGradeGreaterOrEqualsThan": null,
+            "isActive": true,
+            "classId": null,
+            "activityId": 2
+        },
+        {
+            "id": 3,
+            "name": "CONQUISTA NOVA",
+            "description": "NOVA",
+            "iconName": "accessible",
+            "beforeAt": "2021-11-29 19:51:36",
+            "earlierOf": null,
+            "bestOf": null,
+            "averageGradeGreaterOrEqualsThan": null,
+            "isActive": true,
+            "classId": null,
+            "activityId": 3
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "pageNumber": 0,
+        "pageSize": 5,
+        "offset": 0,
+        "paged": true,
+        "unpaged": false
+    },
+    "last": true,
+    "totalPages": 1,
+    "totalElements": 3,
+    "first": true,
+    "numberOfElements": 3,
+    "size": 5,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "empty": false
+}
