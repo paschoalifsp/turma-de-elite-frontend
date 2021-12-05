@@ -39,6 +39,7 @@ export class ActivitiesFormComponent implements OnInit {
     punctuation: ['',Validators.required],
     isVisible: [false,Validators.required],
     isActive: [false,Validators.required],
+    isDeliverable: [false,Validators.required],
     maxDeliveryDate:['',Validators.required],
     filename: [{value: ''}]
   });
@@ -86,7 +87,7 @@ export class ActivitiesFormComponent implements OnInit {
         });
       }
       else if (this.isFromLms === false || this.isFromLms == null){
-        this.activityService.getTeacherActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,classes,...rest}) =>{
+        this.activityService.getTeacherActivityById(this.activityId as number).subscribe(({id,maxDeliveryDate,externalId,classes,...rest}) =>{
           this.activityForm.setValue({
             maxDeliveryDate: moment(maxDeliveryDate),
             schoolClasses: classes.map((c: any) => c.id),
