@@ -69,10 +69,12 @@ export class AchievementFormComponent implements OnInit {
   ngOnInit(): void {
     forkJoin(
       this.classService.getTeacherHimselfClasses(),
-      this.activityService.getTeacherActivities()
-    ).subscribe(([classes,activities]) => {
-      this.filteredClasses = classes;
-      this.activities = activities;
+      this.activityService.getTeacherActivities(),
+      this.classService.getExternalClasses(),
+      this.activityService.getExternalActivities(),
+    ).subscribe(([classes,activities,externalClasses,externalActivities]) => {
+      this.filteredClasses = [...classes,...externalClasses];
+      this.activities = [...activities,...externalActivities];
     })
 
     this.modalityChosenControl.valueChanges.subscribe(value => {
@@ -128,25 +130,27 @@ export class AchievementFormComponent implements OnInit {
     const achievement = {
       ...this.generalInfo.value,
       iconName: this.iconNameControl.value,
-      classId: this.classIdControl.value,
-      activityId: this.activityIdControl.value,
+      classId: this.classIdControl.value.id,
+      externalClassId: this.classIdControl.value.externalId,
+      activityId: this.activityIdControl.value.id,
+      externalActivityId: this.activityIdControl.value.externalId,
       ...this.qualifiersForm.value,
     }
     this.achievementService.createAchievement(achievement).subscribe(success => {
-    this.snackbarService.showSnack('messages.achievementCreated','labels.close')
-    this.save.emit();
-    this.qualifiersForm.reset();
-    this.generalInfo.reset();
-    this.iconNameControl.reset();
-    this.classIdControl.reset();
-    this.activityIdControl.reset();
-    this.modalityChosenControl.reset();
-    this.qualifiersForm.reset();
-    }, error => {
-      this.isLoading = false;
-      switch (error.status){
-        case 409:
-          break;
+      this.snackbarService.showSnack('messages.achievementCreated','labels.close')
+      this.save.emit();
+      this.qualifiersForm.reset();
+      this.generalInfo.reset();
+      this.iconNameControl.reset();
+      this.classIdControl.reset();
+      this.activityIdControl.reset();
+      this.modalityChosenControl.reset();
+      this.qualifiersForm.reset();
+      }, error => {
+        this.isLoading = false;
+        switch (error.status){
+          case 409:
+            break;
       }
     });
   }
