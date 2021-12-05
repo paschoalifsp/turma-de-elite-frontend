@@ -26,6 +26,10 @@ export class ClassPageComponent implements OnInit {
   );
 
   classes:any[] = [];
+  localClasses:any[] = [];
+  lmsClasses:any[] = [];
+
+  isFromLms: boolean = false;
 
   totalLength = 0;
   pageSize = 5;
@@ -48,21 +52,34 @@ export class ClassPageComponent implements OnInit {
   }
 
   refresh(){
-    forkJoin(
-      this.classService.getExternalClasses(),
-      this.classService.getPaginatedClasses(this.pageSize,0))
-      .subscribe(([externalClasses,ownClasses])=> {
-        this.classes = [...externalClasses,...ownClasses.content];
-        this.totalLength = ownClasses.totalElements + externalClasses.length;
+    this.classService.getPaginatedClasses(this.pageSize,0).subscribe(response => {
+      this.localClasses = response.content;
+      this.totalLength = response.totalElements;
+      this.isLoading = false;
+    })
+    //TODO: Do exception handling for non authenticated external services call
+  }
+
+  loadClasses(index: number){
+    if (index == 0){
+      this.classService.getPaginatedClasses(this.pageSize,0).subscribe(response => {
+        this.localClasses = response.content;
+        this.totalLength = response.totalElements;
         this.isLoading = false;
       })
-    //TODO: Do exception handling for non authenticated external services call
+    } else if (index == 1){
+      this.classService.getExternalClasses().subscribe(response => {
+        this.lmsClasses = response;
+        this.totalLength = response.totalElements;
+        this.isLoading = false;
+      })     
+    }
   }
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
     this.classService.getPaginatedClasses(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
-      this.classes = response.content;
+      this.localClasses = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;
       this.isChangingPage = false;

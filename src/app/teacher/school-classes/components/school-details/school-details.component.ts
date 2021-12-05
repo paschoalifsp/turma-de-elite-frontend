@@ -2,8 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@an
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {ClassService} from "../../../../manager/school-classes/services/class.service";
-import {TranslateService} from "@ngx-translate/core";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackbarService} from "../../../../shared/services/snackbar.service";
 import {TierConfigService} from "../../services/tier-config.service";
 
@@ -18,6 +16,7 @@ export class SchoolDetailsComponent implements OnInit {
 
   @Input() classId:number | null = null;
   @Input() createMode = true;
+  @Input() isFromLms: any = null;
 
   schoolClass: any;
 

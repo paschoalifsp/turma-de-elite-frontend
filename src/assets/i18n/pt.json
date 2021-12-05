@@ -181,6 +181,7 @@
     "classClosed": "Turma encerrada com sucesso!",
     "activityCreated": "Atividade criada com sucesso!",
     "activityUpdated": "Atividade atualizada com sucesso!",
+    "activityDelivered": "Atividade entregue",
     "classCreated": "Turma criada com sucesso!",
     "classNameAndStatusUpdated": "Turma atualizada com sucesso!",
     "tierConfigSavedSuccessfully": "Configuração de Tier salva com sucesso!",

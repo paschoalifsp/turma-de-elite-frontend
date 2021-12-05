@@ -25,6 +25,9 @@ export class StudentsPageComponent implements OnInit {
 
   teachers:any[] = [];
   students:any[] = [];
+  localStudents:any[] = [];
+  lmsStudents:any[] = [];
+  isFromLms:boolean = false;
 
   totalLength = 0;
   pageSize = 5;
@@ -45,20 +48,33 @@ export class StudentsPageComponent implements OnInit {
   ngOnInit(): void {
   }
   refresh(){
-    forkJoin(
-      this.studentsService.getExternalStudents(),
-      this.studentsService.getStudentsUsers(this.pageSize,0))
-      .subscribe(([externalStudents,ownStudents])=> {
-        this.students = [...externalStudents,...ownStudents.content];
-        this.totalLength = ownStudents.totalElements + externalStudents.length;
+    this.studentsService.getStudents(this.pageSize,0).subscribe(response => {
+      this.localStudents = response.content;
+      this.totalLength = response.totalElements;
+      this.isLoading = false;
+    })
+  }
+
+  loadStudents(index: number){
+    if (index == 0){
+      this.studentsService.getStudents(this.pageSize,0).subscribe(response => {
+        this.localStudents = response.content;
+        this.totalLength = response.totalElements;
         this.isLoading = false;
       })
+    } else if (index == 1){
+      this.studentsService.getExternalStudents().subscribe(response => {
+        this.lmsStudents = response;
+        this.totalLength = response.totalElements;
+        this.isLoading = false;
+      })     
+    }
   }
 
   pageChange(pageEvent: PageEvent) {
     this.isChangingPage = true;
     this.studentsService.getStudents(pageEvent.pageSize,pageEvent.pageIndex).subscribe(response => {
-      this.students = response.content;
+      this.localStudents = response.content;
       this.pageSize = pageEvent.pageSize;
       this.totalLength = response.totalElements;
       this.isChangingPage = false;
