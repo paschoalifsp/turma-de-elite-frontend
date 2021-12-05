@@ -15,6 +15,7 @@
       fxFlex="60" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
+        readonly={{isFromLms}}
         data-cy-input="name"
         matInput
         type="text"
@@ -28,6 +29,7 @@
       fxFlex="35" appearance="outline">
       <mat-label>{{'labels.punctuation'|translate}}</mat-label>
       <input
+        readonly={{isFromLms}}
         matInput
         type="text"
         data-cy-input="punctuation"
@@ -48,6 +50,7 @@
     </mat-form-field>
     <mat-form-field fxFlex="100" appearance="outline">
       <input
+        readonly={{isFromLms}}
         matInput
         data-cy-input="maxDeliveryDate"
         [ngxMatDatetimePicker]="picker"
@@ -91,7 +94,7 @@
     <mat-form-field
       fxFlex="100" appearance="outline">
       <mat-label>{{'labels.description'|translate}}</mat-label>
-      <textarea matInput data-cy-input="description" formControlName="description" required></textarea>
+      <textarea readonly={{isFromLms}} matInput data-cy-input="description" formControlName="description" required></textarea>
       <mat-error *ngIf="activityForm.get('description')?.errors?.required">{{'fieldErrors.descriptionIsRequired'|translate}}</mat-error>
     </mat-form-field>
     <mat-checkbox data-cy-input="isVisible" [indeterminate]="false" formControlName="isActive">{{'labels.active'|translate}}</mat-checkbox>
@@ -106,7 +109,8 @@
       {{'labels.viewDeliveries'|translate}}
     </button>
     <ng-template #showButton>
-      <button mat-raised-button
+      <button *ngIf="!isFromLms" 
+      mat-raised-button
       data-cy-activity-button="save" 
       [attr.data-cy-is-disabled]="activityForm.invalid"  
        (click)="isEdit ? updateActivity() : createActivity()" [disabled]="activityForm.invalid">{{(isEdit ? 'labels.save':'labels.create')|translate}}</button>

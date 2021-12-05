@@ -18,6 +18,14 @@ export class ClassService {
     return this.http.get<any>(`${environment.apiUrl}/api/external/courses`).pipe(take(1));
   }
 
+  getExternalClassesFromAuthenticatedTeacher(){
+    return this.http.get<any>(`${environment.apiUrl}/api/external/courses/authenticated-teacher`).pipe(take(1));
+  }
+
+  getExternalClassById(externalClassId: number | null) {
+    return this.http.get<any>(`${environment.apiUrl}/api/external/courses/${externalClassId}`).pipe(take(1));
+  }
+
   getPaginatedClasses(pageSize:any, pageNumber:any){
     return this.http.get<any>(`${environment.apiUrl}/api/class?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
   }
