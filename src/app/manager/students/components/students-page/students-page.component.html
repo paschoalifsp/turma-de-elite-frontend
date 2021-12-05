@@ -79,11 +79,11 @@
         <div *ngFor="let student of lmsStudents">
           <a *ngIf="!(isHandset$ | async)" 
           [attr.data-cy-edit-student]="student.id"
-          [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.id?'toggled-tile':'tile')"
+          [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.externalId?'toggled-tile':'tile')"
           fxLayout="row"
           fxFlexAlign="center center"
           fxLayoutAlign="start center"
-          (click)="teacherToggleId=student.id;createMode=false; isFromLms=true">
+          (click)="teacherToggleId=student.externalId;createMode=false; isFromLms=true">
           <mat-icon [ngClass]="student.isActive?'primary':'disabled'">person</mat-icon>
           <p color="primary">{{student.name}}</p>
         </a>
@@ -91,11 +91,11 @@
       <div *ngFor="let student of lmsStudents">
         <a *ngIf="!(isHandset$ | async)" 
         [attr.data-cy-edit-student]="student.id"
-        [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.id?'toggled-tile':'tile')"
+        [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===student.externalId?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="teacherToggleId=student.id;createMode=false; isFromLms=true">
+        (click)="teacherToggleId=student.externalId;createMode=false; isFromLms=true">
         <mat-icon [ngClass]="student.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{student.name}}</p>
       </a>
