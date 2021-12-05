@@ -61,6 +61,6 @@ export class StudentsService {
   }
   
   getActiveInactiveStudents(): Observable<activeInactiveUser[]> {
-    return this.http.get<activeInactiveUser[]>(`${environment.apiUrl}/api/students/activeInactive`);
+    return this.http.get<activeInactiveUser[]>(`${environment.apiUrl}/api/students/active-inactive`);
   }
 }

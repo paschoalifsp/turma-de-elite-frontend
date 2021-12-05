@@ -65,6 +65,6 @@ export class TeacherService {
   }
 
   getActivitiesByTeacher(): Observable<activityByTeacher[]> {
-    return this.http.get<activityByTeacher[]>(`${environment.apiUrl}/api/teachers/activitiesByTeacher`);
+    return this.http.get<activityByTeacher[]>(`${environment.apiUrl}/api/teachers/activities-by-teacher`);
   }
 }
