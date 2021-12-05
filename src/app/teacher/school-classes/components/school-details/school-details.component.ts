@@ -15,6 +15,8 @@ export class SchoolDetailsComponent implements OnInit {
   isEdit = false;
 
   @Input() classId:number | null = null;
+  @Input() externalId: string | null = null;
+
   @Input() createMode = true;
   @Input() isFromLms: any = null;
 
@@ -71,6 +73,7 @@ export class SchoolDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private classService: ClassService,
+    private externalClassService: ClassService,
     private tierConfigService: TierConfigService,
     private snackbarService: SnackbarService,
     private snackbar: SnackbarService
@@ -80,10 +83,17 @@ export class SchoolDetailsComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges){
+    console.log("A");
     if(this.classId !== 0){
       this.classService.getGeneralInfoById(this.classId).subscribe(response => {
         this.schoolClass = response;
         this.tierConfigForm.setValue(response?.tierConfig);
+      })
+    }
+    if(this.externalId != null){
+      this.classService.getExternalClassById(this.externalId).subscribe( response => {
+        this.schoolClass = response;
+        this.tierConfigForm.setValue(response?.tierConfig)
       })
     }
   }
@@ -104,14 +114,23 @@ export class SchoolDetailsComponent implements OnInit {
     })
   }
 
+
+
   displayName(teacher: any){
     return teacher && teacher.name ? teacher.name: '';
   }
 
   closeClass(){
-    this.classService.closeClass(this.classId as number).subscribe( success => {
-      this.snackbarService.showSnack('messages.classClosed','labels.close')
-    })
+    if(this.classId){
+      this.classService.closeClass(this.classId as number).subscribe( success => {
+        this.snackbarService.showSnack('messages.classClosed','labels.close')
+      })
+    }
+    if(this.externalClassService){
+      this.classService.closeClassroomClass(this.externalId).subscribe( success => {
+        this.snackbarService.showSnack('messages.classClosed','labels.close');
+      });
+    }
   }
 
   closeForm(){
