@@ -11,6 +11,10 @@ export interface Atividade{
     filename: string,
     classes: {id:number, name:string}
 }
+export interface AtividadeResumo{
+    id?: number,
+    name: string,
+}
 
 
 export interface Login{

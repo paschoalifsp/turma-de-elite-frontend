@@ -7,7 +7,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'" 
       [opened]="true">
       <div class="page-title" fxFlexAlign="start" fxLayoutAlign="start">
-        <button mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
+        <button  data-cy-button="return" mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
         <h1 class="mat-display-1">{{'titles.achievements'|translate}}</h1>
       </div>
       <div class ="search">
@@ -27,6 +27,7 @@
         <p color="primary">{{'labels.createAchievement'|translate}}</p>
       </a>
       <a *ngIf="!(isHandset$ | async)" 
+      data-cy-achievement="create"
       [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
       fxLayout="row"
       fxFlexAlign="center center"
@@ -51,6 +52,7 @@
     </div>
     <div *ngFor="let achievement of achievements">
       <a *ngIf="!(isHandset$ | async)" 
+      [attr.data-cy-edit-achievement]="achievement.id"
       [ngClass]="'mat-elevation-z1 ' + (achievementToggleId===achievement.id?'toggled-tile':'tile')"
       fxLayout="row"
       fxFlexAlign="center center"

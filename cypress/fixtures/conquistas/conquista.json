@@ -9,5 +9,8 @@
     "averageGradeGreaterOrEqualsThan": null,
     "isActive": true,
     "classId": null,
-    "activityId": 2
+    "activityId":{
+        "id": 2,
+        "name": "Atividade teste 2"
+    }
 }

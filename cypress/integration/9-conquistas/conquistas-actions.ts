@@ -1,16 +1,13 @@
+import { AtividadeResumo } from "../8-atividades/atividades-actions";
 
 export interface Conquistas{
-    id: 1,
+    id?: number,
     name: string,
     description: string,
     iconName: string,
-    beforeAt: Date
-    earlierOf: number,
-    bestOf: number,
-    averageGradeGreaterOrEqualsThan: number,
+    bestOf?: number,
     isActive: boolean,
-    classId: number
-    activityId: number
+    activityId?: AtividadeResumo
 }
 
 
@@ -33,17 +30,22 @@ export function loginActivity(login: Login){
 }
 
 export function accessAchievementPage(){
-    cy.get('[data-cy-activity="access"]').click()
+    cy.get('[data-cy-achievement="access"]').click()
 }
 
 export function createAchievement(){
-    cy.get('[data-cy-activity="create"]').click();
+    cy.get('[data-cy-achievement="create"]').click();
 }
 
 export function editAchievement(id: number, description: string){
     
     cy.get(`[data-cy-edit-achievement=${id}]`).click();
-    cy.get('[data-cy-input="description"]').clear().type(description); 
+    cy.get('[data-cy-input="description"]').clear().type(description);
+    cy.get('[data-cy-button="next1"]').click();
+    cy.get('[data-cy-button="next2"]').click();
+    cy.get('[data-cy-button="next3"]').click();
+    
+
 }
 
 
@@ -52,20 +54,23 @@ export function editAchievementDisable(id: number){
     cy.get(`[data-cy-edit-achievement=${id}]`).click();
 }
 
-export function fillActivityFields(conquista: Conquistas){
-    cy.get('[data-cy-input="name"]').clear().type(atividade.name)
-    cy.get('[data-cy-input="punctuation"]').clear().type(atividade.punctuation)
-   // cy.get('[data-cy-select="class"]').click()
-    //cy.get(`[data-cy-select=${atividade.classes.id}]'`).click()
-    cy.get('[data-cy-input="maxDeliveryDate"]').clear().type(atividade.maxDeliveryDate)
-    cy.get('[data-cy-input="isVisible"]').click()    
-    cy.get('[data-cy-input="isActive"]').click()
-    cy.get('[data-cy-input="isDeliverable"]').click()
-    //cy.get('[data-cy-input="fileName"]').clear().type(atividade.filename)
-    cy.get('[data-cy-input="description"]').clear().type(atividade.description);
+export function acessDashboard(){
+    cy.go('back')
+}
 
-   
 
+export function fillAchievementFields(conquista: Conquistas){
+    cy.get('[data-cy-input="name"]').clear().type(conquista.name)
+    cy.get('[data-cy-input="description"]').clear().type(conquista.description)
+    cy.get('[data-cy-button="next1"]').click();
+    cy.get(':nth-child(4) > .mat-focus-indicator > .mat-button-wrapper > .mat-icon').click();
+    cy.get('[data-cy-button="next2"]').click();
+    cy.get('[data-cy-modalidade="modalidade"]').click();
+    cy.get('[data-cy-modalidade="activity"]').click();
+    cy.get('[data-cy-activity="select"]').click();
+    cy.get(`[data-cy-achievement=${conquista.activityId?.id}]`).click();
+    cy.get('[data-cy-button="next3"]').click();
+    cy.get('[data-cy-input="bestOf"]').click().type("1");
 }
 
 export function clearName(){
@@ -73,10 +78,10 @@ export function clearName(){
 }
 
 export function save(){
- cy.get('[data-cy-activity-button="save"]').click()
+    cy.get('[data-cy-button="save"]').click()
 }
 
-export function saveButtonShouldDisabled(){
+export function nextButtonShouldDisabled(){
     cy.get('[data-cy-is-disabled="true"]')
 }
 
