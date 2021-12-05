@@ -9,6 +9,7 @@
       fxFlex="48" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
+      [readonly]="isFromLms"
        data-cy-input="email"
         matInput
         type="text"
@@ -24,7 +25,7 @@
       fxFlex="48" appearance="outline">
       <mat-label>{{'labels.name'|translate}}</mat-label>
       <input
-      [disabled]="isFromLms === true"
+      [readonly]="isFromLms"
         data-cy-input="name"
         matInput
         type="text"
