@@ -1,0 +1,34 @@
+<div fxLayout="column" fxLayoutAlign="center start">
+    <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
+      <button data-cy-return="dashboard" mat-icon-button routerLink="/teacher/dashboard"><mat-icon>navigate_before</mat-icon></button>
+      <h1 class="mat-display-1">Dashboard</h1>
+    </div>
+    <div class="dashboards" fxLayout="row wrap" fxFlexAlign="center" fxLayoutAlign="center start">
+        <div class="dashboards__item" >
+            <div class="dashboards__item__title">
+              {{ 'labels.postedDeliveredActivities' | translate }}
+            </div>
+            <canvas baseChart 
+              [datasets]="barMultiChartData"
+              [labels]="barMultiChartLabels"
+              [options]="barMultiChartOptions"
+              [plugins]="barMultiChartPlugins"
+              [legend]="barMultiChartLegend"
+              [chartType]="barMultiChartType"
+            ></canvas>
+          </div>
+          <div class="dashboards__item">
+            <div class="dashboards__item__title">
+              {{ 'labels.studentsRanking' | translate }}
+            </div>
+              <canvas baseChart 
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              ></canvas>
+          </div>
+    </div>
+  </div>
