@@ -17,7 +17,7 @@ describe('CRUD de Conquistas', ()=>{
           
         })
 
-        it('Ao clicar em conquistas, deverá ser redirecionado para a tela de cadastros de conquistas e cadastrar uma conquista', () => {
+        it.skip('Ao clicar em conquistas, deverá ser redirecionado para a tela de cadastros de conquistas e cadastrar uma conquista', () => {
             doLogin('TEACHER')
         
                 accessAchievementPage()
@@ -56,7 +56,7 @@ describe('CRUD de Conquistas', ()=>{
         })
 
 
-        it('Deve ser possível editar uma conquista', () => {
+        it.skip('Deve ser possível editar uma conquista', () => {
 
             acessDashboard()
            
