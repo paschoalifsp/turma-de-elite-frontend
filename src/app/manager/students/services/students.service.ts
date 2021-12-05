@@ -5,6 +5,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {environment} from "../../../../environments/environment";
 import {take} from "rxjs/operators";
+import activeInactiveUser from 'src/app/shared/model/activeInactiveUser';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +62,9 @@ export class StudentsService {
 
   getStudentsUsers(pageSize:any, pageNumber:any){
     return this.http.get<any>(`${environment.apiUrl}/api/students?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
+  }
+  
+  getActiveInactiveStudents(): Observable<activeInactiveUser[]> {
+    return this.http.get<activeInactiveUser[]>(`${environment.apiUrl}/api/students/active-inactive`);
   }
 }

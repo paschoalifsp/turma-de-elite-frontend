@@ -7,6 +7,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import { Observable } from 'rxjs';
 import Teacher from 'src/app/shared/model/teacher';
+import activityByTeacher from 'src/app/shared/model/activityByTeacher';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +66,9 @@ export class TeacherService {
 
   getPaginatedTeachers(pageSize:any, pageNumber:any){
     return this.http.get<any>(`${environment.apiUrl}/api/teachers?size=${pageSize}&pageNumber=${pageNumber}`).pipe(take(1));
+  }
+
+  getActivitiesByTeacher(): Observable<activityByTeacher[]> {
+    return this.http.get<activityByTeacher[]>(`${environment.apiUrl}/api/teachers/activities-by-teacher`);
   }
 }

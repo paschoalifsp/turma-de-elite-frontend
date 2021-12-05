@@ -126,7 +126,10 @@
     "activeInactiveUsers": "Usuários ativos e inativos nos últimos 12 meses",
 
     "postedDeliveredActivities": "Atividades postadas x entregues",
-    "studentsRanking": "Ranking de alunos"
+    "studentsRanking": "Ranking de alunos",
+    
+    "activeInactiveStudents": "Alunos ativos e inativos nos últimos 12 meses",
+    "teachersEngagement": "Engajamento dos professores no sistema"
   },
   "actions": {
     "addNewAdmin": "Adicionar Administrador",
