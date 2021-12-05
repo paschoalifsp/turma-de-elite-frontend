@@ -33,6 +33,7 @@ export class SchoolClassesComponent implements OnInit {
   searchControl = new FormControl('');
 
   classToggleId: number | null = null;
+  classToggleExternalId: string | null = null;
 
   createMode = true;
 
@@ -70,6 +71,13 @@ export class SchoolClassesComponent implements OnInit {
         this.isLoading = false;
       })
     }
+  }
+
+  setToggleClass(classroom: any){
+    this.classToggleExternalId=classroom.externalId;
+    this.classToggleId=null;
+    this.createMode=false;
+    console.log(this.classToggleExternalId);
   }
 
   pageChange(pageEvent: PageEvent) {

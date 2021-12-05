@@ -69,10 +69,12 @@ export class AchievementFormComponent implements OnInit {
   ngOnInit(): void {
     forkJoin(
       this.classService.getTeacherHimselfClasses(),
-      this.activityService.getTeacherActivities()
-    ).subscribe(([classes,activities]) => {
-      this.filteredClasses = classes;
-      this.activities = activities;
+      this.activityService.getTeacherActivities(),
+      this.classService.getExternalClasses(),
+      this.activityService.getExternalStudentActivities(),
+    ).subscribe(([classes,activities,externalClasses,externalActivities]) => {
+      this.filteredClasses = [...classes,...externalClasses];
+      this.activities = [...activities,...externalActivities];
     })
 
     this.modalityChosenControl.valueChanges.subscribe(value => {
@@ -91,12 +93,12 @@ export class AchievementFormComponent implements OnInit {
     }
     else{
       this.achievementService.getAchievementById(this.achievementId as number).subscribe( (value) => {
-        const {id, name, description, isActive, iconName, activityId, classId,...qualifiers } = value;
+        const {id, name, description, isActive, iconName,externalClassId, activityId, externalActivityId, classId,...qualifiers } = value;
         this.generalInfo.setValue({name,description,isActive});
         this.iconNameControl.setValue(iconName);
         this.qualifiersForm.setValue({...qualifiers})
-        this.classIdControl.setValue(classId);
-        this.activityIdControl.setValue(activityId);
+        this.classIdControl.setValue(this.findClass({classId,externalId: externalClassId}));
+        this.activityIdControl.setValue(this.findActivity({activityId,externalActivityId}));
         if(activityId){
           this.modalityChosenControl.setValue('activity')
         }else{
@@ -111,8 +113,10 @@ export class AchievementFormComponent implements OnInit {
     const achievement = {
       ...this.generalInfo.value,
       iconName: this.iconNameControl.value,
-      classId: this.classIdControl.value,
-      activityId: this.activityIdControl.value,
+      classId: this.classIdControl.value.id,
+      externalClassId: this.classIdControl.value.externalId,
+      activityId: this.activityIdControl.value.id,
+      externalActivityId: this.activityIdControl.value.externalId,
       ...this.qualifiersForm.value,
     }
     this.achievementService.updateAchievement(this.achievementId,achievement).subscribe(success => {
@@ -128,25 +132,27 @@ export class AchievementFormComponent implements OnInit {
     const achievement = {
       ...this.generalInfo.value,
       iconName: this.iconNameControl.value,
-      classId: this.classIdControl.value,
-      activityId: this.activityIdControl.value,
+      classId: this.classIdControl.value.id,
+      externalClassId: this.classIdControl.value.externalId,
+      activityId: this.activityIdControl.value.id,
+      externalActivityId: this.activityIdControl.value.externalId,
       ...this.qualifiersForm.value,
     }
     this.achievementService.createAchievement(achievement).subscribe(success => {
-    this.snackbarService.showSnack('messages.achievementCreated','labels.close')
-    this.save.emit();
-    this.qualifiersForm.reset();
-    this.generalInfo.reset();
-    this.iconNameControl.reset();
-    this.classIdControl.reset();
-    this.activityIdControl.reset();
-    this.modalityChosenControl.reset();
-    this.qualifiersForm.reset();
-    }, error => {
-      this.isLoading = false;
-      switch (error.status){
-        case 409:
-          break;
+      this.snackbarService.showSnack('messages.achievementCreated','labels.close')
+      this.save.emit();
+      this.qualifiersForm.reset();
+      this.generalInfo.reset();
+      this.iconNameControl.reset();
+      this.classIdControl.reset();
+      this.activityIdControl.reset();
+      this.modalityChosenControl.reset();
+      this.qualifiersForm.reset();
+      }, error => {
+        this.isLoading = false;
+        switch (error.status){
+          case 409:
+            break;
       }
     });
   }
@@ -157,6 +163,21 @@ export class AchievementFormComponent implements OnInit {
 
   selectIcon(icon: string) {
     this.iconNameControl.setValue(icon);
+  }
+  
+  compareFunction(a: any,b: any){
+    return a.id === b.id || a.externalId === b.externalId;
+  }
+
+  findClass({classId,externalId}:any){
+    return this.filteredClasses.find(schoolClass => schoolClass.id===classId || schoolClass.externalId === externalId);
+  }
+
+  findActivity({activityId,externalActivityId}: any){
+    console.log('{activityId,externalActivityId}',{activityId,externalActivityId});
+    const activity = this.activities.find(activity => activity.id === activityId || activity.externalId === externalActivityId)
+    console.log('activity',activity);
+    return activity;
   }
 
   closeForm(){
