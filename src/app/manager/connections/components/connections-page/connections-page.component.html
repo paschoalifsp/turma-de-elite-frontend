@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="center start">
   <div class="page-title" fxFlexAlign="start" fxLayoutAlign="center start">
-    <button mat-icon-button routerLink="/manager/dashboard"><mat-icon>navigate_before</mat-icon></button>
+    <button mat-icon-button [routerLink]="['..','dashboard']"><mat-icon>navigate_before</mat-icon></button>
     <h1 class="mat-display-1">{{'titles.yourConnections'|translate}}</h1>
   </div>
   <div class="page-subtitle" fxFlexAlign="start" fxLayoutAlign="center start">

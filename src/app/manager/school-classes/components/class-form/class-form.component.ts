@@ -14,7 +14,7 @@ export class ClassFormComponent implements OnInit {
 
   isEdit = false;
 
-  @Input() classId:number | null = null;
+  @Input() classId:number | string | null = null;
   @Input() createMode = true;
   @Input() isFromLms: boolean = false;
 
