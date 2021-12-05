@@ -73,7 +73,7 @@
         <mat-form-field *ngIf="modalityChosenControl?.value == 'school-classes'" fxFlex="45" appearance="outline">
           <mat-label>{{'labels.school-classes'|translate}}</mat-label>
           <mat-select [formControl]="classIdControl" >
-            <mat-option *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id">
+            <mat-option *ngFor="let schoolClass of filteredClasses"  [value]="schoolClass.id || schoolClass.externalId">
               {{schoolClass.name}}
             </mat-option>
           </mat-select>
@@ -81,7 +81,7 @@
         <mat-form-field *ngIf="modalityChosenControl?.value == 'activity'" fxFlex="45" appearance="outline">
           <mat-label>{{'labels.activity'|translate}}</mat-label>
           <mat-select [formControl]="activityIdControl">
-            <mat-option [attr.data-cy-achievement]="activity.id" *ngFor="let activity of activities" [value]="activity.id">
+            <mat-option [attr.data-cy-achievement]="activity.id" *ngFor="let activity of activities" [value]="activity.id || activity.externalId">
               {{activity.name}}
             </mat-option>
           </mat-select>

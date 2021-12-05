@@ -34,6 +34,10 @@ export class StudentsService {
     return this.http.get<any>(`${environment.apiUrl}/api/students/${studentId}`).pipe(take(1));
   }
 
+  getExternalStudentById(studentExternalId: number) {
+    return this.http.get<any>(`${environment.apiUrl}/api/external/students/${studentExternalId}`).pipe(take(1));
+  }
+
   updateStudent(studentId: number | null, value: any) {
     this.isLoading = true;
     const {school,...rest} = value;

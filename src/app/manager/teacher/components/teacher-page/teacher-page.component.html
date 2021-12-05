@@ -23,13 +23,16 @@
       </mat-form-field>
       </div>
       <mat-nav-list>
+      <mat-tab-group (selectedTabChange)="loadTeachers($event.index)">
+      <mat-tab label="Turma de Elite">
+      
         <a *ngIf="(isHandset$ | async)" 
         data-cy-teacher="create"
         [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="createMode=true;teacherToggleId=null;isFromLms=null; drawer.toggle()">
+        (click)="createMode=true;teacherToggleId=null;isFromLms=false; drawer.toggle()">
         <mat-icon color="primary">add</mat-icon>
         <p color="primary">{{'labels.createTeacher'|translate}}</p>
       </a>
@@ -39,14 +42,14 @@
       fxLayout="row"
       fxFlexAlign="center center"
       fxLayoutAlign="start center"
-      (click)="createMode=true;teacherToggleId=null">
+      (click)="createMode=true;teacherToggleId=null; isFromLms=false">
       <mat-icon color="primary">add</mat-icon>
       <p color="primary">{{'labels.createTeacher'|translate}}</p>
     </a>
       <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>
-      <div *ngFor="let teacher of teachers">
+      <div *ngFor="let teacher of localTeachers">
       <a
         *ngIf="(isHandset$ | async)" 
         [attr.data-cy-edit-teacher]="teacher.id"
@@ -54,25 +57,12 @@
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="teacherToggleId=teacher.id;createMode=false;drawer.toggle()">
+        (click)="teacherToggleId=teacher.id;createMode=false;drawer.toggle(); isFromLms=false">
         <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{teacher.name}}</p>
       </a>
     </div>
-    <div *ngFor="let teacher of teachers">
-      <a
-        *ngIf="(isHandset$ | async)" 
-        [attr.data-cy-edit-teacher]="teacher.id"
-        [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===teacher.id?'toggled-tile':'tile')"
-        fxLayout="row"
-        fxFlexAlign="center center"
-        fxLayoutAlign="start center"
-        (click)="teacherToggleId=teacher.id;createMode=false;isFromLms=teacher.isFromLms;drawer.toggle()">
-        <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
-        <p color="primary">{{teacher.name}}</p>
-      </a>
-    </div>
-    <div *ngFor="let teacher of teachers">
+    <div *ngFor="let teacher of localTeachers">
       <a
         *ngIf="!(isHandset$ | async)" 
         [attr.data-cy-edit-teacher]="teacher.id"
@@ -80,7 +70,7 @@
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="teacherToggleId=teacher.id;createMode=false;isFromLms=teacher.isFromLms">
+        (click)="teacherToggleId=teacher.id;createMode=false;isFromLms=false">
         <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{teacher.name}}</p>
       </a>
@@ -92,6 +82,43 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         (page)="pageChange($event)">
       </mat-paginator>
+    </mat-tab>
+    <mat-tab label="Google Classroom">
+      <div *ngFor="let teacher of lmsTeachers">
+        <a
+          *ngIf="(isHandset$ | async)" 
+          [attr.data-cy-edit-teacher]="teacher.id"
+          [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===teacher.id?'toggled-tile':'tile')"
+          fxLayout="row"
+          fxFlexAlign="center center"
+          fxLayoutAlign="start center"
+          (click)="teacherToggleId=teacher.id;createMode=false;drawer.toggle(); isFromLms=true">
+          <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
+          <p color="primary">{{teacher.name}}</p>
+        </a>
+      </div>
+      <div *ngFor="let teacher of lmsTeachers">
+        <a
+          *ngIf="!(isHandset$ | async)" 
+          [attr.data-cy-edit-teacher]="teacher.id"
+          [ngClass]="'mat-elevation-z1 ' + (teacherToggleId===teacher.id?'toggled-tile':'tile')"
+          fxLayout="row"
+          fxFlexAlign="center center"
+          fxLayoutAlign="start center"
+          (click)="teacherToggleId=teacher.id;createMode=false;isFromLms=true">
+          <mat-icon [ngClass]="teacher.isActive?'primary':'disabled'">person</mat-icon>
+          <p color="primary">{{teacher.name}}</p>
+        </a>
+      </div>
+        <mat-paginator
+          class="full-width"
+          [length]="totalLength"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          (page)="pageChange($event)">
+        </mat-paginator>
+        </mat-tab>
+        </mat-tab-group>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content  class="content">
