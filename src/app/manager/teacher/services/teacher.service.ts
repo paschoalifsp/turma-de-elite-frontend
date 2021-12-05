@@ -36,6 +36,10 @@ export class TeacherService {
     return this.http.get<any>(`${environment.apiUrl}/api/teachers/${managerId}`).pipe(take(1));
   }
 
+  getTeacherByExternalId(teacherExternalId: number) {
+    return this.http.get<any>(`${environment.apiUrl}/api/external/teachers/${teacherExternalId}`).pipe(take(1));
+  }
+
   updateTeacher(managerId: number | null, value: any) {
     this.isLoading = true;
     const {school,...rest} = value;

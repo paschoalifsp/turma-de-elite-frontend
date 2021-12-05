@@ -16,7 +16,9 @@
       </mat-form-field>
       </div>
       <mat-nav-list>
-        <a *ngIf="(isHandset$ | async)" 
+        <mat-tab-group (selectedTabChange)="loadClasses($event.index)">
+          <mat-tab label="Turma de Elite">
+            <a *ngIf="(isHandset$ | async)" 
         data-cy-class="create"
         [ngClass]="'mat-elevation-z1 '+  (createMode?'toggled-tile':'tile')"
         fxLayout="row"
@@ -32,33 +34,33 @@
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="createMode=true;classToggleId=null">
+        (click)="createMode=true;classToggleId=null;isFromLms=false;">
         <mat-icon color="primary">add</mat-icon>
         <p color="primary">{{'labels.createClass'|translate}}</p>
       </a>
       <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>
-      <div *ngFor="let classroom of classes">
+      <div *ngFor="let classroom of localClasses">
         <a *ngIf="(isHandset$ | async)" 
         [attr.data-cy-edit-class]="classroom.id"
         [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="classToggleId=classroom.id;createMode=false; drawer.toggle()">
+        (click)="classToggleId=classroom.id;createMode=false; drawer.toggle();isFromLms=false;">
         <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
         <p color="primary">{{classroom.name}}</p>
       </a>
     </div>
-    <div *ngFor="let classroom of classes">
+    <div *ngFor="let classroom of localClasses">
       <a *ngIf="!(isHandset$ | async)" 
       [attr.data-cy-edit-class]="classroom.id"
       [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
       fxLayout="row"
       fxFlexAlign="center center"
       fxLayoutAlign="start center"
-      (click)="classToggleId=classroom.id;createMode=false;">
+      (click)="classToggleId=classroom.id;createMode=false; isFromLms=false">
       <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
       <p color="primary">{{classroom.name}}</p>
     </a>
@@ -70,6 +72,41 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         (page)="pageChange($event)">
       </mat-paginator>
+    </mat-tab>
+    <mat-tab label="Google Classroom">
+      <div *ngFor="let classroom of lmsClasses">
+        <a *ngIf="!(isHandset$ | async)" 
+        [attr.data-cy-edit-class]="classroom.id"
+        [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
+        fxLayout="row"
+        fxFlexAlign="center center"
+        fxLayoutAlign="start center"
+        (click)="classToggleId=classroom.id;createMode=false; isFromLms=true">
+        <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
+        <p color="primary">{{classroom.name}}</p>
+      </a>
+      </div>
+        <div *ngFor="let classroom of lmsClasses">
+          <a *ngIf="(isHandset$ | async)" 
+          [attr.data-cy-edit-class]="classroom.id"
+          [ngClass]="'mat-elevation-z1 ' + (classToggleId===classroom.id?'toggled-tile':'tile')"
+          fxLayout="row"
+          fxFlexAlign="center center"
+          fxLayoutAlign="start center"
+          (click)="classToggleId=classroom.id;createMode=false; isFromLms=true; drawer.toggle()">
+          <mat-icon [ngClass]="classroom.isActive?'primary':'disabled'">person</mat-icon>
+          <p color="primary">{{classroom.name}}</p>
+        </a>
+        </div>
+        <mat-paginator
+        class="full-width"
+        [length]="totalLength"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="pageChange($event)">
+      </mat-paginator>     
+      </mat-tab>
+    </mat-tab-group>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">
@@ -79,7 +116,8 @@
         [classId]="classToggleId"
         [createMode]="createMode"
         (save)="refresh()"
-        (cancel)="drawer.toggle($event)">
+        (cancel)="drawer.toggle($event)"
+        [isFromLms]="isFromLms">
       </app-class-form>
     </div>
     </mat-sidenav-content>

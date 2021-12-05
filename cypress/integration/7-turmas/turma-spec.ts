@@ -54,7 +54,7 @@ describe('CRUD de turmas', () => {
     })
 
 
-    it.skip('Deve ser possível editar uma turma', () => {
+    it('Deve ser possível editar uma turma', () => {
         
         editClass(2, "Literatura 8 ano EF")
         
@@ -72,7 +72,7 @@ describe('CRUD de turmas', () => {
 
     })
 
-    it.skip('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
+    it('Durante a edição ao apagar um dado obrigatório, o botao salvar deve ficar desabilitado', () => {
         editClassDisable(2)
 
         clearName()
