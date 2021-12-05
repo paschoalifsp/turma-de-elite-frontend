@@ -5,15 +5,13 @@
     </button>
     <h1 class="mat-display-1">{{'titles.deliveriesForThisActivity'|translate}}</h1>
   </div>
-  <div class="full-width" fxLayout="row" fxLayoutAlign="space-around  start">
-    <div fxFlex="100">
-      <div *ngIf="isLoading" fxLayout="row" fxLayoutAlign="center center">
+  <div class="full-width"  fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.xs="90" fxLayout ="column" fxLayoutAlign="start" >
+      <div *ngIf="isLoading"  fxLayoutAlign="center center">
         <mat-spinner></mat-spinner>
       </div>
-      <mat-accordion>
-      <div class="row" fxLayout="row" fxLayoutAlign="start center" fxFlex="70" *ngFor="let delivery of deliveries"
+      <div class="row" fxLayoutAlign="start center" fxFlex="100" *ngFor="let delivery of deliveries"
         (click)="activityToggleId=delivery.id;createMode=false">
-        
         <mat-expansion-panel class="full-width">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -39,9 +37,9 @@
           </div>
           </div>
         </mat-expansion-panel>
+        </div>
       </div>
-    </mat-accordion>
+   
     </div>
     <div fxFlex="40"></div>
   </div>
-</div>

@@ -7,24 +7,21 @@
     fxFlex="100"
     fxLayout="row"
     fxLayoutAlign="space-around center">
-    <div fxFlex="65" class="full-screen-height" fxLayoutAlign="center center" fxHide fxShow.gt-xs >
+    <div fxFlex="65" class="full-screen-height" fxLayoutAlign="center center" fxShow fxHide.md fxHide.xs fxHide.sm >
       <img src="assets/login.svg">
     </div>
     <div
       fxFlex
       fxLayout="column"
       fxLayoutAlign="center center"
-      class="full-height full-width login-container"
-      fxShow fxHide.md
-      >
+      class="full-height full-width login-container" >
       <div
         fxFlexAlign="center center"
         fxLayout="column">
         <div 
         fxLayout="row"  
         fxLayoutAlign="center center" 
-        class="title" 
-        >
+        class="title" >
           <div>
             <mat-icon [ngStyle.xs] = "{'font-size.px': 30}" >military_tech</mat-icon>
           </div>

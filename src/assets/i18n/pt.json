@@ -92,7 +92,6 @@
     "close": "Fechar",
     "gradePercentage": "Nota (%)",
     "registerAchievement": "Criar conquista",
-
     "updateAchievement": "Editar conquista",
     "deliveryBeforeAt": "Para entregas antes de",
     "deliveryEarlierOf": "Para n entregas mais rápidas",
@@ -101,11 +100,9 @@
     "qualifiers": "Qualificadores",
     "attachment": "Anexo",
     "deliverable": "Entregável",
-
     "generalInfo": "Informações gerais",
     "chooseIcon": "Escolha um ícone",
     "modality": "Modalidade",
-
     "byClass": "Por turma",
     "byActivity": "Por atividade",
     "activity": "Atividade",
