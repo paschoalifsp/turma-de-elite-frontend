@@ -9,8 +9,8 @@
       pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
       required
       [matAutocomplete]="auto">
-    <mat-error *ngIf="studentRegistryControl.hasError('required')">{{'fieldErrors.emailIsRequired'|translate}}</mat-error>
-    <mat-error *ngIf="studentRegistryControl.hasError('pattern')">{{'fieldErrors.emailPattern'|translate}}</mat-error>
+    <mat-error *ngIf="studentRegistryControl.hasError('required')">{{'fieldErrors.registryIsRequired'|translate}}</mat-error>
+    <mat-error *ngIf="studentRegistryControl.hasError('pattern')">{{'fieldErrors.registryPattern'|translate}}</mat-error>
   </mat-form-field>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName">
     <mat-option [attr.data-cy-input-student-id]="teacher.id" *ngFor="let teacher of studentOptions" [value]="teacher">
