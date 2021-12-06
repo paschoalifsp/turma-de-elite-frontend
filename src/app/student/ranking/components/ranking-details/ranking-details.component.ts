@@ -16,6 +16,8 @@ export class RankingDetailsComponent implements OnInit {
   isEdit = false;
 
   @Input() classId:number | null = null;
+  @Input() externalId: string | null = null;
+
   @Input() createMode = true;
 
   @Output() save = new EventEmitter();
@@ -43,9 +45,16 @@ export class RankingDetailsComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges){
     this.isEdit = !this.createMode;
+    if(this.classId){
       this.rankingService.getClassRanking(this.classId).subscribe(response => {
         this.students = response;
       })
+    }
+    if(this.externalId){
+      this.rankingService.getExternalClassRanking(this.externalId).subscribe(response => {
+        this.students = response;
+      })
+    }
   }
 
   displayName(teacher: any){
