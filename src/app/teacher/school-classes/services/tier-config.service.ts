@@ -6,8 +6,11 @@ import {environment} from "../../../../environments/environment";
   providedIn: 'root'
 })
 export class TierConfigService {
-
   constructor(private http: HttpClient) { }
+  
+  createOrUpdateExternalTierConfig(value: any, classId: string | null) {
+    return this.http.post(`${environment.apiUrl}/api/external/courses/${classId}/tier-config`,value)
+  }
 
   createTierConfig(tierConfig: any, classId: any){
     return this.http.post(`${environment.apiUrl}/api/class/${classId}/tier-config`, tierConfig);

@@ -83,7 +83,6 @@ export class SchoolDetailsComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges){
-    console.log("A");
     if(this.classId !== 0){
       this.classService.getGeneralInfoById(this.classId).subscribe(response => {
         this.schoolClass = response;
@@ -99,19 +98,39 @@ export class SchoolDetailsComponent implements OnInit {
   }
 
   createTierConfig(){
-    this.tierConfigService.createTierConfig(this.tierConfigForm.value,this.classId).subscribe( response => {
-      this.snackbar.showSnack('messages.tierConfigSavedSuccessfully','labels.close');
-    }, error => {
-      this.snackbar.showSnack('fieldErrors.undefinedError','labels.close');
-    })
+    if(this.classId){
+      this.tierConfigService.createTierConfig(this.tierConfigForm.value,this.classId).subscribe( response => {
+        this.snackbar.showSnack('messages.tierConfigSavedSuccessfully','labels.close');
+      }, error => {
+        this.snackbar.showSnack('fieldErrors.undefinedError','labels.close');
+      })
+    }
+    if(this.externalId){
+      this.tierConfigService.createOrUpdateExternalTierConfig(this.tierConfigForm.value,this.externalId).subscribe( response => {
+        this.snackbar.showSnack('messages.tierConfigSavedSuccessfully','labels.close');
+      }, error => {
+        this.snackbar.showSnack('fieldErrors.undefinedError','labels.close');
+      })
+    }
   }
 
   updateTierConfig(){
-    this.tierConfigService.updateTierConfig(this.tierConfigForm.value,this.classId).subscribe( response => {
-      this.snackbar.showSnack('messages.tierConfigUpdatedSuccessfully','labels.close');
-    }, error => {
-      this.snackbar.showSnack('fieldErrors.undefinedError','labels.close');
-    })
+    if(this.classId){
+      this.tierConfigService.updateTierConfig(this.tierConfigForm.value,this.classId).subscribe( response => {
+        this.snackbar.showSnack('messages.tierConfigUpdatedSuccessfully','labels.close');
+      }, error => {
+        this.snackbar.showSnack('fieldErrors.undefinedError','labels.close');
+      })
+    }
+
+    if(this.externalId){
+      this.tierConfigService.createOrUpdateExternalTierConfig(this.tierConfigForm.value,this.externalId).subscribe( response => {
+        this.snackbar.showSnack('messages.tierConfigUpdatedSuccessfully','labels.close');
+      }, error => {
+        this.snackbar.showSnack('fieldErrors.undefinedError','labels.close');
+      })
+    }
+
   }
 
 
@@ -126,7 +145,7 @@ export class SchoolDetailsComponent implements OnInit {
         this.snackbarService.showSnack('messages.classClosed','labels.close')
       })
     }
-    if(this.externalClassService){
+    if(this.externalId){
       this.classService.closeClassroomClass(this.externalId).subscribe( success => {
         this.snackbarService.showSnack('messages.classClosed','labels.close');
       });
