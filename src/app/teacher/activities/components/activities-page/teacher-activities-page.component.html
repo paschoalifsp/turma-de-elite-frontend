@@ -86,7 +86,7 @@
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="activityToggleId=activity.externalId;createMode=false;isFromLms=true;">
+        (click)="activityToggleId=activity.externalId;createMode=false;isFromLms=true; drawer.toggle()">
         <mat-icon [ngClass]="activity.isActive?'primary':'disabled'">book</mat-icon>
         <p color="primary">{{activity.name}}</p>
         </a>
@@ -98,7 +98,7 @@
             fxLayout="row"
             fxFlexAlign="center center"
             fxLayoutAlign="start center"
-            (click)="activityToggleId=activity.externalId;createMode=false;isFromLms=true; drawer.toggle()">
+            (click)="activityToggleId=activity.externalId;createMode=false;isFromLms=true">
             <mat-icon [ngClass]="activity.isActive?'primary':'disabled'">book</mat-icon>
             <p color="primary">{{activity.name}}</p>
             </a>
