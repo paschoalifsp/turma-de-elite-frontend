@@ -67,7 +67,6 @@ export class TeacherActivitiesPage implements OnInit {
         this.teacherLocalActivities = response;
         this.totalLength = response.totalElements;
         this.isLoading = false;
-        console.log(this.teacherLocalActivities);
       })
     } else if (index == 1){
       this.activityService.getTeacherExternalActivities().subscribe(response => {
