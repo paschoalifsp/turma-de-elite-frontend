@@ -29,7 +29,7 @@
         fxLayout="row"
         fxFlexAlign="center center"
         fxLayoutAlign="start center"
-        (click)="createMode=true;activityToggleId=null;drawer.toggle()">
+        (click)="createMode=true;activityToggleId=null;isFromLms=false;drawer.toggle()">
         <mat-icon color="primary">add</mat-icon>
         <p color="primary">{{'labels.addNewActivity'|translate}}</p>
       </a>
@@ -88,6 +88,7 @@
         fxLayoutAlign="start center"
         (click)="activityToggleId=activity.externalId;createMode=false;isFromLms=true;">
         <mat-icon [ngClass]="activity.isActive?'primary':'disabled'">book</mat-icon>
+        <p color="primary">{{activity.name}}</p>
         </a>
         </div>
         <div *ngFor="let activity of teacherLmsActivities">
@@ -99,6 +100,7 @@
             fxLayoutAlign="start center"
             (click)="activityToggleId=activity.externalId;createMode=false;isFromLms=true; drawer.toggle()">
             <mat-icon [ngClass]="activity.isActive?'primary':'disabled'">book</mat-icon>
+            <p color="primary">{{activity.name}}</p>
             </a>
             </div>
         <mat-paginator

@@ -49,7 +49,7 @@
       (change)="uploadFile($event)">
   </p>
   <div class="full-width" fxLayout="row" fxLayoutAlign="end center">
-    <button mat-flat-button color="primary" *ngIf="!isDelivered" (click)="deliveryActivity()" [disabled]="filenameControl?.value === ''">
+    <button mat-flat-button color="primary" *ngIf="!isDelivered && !isFromLms" (click)="deliveryActivity()" [disabled]="filenameControl?.value === ''">
       {{'labels.send'|translate}}
     </button>
   </div>
